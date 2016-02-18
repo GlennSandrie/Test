@@ -9,6 +9,10 @@ package domein;
  *
  * @author anjana
  */
-public class Spel {
+public class Spel 
+{
+    private String spelId;
+    private int aantalSpelers;
+    
     
 }
