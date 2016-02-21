@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package domein;
+import java.util.*;
 
 /**
  *
@@ -11,8 +12,22 @@ package domein;
  */
 public class Spel 
 {
-    private String spelId;
-    private int aantalSpelers;
-    
+    //attributen
+    private List<Speler> spelers;
+    private String naam;
+
+    //constructor
+    public Spel(String naam) 
+    {
+        this.naam = naam;
+    }
+
+    //controles + getters + setters
+    public String getNaam() 
+    {
+        return naam;
+    }
+  
+    //methodes
     
 }

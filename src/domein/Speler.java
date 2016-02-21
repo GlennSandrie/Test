@@ -13,6 +13,7 @@ import java.time.LocalDate;
  */
 public class Speler 
 {
+    //attributen
     private String spelerId;
     private String voornaam;
     private String familienaam;
@@ -22,8 +23,14 @@ public class Speler
     private int score;
     private boolean adminrechten;
 
+    //constructor
     public Speler(String spelerId, String voornaam, String familienaam, String email, String wachtwoord, LocalDate geboortedatum, int score, boolean adminrechten) 
     {
+        controleerId(spelerId);
+        controleerVoornaam(voornaam);
+        controleerFamilienaam(familienaam);
+        controleerEmail(email);
+        
         this.spelerId = spelerId;
         this.voornaam = voornaam;
         this.familienaam = familienaam;
@@ -34,9 +41,10 @@ public class Speler
         this.adminrechten = adminrechten;
     }
 
+    //controles + getters + setters
     private void controleerId(String id)
     {
-        if (id.equals(""))
+        if (id.length() == 0 || id == null)
             throw new IllegalArgumentException("Id mag niet leeg zijn!");
     }
     public String getSpelerId() 
@@ -45,12 +53,13 @@ public class Speler
     }
     public void setSpelerId(String spelerId) 
     {
+        controleerId(spelerId);
         this.spelerId = spelerId;
     }
 
     private void controleerVoornaam(String vnaam)
     {
-        if (vnaam.equals(""))
+        if (vnaam == null || vnaam.length() == 0)
             throw new IllegalArgumentException("De voornaam mag niet leeg zijn!");
     }
     public String getVoornaam() 
@@ -59,12 +68,13 @@ public class Speler
     }
     public void setVoornaam(String voornaam) 
     {
+        controleerVoornaam(voornaam);
         this.voornaam = voornaam;
     }
     
     private void controleerFamilienaam(String fnaam)
     {
-        if (fnaam.equals(""))
+        if (fnaam == null || fnaam.length() == 0)
             throw new IllegalArgumentException("De familienaam mag niet leeg zijn!");
     }
     public String getFamilienaam() 
@@ -73,15 +83,22 @@ public class Speler
     }
     public void setFamilienaam(String familienaam) 
     {
+        controleerFamilienaam(familienaam);
         this.familienaam = familienaam;
     }
 
+    private void controleerEmail(String email)
+    {
+        if(email == null || email.length() == 0)
+            throw new IllegalArgumentException("De email mag niet leeg zijn!");
+    }
     public String getEmail() 
     {
         return email;
     }
     public void setEmail(String email) 
     {
+        controleerEmail(email);
         this.email = email;
     }
 
@@ -94,7 +111,6 @@ public class Speler
         this.wachtwoord = wachtwoord;
     }
 
-    
     public LocalDate getGeboortedatum() 
     {
         return geboortedatum;
@@ -122,5 +138,6 @@ public class Speler
         this.adminrechten = adminrechten;
     }
     
- 
+    //methodes
+    
 }
