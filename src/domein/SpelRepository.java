@@ -14,20 +14,20 @@ import persistentie.SpelMapper;
  */
 public class SpelRepository 
 {
-    private final SpelMapper mapper;
+    private final SpelMapper sm;
 
     public SpelRepository() 
     {
-        mapper = new SpelMapper();
+        sm = new SpelMapper();
     }
     
     public List<String> geefSpelnamen()
     {
-        return mapper.geefSpelnamen();
+        return sm.geefSpelnamen();
     }
     
     public Spel kiesSpel(String naam)
     {
-        return mapper.kiesSpel(naam);
+        return sm.kiesSpel(naam);
     }
 }
