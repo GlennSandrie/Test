@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package domein;
-import java.util.*;
+
+import java.util.List;
 
 /**
  *
@@ -29,5 +30,12 @@ public class Spel
     }
   
     //methodes
+    public String[] geefNamenSpelers()
+    {
+        String[] res = new String[spelers.size()];
+        for (int index = 0; index < spelers.size(); index++)
+            res[index] = spelers.get(index).getNaam();
+        return res;
+    }
     
 }

@@ -5,20 +5,30 @@
  */
 package domein;
 
+import java.util.List;
+
 /**
  *
  * @author anjana
  */
 public class DomeinController 
 {
-    /*public String[] geefSpellen() 
+    private SpelRepository bestaandeSpellen;
+    private Spel gekozenSpel;
+    
+    public List<String> geefSpelnamen() 
     {
-        
+        return bestaandeSpellen.geefSpelnamen();
+    }
+    
+    public void kiesSpel(String naam)
+    {
+        bestaandeSpellen.kiesSpel(naam);
     }
     
     public String[] toonNamenSpelers()
     {
-        
-    }*/
+        return gekozenSpel.geefNamenSpelers();
+    }
     
 }
