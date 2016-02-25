@@ -5,14 +5,29 @@
  */
 package domein;
 
+import java.util.List;
+import persistentie.SpelMapper;
+
 /**
  *
  * @author anjana
  */
 public class SpelRepository 
 {
-    /*public String[] geefSpellen() 
+    private final SpelMapper mapper;
+
+    public SpelRepository() 
     {
-        
-    }*/
+        mapper = new SpelMapper();
+    }
+    
+    public List<String> geefSpelnamen()
+    {
+        return mapper.geefSpelnamen();
+    }
+    
+    public Spel kiesSpel(String naam)
+    {
+        return mapper.kiesSpel(naam);
+    }
 }
