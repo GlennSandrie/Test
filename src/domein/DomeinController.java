@@ -15,6 +15,7 @@ public class DomeinController
 {
     private SpelRepository bestaandeSpellen;
     private Spel gekozenSpel;
+    private SpelerRepository geregistreerdeSpelers;
     
     public List<String> geefSpelnamen() 
     {
