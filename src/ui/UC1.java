@@ -28,10 +28,10 @@ public class UC1 {
         }
 
         // lijst van spelers ophalen
-//        List<String> spelersnamen = dc.geefSpelersnamen(keuze);
-//        System.out.println("De spelers van dit spel");
-//        for (String spelersnaam : spelersnamen) {
-//            System.out.println(spelersnaam);
-//        }
+        List<String> spelersnamen = dc.geefSpelersVanSpel(keuze);
+        System.out.println("De spelers van dit spel");
+        for (String spelersnaam : spelersnamen) {
+            System.out.println(spelersnaam);
+        }
     }
 }

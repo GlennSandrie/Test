@@ -5,6 +5,7 @@
  */
 package domein;
 
+import java.util.List;
 import persistentie.SpelerMapper;
 
 /**
@@ -16,12 +17,17 @@ public class SpelerRepository
     private Speler spelers;
     private SpelerMapper sm;
     
+    public List<String> geefSpelernamen(String spelId)
+    {
+        return sm.geefSpelersVanSpel(spelId);
+    }
+    
     /*public Speler geefAantalSpelers(int aantalSpelers)
     {
         return sm.geefAantalSpelers(aantalSpelers);
     }
     
-    public void geeGegevensSpelerIn(String naam, LocalDateTime geboortedatum, String kleur)
+    public void geefGegevensSpelerIn(String naam, LocalDateTime geboortedatum, String kleur)
     {
         return sm.geefGegevensSpelerIn(naam,geboortedatum,kleur);
     }

@@ -5,11 +5,36 @@
  */
 package persistentie;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Aïssa
  */
 public class SpelerMapper
 {
-    
+    public List<String> geefSpelersVanSpel(String spel)
+    {
+        List<String> spelerNamen = new ArrayList<>();
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
+        {
+            PreparedStatement query = conn.prepareStatement("SELECT spelerId FROM speler WHERE spelId = ?");
+            try (ResultSet rs = query.executeQuery()) {
+                while (rs.next()) {
+                    String spelerId = rs.getString("spelerId");
+                    spelerNamen.add(spelerId);
+                }
+            }
+        }catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        
+        return spelerNamen;
+    }
 }

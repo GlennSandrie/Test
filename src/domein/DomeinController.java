@@ -39,8 +39,8 @@ public class DomeinController {
         bestaandeSpellen.kiesSpel(naam);
     }
 
-    public String[] toonNamenSpelers() {
-        return gekozenSpel.geefNamenSpelers();
+    public List<String> geefSpelersVanSpel(String spelId) {
+        return geregistreerdeSpelers.geefSpelernamen(spelId);
     }
 
 }
