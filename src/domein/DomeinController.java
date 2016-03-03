@@ -40,7 +40,7 @@ public class DomeinController {
     }
 
     public List<String> geefSpelersVanSpel(String spelId) {
-        return geregistreerdeSpelers.geefSpelernamen(spelId);
+        return geregistreerdeSpelers.geefSpelersVanSpel(spelId);
     }
 
 }

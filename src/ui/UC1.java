@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author beheerder
  */
 public class UC1 {
-
+    
     public static void laadSpel(DomeinController dc) {
         // lijst van spelnamen ophalen
         List<String> spelnamen = dc.geefSpelnamen();
@@ -26,7 +26,7 @@ public class UC1 {
             }
             keuze = input.nextLine();
         }
-
+        
         // lijst van spelers ophalen
         List<String> spelersnamen = dc.geefSpelersVanSpel(keuze);
         System.out.println("De spelers van dit spel");

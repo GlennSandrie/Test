@@ -25,10 +25,12 @@ public class SpelerMapper
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
         {
             PreparedStatement query = conn.prepareStatement("SELECT spelerId FROM speler WHERE spelId = ?");
+            query.setString(1, spel);
             try (ResultSet rs = query.executeQuery()) {
                 while (rs.next()) {
-                    String spelerId = rs.getString("spelerId");
-                    spelerNamen.add(spelerId);
+                    String speler = rs.getString("spelerId");
+                    
+                    spelerNamen.add(speler);
                 }
             }
         }catch (SQLException ex) {

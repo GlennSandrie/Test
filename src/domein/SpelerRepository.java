@@ -17,7 +17,12 @@ public class SpelerRepository
     private Speler spelers;
     private SpelerMapper sm;
     
-    public List<String> geefSpelernamen(String spelId)
+    public SpelerRepository()
+    {
+        sm = new SpelerMapper();
+    }
+    
+    public List<String> geefSpelersVanSpel(String spelId)
     {
         return sm.geefSpelersVanSpel(spelId);
     }
