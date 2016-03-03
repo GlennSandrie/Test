@@ -46,7 +46,6 @@ public class DomeinController {
     
     public void registreer(String naam, int geboortejaar, String kleur) {
         Speler nieuweSpeler = new Speler(naam, geboortejaar, kleur);
-        setSpeler(nieuweSpeler); // ONTBREEKT!!
         geregistreerdeSpelers.registreerSpeler(nieuweSpeler);
 
     }
