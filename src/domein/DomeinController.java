@@ -37,7 +37,7 @@ public class DomeinController {
     }
 
     public void kiesSpel(String naam) {
-        bestaandeSpellen.kiesSpel(naam);
+        gekozenSpel = bestaandeSpellen.kiesSpel(naam);
     }
 
     public List<String> geefSpelersVanSpel(String spelId) {
@@ -48,6 +48,11 @@ public class DomeinController {
         Speler nieuweSpeler = new Speler(naam, geboortejaar, kleur);
         geregistreerdeSpelers.registreerSpeler(nieuweSpeler);
 
+    }
+    
+    public void maakSpelbord()
+    {
+        
     }
 
 }
