@@ -15,17 +15,31 @@ public class Speler
 {
     //attributen
     private final String naam;
+    private final String kleur;
+    private final int geboortejaar;
 
     //constructor
-    public Speler(String naam) 
+    public Speler(String naam, int geboortejaar, String kleur) 
     {
         this.naam=naam;
+        this.geboortejaar = geboortejaar;
+        this.kleur = kleur;
     }
 
     //controles + getters + setters
     public String getNaam()
     {
         return naam;
+    }
+    
+    public String getKleur()
+    {
+        return kleur;
+    }
+
+    public int getGeboortejaar()
+    {
+        return geboortejaar;
     }
     
     //methodes
