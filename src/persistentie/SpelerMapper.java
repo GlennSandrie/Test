@@ -5,6 +5,7 @@
  */
 package persistentie;
 
+import domein.Speler;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -38,5 +39,21 @@ public class SpelerMapper
         }
         
         return spelerNamen;
+    }
+    
+    public void registreerSpeler(Speler speler) {
+
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
+            PreparedStatement query = conn.prepareStatement("INSERT INTO speler (spelerId)"
+                    + "VALUES (?)");
+            query.setString(1, speler.getNaam());
+//            query.setString(2, speler.getVoornaam());
+//            query.setString(3, speler.getEmailadres());
+            
+            query.executeUpdate();
+
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }

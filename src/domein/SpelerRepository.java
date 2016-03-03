@@ -27,6 +27,11 @@ public class SpelerRepository
         return sm.geefSpelersVanSpel(spelId);
     }
     
+    public void registreerSpeler(Speler speler)
+    {       
+       sm.registreerSpeler(speler);
+    }
+    
     /*public Speler geefAantalSpelers(int aantalSpelers)
     {
         return sm.geefAantalSpelers(aantalSpelers);
