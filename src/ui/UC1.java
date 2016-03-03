@@ -29,7 +29,7 @@ public class UC1 {
         
         // lijst van spelers ophalen
         List<String> spelersnamen = dc.geefSpelersVanSpel(keuze);
-        System.out.println("De spelers van dit spel");
+        System.out.println(/*"De spelers van dit spel"*/dc.getTaal().getText("speler"));
         for (String spelersnaam : spelersnamen) {
             System.out.println(spelersnaam);
         }
