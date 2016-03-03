@@ -11,25 +11,36 @@ import java.util.List;
  *
  * @author anjana
  */
-public class DomeinController 
-{
+public class DomeinController {
+
     private SpelRepository bestaandeSpellen;
     private Spel gekozenSpel;
     private SpelerRepository geregistreerdeSpelers;
-    
-    public List<String> geefSpelnamen() 
-    {
+    private Taal taal;
+
+    public DomeinController() {
+        this.bestaandeSpellen = new SpelRepository();
+        this.geregistreerdeSpelers = new SpelerRepository();
+    }
+
+    public void setTaal(String l) {
+        taal = new Taal(l);
+    }
+
+    public Taal getTaal() {
+        return taal;
+    }
+
+    public List<String> geefSpelnamen() {
         return bestaandeSpellen.geefSpelnamen();
     }
-    
-    public void kiesSpel(String naam)
-    {
+
+    public void kiesSpel(String naam) {
         bestaandeSpellen.kiesSpel(naam);
     }
-    
-    public String[] toonNamenSpelers()
-    {
+
+    public String[] toonNamenSpelers() {
         return gekozenSpel.geefNamenSpelers();
     }
-    
+
 }
