@@ -42,4 +42,6 @@ public class SpelerRepository
         return sm.geefGegevensSpelerIn(naam,geboortedatum,kleur);
     }
     */
+    
+    
 }
