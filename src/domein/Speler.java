@@ -19,6 +19,13 @@ public class Speler
     private final int geboortejaar;
 
     //constructor
+
+    /**
+     *
+     * @param naam
+     * @param geboortejaar
+     * @param kleur
+     */
     public Speler(String naam, int geboortejaar, String kleur) 
     {
         this.naam=naam;
@@ -27,16 +34,29 @@ public class Speler
     }
 
     //controles + getters + setters
+
+    /**
+     *
+     * @return
+     */
     public String getNaam()
     {
         return naam;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getKleur()
     {
         return kleur;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getGeboortejaar()
     {
         return geboortejaar;

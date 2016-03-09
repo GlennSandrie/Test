@@ -14,6 +14,10 @@ import java.util.Scanner;
  */
 public class UC1 {
     
+    /**
+     *
+     * @param dc
+     */
     public static void laadSpel(DomeinController dc) {
         // lijst van spelnamen ophalen
         List<String> spelnamen = dc.geefSpelnamen();

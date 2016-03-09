@@ -20,6 +20,12 @@ import java.util.List;
  */
 public class SpelerMapper
 {
+
+    /**
+     *
+     * @param spel
+     * @return
+     */
     public List<String> geefSpelersVanSpel(String spel)
     {
         List<String> spelerNamen = new ArrayList<>();
@@ -41,6 +47,10 @@ public class SpelerMapper
         return spelerNamen;
     }
     
+    /**
+     *
+     * @param speler
+     */
     public void registreerSpeler(Speler speler) {
 
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {

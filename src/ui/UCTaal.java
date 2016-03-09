@@ -14,6 +14,10 @@ import java.util.Scanner;
  */
 public class UCTaal {
 
+    /**
+     *
+     * @param dc
+     */
     public static void stelTaalIn(DomeinController dc) {
         Scanner input = new Scanner(System.in);
         String keuze = "";

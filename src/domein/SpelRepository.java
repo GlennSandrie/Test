@@ -16,16 +16,28 @@ public class SpelRepository
 {
     private final SpelMapper sm;
 
+    /**
+     *
+     */
     public SpelRepository() 
     {
         sm = new SpelMapper();
     }
     
+    /**
+     *
+     * @return
+     */
     public List<String> geefSpelnamen()
     {
         return sm.geefSpelnamen();
     }
     
+    /**
+     *
+     * @param naam
+     * @return
+     */
     public Spel kiesSpel(String naam)
     {
         return sm.kiesSpel(naam);

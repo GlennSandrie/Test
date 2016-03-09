@@ -18,18 +18,33 @@ public class Spel
     private String naam;
 
     //constructor
+
+    /**
+     *
+     * @param naam
+     */
     public Spel(String naam) 
     {
         this.naam = naam;
     }
 
     //controles + getters + setters
+
+    /**
+     *
+     * @return
+     */
     public String getNaam() 
     {
         return naam;
     }
   
     //methodes
+
+    /**
+     *
+     * @return
+     */
     public String[] geefNamenSpelers()
     {
         String[] res = new String[spelers.size()];

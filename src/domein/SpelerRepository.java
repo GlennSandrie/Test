@@ -17,16 +17,28 @@ public class SpelerRepository
     private Speler spelers;
     private SpelerMapper sm;
     
+    /**
+     *
+     */
     public SpelerRepository()
     {
         sm = new SpelerMapper();
     }
     
+    /**
+     *
+     * @param spelId
+     * @return
+     */
     public List<String> geefSpelersVanSpel(String spelId)
     {
         return sm.geefSpelersVanSpel(spelId);
     }
     
+    /**
+     *
+     * @param speler
+     */
     public void registreerSpeler(Speler speler)
     {       
        sm.registreerSpeler(speler);

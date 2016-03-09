@@ -23,6 +23,11 @@ import java.util.List;
  */
 public class SpelMapper 
 {
+
+    /**
+     *
+     * @return
+     */
     public List<String> geefSpelnamen()
     {
         List<String> spelNamen = new ArrayList<>();
@@ -42,6 +47,11 @@ public class SpelMapper
         return spelNamen;
     }
     
+    /**
+     *
+     * @param naam
+     * @return
+     */
     public Spel kiesSpel(String naam)
     {
         Spel spel = null;
