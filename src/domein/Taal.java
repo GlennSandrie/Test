@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 public class Taal {
 
 	private Locale locale;
-	private ResourceBundle resourceBundle;
+	private final ResourceBundle resourceBundle;
 	
 	public Taal (String l){
 		if (l.equals("nl")) this.locale = new Locale("nl");

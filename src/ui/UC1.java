@@ -20,7 +20,7 @@ public class UC1 {
         Scanner input = new Scanner(System.in);
         String keuze = "";
         while (!spelnamen.contains(keuze)) {
-            System.out.println("Kies een spel uit de onderstaande lijst");
+            System.out.println(dc.getTaal().getText("bestaandSpel"));;
             for (String spelnaam : spelnamen) {
                 System.out.println(spelnaam);
             }
@@ -29,9 +29,14 @@ public class UC1 {
         
         // lijst van spelers ophalen
         List<String> spelersnamen = dc.geefSpelersVanSpel(keuze);
-        System.out.println("De spelers van dit spel");
-        for (String spelersnaam : spelersnamen) {
-            System.out.println(spelersnaam);
+        if (spelersnamen.size()==0)
+           System.out.println("Er zitten geen spelers in dit spel");
+        else
+        {
+            System.out.println("De spelers van dit spel");
+            for (String spelersnaam : spelersnamen) {
+                System.out.println(spelersnaam);
+            }
         }
     }
 }

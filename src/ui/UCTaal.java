@@ -26,4 +26,5 @@ public class UCTaal {
         dc.setTaal(keuze);
         System.out.println(dc.getTaal().getText("welkom"));
     }
+    
 }
