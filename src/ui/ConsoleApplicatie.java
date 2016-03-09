@@ -1,6 +1,7 @@
 package ui;
 
 import domein.DomeinController;
+import java.util.Scanner;
 
 /**
  *
@@ -22,7 +23,14 @@ public class ConsoleApplicatie {
      *
      */
     public void start() {
+        Scanner input = new Scanner(System.in);
+        String keuze="";
+        while(!(keuze.equalsIgnoreCase("ja")||keuze.equalsIgnoreCase("yes")||keuze.equalsIgnoreCase("oui"))&&!(keuze.equalsIgnoreCase("nee")||keuze.equalsIgnoreCase("no")||keuze.equalsIgnoreCase("non"))) {
         UCTaal.stelTaalIn(dc);
-        UC1.laadSpel(dc);
+        System.out.println(dc.getTaal().getText("bestaandSpel"));
+        keuze = input.nextLine();
+        if (keuze.equalsIgnoreCase("ja")||keuze.equalsIgnoreCase("yes")||keuze.equalsIgnoreCase("oui"))
+            UC1.laadSpel(dc);
+        }
     }
 }

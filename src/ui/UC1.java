@@ -24,7 +24,7 @@ public class UC1 {
         Scanner input = new Scanner(System.in);
         String keuze = "";
         while (!spelnamen.contains(keuze)) {
-            System.out.println(dc.getTaal().getText("bestaandSpel"));
+            System.out.println(dc.getTaal().getText("laadSpel"));
             for (String spelnaam : spelnamen) {
                 System.out.println(spelnaam);
             }
