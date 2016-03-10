@@ -13,6 +13,7 @@ public class DomeinController {
     private Spel gekozenSpel;
     private SpelerRepository geregistreerdeSpelers;
     private Taal taal;
+    private Spel nieuwSpel;
 
     /**
      * constructor van de Domeincontroller
@@ -72,16 +73,13 @@ public class DomeinController {
      */
     public void registreer(String naam, int geboortejaar, String kleur) {
         Speler nieuweSpeler = new Speler(naam, geboortejaar, kleur);
-        geregistreerdeSpelers.registreerSpeler(nieuweSpeler);
-
+        geregistreerdeSpelers.registreerSpeler(nieuweSpeler);  
+        
     }
     
-    /**
-     *
-     */
-    public void maakSpelbord()
+    public void maakSpel(String naam)
     {
-        
+        nieuwSpel = new Spel(naam);
     }
 
 }
