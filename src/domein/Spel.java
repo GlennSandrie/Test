@@ -5,6 +5,7 @@
  */
 package domein;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -117,7 +118,7 @@ public class Spel
             losseKaarten.add(tk);
         }
           
-        gk.schudLosseKaarten(losseKaarten);
+        schudLosseKaarten();
         sb.plaatsLosseKaartenOpSpelbord(0, 0);
     }
     
@@ -132,7 +133,7 @@ public class Spel
             {
                 kleurKaart = vasteHK.get(j).getKleur();
                 if (kleurSpeler == kleurKaart)
-                    vasteHK.get(j).setSpeler(spelers.get(i));
+                    vasteHK.get(j).addSpeler(spelers.get(i));
             }
         }
     }
@@ -152,5 +153,10 @@ public class Spel
             }
         }
         return spelers.get(i).getNaam();
+    }
+    
+    public void schudLosseKaarten()
+    {
+        Collections.shuffle(losseKaarten);
     }
 }

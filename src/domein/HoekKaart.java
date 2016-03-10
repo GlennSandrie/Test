@@ -20,7 +20,7 @@ public class HoekKaart extends Gangkaart
      */
     public HoekKaart(String schat, String kleur, String richting)
     {
-        super(schat, kleur, richting);
+        super(null, kleur, richting);
     }
     
     /**
@@ -47,9 +47,9 @@ public class HoekKaart extends Gangkaart
         return super.getKleur();
     }
     
-     public void setSpeler(Speler speler)
+     public void addSpeler(Speler speler)
      {
-         super.setSpeler(speler);
+         super.addSpeler(speler);
      }
      
     /**
