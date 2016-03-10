@@ -5,6 +5,8 @@
  */
 package domein;
 
+import exceptions.InvalidNameException;
+
 
 
 /**
@@ -63,5 +65,10 @@ public class Speler
     }
     
     //methodes
-    
+    private void controleerNaam(String naam)
+    {
+        DomeinController dc = new DomeinController();
+        if (naam.length()<2||naam.matches("*[a-z],*[A-Z])"))
+            throw new InvalidNameException(dc.getTaal().getText("fouteNaam"));
+    }
 }

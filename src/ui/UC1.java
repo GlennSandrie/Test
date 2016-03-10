@@ -18,10 +18,9 @@ public class UC1 {
      *
      * @param dc
      */
-    public static void laadSpel(DomeinController dc) {
+    public static void laadSpel(DomeinController dc,Scanner input) {
         // lijst van spelnamen ophalen
         List<String> spelnamen = dc.geefSpelnamen();
-        Scanner input = new Scanner(System.in);
         String keuze = "";
         while (!spelnamen.contains(keuze)) {
             System.out.println(dc.getTaal().getText("laadSpel"));
