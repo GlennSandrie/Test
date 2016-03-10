@@ -5,11 +5,41 @@
  */
 package domein;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author anjana
  */
 public class Spelbord 
 {
+    private Gangkaart[][] spelbord = new Gangkaart[7][7];
     
+    /**
+     * 
+     */
+    public Spelbord()
+    {
+        
+    }
+    
+    /**
+     * 
+     * @param xPositie
+     * @param yPositie 
+     */
+    public void plaatsLosseKaartenOpSpelbord(int xPositie, int yPositie)
+    {
+        
+    }
+    
+    /**
+     *
+     * @return
+     */
+    public Gangkaart[][] geefSpelbord()
+    {
+        Gangkaart[][] spelbord = new Gangkaart[7][7];
+        return spelbord;
+    }
 }

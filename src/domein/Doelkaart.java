@@ -9,6 +9,6 @@ package domein;
  *
  * @author anjana
  */
-public interface Doelkaart {
+public class Doelkaart {
     
 }

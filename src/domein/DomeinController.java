@@ -78,6 +78,10 @@ public class DomeinController {
     }
     
     public void maakSpel(String naam)
+    /**
+     *
+     */
+    public void initialiseerVolledigDoolhof()
     {
         nieuwSpel = new Spel(naam);
     }

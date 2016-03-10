@@ -54,11 +54,11 @@ public class SpelerMapper
     public void registreerSpeler(Speler speler) {
 
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
-            PreparedStatement query = conn.prepareStatement("INSERT INTO speler (spelerId)"
-                    + "VALUES (?)");
+            PreparedStatement query = conn.prepareStatement("INSERT INTO speler (spelerId, kleur, geboortejaar)"
+                    + "VALUES (?, ?, ?)");
             query.setString(1, speler.getNaam());
-//            query.setString(2, speler.getVoornaam());
-//            query.setString(3, speler.getEmailadres());
+            query.setString(2, speler.getKleur());
+            query.setInt(3, speler.getGeboortejaar());
             
             query.executeUpdate();
 
@@ -66,4 +66,6 @@ public class SpelerMapper
             throw new RuntimeException(ex);
         }
     }
+    
+    
 }
