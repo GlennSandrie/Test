@@ -42,23 +42,16 @@ public class HoekKaart extends Gangkaart
         super(richting);
     }
     
+    @Override
      public String getKleur()
     {
         return super.getKleur();
     }
     
+    @Override
      public void addSpeler(Speler speler)
      {
          super.addSpeler(speler);
      }
      
-    /**
-     * 
-     * @param xPositie
-     * @param yPositie 
-     */
-    public void plaatsOpSpelbord(int xPositie,int yPositie)
-    {
-        
-    }
 }

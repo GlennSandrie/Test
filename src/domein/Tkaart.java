@@ -20,13 +20,4 @@ public class Tkaart extends Gangkaart
         super(schat, richting);
     }
     
-    /**
-     * 
-     * @param xPositie
-     * @param yPositie 
-     */
-    public void plaatsOpSpelbord(int xPositie,int yPositie)
-    {
-        
-    }
 }

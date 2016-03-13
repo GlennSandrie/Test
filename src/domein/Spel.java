@@ -5,8 +5,10 @@
  */
 package domein;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import utils.EnumKleur;
 
 /**
  *
@@ -18,7 +20,6 @@ public class Spel
     private List<Speler> spelers;
     private String naam;
     private Spelbord sb;
-    private List<HoekKaart> vasteHK;
     private String[] kleur;
     private List<Gangkaart> losseKaarten;
     private Gangkaart gk;
@@ -47,17 +48,17 @@ public class Spel
   
     //methodes
 
-    /**
-     *
-     * @return
-     */
-    public String[] geefNamenSpelers()
-    {
-        String[] res = new String[spelers.size()];
-        for (int index = 0; index < spelers.size(); index++)
-            res[index] = spelers.get(index).getNaam();
-        return res;
-    }
+//    /**
+//     *
+//     * @return
+//     */
+//    public String[] geefNamenSpelers()
+//    {
+//        String[] res = new String[spelers.size()];
+//        for (int index = 0; index < spelers.size(); index++)
+//            res[index] = spelers.get(index).getNaam();
+//        return res;
+//    }
     
     /**
      * 
@@ -75,21 +76,6 @@ public class Spel
      */
     public void maakGangkaartenEnPlaatsOpSpelbord()
     {
-        
-        /**
-         * kaarten die vast staan op het spelbord
-         */
-        for(int i = 0; i < 4; i++)
-        {
-            vasteHK.set(i, new HoekKaart(null, kleur[i], null));
-            vasteHK.get(i).plaatsOpSpelbord(i, i);
-        }
-        
-        for (int i = 0; i < 12; i++)
-        {
-            Tkaart tk = new Tkaart(null, null);
-            tk.plaatsOpSpelbord(i, i);
-        }
         
         /**
          * kaarten die niet vast staan op het spelbord
@@ -119,22 +105,16 @@ public class Spel
         }
           
         schudLosseKaarten();
-        sb.plaatsLosseKaartenOpSpelbord(0, 0);
+//        sb.plaatsLosseKaartenOpSpelbord(0, 0);
     }
     
     public void plaatsSpelersOpStartPositie()
     {
         String kleurSpeler;
-        String kleurKaart;
         for (int i = 0; i < spelers.size(); i++)
         {
-            kleurSpeler = spelers.get(i).getKleur();
-            for (int j = 0; j < vasteHK.size(); j++)
-            {
-                kleurKaart = vasteHK.get(j).getKleur();
-                if (kleurSpeler == kleurKaart)
-                    vasteHK.get(j).addSpeler(spelers.get(i));
-            }
+            kleurSpeler = spelers.get(i).getKleur().toUpperCase();
+            sb.zetSpelerOpHoekKaart(kleurSpeler, spelers.get(i));
         }
     }
     
@@ -151,6 +131,17 @@ public class Spel
                 jongste = res[index];
                 i = index;
             }
+            else if(res[index] == jongste)
+            {
+                List<String> str = new ArrayList<> ();
+                str.add(spelers.get(index).getNaam());
+                str.add(spelers.get(i).getNaam());
+                Collections.shuffle(str);
+                if (str.get(1).equals(spelers.get(index).getNaam()))
+                {
+                    i = index;
+                }
+            }
         }
         return spelers.get(i).getNaam();
     }
@@ -158,5 +149,10 @@ public class Spel
     public void schudLosseKaarten()
     {
         Collections.shuffle(losseKaarten);
+    }
+    
+    public void plaatsLosseKaartenOpSpelbord(int xPositie, int yPositie, Gangkaart gk)
+    {
+        sb.voegGangKaartToe(xPositie, yPositie, gk);
     }
 }

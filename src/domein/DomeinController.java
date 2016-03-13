@@ -80,7 +80,7 @@ public class DomeinController {
     public void maakSpel(String naam)
     {
         nieuwSpel = new Spel(naam);
+        nieuwSpel.initialiseerVolledigSpel();
     }
-   
-
+    
 }

@@ -62,6 +62,8 @@ public class Speler
         return geboortejaar;
     }
     
+    
+    
     //methodes
     
 }

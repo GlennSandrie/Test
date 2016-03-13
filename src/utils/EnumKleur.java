@@ -12,17 +12,24 @@ package utils;
  */
 public enum EnumKleur 
 {
-    GEEL(1), BLAUW(2), ROOD(3), GROEN(4);
+    GE(1, "GEEL"), B(2, "BLAUW"), R(3, "ROOD"), GR(4, "GROEN");
     
     private final int kleurNr;
+    private final String kleurNaam;
 
-    EnumKleur(int kleurNr) 
+    EnumKleur(int kleurNr, String kleurnaam) 
     {
         this.kleurNr = kleurNr;
+        this.kleurNaam = kleurnaam;
     }
     
     public int getKleurNr()
     {
         return kleurNr;
+    }
+    
+    public String getKleurNaam()
+    {
+        return kleurNaam;
     }
 }

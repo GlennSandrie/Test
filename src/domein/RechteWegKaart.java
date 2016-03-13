@@ -15,7 +15,8 @@ public class RechteWegKaart extends Gangkaart
      * 
      * @param richting 
      */
-    public RechteWegKaart(String richting) {
+    public RechteWegKaart(String richting) 
+    {
         super(richting);
     }
     
