@@ -18,8 +18,7 @@ public class UCTaal {
      *
      * @param dc
      */
-    public static void stelTaalIn(DomeinController dc) {
-        Scanner input = new Scanner(System.in);
+    public static void stelTaalIn(DomeinController dc,Scanner input) {
         String keuze = "";
         while (!keuze.equals("nl") && !keuze.equals("fr") && !keuze.equals("en")) {
             System.out.println("Voor Nederlands: typ nl");
