@@ -7,7 +7,9 @@ package domein;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.Random;
 import utils.EnumKleur;
+import utils.EnumSchat;
 
 /**
  *
@@ -17,7 +19,7 @@ public class Spelbord
 {
     
     
-    private Gangkaart[][] spelbord = new Gangkaart[6][6];
+    private Gangkaart[][] spelbord = new Gangkaart[7][7];
     
     /**
      * 
@@ -30,18 +32,18 @@ public class Spelbord
         spelbord[6][0] = new HoekKaart(null, "rood", null);
         spelbord[6][6] = new HoekKaart(null, "groen", null);
         
-        spelbord[2][0] = new Tkaart(null, "o");//onder
-        spelbord[4][0] = new Tkaart(null, "o");
-        spelbord[0][2] = new Tkaart(null, "r");//rechts
-        spelbord[2][2] = new Tkaart(null, "r");
-        spelbord[4][2] = new Tkaart(null, "o");
-        spelbord[6][2] = new Tkaart(null, "l");//links
-        spelbord[0][4] = new Tkaart(null, "r");
-        spelbord[2][4] = new Tkaart(null, "b");//boven
-        spelbord[4][4] = new Tkaart(null, "l");
-        spelbord[6][4] = new Tkaart(null, "l");
-        spelbord[2][6] = new Tkaart(null, "b");
-        spelbord[4][6] = new Tkaart(null, "b");
+        spelbord[2][0] = new Tkaart(EnumSchat.HAGEDIS.getNaam(), "o");//onder
+        spelbord[4][0] = new Tkaart(EnumSchat.MOT.getNaam(), "o");
+        spelbord[0][2] = new Tkaart(EnumSchat.UIL.getNaam(), "r");//rechts
+        spelbord[2][2] = new Tkaart(EnumSchat.RAT.getNaam(), "r");
+        spelbord[4][2] = new Tkaart(EnumSchat.SCARABEE.getNaam(), "o");
+        spelbord[6][2] = new Tkaart(EnumSchat.SLEUTELS.getNaam(), "l");//links
+        spelbord[0][4] = new Tkaart(EnumSchat.SCHEDEL.getNaam(), "r");
+        spelbord[2][4] = new Tkaart(EnumSchat.TOVENARES.getNaam(), "b");//boven
+        spelbord[4][4] = new Tkaart(EnumSchat.SPIN.getNaam(), "l");
+        spelbord[6][4] = new Tkaart(EnumSchat.ZWAARD.getNaam(), "l");
+        spelbord[2][6] = new Tkaart(EnumSchat.SCHATKIST.getNaam(), "b");
+        spelbord[4][6] = new Tkaart(EnumSchat.SCHATKAART.getNaam(), "b");
         
     }
     

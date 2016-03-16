@@ -83,4 +83,9 @@ public class DomeinController {
         nieuwSpel.initialiseerVolledigSpel();
     }
     
+    public String[][] geefSpel()
+    {
+        return nieuwSpel.geefSpel();
+    }
+    
 }

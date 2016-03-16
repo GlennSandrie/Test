@@ -65,11 +65,20 @@ public class Gangkaart
     {
         return kleur;
     }
-     
+    
      public void addSpeler (Speler speler) 
      {
         this.speler.add(speler);
      }
     
+     /*
+     *
+     *Tijdelijke methode om spel af te printen op het scherm
+     */
+     @Override
+     public String toString()
+     {
+         return String.format(this.getClass().getSimpleName()+ " met als schat "+this.schat);
+     }
     
 }

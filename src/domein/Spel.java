@@ -8,7 +8,9 @@ package domein;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import utils.EnumKleur;
+import utils.EnumSchat;
 
 /**
  *
@@ -23,6 +25,7 @@ public class Spel
     private String[] kleur;
     private List<Gangkaart> losseKaarten;
     private Gangkaart gk;
+    private List<Doelkaart> doelkaarten;
     
     /**
      * constructor
@@ -47,18 +50,6 @@ public class Spel
     }
   
     //methodes
-
-//    /**
-//     *
-//     * @return
-//     */
-//    public String[] geefNamenSpelers()
-//    {
-//        String[] res = new String[spelers.size()];
-//        for (int index = 0; index < spelers.size(); index++)
-//            res[index] = spelers.get(index).getNaam();
-//        return res;
-//    }
     
     /**
      * 
@@ -67,7 +58,7 @@ public class Spel
     {
         maakGangkaartenEnPlaatsOpSpelbord();
         plaatsSpelersOpStartPositie();
-        
+        maakDoelkaartenEnVerdeelOnderSpelers();
         bepaalSpelerAanDeBeurt();
     }
     
@@ -76,6 +67,7 @@ public class Spel
      */
     public void maakGangkaartenEnPlaatsOpSpelbord()
     {
+        Random r = new Random();
         
         /**
          * kaarten die niet vast staan op het spelbord
@@ -85,27 +77,49 @@ public class Spel
             HoekKaart hk = new HoekKaart(null);
             losseKaarten.add(hk);
         }
-        
-         for (int i = 0; i < 6; i++)
-        {
-           HoekKaart hk = new HoekKaart(null, null);
-           losseKaarten.add(hk);
-        }
-        
-         for (int i = 0; i < 12; i++)
+        for (int i = 0; i < 12; i++)
         {
             RechteWegKaart rwk = new RechteWegKaart(null);
             losseKaarten.add(rwk);
         }
-         
-          for (int i = 0; i < 6; i++)
+        
+        for (int i = 0; i < 6; i++)
         {
-            Tkaart tk = new Tkaart(null, null);
-            losseKaarten.add(tk);
+            for(EnumSchat schat : EnumSchat.values())
+            {
+                if(schat.getSchatId()==i+1)
+                {
+                HoekKaart hk = new HoekKaart(schat.getNaam(), null);
+                losseKaarten.add(hk);
+                }
+            }
         }
-          
+        
+        for (int i = 0; i < 6; i++)
+        {
+            for(EnumSchat schat : EnumSchat.values())
+            {
+                if(schat.getSchatId()==i+7)
+                {
+                Tkaart tk = new Tkaart(schat.getNaam(), null);
+                losseKaarten.add(tk);
+                }
+            }
+        }
+        
         schudLosseKaarten();
-//        sb.plaatsLosseKaartenOpSpelbord(0, 0);
+        int index = 0;
+        for(int i = 0; i < 7; i++)
+        {
+            for (int j = 0; j < 7; j++)
+            {
+                if (i%2 != 0 || j%2 != 0)
+                {
+                    sb.voegGangKaartToe(i, j, losseKaarten.get(index));
+                    index++;
+                }
+            }
+        }
     }
     
     public void plaatsSpelersOpStartPositie()
@@ -154,5 +168,41 @@ public class Spel
     public void plaatsLosseKaartenOpSpelbord(int xPositie, int yPositie, Gangkaart gk)
     {
         sb.voegGangKaartToe(xPositie, yPositie, gk);
+    }
+    
+    public void maakDoelkaartenEnVerdeelOnderSpelers()
+    {
+        for(int i = 1; i <= 24; i++)
+        {
+            doelkaarten.add(new Doelkaart(EnumSchat.values()[i].getNaam()));
+        }
+        schudDoelkaarten();
+        for (Speler speler : spelers)
+        {
+            for(int i = 0; i < (doelkaarten.size()/spelers.size()); i++)
+            {
+                speler.voegDoelkaartToe(doelkaarten.get(i));
+                doelkaarten.remove(i);
+            }
+        }
+    }
+    
+    public void schudDoelkaarten()
+    {
+        Collections.shuffle(doelkaarten);
+    }
+    
+    public String[][] geefSpel()
+    {
+        String[][] spel = new String[7][7];
+        Gangkaart[][] spelbord = sb.geefSpelbord();
+        for (int i = 0; i < spelbord.length; i++)
+        {
+            for (int j = 0; j < spelbord[i].length; j++)
+            {
+                spel[i][j]=spelbord[i][j].toString();
+            }
+        }
+        return spel;
     }
 }

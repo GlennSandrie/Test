@@ -11,4 +11,10 @@ package domein;
  */
 public class Doelkaart {
     
+    private String schat;
+    
+    public Doelkaart(String schat)
+    {
+        this.schat = schat;
+    }
 }

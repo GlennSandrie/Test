@@ -14,21 +14,28 @@ public enum EnumSchat
 {
 
  
-    GOUDENMUNTEN(1),  VLEERMUIS(2), BOEK(3), DRAAK(4), GEESTFLES(5), 
-    GEESTZWAAI(6), KROON(7), KANDELAAR(8), RING(9), HELM(10), JUWEEL(11),
-    VARKEN(12), HAGEDIS(13), MOT(14), UIL(15), RAT(16), SCARABEE(17), 
-    SLEUTELS(18), SCHEDEL(19), TOVENARES(20), SPIN(21), ZWAARD(22),
-    SCHATKIST(23), SCHATKAART(24);
+    GELDBEUGEL(1, "Geldbeugel"),  VLEERMUIS(2,"Vleermuis"), BOEK(3,"Boek"), DRAAK(4,"Draak"), GEESTFLES(5,"Geest in een fles"), 
+    GEESTZWAAI(6,"Geest"), KROON(7,"Kroon"), KANDELAAR(8,"Kandelaar"), RING(9,"Ring"), HELM(10,"Helm"), JUWEEL(11,"Juweel"),
+    VARKEN(12,"Varken"), HAGEDIS(13,"Hagedis"), MOT(14,"Mot"), UIL(15,"Uil"), RAT(16,"Rat"), SCARABEE(17,"Scarabee"), 
+    SLEUTELS(18,"Sleutels"), SCHEDEL(19,"Schedel"), TOVENARES(20,"Tovenares"), SPIN(21,"Spin"), ZWAARD(22,"Zwaard"),
+    SCHATKIST(23,"Schatkist"), SCHATKAART(24,"Shatkaart");
     
     private final int schatId;
+    private final String naam;
     
-    EnumSchat(int schatId)
+    EnumSchat(int schatId, String naam)
     {
         this.schatId=schatId;
+        this.naam = naam;
     }
 
     public int getSchatId()
     {
         return schatId;
+    }
+    
+    public String getNaam()
+    {
+        return naam;
     }
 }

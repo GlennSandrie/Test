@@ -21,6 +21,7 @@ public class UC2
         naam = input.nextLine();
         dc.maakSpel(naam);
         
+        
     }
     
     public static void registreerSpeler(DomeinController dc,Scanner input)

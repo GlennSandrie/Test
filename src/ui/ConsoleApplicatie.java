@@ -42,6 +42,10 @@ public class ConsoleApplicatie {
                         throw new WrongInputException(dc.getTaal().getText("fouteInvoer"));
                 }
                 UC2.registreerSpeler(dc, input);
+                /*
+                * Werkt voorlopig enkel als je een nieuw spel aanmaakt
+                */
+                System.out.printf(dc.geefSpel().toString());
             }
         
             catch (WrongInputException we)

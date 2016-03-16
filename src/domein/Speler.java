@@ -6,6 +6,7 @@
 package domein;
 
 import exceptions.InvalidNameException;
+import java.util.List;
 
 
 
@@ -19,6 +20,7 @@ public class Speler
     private final String naam;
     private final String kleur;
     private final int geboortejaar;
+    private List<Doelkaart> doelkaarten;
 
     //constructor
 
@@ -72,5 +74,10 @@ public class Speler
         DomeinController dc = new DomeinController();
         if (naam.length()<2||naam.matches("*[a-z],*[A-Z])"))
             throw new InvalidNameException(dc.getTaal().getText("fouteNaam"));
+    }
+    
+    public void voegDoelkaartToe(Doelkaart doelkaart)
+    {
+        doelkaarten.add(doelkaart);
     }
 }
