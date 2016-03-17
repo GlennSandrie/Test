@@ -48,6 +48,11 @@ public class Spel
     {
         return naam;
     }
+
+    public void setNaam(String naam)
+    {
+        this.naam = naam;
+    }
   
     //methodes
     
@@ -208,7 +213,7 @@ public class Spel
         return spel;
     }
 
-    void voegSpelerToe(Speler nieuweSpeler)
+    public void voegSpelerToe(Speler nieuweSpeler)
     {
         spelers.add(nieuweSpeler);
     }

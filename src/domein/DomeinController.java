@@ -55,6 +55,11 @@ public class DomeinController {
     public void kiesSpel(String naam) {
         spel = bestaandeSpellen.kiesSpel(naam);
     }
+    
+    public String getSpelnaam()
+    {
+        return spel.getNaam();
+    }
 
     /**
      *
