@@ -46,10 +46,7 @@ public class ConsoleApplicatie {
                 
                 System.out.println("Hoeveel spelers wilt u ingeven");
                 aantal = input.nextInt();
-                for (int i = 0; i < aantal; i++)
-                {
-                    UC2.registreerSpeler(dc, input);
-                }
+                UC2.registreerSpelers(dc, input, aantal );
                 /*
                 * Werkt voorlopig enkel als je een nieuw spel aanmaakt
                 */

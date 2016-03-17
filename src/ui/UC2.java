@@ -27,16 +27,24 @@ public class UC2
         
     }
     
-    public static void registreerSpeler(DomeinController dc,Scanner input)
+    public static void registreerSpelers(DomeinController dc,Scanner input,int aantal)
     {
         try {
             String naam;
             int geboortejaar;
-            System.out.println(dc.getTaal().getText("spelerNaam"));
-            naam = input.nextLine();
-            System.out.println(dc.getTaal().getText("gebdatumSpeler"));
-            geboortejaar = input.nextInt();
-            dc.registreer(naam, geboortejaar,Kleur.B);
+            boolean fout = true;
+            while (fout)
+            {
+                for (int i = 0; i < aantal; i++)
+                {
+                    System.out.println(dc.getTaal().getText("spelerNaam"));
+                    naam = input.nextLine();
+                    System.out.println(dc.getTaal().getText("gebdatumSpeler"));
+                    geboortejaar = input.nextInt();
+                    dc.registreer(naam, geboortejaar,Kleur.B);
+                }
+                fout=true;
+            }
         }
         catch (InvalidNameException e)
         {
