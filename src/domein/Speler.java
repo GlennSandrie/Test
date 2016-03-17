@@ -6,6 +6,7 @@
 package domein;
 
 import exceptions.InvalidNameException;
+import java.util.ArrayList;
 import java.util.List;
 import utils.Kleur;
 
@@ -21,7 +22,7 @@ public class Speler
     private final String naam;
     private final Kleur kleur;
     private final int geboortejaar;
-    private List<Doelkaart> doelkaarten;
+    private List<Doelkaart> doelkaarten = new ArrayList<>();
 
     //constructor
 

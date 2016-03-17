@@ -25,7 +25,7 @@ public class Spel
     private String[] kleur;
     private List<Gangkaart> losseKaarten = new ArrayList<>();
     private Gangkaart gk;
-    private List<Doelkaart> doelkaarten;
+    private List<Doelkaart> doelkaarten = new ArrayList<>();
     
     /**
      * constructor
@@ -179,7 +179,7 @@ public class Spel
     
     public void maakDoelkaartenEnVerdeelOnderSpelers()
     {
-        for(int i = 1; i <= 24; i++)
+        for(int i = 0; i < 24; i++)
         {
             doelkaarten.add(new Doelkaart(Schat.values()[i]));
         }
