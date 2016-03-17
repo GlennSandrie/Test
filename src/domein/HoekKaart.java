@@ -5,6 +5,9 @@
  */
 package domein;
 
+import utils.Kleur;
+import utils.Schat;
+
 /**
  *
  * @author anjana
@@ -18,7 +21,7 @@ public class HoekKaart extends Gangkaart
      * @param kleur
      * @param richting 
      */
-    public HoekKaart(String schat, String kleur, String richting)
+    public HoekKaart(Schat schat, Kleur kleur, String richting)
     {
         super(null, kleur, richting);
     }
@@ -28,7 +31,7 @@ public class HoekKaart extends Gangkaart
      * @param schat
      * @param richting 
      */
-    public HoekKaart(String schat, String richting)
+    public HoekKaart(Schat schat, String richting)
     {
         super(schat, richting);
     }
@@ -41,17 +44,4 @@ public class HoekKaart extends Gangkaart
     {
         super(richting);
     }
-    
-    @Override
-     public String getKleur()
-    {
-        return super.getKleur();
-    }
-    
-    @Override
-     public void addSpeler(Speler speler)
-     {
-         super.addSpeler(speler);
-     }
-     
 }

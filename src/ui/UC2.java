@@ -7,6 +7,7 @@ package ui;
 
 import domein.DomeinController;
 import java.util.Scanner;
+import utils.Kleur;
 
 /**
  *
@@ -32,6 +33,6 @@ public class UC2
         naam = input.nextLine();
         System.out.println(dc.getTaal().getText("gebdatumSpeler"));
         geboortejaar = input.nextInt();
-        dc.registreer(naam, geboortejaar, "blauw");
+        dc.registreer(naam, geboortejaar, Kleur.B);
     }
 }

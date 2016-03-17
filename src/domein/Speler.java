@@ -7,6 +7,7 @@ package domein;
 
 import exceptions.InvalidNameException;
 import java.util.List;
+import utils.Kleur;
 
 
 
@@ -18,7 +19,7 @@ public class Speler
 {
     //attributen
     private final String naam;
-    private final String kleur;
+    private final Kleur kleur;
     private final int geboortejaar;
     private List<Doelkaart> doelkaarten;
 
@@ -30,7 +31,7 @@ public class Speler
      * @param geboortejaar
      * @param kleur
      */
-    public Speler(String naam, int geboortejaar, String kleur) 
+    public Speler(String naam, int geboortejaar, Kleur kleur) 
     {
         this.naam=naam;
         this.geboortejaar = geboortejaar;
@@ -52,7 +53,7 @@ public class Speler
      *
      * @return
      */
-    public String getKleur()
+    public Kleur getKleur()
     {
         return kleur;
     }
@@ -69,11 +70,14 @@ public class Speler
     
     
     //methodes
+    // oproepen binnen de constructor
+    // controle voor geboortejaar ook toevoegen
+    
     private void controleerNaam(String naam)
     {
         DomeinController dc = new DomeinController();
         if (naam.length()<2||naam.matches("*[a-z],*[A-Z])"))
-            throw new InvalidNameException(dc.getTaal().getText("fouteNaam"));
+            throw new InvalidNameException("fouteNaam");
     }
     
     public void voegDoelkaartToe(Doelkaart doelkaart)

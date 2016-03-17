@@ -2,6 +2,7 @@ package domein;
 
 import java.time.LocalDate;
 import java.util.List;
+import utils.Kleur;
 
 /**
  *
@@ -10,10 +11,9 @@ import java.util.List;
 public class DomeinController {
 
     private SpelRepository bestaandeSpellen;
-    private Spel gekozenSpel;
     private SpelerRepository geregistreerdeSpelers;
     private Taal taal;
-    private Spel nieuwSpel;
+    private Spel spel;
 
     /**
      * constructor van de Domeincontroller
@@ -53,7 +53,7 @@ public class DomeinController {
      * @param naam
      */
     public void kiesSpel(String naam) {
-        gekozenSpel = bestaandeSpellen.kiesSpel(naam);
+        spel = bestaandeSpellen.kiesSpel(naam);
     }
 
     /**
@@ -71,21 +71,21 @@ public class DomeinController {
      * @param geboortejaar
      * @param kleur
      */
-    public void registreer(String naam, int geboortejaar, String kleur) {
+    public void registreer(String naam, int geboortejaar, Kleur kleur) {
         Speler nieuweSpeler = new Speler(naam, geboortejaar, kleur);
-        geregistreerdeSpelers.registreerSpeler(nieuweSpeler);  
+        spel.voegSpelerToe(nieuweSpeler);
         
     }
     
     public void maakSpel(String naam)
     {
-        nieuwSpel = new Spel(naam);
-        nieuwSpel.initialiseerVolledigSpel();
+        spel = new Spel(naam);
+        spel.initialiseerVolledigSpel();
     }
     
     public String[][] geefSpel()
     {
-        return nieuwSpel.geefSpel();
+        return spel.geefSpel();
     }
     
 }

@@ -8,8 +8,8 @@ package domein;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.Random;
-import utils.EnumKleur;
-import utils.EnumSchat;
+import utils.Kleur;
+import utils.Schat;
 
 /**
  *
@@ -26,24 +26,24 @@ public class Spelbord
      */
     public Spelbord()
     {
-        EnumKleur kl;
-        spelbord[0][0] = new HoekKaart(null, "Geel", null);
-        spelbord[0][6] = new HoekKaart(null, "Blauw", null);
-        spelbord[6][0] = new HoekKaart(null, "rood", null);
-        spelbord[6][6] = new HoekKaart(null, "groen", null);
+        Kleur kl;
+        spelbord[0][0] = new HoekKaart(null, Kleur.GE, null);
+        spelbord[0][6] = new HoekKaart(null, Kleur.B, null);
+        spelbord[6][0] = new HoekKaart(null, Kleur.GR, null);
+        spelbord[6][6] = new HoekKaart(null, Kleur.R, null);
         
-        spelbord[2][0] = new Tkaart(EnumSchat.HAGEDIS.getNaam(), "o");//onder
-        spelbord[4][0] = new Tkaart(EnumSchat.MOT.getNaam(), "o");
-        spelbord[0][2] = new Tkaart(EnumSchat.UIL.getNaam(), "r");//rechts
-        spelbord[2][2] = new Tkaart(EnumSchat.RAT.getNaam(), "r");
-        spelbord[4][2] = new Tkaart(EnumSchat.SCARABEE.getNaam(), "o");
-        spelbord[6][2] = new Tkaart(EnumSchat.SLEUTELS.getNaam(), "l");//links
-        spelbord[0][4] = new Tkaart(EnumSchat.SCHEDEL.getNaam(), "r");
-        spelbord[2][4] = new Tkaart(EnumSchat.TOVENARES.getNaam(), "b");//boven
-        spelbord[4][4] = new Tkaart(EnumSchat.SPIN.getNaam(), "l");
-        spelbord[6][4] = new Tkaart(EnumSchat.ZWAARD.getNaam(), "l");
-        spelbord[2][6] = new Tkaart(EnumSchat.SCHATKIST.getNaam(), "b");
-        spelbord[4][6] = new Tkaart(EnumSchat.SCHATKAART.getNaam(), "b");
+        spelbord[2][0] = new Tkaart(Schat.HAGEDIS, "o");//onder
+        spelbord[4][0] = new Tkaart(Schat.MOT, "o");
+        spelbord[0][2] = new Tkaart(Schat.UIL, "r");//rechts
+        spelbord[2][2] = new Tkaart(Schat.RAT, "r");
+        spelbord[4][2] = new Tkaart(Schat.SCARABEE, "o");
+        spelbord[6][2] = new Tkaart(Schat.SLEUTELS, "l");//links
+        spelbord[0][4] = new Tkaart(Schat.SCHEDEL, "r");
+        spelbord[2][4] = new Tkaart(Schat.TOVENARES, "b");//boven
+        spelbord[4][4] = new Tkaart(Schat.SPIN, "l");
+        spelbord[6][4] = new Tkaart(Schat.ZWAARD, "l");
+        spelbord[2][6] = new Tkaart(Schat.SCHATKIST, "b");
+        spelbord[4][6] = new Tkaart(Schat.SCHATKAART, "b");
         
     }
     
@@ -56,27 +56,27 @@ public class Spelbord
         return spelbord;
     }
     
-    public void zetSpelerOpHoekKaart(String kleur, Speler speler)
+    public void zetSpelerOpHoekKaart(Kleur kleur, Speler speler)
     {
-        if (spelbord[0][0].getKleur().toUpperCase().equals(kleur.toUpperCase()))
+        if (spelbord[0][0].getKleur().equals(kleur))
         {
             spelbord[0][0].addSpeler(speler);
         } 
         else 
         {
-            if(spelbord[0][6].getKleur().toUpperCase().equals(kleur.toUpperCase()))
+            if(spelbord[0][6].getKleur().equals(kleur))
             {
                 spelbord[0][6].addSpeler(speler);
             } 
             else 
             {
-                if(spelbord[6][0].getKleur().toUpperCase().equals(kleur.toUpperCase()))
+                if(spelbord[6][0].getKleur().equals(kleur))
                 {
                     spelbord[6][0].addSpeler(speler);
                 }
                 else
                 {
-                    if (spelbord[6][6].getKleur().toUpperCase().equals(kleur.toUpperCase()))
+                    if (spelbord[6][6].getKleur().equals(kleur))
                     {
                         spelbord[6][6].addSpeler(speler);
                     }

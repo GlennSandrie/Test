@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import utils.EnumKleur;
-import utils.EnumSchat;
+import utils.Kleur;
+import utils.Schat;
 
 /**
  *
@@ -19,11 +19,11 @@ import utils.EnumSchat;
 public class Spel 
 {
     //attributen
-    private List<Speler> spelers;
+    private List<Speler> spelers = new ArrayList<>();
     private String naam;
     private Spelbord sb;
     private String[] kleur;
-    private List<Gangkaart> losseKaarten;
+    private List<Gangkaart> losseKaarten = new ArrayList<>();
     private Gangkaart gk;
     private List<Doelkaart> doelkaarten;
     
@@ -67,7 +67,6 @@ public class Spel
      */
     public void maakGangkaartenEnPlaatsOpSpelbord()
     {
-        Random r = new Random();
         
         /**
          * kaarten die niet vast staan op het spelbord
@@ -85,11 +84,11 @@ public class Spel
         
         for (int i = 0; i < 6; i++)
         {
-            for(EnumSchat schat : EnumSchat.values())
+            for(Schat schat : Schat.values())
             {
                 if(schat.getSchatId()==i+1)
                 {
-                HoekKaart hk = new HoekKaart(schat.getNaam(), null);
+                HoekKaart hk = new HoekKaart(schat, null);
                 losseKaarten.add(hk);
                 }
             }
@@ -97,37 +96,29 @@ public class Spel
         
         for (int i = 0; i < 6; i++)
         {
-            for(EnumSchat schat : EnumSchat.values())
+            for(Schat schat : Schat.values())
             {
                 if(schat.getSchatId()==i+7)
                 {
-                Tkaart tk = new Tkaart(schat.getNaam(), null);
+                Tkaart tk = new Tkaart(schat, null);
                 losseKaarten.add(tk);
                 }
             }
         }
         
         schudLosseKaarten();
-        int index = 0;
-        for(int i = 0; i < 7; i++)
-        {
-            for (int j = 0; j < 7; j++)
-            {
-                if (i%2 != 0 || j%2 != 0)
-                {
-                    sb.voegGangKaartToe(i, j, losseKaarten.get(index));
-                    index++;
-                }
-            }
-        }
+        plaatsLosseKaartenOpSpelbord();
     }
     
     public void plaatsSpelersOpStartPositie()
     {
-        String kleurSpeler;
+        spelers.add(new Speler("anjana",1997,Kleur.B));
+        spelers.add(new Speler("anjana",1997,Kleur.B));
+        spelers.add(new Speler("anjana",1997,Kleur.B));
+        Kleur kleurSpeler;
         for (int i = 0; i < spelers.size(); i++)
         {
-            kleurSpeler = spelers.get(i).getKleur().toUpperCase();
+            kleurSpeler = spelers.get(i).getKleur();
             sb.zetSpelerOpHoekKaart(kleurSpeler, spelers.get(i));
         }
     }
@@ -165,16 +156,27 @@ public class Spel
         Collections.shuffle(losseKaarten);
     }
     
-    public void plaatsLosseKaartenOpSpelbord(int xPositie, int yPositie, Gangkaart gk)
+    public void plaatsLosseKaartenOpSpelbord()
     {
-        sb.voegGangKaartToe(xPositie, yPositie, gk);
+        int index = 0;
+        for(int i = 0; i < 7; i++)
+        {
+            for (int j = 0; j < 7; j++)
+            {
+                if (i%2 != 0 || j%2 != 0)
+                {
+                    sb.voegGangKaartToe(i, j, losseKaarten.get(index));
+                    index++;
+                }
+            }
+        }
     }
     
     public void maakDoelkaartenEnVerdeelOnderSpelers()
     {
         for(int i = 1; i <= 24; i++)
         {
-            doelkaarten.add(new Doelkaart(EnumSchat.values()[i].getNaam()));
+            doelkaarten.add(new Doelkaart(Schat.values()[i]));
         }
         schudDoelkaarten();
         for (Speler speler : spelers)
@@ -204,5 +206,10 @@ public class Spel
             }
         }
         return spel;
+    }
+
+    void voegSpelerToe(Speler nieuweSpeler)
+    {
+        spelers.add(nieuweSpeler);
     }
 }

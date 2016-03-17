@@ -5,6 +5,8 @@
  */
 package domein;
 
+import utils.Schat;
+
 /**
  *
  * @author anjana
@@ -16,7 +18,7 @@ public class Tkaart extends Gangkaart
      * @param schat
      * @param richting 
      */
-    public Tkaart(String schat, String richting) {
+    public Tkaart(Schat schat, String richting) {
         super(schat, richting);
     }
     

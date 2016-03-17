@@ -10,7 +10,7 @@ package utils;
  *
  * @author anjana
  */
-public enum EnumSchat 
+public enum Schat 
 {
 
  
@@ -23,7 +23,7 @@ public enum EnumSchat
     private final int schatId;
     private final String naam;
     
-    EnumSchat(int schatId, String naam)
+    Schat(int schatId, String naam)
     {
         this.schatId=schatId;
         this.naam = naam;

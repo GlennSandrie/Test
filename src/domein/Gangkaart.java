@@ -11,6 +11,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import utils.Kleur;
+import utils.Schat;
 
 
 /**
@@ -22,8 +24,10 @@ public class Gangkaart
     /**
      * 
      */
-    private String schat, kleur, richting;
-    private List<Speler> speler;
+    private Schat schat;
+    private Kleur kleur;
+    private String richting;
+    private List<Speler> spelers;
 
     /**
      * 
@@ -33,12 +37,12 @@ public class Gangkaart
      * @param richting
 
      */
-    public Gangkaart(String schat, String kleur, String richting) 
+    public Gangkaart(Schat schat, Kleur kleur, String richting) 
     {
         this.schat = schat;
         this.kleur = kleur;
         this.richting = richting;
-        speler = new ArrayList<>();
+        spelers = new ArrayList<>();
     }
     
     /**
@@ -46,7 +50,7 @@ public class Gangkaart
      * @param schat
      * @param richting 
      */
-    public Gangkaart(String schat, String richting) 
+    public Gangkaart(Schat schat, String richting) 
     {
         this(schat, null, richting);
     }
@@ -61,14 +65,14 @@ public class Gangkaart
         this(null, null, richting);
     }
     
-     public String getKleur()
+     public Kleur getKleur()
     {
         return kleur;
     }
     
      public void addSpeler (Speler speler) 
      {
-        this.speler.add(speler);
+        this.spelers.add(speler);
      }
     
      /*

@@ -57,7 +57,7 @@ public class SpelerMapper
             PreparedStatement query = conn.prepareStatement("INSERT INTO speler (spelerId, kleur, geboortejaar)"
                     + "VALUES (?, ?, ?)");
             query.setString(1, speler.getNaam());
-            query.setString(2, speler.getKleur());
+            query.setString(2, speler.getKleur().getKleurNaam());
             query.setInt(3, speler.getGeboortejaar());
             
             query.executeUpdate();
