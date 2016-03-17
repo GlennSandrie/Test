@@ -5,8 +5,11 @@
  */
 package domein;
 
+import exceptions.InvalidBirthdateException;
 import exceptions.InvalidNameException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import utils.Kleur;
 
@@ -34,6 +37,8 @@ public class Speler
      */
     public Speler(String naam, int geboortejaar, Kleur kleur) 
     {
+        controleerNaam(naam);
+        controleerGeboortejaar(geboortejaar);
         this.naam=naam;
         this.geboortejaar = geboortejaar;
         this.kleur = kleur;
@@ -76,11 +81,16 @@ public class Speler
     
     private void controleerNaam(String naam)
     {
-        DomeinController dc = new DomeinController();
         if (naam.length()<2||naam.matches("*[a-z],*[A-Z])"))
             throw new InvalidNameException("fouteNaam");
     }
     
+    private void controleerGeboortejaar(int jaar)
+    {
+        int huidigJaar = GregorianCalendar.getInstance().get(Calendar.YEAR);
+        if (jaar < huidigJaar-90 || jaar > huidigJaar-7 )
+            throw new InvalidBirthdateException("foutGeboortejaar");
+    }
     public void voegDoelkaartToe(Doelkaart doelkaart)
     {
         doelkaarten.add(doelkaart);

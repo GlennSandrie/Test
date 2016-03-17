@@ -1,6 +1,7 @@
 package ui;
 
 import domein.DomeinController;
+import exceptions.InvalidNameException;
 import exceptions.WrongInputException;
 import java.util.Scanner;
 
@@ -26,6 +27,7 @@ public class ConsoleApplicatie {
     public void start() {
         Scanner input = new Scanner(System.in);
         String keuze="";
+        int aantal;
         UCTaal.stelTaalIn(dc,input);
         while(!(keuze.equalsIgnoreCase("ja")||keuze.equalsIgnoreCase("yes")||keuze.equalsIgnoreCase("oui"))&&!(keuze.equalsIgnoreCase("nee")||keuze.equalsIgnoreCase("no")||keuze.equalsIgnoreCase("non"))) {
             try {
@@ -39,9 +41,15 @@ public class ConsoleApplicatie {
                     if (keuze.equalsIgnoreCase("nee")||keuze.equalsIgnoreCase("no")||keuze.equalsIgnoreCase("non"))
                        UC2.maakNieuwSpel(dc,input);
                     else
-                        throw new WrongInputException(dc.getTaal().getText("fouteInvoer"));
+                        throw new WrongInputException("fouteInvoer");
                 }
-                UC2.registreerSpeler(dc, input);
+                
+                System.out.println("Hoeveel spelers wilt u ingeven");
+                aantal = input.nextInt();
+                for (int i = 0; i < aantal; i++)
+                {
+                    UC2.registreerSpeler(dc, input);
+                }
                 /*
                 * Werkt voorlopig enkel als je een nieuw spel aanmaakt
                 */
@@ -50,8 +58,9 @@ public class ConsoleApplicatie {
         
             catch (WrongInputException we)
             {
-                System.out.println(we.getMessage());
+                System.out.println(dc.getTaal().getText(we.getMessage()));
             }
+            
         }
     }
 }

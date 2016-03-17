@@ -6,6 +6,8 @@
 package ui;
 
 import domein.DomeinController;
+import exceptions.InvalidBirthdateException;
+import exceptions.InvalidNameException;
 import java.util.Scanner;
 import utils.Kleur;
 
@@ -27,12 +29,22 @@ public class UC2
     
     public static void registreerSpeler(DomeinController dc,Scanner input)
     {
-        String naam;
-        int geboortejaar;
-        System.out.println(dc.getTaal().getText("spelerNaam"));
-        naam = input.nextLine();
-        System.out.println(dc.getTaal().getText("gebdatumSpeler"));
-        geboortejaar = input.nextInt();
-        dc.registreer(naam, geboortejaar, Kleur.B);
+        try {
+            String naam;
+            int geboortejaar;
+            System.out.println(dc.getTaal().getText("spelerNaam"));
+            naam = input.nextLine();
+            System.out.println(dc.getTaal().getText("gebdatumSpeler"));
+            geboortejaar = input.nextInt();
+            dc.registreer(naam, geboortejaar,Kleur.B);
+        }
+        catch (InvalidNameException e)
+        {
+            System.out.println(dc.getTaal().getText(e.getMessage()));
+        }
+        catch (InvalidBirthdateException e)
+        {
+            System.out.println(dc.getTaal().getText(e.getMessage()));
+        }
     }
 }

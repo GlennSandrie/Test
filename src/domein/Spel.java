@@ -22,10 +22,10 @@ public class Spel
     private List<Speler> spelers = new ArrayList<>();
     private String naam;
     private Spelbord sb;
-    private String[] kleur;
     private List<Gangkaart> losseKaarten = new ArrayList<>();
     private Gangkaart gk;
     private List<Doelkaart> doelkaarten = new ArrayList<>();
+    private Kleur kleuren;
     
     /**
      * constructor
@@ -33,7 +33,6 @@ public class Spel
      */
     public Spel(String naam) 
     {
-        kleur = new String[]{"geel", "blauw", "rood", "groen"};
         this.naam = naam;
         sb = new Spelbord();
     }
@@ -64,7 +63,7 @@ public class Spel
         maakGangkaartenEnPlaatsOpSpelbord();
         plaatsSpelersOpStartPositie();
         maakDoelkaartenEnVerdeelOnderSpelers();
-        bepaalSpelerAanDeBeurt();
+        //bepaalSpelerAanDeBeurt();
     }
     
     /**
@@ -117,9 +116,6 @@ public class Spel
     
     public void plaatsSpelersOpStartPositie()
     {
-        spelers.add(new Speler("anjana",1997,Kleur.B));
-        spelers.add(new Speler("anjana",1997,Kleur.B));
-        spelers.add(new Speler("anjana",1997,Kleur.B));
         Kleur kleurSpeler;
         for (int i = 0; i < spelers.size(); i++)
         {

@@ -20,7 +20,7 @@ public class UCTaal {
      */
     public static void stelTaalIn(DomeinController dc,Scanner input) {
         String keuze = "";
-        while (!keuze.equals("nl") && !keuze.equals("fr") && !keuze.equals("en")) {
+        while (!keuze.equalsIgnoreCase("nl") && !keuze.equalsIgnoreCase("fr") && !keuze.equalsIgnoreCase("en")) {
             System.out.println("Voor Nederlands: typ nl");
             System.out.println("Pour Français: choisissez fr");
             System.out.println("For English: choose en");
