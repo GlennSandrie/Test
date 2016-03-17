@@ -5,16 +5,30 @@
  */
 package domein;
 
+import utils.Schat;
+
 /**
  *
  * @author anjana
  */
-public class Doelkaart {
-    
-    private String schat;
-    
-    public Doelkaart(String schat)
+public class Doelkaart
+{
+
+    private Schat schat;
+
+    public Doelkaart(Schat schat)
     {
         this.schat = schat;
     }
+
+    public Schat getSchat()
+    {
+        return schat;
+    }
+
+    public void setSchat(Schat schat)
+    {
+        this.schat = schat;
+    }
+
 }
