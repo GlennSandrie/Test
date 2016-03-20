@@ -1,6 +1,7 @@
 package ui;
 
 import domein.DomeinController;
+import exceptions.InvalidBirthdateException;
 import exceptions.InvalidNameException;
 import exceptions.WrongInputException;
 import java.util.Scanner;
@@ -46,10 +47,27 @@ public class ConsoleApplicatie {
                 
                 System.out.println("Hoeveel spelers wilt u ingeven");
                 aantal = input.nextInt();
-                UC2.registreerSpelers(dc, input, aantal );
-                /*
-                * Werkt voorlopig enkel als je een nieuw spel aanmaakt
-                */
+                try {
+                    boolean fout = true;
+                    while (fout==true)
+                    {
+                        for(int i = 0; i < aantal; i++)
+                        {
+                            UC2.registreerSpeler(dc, input);
+                        }
+                    fout=false;
+                    }
+                }
+                catch (InvalidNameException e)
+                {
+                    System.out.println(dc.getTaal().getText(e.getMessage()));
+                }
+        
+                catch (InvalidBirthdateException e)
+                {
+                    System.out.println(dc.getTaal().getText(e.getMessage()));
+                }
+                
                 System.out.printf(dc.geefSpel().toString());
             }
         

@@ -31,8 +31,8 @@ public class UC1 {
                 System.out.println(spelnaam);
             }
             keuze = input.nextLine();
-            dc.kiesSpel(keuze);
         }
+        dc.kiesSpel(keuze);
         // lijst van spelers ophalen
         List<String> spelersnamen = dc.geefSpelersVanSpel(keuze);
         // Wij zeggen hier "Dit zijn de spelers van het spel"
