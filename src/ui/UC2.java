@@ -35,6 +35,7 @@ public class UC2
         naam = input.nextLine();
         System.out.println(dc.getTaal().getText("gebdatumSpeler"));
         geboortejaar = input.nextInt();
+        input.nextLine();
         dc.registreer(naam, geboortejaar,Kleur.B);                
     }
 }

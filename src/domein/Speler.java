@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.regex.Pattern;
 import utils.Kleur;
 
 
@@ -81,8 +82,10 @@ public class Speler
     
     private void controleerNaam(String naam)
     {
-        if (naam.length()<2||naam.matches("*[a-z],*[A-Z])"))
+        if (naam.length()>2 && Pattern.matches("[A-Za-z]", naam)) {
+        } else {
             throw new InvalidNameException("fouteNaam");
+        }
     }
     
     private void controleerGeboortejaar(int jaar)

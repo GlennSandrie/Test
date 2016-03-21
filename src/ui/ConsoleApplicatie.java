@@ -47,6 +47,7 @@ public class ConsoleApplicatie {
                 
                 System.out.println("Hoeveel spelers wilt u ingeven");
                 aantal = input.nextInt();
+                input.nextLine();
                 try {
                     boolean fout = true;
                     while (fout==true)
