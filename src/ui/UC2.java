@@ -30,12 +30,35 @@ public class UC2
     public static void registreerSpeler(DomeinController dc,Scanner input)
     {
         String naam="";
-        int geboortejaar;
+        int geboortejaar, nrKleur;
+        Kleur kleur = null;
         System.out.println(dc.getTaal().getText("spelerNaam"));
         naam = input.nextLine();
-        System.out.println(dc.getTaal().getText("gebdatumSpeler"));
+        System.out.println(dc.getTaal().getText("spelerGebdatum"));
         geboortejaar = input.nextInt();
         input.nextLine();
-        dc.registreer(naam, geboortejaar,Kleur.B);                
+        try {
+            while (kleur == null)
+            {
+                System.out.println(dc.getTaal().getText("spelerKleur"));
+                System.out.println("1. "+dc.getTaal().getText("geel"));
+                System.out.println("2. "+dc.getTaal().getText("blauw"));
+                System.out.println("3. "+dc.getTaal().getText("rood"));
+                System.out.println("4. "+dc.getTaal().getText("groen"));
+
+                nrKleur = input.nextInt();
+                for (Kleur k : Kleur.values())
+                {
+                    if (k.getKleurNr()==nrKleur)
+                        kleur=k;
+                }
+                input.nextLine();
+                dc.registreer(naam, geboortejaar,kleur);
+            }
+        }
+        catch (NullPointerException e)
+        {
+            System.out.println(dc.getTaal().getText("fouteNummerKleur"));
+        }
     }
 }

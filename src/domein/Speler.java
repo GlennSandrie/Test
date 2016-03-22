@@ -83,7 +83,8 @@ public class Speler
     private void controleerNaam(String naam)
     {
         if (naam.length()>2 && Pattern.matches("[A-Za-z]", naam)) {
-        } else {
+        } 
+        else {
             throw new InvalidNameException("fouteNaam");
         }
     }
