@@ -74,33 +74,31 @@ public class ConsoleApplicatie {
          }
          while(vlag!=false);
         input.nextLine();
-         
-             
               
                 
-//                try {
-//                    boolean fout = true;
-//                    while (fout==true)
-//                    {
-//                        for(int i = 0; i < aantal; i++)
-//                        {
-//                            UC2.registreerSpeler(dc, input);
-//                        }
-//                    fout=false;
-//                    }
-//                }
-//                catch (InvalidNameException | InvalidBirthdateException e)
-//                {
-//                    System.out.println(dc.getTaal().getText(e.getMessage()));
-//                }
-//                for(int i = 0; i < dc.geefSpel().length; i++)
-//                {
-//                    for (int j = 0; j < dc.geefSpel()[i].length; j++)
-//                    {
-//                        System.out.printf(dc.geefSpel()[i][j]);
-//                    }
-//                    System.out.println();
-//                }
+        try {
+            boolean fout = true;
+            while (fout==true)
+            {
+                for(int i = 0; i < aantal; i++)
+                {
+                    UC2.registreerSpeler(dc, input);
+                }
+            fout=false;
+            }
+        }
+        catch (InvalidNameException | InvalidBirthdateException e)
+        {
+            System.out.println(dc.getTaal().getText(e.getMessage()));
+        }
+        for(int i = 0; i < dc.geefSpel().length; i++)
+        {
+            for (int j = 0; j < dc.geefSpel()[i].length; j++)
+            {
+                System.out.printf(dc.geefSpel()[i][j]);
+            }
+            System.out.println();
+        }
         
        UC3.bepaalVolgendeSpeler(dc, input);
     }
