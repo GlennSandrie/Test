@@ -31,7 +31,8 @@ public class ConsoleApplicatie {
         String keuze="";
         int aantal=0;
         UCTaal.stelTaalIn(dc,input);
-        while(!(keuze.equalsIgnoreCase("ja")||keuze.equalsIgnoreCase("yes")||keuze.equalsIgnoreCase("oui"))&&!(keuze.equalsIgnoreCase("nee")||keuze.equalsIgnoreCase("no")||keuze.equalsIgnoreCase("non"))) {
+        while(!(keuze.equalsIgnoreCase("ja")||keuze.equalsIgnoreCase("yes")||keuze.equalsIgnoreCase("oui"))&&!(keuze.equalsIgnoreCase("nee")||keuze.equalsIgnoreCase("no")||keuze.equalsIgnoreCase("non"))) 
+        {
             try {
             
                 System.out.println(dc.getTaal().getText("bestaandSpel"));
@@ -44,15 +45,39 @@ public class ConsoleApplicatie {
                        UC2.maakNieuwSpel(dc,input);
                     else
                         throw new WrongInputException("fouteInvoer");
-                }
-//                while (aantal < 2 || aantal >4){
-//                    System.out.println(dc.getTaal().getText("aantalSpelers"));
-//                    aantal = input.nextInt();
-//                    if (aantal < 2 || aantal > 4) {
-//                        throw new WrongInputException("aantalSpelersFout");
-//                    }
-//                }
-//                input.nextLine();
+                }                
+            }
+        
+            catch (WrongInputException | InputMismatchException we)
+            {
+                System.out.println(dc.getTaal().getText(we.getMessage()));
+            }
+        }
+        Boolean vlag =true;
+        do
+        {
+           try
+           {
+                System.out.println(dc.getTaal().getText("aantalSpelers"));
+           
+                aantal=input.nextInt();
+                //input.nextLine();
+                if(aantal<2||aantal>4)
+                    throw new WrongInputException("aantalSpelersFout");  
+                else
+                    vlag= false;
+           }
+           catch(WrongInputException e)
+           {
+                System.out.println(dc.getTaal().getText(e.getMessage()));
+           }
+         }
+         while(vlag!=false);
+        input.nextLine();
+         
+             
+              
+                
 //                try {
 //                    boolean fout = true;
 //                    while (fout==true)
@@ -68,22 +93,15 @@ public class ConsoleApplicatie {
 //                {
 //                    System.out.println(dc.getTaal().getText(e.getMessage()));
 //                }
-                for(int i = 0; i < dc.geefSpel().length; i++)
-                {
-                    for (int j = 0; j < dc.geefSpel()[i].length; j++)
-                    {
-                        System.out.printf(dc.geefSpel()[i][j]);
-                    }
-                    System.out.println();
-                }
-                
-            }
+//                for(int i = 0; i < dc.geefSpel().length; i++)
+//                {
+//                    for (int j = 0; j < dc.geefSpel()[i].length; j++)
+//                    {
+//                        System.out.printf(dc.geefSpel()[i][j]);
+//                    }
+//                    System.out.println();
+//                }
         
-            catch (WrongInputException | InputMismatchException we)
-            {
-                System.out.println(dc.getTaal().getText(we.getMessage()));
-            }
-        }
-        UC3.bepaalVolgendeSpeler(dc, input);
+       UC3.bepaalVolgendeSpeler(dc, input);
     }
 }
