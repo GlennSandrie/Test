@@ -62,30 +62,21 @@ public class Spelbord
         {
             spelbord[0][0].addSpeler(speler);
         } 
-        else 
+        else if(spelbord[0][6].getKleur().equals(kleur))
         {
-            if(spelbord[0][6].getKleur().equals(kleur))
-            {
-                spelbord[0][6].addSpeler(speler);
-            } 
-            else 
-            {
-                if(spelbord[6][0].getKleur().equals(kleur))
-                {
-                    spelbord[6][0].addSpeler(speler);
-                }
-                else
-                {
-                    if (spelbord[6][6].getKleur().equals(kleur))
-                    {
-                        spelbord[6][6].addSpeler(speler);
-                    }
-                    else
-                    {
-                        throw new IllegalArgumentException("D speler moet geel, groen, blauw of rood als kleur hebben");
-                    }
-                }
-            }
+            spelbord[0][6].addSpeler(speler);
+        } 
+        else if(spelbord[6][0].getKleur().equals(kleur))
+        {
+            spelbord[6][0].addSpeler(speler);
+        }
+        else if (spelbord[6][6].getKleur().equals(kleur))
+        {
+            spelbord[6][6].addSpeler(speler);
+        }
+        else
+        {
+            throw new IllegalArgumentException("De speler moet geel, groen, blauw of rood als kleur hebben");
         }
         
     }

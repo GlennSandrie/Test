@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import utils.Kleur;
 
@@ -38,7 +39,7 @@ public class Speler
      */
     public Speler(String naam, int geboortejaar, Kleur kleur) 
     {
-        controleerNaam(naam);
+//        controleerNaam(naam);
         controleerGeboortejaar(geboortejaar);
         this.naam=naam;
         this.geboortejaar = geboortejaar;
@@ -74,20 +75,28 @@ public class Speler
         return geboortejaar;
     }
     
+    public String[] geefDoelkaarten()
+    {
+        String[] res = new String[doelkaarten.size()];
+        return res;
+    }
     
     
     //methodes
     // oproepen binnen de constructor
     // controle voor geboortejaar ook toevoegen
     
-    private void controleerNaam(String naam)
-    {
-        if (naam.length()>2 && Pattern.matches("[A-Za-z]", naam)) {
-        } 
-        else {
-            throw new InvalidNameException("fouteNaam");
-        }
-    }
+//    private void controleerNaam(String naam)
+//    {
+//        Pattern p = Pattern.compile("[a-zA-Z]");
+//        Matcher m = p.matcher(naam);
+//        boolean b = m.matches();
+//        if (naam.length()>2 && b==true) {
+//        } 
+//        else {
+//            throw new InvalidNameException("fouteNaam");
+//        }
+//    }
     
     private void controleerGeboortejaar(int jaar)
     {

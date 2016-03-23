@@ -4,6 +4,7 @@ import domein.DomeinController;
 import exceptions.InvalidBirthdateException;
 import exceptions.InvalidNameException;
 import exceptions.WrongInputException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -28,7 +29,7 @@ public class ConsoleApplicatie {
     public void start() {
         Scanner input = new Scanner(System.in);
         String keuze="";
-        int aantal;
+        int aantal=0;
         UCTaal.stelTaalIn(dc,input);
         while(!(keuze.equalsIgnoreCase("ja")||keuze.equalsIgnoreCase("yes")||keuze.equalsIgnoreCase("oui"))&&!(keuze.equalsIgnoreCase("nee")||keuze.equalsIgnoreCase("no")||keuze.equalsIgnoreCase("non"))) {
             try {
@@ -44,39 +45,44 @@ public class ConsoleApplicatie {
                     else
                         throw new WrongInputException("fouteInvoer");
                 }
-                
-                System.out.println("Hoeveel spelers wilt u ingeven");
-                aantal = input.nextInt();
-                input.nextLine();
-                try {
-                    boolean fout = true;
-                    while (fout==true)
+//                while (aantal < 2 || aantal >4){
+//                    System.out.println(dc.getTaal().getText("aantalSpelers"));
+//                    aantal = input.nextInt();
+//                    if (aantal < 2 || aantal > 4) {
+//                        throw new WrongInputException("aantalSpelersFout");
+//                    }
+//                }
+//                input.nextLine();
+//                try {
+//                    boolean fout = true;
+//                    while (fout==true)
+//                    {
+//                        for(int i = 0; i < aantal; i++)
+//                        {
+//                            UC2.registreerSpeler(dc, input);
+//                        }
+//                    fout=false;
+//                    }
+//                }
+//                catch (InvalidNameException | InvalidBirthdateException e)
+//                {
+//                    System.out.println(dc.getTaal().getText(e.getMessage()));
+//                }
+                for(int i = 0; i < dc.geefSpel().length; i++)
+                {
+                    for (int j = 0; j < dc.geefSpel()[i].length; j++)
                     {
-                        for(int i = 0; i < aantal; i++)
-                        {
-                            UC2.registreerSpeler(dc, input);
-                        }
-                    fout=false;
+                        System.out.printf(dc.geefSpel()[i][j]);
                     }
-                }
-                catch (InvalidNameException e)
-                {
-                    System.out.println(dc.getTaal().getText(e.getMessage()));
-                }
-        
-                catch (InvalidBirthdateException e)
-                {
-                    System.out.println(dc.getTaal().getText(e.getMessage()));
+                    System.out.println();
                 }
                 
-                System.out.printf(dc.geefSpel().toString());
             }
         
-            catch (WrongInputException we)
+            catch (WrongInputException | InputMismatchException we)
             {
                 System.out.println(dc.getTaal().getText(we.getMessage()));
             }
-            
         }
     }
 }

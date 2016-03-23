@@ -61,6 +61,10 @@ public class Spel
     public void initialiseerVolledigSpel()
     {
         maakGangkaartenEnPlaatsOpSpelbord();
+        voegSpelerToe(new Speler("Aïssa",1997,Kleur.B));
+        voegSpelerToe(new Speler("Anjana",1997,Kleur.GE));
+        voegSpelerToe(new Speler("Lisa",1997,Kleur.GR));
+        voegSpelerToe(new Speler("Glenn",1995,Kleur.R));
         plaatsSpelersOpStartPositie();
         maakDoelkaartenEnVerdeelOnderSpelers();
         //bepaalSpelerAanDeBeurt();
@@ -197,18 +201,19 @@ public class Spel
     
     public String[][] geefSpel()
     {
-        String[][] spel = new String[7][7];
+        String[][] spel = new String[12][12];
         Gangkaart[][] spelbord = sb.geefSpelbord();
-        for (int i = 0; i < spelbord.length; i++)
+        for (int i = 0; i < 7; i++)
         {
-            for (int j = 0; j < spelbord[i].length; j++)
+            for (int j = 0; j < 7; j++)
             {
                 spel[i][j]=spelbord[i][j].toString();
             }
         }
+        spel[8][1]=losseKaarten.get(50).toString();
+        spel[9][1]=bepaalSpelerAanDeBeurt();
         return spel;
     }
-
     public void voegSpelerToe(Speler nieuweSpeler)
     {
         spelers.add(nieuweSpeler);

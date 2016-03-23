@@ -29,11 +29,12 @@ public class UC2
     
     public static void registreerSpeler(DomeinController dc,Scanner input)
     {
-        String naam="";
+        String naam;
         int geboortejaar, nrKleur;
         Kleur kleur = null;
         System.out.println(dc.getTaal().getText("spelerNaam"));
         naam = input.nextLine();
+        System.out.println(naam);
         System.out.println(dc.getTaal().getText("spelerGebdatum"));
         geboortejaar = input.nextInt();
         input.nextLine();
