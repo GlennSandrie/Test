@@ -26,6 +26,7 @@ public class Spel
     private Gangkaart gk;
     private List<Doelkaart> doelkaarten = new ArrayList<>();
     private Kleur kleuren;
+    private String huidigeSpeler;
     
     /**
      * constructor
@@ -153,6 +154,7 @@ public class Spel
                 }
             }
         }
+        this.huidigeSpeler = spelers.get(i).getNaam();
         return spelers.get(i).getNaam();
     }
     
@@ -217,5 +219,20 @@ public class Spel
     public void voegSpelerToe(Speler nieuweSpeler)
     {
         spelers.add(nieuweSpeler);
+    }
+    
+    
+    public String bepaalVolgendeSpelerAanDeBeurt()
+    {
+        int volgende = 0;
+        for (int i = 0; i < spelers.size() - 1; i++)
+        {
+            if (spelers.get(i).getNaam().equals(huidigeSpeler))
+            {
+                volgende = i+1;
+            }
+        }
+        huidigeSpeler = spelers.get(volgende).getNaam();
+        return huidigeSpeler;
     }
 }

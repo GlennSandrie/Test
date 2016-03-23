@@ -84,5 +84,6 @@ public class ConsoleApplicatie {
                 System.out.println(dc.getTaal().getText(we.getMessage()));
             }
         }
+        UC3.bepaalVolgendeSpeler(dc, input);
     }
 }
