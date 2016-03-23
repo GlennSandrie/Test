@@ -94,4 +94,10 @@ public class DomeinController {
         return spel.geefSpel();
     }
     
+    
+    
+    public String bepaalVolgendeSpelerAanDeBeurt()
+    {
+        return spel.bepaalSpelerAanDeBeurt();
+    }
 }

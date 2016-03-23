@@ -78,5 +78,6 @@ public class ConsoleApplicatie {
             }
             
         }
+        UC3.bepaalVolgendeSpeler(dc, input);
     }
 }
