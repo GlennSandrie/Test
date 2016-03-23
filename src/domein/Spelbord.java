@@ -27,23 +27,23 @@ public class Spelbord
     public Spelbord()
     {
         Kleur kl;
-        spelbord[0][0] = new HoekKaart(null, Kleur.GE, null);
-        spelbord[0][6] = new HoekKaart(null, Kleur.B, null);
-        spelbord[6][0] = new HoekKaart(null, Kleur.GR, null);
-        spelbord[6][6] = new HoekKaart(null, Kleur.R, null);
+        spelbord[0][0] = new HoekKaart(null, Kleur.GE, "or");
+        spelbord[0][6] = new HoekKaart(null, Kleur.B, "ol");
+        spelbord[6][0] = new HoekKaart(null, Kleur.GR, "br");
+        spelbord[6][6] = new HoekKaart(null, Kleur.R, "bl");
         
-        spelbord[2][0] = new Tkaart(Schat.HAGEDIS, "o");//onder
-        spelbord[4][0] = new Tkaart(Schat.MOT, "o");
-        spelbord[0][2] = new Tkaart(Schat.UIL, "r");//rechts
+        spelbord[2][0] = new Tkaart(Schat.HAGEDIS, "r");
+        spelbord[4][0] = new Tkaart(Schat.MOT, "r");
+        spelbord[0][2] = new Tkaart(Schat.UIL, "o");
         spelbord[2][2] = new Tkaart(Schat.RAT, "r");
-        spelbord[4][2] = new Tkaart(Schat.SCARABEE, "o");
-        spelbord[6][2] = new Tkaart(Schat.SLEUTELS, "l");//links
-        spelbord[0][4] = new Tkaart(Schat.SCHEDEL, "r");
-        spelbord[2][4] = new Tkaart(Schat.TOVENARES, "b");//boven
+        spelbord[4][2] = new Tkaart(Schat.SCARABEE, "b");
+        spelbord[6][2] = new Tkaart(Schat.SLEUTELS, "b");
+        spelbord[0][4] = new Tkaart(Schat.SCHEDEL, "o");
+        spelbord[2][4] = new Tkaart(Schat.TOVENARES, "o");
         spelbord[4][4] = new Tkaart(Schat.SPIN, "l");
-        spelbord[6][4] = new Tkaart(Schat.ZWAARD, "l");
-        spelbord[2][6] = new Tkaart(Schat.SCHATKIST, "b");
-        spelbord[4][6] = new Tkaart(Schat.SCHATKAART, "b");
+        spelbord[6][4] = new Tkaart(Schat.ZWAARD, "b");
+        spelbord[2][6] = new Tkaart(Schat.SCHATKIST, "l");
+        spelbord[4][6] = new Tkaart(Schat.SCHATKAART, "l");
         
     }
     

@@ -96,8 +96,8 @@ public class DomeinController {
     
     
     
-    public String bepaalVolgendeSpelerAanDeBeurt()
+    public void bepaalVolgendeSpelerAanDeBeurt()
     {
-        return spel.bepaalSpelerAanDeBeurt();
+        spel.bepaalSpelerAanDeBeurt();
     }
 }

@@ -75,10 +75,9 @@ public class Speler
         return geboortejaar;
     }
     
-    public String[] geefDoelkaarten()
+    public List<Doelkaart> geefDoelkaarten()
     {
-        String[] res = new String[doelkaarten.size()];
-        return res;
+        return doelkaarten;
     }
     
     

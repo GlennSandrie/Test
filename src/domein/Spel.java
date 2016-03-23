@@ -26,7 +26,7 @@ public class Spel
     private Gangkaart gk;
     private List<Doelkaart> doelkaarten = new ArrayList<>();
     private Kleur kleuren;
-    private String huidigeSpeler;
+    private Speler huidigeSpeler;
     
     /**
      * constructor
@@ -68,7 +68,7 @@ public class Spel
         voegSpelerToe(new Speler("Glenn",1995,Kleur.R));
         plaatsSpelersOpStartPositie();
         maakDoelkaartenEnVerdeelOnderSpelers();
-        //bepaalSpelerAanDeBeurt();
+        bepaalSpelerAanDeBeurt();
     }
     
     /**
@@ -80,24 +80,52 @@ public class Spel
         /**
          * kaarten die niet vast staan op het spelbord
          */
+        Random r = new Random();
         for (int i = 0; i < 10; i++)
         {
-            HoekKaart hk = new HoekKaart(null);
+            int random = r.nextInt(4);
+            HoekKaart hk;
+            switch(random) {
+                case 0: hk = new HoekKaart("ol");
+                    break;
+                case 1: hk = new HoekKaart("or");
+                    break;
+                case 2: hk = new HoekKaart("bl");
+                    break;
+                default: hk = new HoekKaart("br");
+            }
             losseKaarten.add(hk);
         }
         for (int i = 0; i < 12; i++)
         {
-            RechteWegKaart rwk = new RechteWegKaart(null);
+            int random = r.nextInt(2);
+            RechteWegKaart rwk;
+            switch(random) {
+                case 0: rwk = new RechteWegKaart("h");
+                    break;
+                default: rwk = new RechteWegKaart("v");
+            }
+             
             losseKaarten.add(rwk);
         }
         
         for (int i = 0; i < 6; i++)
         {
+            int random = r.nextInt(4);
+            HoekKaart hk;
             for(Schat schat : Schat.values())
             {
                 if(schat.getSchatId()==i+1)
                 {
-                HoekKaart hk = new HoekKaart(schat, null);
+                    switch(random) {
+                    case 0: hk = new HoekKaart(schat,"ol");
+                        break;
+                    case 1: hk = new HoekKaart(schat,"or");
+                        break;
+                    case 2: hk = new HoekKaart(schat,"bl");
+                        break;
+                    default: hk = new HoekKaart(schat,"br");
+                }
                 losseKaarten.add(hk);
                 }
             }
@@ -105,11 +133,21 @@ public class Spel
         
         for (int i = 0; i < 6; i++)
         {
+            int random = r.nextInt(4);
+            Tkaart tk;
             for(Schat schat : Schat.values())
             {
-                if(schat.getSchatId()==i+7)
+                if(schat.getSchatId()==i+1)
                 {
-                Tkaart tk = new Tkaart(schat, null);
+                    switch(random) {
+                    case 0: tk = new Tkaart(schat,"o");
+                        break;
+                    case 1: tk = new Tkaart(schat,"b");
+                        break;
+                    case 2: tk = new Tkaart(schat,"l");
+                        break;
+                    default: tk = new Tkaart(schat,"r");
+                }
                 losseKaarten.add(tk);
                 }
             }
@@ -129,7 +167,7 @@ public class Spel
         }
     }
     
-    public String bepaalSpelerAanDeBeurt()
+    public void bepaalSpelerAanDeBeurt()
     {
         int jongste = spelers.get(1).getGeboortejaar();
         int i = 1;
@@ -154,8 +192,7 @@ public class Spel
                 }
             }
         }
-        this.huidigeSpeler = spelers.get(i).getNaam();
-        return spelers.get(i).getNaam();
+        this.huidigeSpeler = spelers.get(i);
     }
     
     public void schudLosseKaarten()
@@ -212,8 +249,12 @@ public class Spel
                 spel[i][j]=spelbord[i][j].toString();
             }
         }
-        spel[8][1]=losseKaarten.get(50).toString();
-        spel[9][1]=bepaalSpelerAanDeBeurt();
+        spel[8][1]=losseKaarten.get(33).toString();
+        spel[9][1]=huidigeSpeler.getNaam();
+        for(int i = 0; i < huidigeSpeler.geefDoelkaarten().size();i++)
+        {
+            spel[10][i] = huidigeSpeler.geefDoelkaarten().get(i).getSchat().getNaam();
+        }
         return spel;
     }
     public void voegSpelerToe(Speler nieuweSpeler)
@@ -222,7 +263,7 @@ public class Spel
     }
     
     
-    public String bepaalVolgendeSpelerAanDeBeurt()
+    public Speler bepaalVolgendeSpelerAanDeBeurt()
     {
         int volgende = 0;
         for (int i = 0; i < spelers.size() - 1; i++)
@@ -232,7 +273,7 @@ public class Spel
                 volgende = i+1;
             }
         }
-        huidigeSpeler = spelers.get(volgende).getNaam();
+        huidigeSpeler = spelers.get(volgende);
         return huidigeSpeler;
     }
 }
