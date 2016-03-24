@@ -34,6 +34,7 @@ public class UC2
         Kleur kleur = null;
         System.out.println(dc.getTaal().getText("spelerNaam"));
         naam = input.nextLine();
+//        dc.controleGebruikersnaam(naam);
         System.out.println(naam);
         System.out.println(dc.getTaal().getText("spelerGebdatum"));
         geboortejaar = input.nextInt();

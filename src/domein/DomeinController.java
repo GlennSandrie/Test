@@ -14,6 +14,7 @@ public class DomeinController {
     private SpelerRepository geregistreerdeSpelers;
     private Taal taal;
     private Spel spel;
+    private Speler speler;
 
     /**
      * constructor van de Domeincontroller
@@ -100,4 +101,11 @@ public class DomeinController {
     {
         spel.bepaalSpelerAanDeBeurt();
     }
+    
+   /* aanpassing Glenn
+    public boolean controleGebruikersnaam(String gebruikersnaam)
+    {
+        return speler.ControleGebruikersnaam(gebruikersnaam);
+    }
+    */
 }
