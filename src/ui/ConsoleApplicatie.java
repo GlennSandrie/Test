@@ -74,8 +74,7 @@ public class ConsoleApplicatie {
          }
          while(vlag!=false);
         input.nextLine();
-              
-                
+  
 //        try {
 //            boolean fout = true;
 //            while (fout==true)
