@@ -97,6 +97,18 @@ public class Speler
 //        }
 //    }
     
+    /* aanpassing Glenn
+     public boolean ControleGebruikersnaam(String gebruikersnaam)
+    {
+        if (!gebruikersnaam.matches("^(?=.*\\d)(a-zA-Z).{2,}$"))
+        {
+            throw new IllegalArgumentException("De gebruikersnaam moet bestaan uit 2 karakters, geen spaties, leestekens of cijfers ");
+        }
+        return true;
+    }
+    */
+    
+    
     private void controleerGeboortejaar(int jaar)
     {
         int huidigJaar = GregorianCalendar.getInstance().get(Calendar.YEAR);
