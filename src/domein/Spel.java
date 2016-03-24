@@ -240,7 +240,7 @@ public class Spel
     
     public String[][] geefSpel()
     {
-        String[][] spel = new String[12][12];
+        String[][] spel = new String[7][7];
         Gangkaart[][] spelbord = sb.geefSpelbord();
         for (int i = 0; i < 7; i++)
         {
@@ -249,19 +249,42 @@ public class Spel
                 spel[i][j]=spelbord[i][j].toString();
             }
         }
-        spel[8][1]=losseKaarten.get(33).toString();
-        spel[9][1]=huidigeSpeler.getNaam();
-        for(int i = 0; i < huidigeSpeler.geefDoelkaarten().size();i++)
-        {
-            spel[10][i] = huidigeSpeler.geefDoelkaarten().get(i).getSchat().getNaam();
-        }
         return spel;
     }
+    
+    public Speler geefHuidigeSpeler()
+    {
+        return huidigeSpeler;
+    }
+    
+    public String[] geefDoelkaartenVanSpeler(String naam)
+    {
+        for (Speler s : spelers)
+        {
+            if (s.getNaam().equals(naam))
+                return s.geefDoelkaartenVanSpeler();    
+        }
+        String[] leeg = {"",""};
+        return leeg;
+    }
+    
     public void voegSpelerToe(Speler nieuweSpeler)
     {
+        controleerKleur(nieuweSpeler.getKleur());
         spelers.add(nieuweSpeler);
     }
     
+    private void controleerKleur(Kleur kleur)
+    {
+        if(!spelers.isEmpty())
+        {
+            for (int i = 0; i < spelers.size(); i++)
+            {
+                if(spelers.get(i).getKleur()==kleur)
+                    throw new IllegalArgumentException("kleurBestaat");
+            }
+        }
+    }
     
     public Speler bepaalVolgendeSpelerAanDeBeurt()
     {

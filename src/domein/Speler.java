@@ -103,8 +103,21 @@ public class Speler
         if (jaar < huidigJaar-90 || jaar > huidigJaar-7 )
             throw new InvalidBirthdateException("foutGeboortejaar");
     }
+    
+    
+    
     public void voegDoelkaartToe(Doelkaart doelkaart)
     {
         doelkaarten.add(doelkaart);
+    }
+    
+    public String[] geefDoelkaartenVanSpeler()
+    {
+        String[] doelkaartenSpeler = new String[doelkaarten.size()];
+        for(int i = 0; i < doelkaarten.size(); i++)
+        {
+            doelkaartenSpeler[i] = doelkaarten.get(i).getSchat().getNaam();
+        }
+        return doelkaartenSpeler;
     }
 }

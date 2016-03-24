@@ -94,7 +94,15 @@ public class DomeinController {
         return spel.geefSpel();
     }
     
+    public String[] geefDoelkaartenVanSpeler(String naam)
+    {
+        return spel.geefDoelkaartenVanSpeler(naam);
+    }
     
+    public String geefHuidigeSpeler()
+    {
+        return spel.geefHuidigeSpeler().getNaam();
+    }
     
     public void bepaalVolgendeSpelerAanDeBeurt()
     {
