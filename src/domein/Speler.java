@@ -39,7 +39,7 @@ public class Speler
      */
     public Speler(String naam, int geboortejaar, Kleur kleur) 
     {
-//        controleerNaam(naam);
+        controleerNaam(naam);
         controleerGeboortejaar(geboortejaar);
         this.naam=naam;
         this.geboortejaar = geboortejaar;
@@ -85,28 +85,16 @@ public class Speler
     // oproepen binnen de constructor
     // controle voor geboortejaar ook toevoegen
     
-//    private void controleerNaam(String naam)
-//    {
-//        Pattern p = Pattern.compile("[a-zA-Z]");
-//        Matcher m = p.matcher(naam);
-//        boolean b = m.matches();
-//        if (naam.length()>2 && b==true) {
-//        } 
-//        else {
-//            throw new InvalidNameException("fouteNaam");
-//        }
-//    }
-    
-    /* aanpassing Glenn
-     public boolean ControleGebruikersnaam(String gebruikersnaam)
+  //  aanpassing Glenn
+     public boolean controleerNaam(String gebruikersnaam)
     {
-        if (!gebruikersnaam.matches("^(?=.*\\d)(a-zA-Z).{2,}$"))
+        if (!gebruikersnaam.matches("^[a-zA-Z].{2,}$"))
         {
-            throw new IllegalArgumentException("De gebruikersnaam moet bestaan uit 2 karakters, geen spaties, leestekens of cijfers ");
+            throw new InvalidNameException("fouteNaam");
         }
         return true;
     }
-    */
+   
     
     
     private void controleerGeboortejaar(int jaar)
