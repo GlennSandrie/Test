@@ -186,93 +186,101 @@ public class Spel
             {
                 str.add(spelers.get(index).getNaam());
                 str.add(spelers.get(i).getNaam());
+                Collections.shuffle(str);
+                if(str.get(i).equals(spelers.get(index).getNaam()))
+                {
+                    i = index;
+                }
             }
         }
-        if(str.size()>1)
-        {
-            naam = geefEersteNaamInAlfabet(str);
-            for (Speler s : spelers)
-                if(s.getNaam().equals(naam))
-                    this.huidigeSpeler = s;
-        }
+//        if(str.size()>1)
+//        {
+//            naam = geefEersteNaamInAlfabet(str);
+//            for (Speler s : spelers)
+//                if(s.getNaam().equals(naam))
+//                    this.huidigeSpeler = s;
+//        }
         this.huidigeSpeler = spelers.get(i);
     }
     
-    private String geefEersteNaamInAlfabet (List<String> namen)
-    {
-        String naamEersteSpeler="";
-        
-        if (namen.size() == 2)
-        {
-            int c = 0;
-            while (naamEersteSpeler.isEmpty())
-            {
-                if(namen.get(0).charAt(c)<namen.get(1).charAt(c))
-                    naamEersteSpeler = namen.get(0);
-                else if (namen.get(0).charAt(c)>namen.get(1).charAt(c))
-                    naamEersteSpeler = namen.get(1);
-                else
-                    c++;
-            }
-        }
-        else if (namen.size() == 3)
-        {
-            String eersteNaam="";
-            while (naamEersteSpeler.isEmpty())
-            {
-                while (eersteNaam.isEmpty()) {
-                    int c = 0;
-                    if(namen.get(0).charAt(c)<namen.get(1).charAt(c))
-                        eersteNaam = namen.get(0);
-                    else if (namen.get(0).charAt(c)>namen.get(1).charAt(c))
-                        eersteNaam = namen.get(1);
-                    else
-                        c++;
-                }
-                int c = 0;
-                if(eersteNaam.charAt(c)<namen.get(2).charAt(c))
-                    naamEersteSpeler = eersteNaam;
-                else if (eersteNaam.charAt(c)>namen.get(2).charAt(c))
-                    naamEersteSpeler = namen.get(2);
-                else
-                    c++;
-            }
-        }
-        else
-        {
-            String eersteNaam="";
-            String tweedeNaam="";
-            while (naamEersteSpeler.isEmpty())
-            {
-                while (eersteNaam.isEmpty()) {
-                    int c = 0;
-                    if(namen.get(0).charAt(c)<namen.get(1).charAt(c))
-                        eersteNaam = namen.get(0);
-                    else if (namen.get(0).charAt(c)>namen.get(1).charAt(c))
-                        eersteNaam = namen.get(1);
-                    else
-                        c++;
-                }
-                while (tweedeNaam.isEmpty()) {
-                    int c=0;
-                    if(eersteNaam.charAt(c)<namen.get(2).charAt(c))
-                        tweedeNaam = eersteNaam;
-                    else if (eersteNaam.charAt(c)>namen.get(2).charAt(c))
-                        tweedeNaam = namen.get(2);
-                    else
-                        c++;
-                }
-                int c = 0;
-                if(tweedeNaam.charAt(c)<namen.get(3).charAt(c))
-                    naamEersteSpeler = tweedeNaam;
-                else if (tweedeNaam.charAt(c)>namen.get(3).charAt(c))
-                    naamEersteSpeler = namen.get(3);
-                else
-                    c++;
-            }
-        }
-        return naamEersteSpeler;
-    }
+//    private String geefEersteNaamInAlfabet (List<String> namen)
+//    {
+//        String naamEersteSpeler="";
+//        System.out.println("hello");
+//        if (namen.size() == 2)
+//        {
+//            System.out.println("2");
+//            int c = 0;
+//            while (naamEersteSpeler.isEmpty())
+//            {
+//                if(namen.get(0).charAt(c)<namen.get(1).charAt(c))
+//                    naamEersteSpeler = namen.get(0);
+//                else if (namen.get(0).charAt(c)>namen.get(1).charAt(c))
+//                    naamEersteSpeler = namen.get(1);
+//                else
+//                    c++;
+//                
+//            }
+//        }
+//        else if (namen.size() == 3)
+//        {
+//            System.out.println("3");
+//            String eersteNaam="";
+//            while (naamEersteSpeler.isEmpty())
+//            {
+//                while (eersteNaam.isEmpty()) {
+//                    int c = 0;
+//                    if(namen.get(0).charAt(c)<namen.get(1).charAt(c))
+//                        eersteNaam = namen.get(0);
+//                    else if (namen.get(0).charAt(c)>namen.get(1).charAt(c))
+//                        eersteNaam = namen.get(1);
+//                    else
+//                        c++;
+//                    
+//                }
+//                int c = 0;
+//                if(eersteNaam.charAt(c)<namen.get(2).charAt(c))
+//                    naamEersteSpeler = eersteNaam;
+//                else if (eersteNaam.charAt(c)>namen.get(2).charAt(c))
+//                    naamEersteSpeler = namen.get(2);
+//                else
+//                    c++;
+//                
+//            }
+//        }
+//        else
+//        {
+//            System.out.println("4");
+//            String eersteNaam="";
+//            String tweedeNaam="";
+//            while (naamEersteSpeler.isEmpty())
+//            {
+//                while (eersteNaam.isEmpty()) {
+//                    int c = 0;
+//                    if(namen.get(0).charAt(c)<namen.get(1).charAt(c))
+//                        eersteNaam = namen.get(0);
+//                    else if (namen.get(0).charAt(c)>namen.get(1).charAt(c))
+//                        eersteNaam = namen.get(1);
+//                    System.out.println("eerste while");
+//                }
+//                while (tweedeNaam.isEmpty()) {
+//                    int c=0;
+//                    if(eersteNaam.charAt(c)<namen.get(2).charAt(c))
+//                        tweedeNaam = eersteNaam;
+//                    else if (eersteNaam.charAt(c)>namen.get(2).charAt(c))
+//                        tweedeNaam = namen.get(2);
+//                    System.out.println("tweede while");
+//                }
+//                int c = 0;
+//                if(tweedeNaam.charAt(c)<namen.get(3).charAt(c))
+//                    naamEersteSpeler = tweedeNaam;
+//                else if (tweedeNaam.charAt(c)>namen.get(3).charAt(c))
+//                    naamEersteSpeler = namen.get(3);
+//                System.out.println("derde while");
+//            }
+//        }
+//        return naamEersteSpeler;
+//    }
     
     public void schudLosseKaarten()
     {
