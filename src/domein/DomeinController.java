@@ -100,6 +100,11 @@ public class DomeinController {
         return spel.geefDoelkaartenVanSpeler(naam);
     }
     
+    public String geefLosseKaart()
+    {
+        return spel.geefLosseKaart();
+    }
+    
     public String geefHuidigeSpeler()
     {
         return spel.geefHuidigeSpeler().getNaam();

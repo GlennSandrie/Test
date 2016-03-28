@@ -63,4 +63,37 @@ public class UC2
             System.out.println(dc.getTaal().getText("fouteNummerKleur"));
         }
     }
+    public static void geefVolledigSpel(DomeinController dc)
+    {
+        for(int i = 0; i < dc.geefSpel().length; i++)
+        {
+            int begin = 0;
+            int einde = 11;
+            while (begin < 72)
+            {
+                for (int j = 0; j < dc.geefSpel()[i].length; j++)
+                {
+                    System.out.printf(dc.geefSpel()[i][j].substring(begin, einde+1));
+                }
+                begin += 12;
+                einde += 12;
+                System.out.println();
+            }
+        }
+        System.out.println();
+        System.out.println(dc.geefHuidigeSpeler());
+        for (String geefDoelkaartenVanSpeler : dc.geefDoelkaartenVanSpeler(dc.geefHuidigeSpeler())) {
+            System.out.println(geefDoelkaartenVanSpeler);
+        }
+        System.out.println();
+        int begin = 0;
+        int einde = 11;
+        while (begin < 72)
+        {
+            System.out.printf(dc.geefLosseKaart().substring(begin, einde+1));
+            begin += 12;
+            einde += 12;
+            System.out.println();
+        }
+    }
 }

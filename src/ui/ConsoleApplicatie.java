@@ -90,18 +90,9 @@ public class ConsoleApplicatie {
 //        {
 //            System.out.println(dc.getTaal().getText(e.getMessage()));
 //        }
-        for(int i = 0; i < dc.geefSpel().length; i++)
-        {
-            for (int j = 0; j < dc.geefSpel()[i].length; j++)
-            {
-                System.out.printf(dc.geefSpel()[i][j]);
-            }
-            System.out.println();
-        }
-        System.out.println(dc.geefHuidigeSpeler());
-        for (String geefDoelkaartenVanSpeler : dc.geefDoelkaartenVanSpeler(dc.geefHuidigeSpeler())) {
-            System.out.println(geefDoelkaartenVanSpeler);
-        }
-       UC3.bepaalVolgendeSpeler(dc, input);
+        UC2.geefVolledigSpel(dc);
+        UC3.bepaalVolgendeSpeler(dc, input);
     }
+    
+    
 }

@@ -262,6 +262,11 @@ public class Spel
         return leeg;
     }
     
+    public String geefLosseKaart()
+    {
+        return losseKaarten.get(33).toString();
+    }
+    
     public void voegSpelerToe(Speler nieuweSpeler)
     {
         controleerKleur(nieuweSpeler.getKleur());
