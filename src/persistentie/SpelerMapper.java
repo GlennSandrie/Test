@@ -47,6 +47,44 @@ public class SpelerMapper
         return spelerNamen;
     }
     
+    public int geefGeboortejaar(String speler)
+    {
+        int geboortejaar=0;
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
+        {
+            PreparedStatement query = conn.prepareStatement("SELECT geboortejaar FROM speler WHERE spelerId = ?");
+            query.setString(1, speler);
+            try (ResultSet rs = query.executeQuery()) {
+                while (rs.next()) {
+                    geboortejaar = rs.getInt("geboortejaar");
+                }
+            }
+        }catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        
+        return geboortejaar;
+    }
+    
+    public String geefKleur(String speler)
+    {
+        String kleur = "";
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
+        {
+            PreparedStatement query = conn.prepareStatement("SELECT kleur FROM speler WHERE spelerId = ?");
+            query.setString(1, speler);
+            try (ResultSet rs = query.executeQuery()) {
+                while (rs.next()) {
+                    kleur = rs.getString("kleur");
+                }
+            }
+        }catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        
+        return kleur;
+    }
+    
     /**
      *
      * @param speler
