@@ -55,7 +55,6 @@ public class DomeinController {
      */
     public void kiesSpel(String naam) {
         spel = bestaandeSpellen.kiesSpel(naam);
-        spel.initialiseerVolledigSpel();
     }
     
     public String getSpelnaam()
@@ -70,6 +69,16 @@ public class DomeinController {
      */
     public List<String> geefSpelersVanSpel(String spelId) {
         return geregistreerdeSpelers.geefSpelersVanSpel(spelId);
+    }
+    
+    public int geefGeboortejaar(String speler)
+    {
+        return geregistreerdeSpelers.geefGeboortejaar(speler);
+    }
+    
+    public String geefKleur(String speler)
+    {
+        return geregistreerdeSpelers.geefKleur(speler);
     }
     
     /**
@@ -87,6 +96,10 @@ public class DomeinController {
     public void maakSpel(String naam)
     {
         spel = new Spel(naam);
+    }
+    
+    public void initialiseerVolledigSpel()
+    {
         spel.initialiseerVolledigSpel();
     }
     
@@ -115,11 +128,4 @@ public class DomeinController {
          Speler huidigeSpeler = spel.bepaalVolgendeSpelerAanDeBeurt();
          return huidigeSpeler.getNaam();
     }
-    
-   /* aanpassing Glenn
-    public boolean controleGebruikersnaam(String gebruikersnaam)
-    {
-        return speler.ControleGebruikersnaam(gebruikersnaam);
-    }
-    */
 }

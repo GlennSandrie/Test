@@ -62,10 +62,6 @@ public class Spel
     public void initialiseerVolledigSpel()
     {
         maakGangkaartenEnPlaatsOpSpelbord();
-        voegSpelerToe(new Speler("Aïssa",1997,Kleur.B));
-        voegSpelerToe(new Speler("Anjana",1997,Kleur.GE));
-        voegSpelerToe(new Speler("Lisa",1997,Kleur.GR));
-        voegSpelerToe(new Speler("Glenn",1995,Kleur.R));
         plaatsSpelersOpStartPositie();
         maakDoelkaartenEnVerdeelOnderSpelers();
         bepaalSpelerAanDeBeurt();
@@ -178,7 +174,7 @@ public class Spel
                naam = spelers.get(i).getNaam();
                index = i;
             }
-            if (spelers.get(i).getGeboortejaar() == hoogsteGeboortejaar && spelers.get(i).getNaam().compareTo(naam) <0){
+            if (spelers.get(i).getGeboortejaar() == hoogsteGeboortejaar && spelers.get(i).getNaam().toLowerCase().compareTo(naam.toLowerCase()) <0){
                hoogsteGeboortejaar = spelers.get(i).getGeboortejaar();
                naam = spelers.get(i).getNaam();
                index = i;

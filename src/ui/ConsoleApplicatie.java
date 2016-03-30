@@ -29,7 +29,7 @@ public class ConsoleApplicatie {
     public void start() {
         Scanner input = new Scanner(System.in);
         String keuze="";
-        int aantal=0;
+        
         UCTaal.stelTaalIn(dc,input);
         while(!(keuze.equalsIgnoreCase("ja")||keuze.equalsIgnoreCase("yes")||keuze.equalsIgnoreCase("oui"))&&!(keuze.equalsIgnoreCase("nee")||keuze.equalsIgnoreCase("no")||keuze.equalsIgnoreCase("non"))) 
         {
@@ -53,43 +53,7 @@ public class ConsoleApplicatie {
                 System.out.println(dc.getTaal().getText(we.getMessage()));
             }
         }
-        boolean vlag =true;
-        do
-        {
-           try
-           {
-                System.out.println(dc.getTaal().getText("aantalSpelers"));
-           
-                aantal=input.nextInt();
-                //input.nextLine();
-                if(aantal<2||aantal>4)
-                    throw new WrongInputException("aantalSpelersFout");  
-                else
-                    vlag= false;
-           }
-           catch(WrongInputException e)
-           {
-                System.out.println(dc.getTaal().getText(e.getMessage()));
-           }
-         }
-         while(vlag!=false);
-        input.nextLine();
-  
-//        try {
-//            boolean fout = true;
-//            while (fout==true)
-//            {
-//                for(int i = 0; i < aantal; i++)
-//                {
-//                    UC2.registreerSpeler(dc, input);
-//                }
-//            fout=false;
-//            }
-//        }
-//        catch (InvalidNameException | InvalidBirthdateException e)
-//        {
-//            System.out.println(dc.getTaal().getText(e.getMessage()));
-//        }
+                
         UC2.geefVolledigSpel(dc);
         UC3.bepaalVolgendeSpeler(dc, input);
     }

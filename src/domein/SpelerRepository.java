@@ -44,6 +44,16 @@ public class SpelerRepository
        sm.registreerSpeler(speler);
     }
     
+    public int geefGeboortejaar(String speler)
+    {
+        return sm.geefGeboortejaar(speler);
+    }
+    
+    public String geefKleur(String speler)
+    {
+        return sm.geefKleur(speler);
+    }
+    
     /*public Speler geefAantalSpelers(int aantalSpelers)
     {
         return sm.geefAantalSpelers(aantalSpelers);

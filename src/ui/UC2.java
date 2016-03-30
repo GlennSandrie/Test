@@ -8,6 +8,7 @@ package ui;
 import domein.DomeinController;
 import exceptions.InvalidBirthdateException;
 import exceptions.InvalidNameException;
+import exceptions.WrongInputException;
 import java.util.Scanner;
 import utils.Kleur;
 
@@ -23,25 +24,68 @@ public class UC2
         System.out.println(dc.getTaal().getText("nieuwSpel"));
         naam = input.nextLine();
         dc.maakSpel(naam);
+        int aantal=0;
+        boolean vlag =true;
+        do
+        {
+           try
+           {
+                System.out.println(dc.getTaal().getText("aantalSpelers"));
+           
+                aantal=input.nextInt();
+                //input.nextLine();
+                if(aantal<2||aantal>4)
+                    throw new WrongInputException("aantalSpelersFout");  
+                else
+                    vlag= false;
+           }
+           catch(WrongInputException e)
+           {
+                System.out.println(dc.getTaal().getText(e.getMessage()));
+           }
+         }
+         while(vlag);
+        input.nextLine();
         
-        
+        boolean fout = true;
+        while (fout==true)
+        {
+            try
+            {
+                for(int i = 0; i < aantal; i++)
+                {
+                    registreerSpeler(dc, input);
+                    fout=false;
+                }
+            }
+            catch (InvalidNameException | InvalidBirthdateException e)
+            {
+                System.out.println(dc.getTaal().getText(e.getMessage()));
+            }
+            catch (IllegalArgumentException e) {
+                 System.out.println(dc.getTaal().getText(e.getMessage()));
+            }
+        }
+        dc.initialiseerVolledigSpel();
     }
     
     public static void registreerSpeler(DomeinController dc,Scanner input)
     {
+        
         String naam;
         int geboortejaar, nrKleur;
         Kleur kleur = null;
+
         System.out.println(dc.getTaal().getText("spelerNaam"));
         naam = input.nextLine();
-//        dc.controleGebruikersnaam(naam);
-        System.out.println(naam);
         System.out.println(dc.getTaal().getText("spelerGebdatum"));
         geboortejaar = input.nextInt();
         input.nextLine();
-        try {
-            while (kleur == null)
-            {
+
+        while (kleur == null)
+        {
+            try {
+
                 System.out.println(dc.getTaal().getText("spelerKleur"));
                 System.out.println("1. "+dc.getTaal().getText("geel"));
                 System.out.println("2. "+dc.getTaal().getText("blauw"));
@@ -57,12 +101,14 @@ public class UC2
                 input.nextLine();
                 dc.registreer(naam, geboortejaar,kleur);
             }
-        }
-        catch (NullPointerException e)
-        {
-            System.out.println(dc.getTaal().getText("fouteNummerKleur"));
+
+            catch (NullPointerException e)
+            {
+                System.out.println(dc.getTaal().getText("fouteNummerKleur"));
+            }
         }
     }
+    
     public static void geefVolledigSpel(DomeinController dc)
     {
         for(int i = 0; i < dc.geefSpel().length; i++)

@@ -86,7 +86,7 @@ public class Speler
     // controle voor geboortejaar ook toevoegen
     
   //  aanpassing Glenn
-     public boolean controleerNaam(String gebruikersnaam)
+     private boolean controleerNaam(String gebruikersnaam)
     {
         if (!gebruikersnaam.matches("^[a-zA-Z].{2,}$"))
         {
