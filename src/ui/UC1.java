@@ -66,7 +66,7 @@ public class UC1 {
         }
         else
         {
-            System.out.printf(dc.getTaal().getText("aantalBestaandeSpelers"),aantalSpelers,4-aantalSpelers+"%n");
+            System.out.printf(dc.getTaal().getText("aantalBestaandeSpelers")+"%n",aantalSpelers,4-aantalSpelers);
         }
         int aantal=0;
         boolean vlag =true;
