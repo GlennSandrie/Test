@@ -6,6 +6,7 @@
 package domein;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -283,13 +284,18 @@ public class Spel
     
     public Speler bepaalVolgendeSpelerAanDeBeurt()
     {
-        int volgende = 0;
-        for (int i = 0; i < spelers.size() - 1; i++)
+        int volgende = 0, i = 0;
+        for (Speler s : spelers)
         {
-            if (spelers.get(i).getNaam().equals(huidigeSpeler))
+            System.out.printf("%s\t%d\t%s%n", spelers.get(i).getNaam(), spelers.get(i).getGeboortejaar(), spelers.get(i).getKleur());
+            if (huidigeSpeler.equals(s.getNaam()))
             {
-                volgende = i+1;
+                if (i == spelers.size() - 1)
+                    volgende = 0;
+                else
+                    volgende = i+1;
             }
+            i++;
         }
         huidigeSpeler = spelers.get(volgende);
         return huidigeSpeler;
