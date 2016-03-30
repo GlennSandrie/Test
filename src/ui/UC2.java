@@ -9,6 +9,7 @@ import domein.DomeinController;
 import exceptions.InvalidBirthdateException;
 import exceptions.InvalidNameException;
 import exceptions.WrongInputException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import utils.Kleur;
 
@@ -38,10 +39,12 @@ public class UC2
                     throw new WrongInputException("aantalSpelersFout");  
                 else
                     vlag= false;
+                    
            }
-           catch(WrongInputException e)
+           catch(WrongInputException| InputMismatchException e)
            {
-                System.out.println(dc.getTaal().getText(e.getMessage()));
+                System.out.println(dc.getTaal().getText("aantalSpelersFout"));
+                input.nextLine();
            }
          }
          while(vlag);
