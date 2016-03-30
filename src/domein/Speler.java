@@ -39,11 +39,11 @@ public class Speler
      */
     public Speler(String naam, int geboortejaar, Kleur kleur) 
     {
-        controleerNaam(naam);
-        controleerGeboortejaar(geboortejaar);
         this.naam=naam;
         this.geboortejaar = geboortejaar;
         this.kleur = kleur;
+        controleerNaam(naam);
+        controleerGeboortejaar(geboortejaar);
     }
 
     //controles + getters + setters
