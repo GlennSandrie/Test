@@ -123,8 +123,9 @@ public class DomeinController {
         return spel.geefHuidigeSpeler().getNaam();
     }
     
-    public void bepaalVolgendeSpelerAanDeBeurt()
+    public String bepaalVolgendeSpelerAanDeBeurt()
     {
-        spel.bepaalSpelerAanDeBeurt();
+         Speler huidigeSpeler = spel.bepaalVolgendeSpelerAanDeBeurt();
+         return huidigeSpeler.getNaam();
     }
 }
