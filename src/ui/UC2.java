@@ -150,6 +150,7 @@ public class UC2
             {
                 System.out.println(dc.getTaal().getText("kleurBestaat"));
                 kleur=null;
+                input.nextLine();
             }
             catch (NullPointerException e)
             {
