@@ -8,6 +8,7 @@ import domein.DomeinController;
 import exceptions.InvalidBirthdateException;
 import exceptions.InvalidNameException;
 import exceptions.WrongInputException;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import utils.Kleur;
@@ -82,9 +83,16 @@ public class UC1 {
                 else
                     vlag= false;
            }
-           catch(WrongInputException e)
+           catch(WrongInputException  e)
            {
                 System.out.println(String.format(dc.getTaal().getText(e.getMessage()),aantalSpelers,4-aantalSpelers));
+                input.nextLine();
+                        
+           }
+           catch(InputMismatchException e)
+           {
+               System.out.println(dc.getTaal().getText("aantalSpelersFout"));
+               input.nextLine();
            }
          }
          while(vlag);
