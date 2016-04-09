@@ -118,6 +118,10 @@ public class DomeinController {
         return spel.geefLosseKaart();
     }
     
+    public Gangkaart bepaalTypeLosseKaart()
+    {
+        return spel.bepaalTypeLosseKaart();
+    }
     public String geefHuidigeSpeler()
     {
         return spel.geefHuidigeSpeler().getNaam();

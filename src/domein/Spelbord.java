@@ -5,9 +5,7 @@
  */
 package domein;
 
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.Random;
+
 import utils.Kleur;
 import utils.Schat;
 

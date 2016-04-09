@@ -6,7 +6,6 @@
 package ui;
 
 import domein.DomeinController;
-import domein.Speler;
 import exceptions.InvalidBirthdateException;
 import exceptions.InvalidNameException;
 import exceptions.WrongInputException;
@@ -37,7 +36,7 @@ public class UC2
                 System.out.println(dc.getTaal().getText("aantalSpelers"));
                 aantal=input.nextInt();
                 //input.nextLine();
-                if(aantal<2||aantal>4)
+                if(!(aantal==2||aantal==3||aantal==4))
                     throw new WrongInputException("aantalSpelersFout");  
                 else
                     vlag= false;
@@ -143,7 +142,6 @@ public class UC2
                     if (k.getKleurNr()==nrKleur)
                         kleur=k;
                 }
-                input.nextLine();
                 dc.registreer(naam, geboortejaar,kleur);
             }
             catch(IllegalArgumentException e)

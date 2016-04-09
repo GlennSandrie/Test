@@ -16,9 +16,9 @@ public class Taal {
      * @param l
      */
     public Taal (String l){
-		if (l.equals("nl")) this.locale = new Locale("nl");
-		if (l.equals("en")) this.locale = new Locale("en");
-		if (l.equals("fr")) this.locale = new Locale("fr");	 
+		if (l.equalsIgnoreCase("nl")) this.locale = new Locale("nl");
+		if (l.equalsIgnoreCase("en")) this.locale = new Locale("en");
+		if (l.equalsIgnoreCase("fr")) this.locale = new Locale("fr");	 
 		resourceBundle = ResourceBundle.getBundle("resource", locale);		
 	}
 	

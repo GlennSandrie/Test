@@ -6,7 +6,6 @@
 package domein;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -73,7 +72,6 @@ public class Spel
      */
     public void maakGangkaartenEnPlaatsOpSpelbord()
     {
-        
         /**
          * kaarten die niet vast staan op het spelbord
          */
@@ -261,7 +259,14 @@ public class Spel
     
     public String geefLosseKaart()
     {
-        return losseKaarten.get(33).toString();
+        //return losseKaarten.get(33).toString();
+        
+        return losseKaarten.get(losseKaarten.size()-1).toString();
+    }
+    
+    public Gangkaart bepaalTypeLosseKaart()
+    {
+        return losseKaarten.get(losseKaarten.size()-1);
     }
     
     public void voegSpelerToe(Speler nieuweSpeler)
@@ -288,7 +293,7 @@ public class Spel
         for (Speler s : spelers)
         {
             bepaalSpelerAanDeBeurt();
-            System.out.printf("%s\t%d\t%s%n", spelers.get(i).getNaam(), spelers.get(i).getGeboortejaar(), spelers.get(i).getKleur());
+          //  System.out.printf("%s\t%d\t%s%n", spelers.get(i).getNaam(), spelers.get(i).getGeboortejaar(), spelers.get(i).getKleur());
             if ((huidigeSpeler.getNaam()).equals(s.getNaam()))
             {
                 if (i == spelers.size() - 1)
