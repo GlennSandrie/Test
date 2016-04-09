@@ -10,6 +10,9 @@ import domein.Gangkaart;
 import domein.HoekKaart;
 import domein.RechteWegKaart;
 import domein.Tkaart;
+import exceptions.WrongInputException;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  *
@@ -23,68 +26,224 @@ public class UC4
      * @param dc
      */
     private static Gangkaart[] draaiKaart;
+    private static Gangkaart[] keuzeKaart;
 
-    public static void draaiVrijeGangkaart(DomeinController dc)
+    public static void draaiVrijeGangkaart(DomeinController dc, Scanner input)
     {
         System.out.println(dc.getTaal().getText("inschuivenKaart"));
         System.out.println(dc.getTaal().getText("draaiKaart"));
-        draaienKaart(dc);
+        draaienKaart(dc, input);
     }
 
-    public static void draaienKaart(DomeinController dc)
+    public static void draaienKaart(DomeinController dc, Scanner input)
     {
+        int keuze = 0;
         if (dc.bepaalTypeLosseKaart() instanceof HoekKaart)
         {
-            System.out.printf("%s%20s%20s%20s%n","1.","2.","3.","4.");
+            System.out.printf("%s%20s%20s%20s%n", "1.", "2.", "3.", "4.");
             //System.out.printf("2. ");"
             draaiKaart = new Gangkaart[4];
-            
-            
-            draaiKaart[0] = new HoekKaart(null, "or");            
-            draaiKaart[1] = new HoekKaart(null, "ol");            
-            draaiKaart[2] = new HoekKaart(null, "br");            
+
+            draaiKaart[0] = new HoekKaart(null, "or");
+            draaiKaart[1] = new HoekKaart(null, "ol");
+            draaiKaart[2] = new HoekKaart(null, "br");
             draaiKaart[3] = new HoekKaart(null, "bl");
 
             printKaart();
 
+            while (keuze == 0)
+            {
+                try
+                {
+                    keuzeKaart = new Gangkaart[1];
+                    keuze = input.nextInt();
+                    if (!(keuze == 1 || keuze == 2 || keuze == 3 || keuze == 4))
+                    {
+                        throw new WrongInputException("verkeerdeKeuze");
+                    } else
+                    {
+                        if (keuze == 1)
+                        {
+                            keuzeKaart[0] = new HoekKaart(null, "or");
+                            printKeuzeKaart();
+                        } else
+                        {
+                            if (keuze == 2)
+                            {
+                                keuzeKaart[0] = new HoekKaart(null, "ol");
+                                printKeuzeKaart();
+                            } else
+                            {
+                                if (keuze == 3)
+                                {
+                                    keuzeKaart[0] = new HoekKaart(null, "br");
+                                    printKeuzeKaart();
+                                } else if (keuze == 4)
+                                {
+                                    keuzeKaart[0] = new HoekKaart(null, "bl");
+                                    printKeuzeKaart();
+                                }
+                            }
+                        }
+                    }
+                } catch (WrongInputException e)
+                {
+                    System.out.println(dc.getTaal().getText("verkeerdeKeuze"));
+                    input.nextLine();
+                    keuze = 0;
+                } catch (InputMismatchException e)
+                {
+                    System.out.println(dc.getTaal().getText("verkeerdeKeuze"));
+                    input.nextLine();
+                    keuze = 0;
+                }
+            }
+
         } else if (dc.bepaalTypeLosseKaart() instanceof Tkaart)
         {
-            System.out.printf("%s%20s%20s%20s%n","1.","2.","3.","4.");
+            System.out.printf("%s%20s%20s%20s%n", "1.", "2.", "3.", "4.");
             draaiKaart = new Gangkaart[4];
-          
-            draaiKaart[0] = new Tkaart(null, "l");            
-            draaiKaart[1] = new Tkaart(null, "r");            
-            draaiKaart[2] = new Tkaart(null, "b");            
+
+            draaiKaart[0] = new Tkaart(null, "l");
+            draaiKaart[1] = new Tkaart(null, "r");
+            draaiKaart[2] = new Tkaart(null, "b");
             draaiKaart[3] = new Tkaart(null, "o");
 
             printKaart();
+            while (keuze == 0)
+            {
+                try
+                {
+                    keuzeKaart = new Gangkaart[1];
+                    keuze = input.nextInt();
+                    if (!(keuze == 1 || keuze == 2 || keuze == 3 || keuze == 4))
+                    {
+                        throw new WrongInputException("verkeerdeKeuze");
+                    } else
+                    {
+                        if (keuze == 1)
+                        {
+                            keuzeKaart[0] = new Tkaart(null, "l");
+                            printKeuzeKaart();
+                        } else
+                        {
+                            if (keuze == 2)
+                            {
+                                keuzeKaart[0] = new Tkaart(null, "r");
+                                printKeuzeKaart();
+                            } else
+                            {
+                                if (keuze == 3)
+                                {
+                                    draaiKaart[0] = new Tkaart(null, "b");
+                                    printKeuzeKaart();
+                                } else if (keuze == 4)
+                                {
+                                    draaiKaart[0] = new Tkaart(null, "o");
+                                    printKeuzeKaart();
+                                }
+                            }
+                        }
+                    }
+                } catch (WrongInputException e)
+                {
+                    System.out.println(dc.getTaal().getText("verkeerdeKeuze"));
+                    input.nextLine();
+                    keuze = 0;
+                } catch (InputMismatchException e)
+                {
+                    System.out.println(dc.getTaal().getText("verkeerdeKeuze"));
+                    input.nextLine();
+                    keuze = 0;
+                }
+            }
 
         } else
         {
-           System.out.printf("%s%20s%n","1.","2.");
-            draaiKaart = new Gangkaart[2];
-            draaiKaart[0] = new RechteWegKaart("h");
-            draaiKaart[1] = new RechteWegKaart("v");
-            
-            printKaart();
+            if (dc.bepaalTypeLosseKaart() instanceof RechteWegKaart)
+            {
+                System.out.printf("%s%20s%n", "1.", "2.");
+                draaiKaart = new Gangkaart[2];
+                
+                draaiKaart[0] = new RechteWegKaart("h");
+                draaiKaart[1] = new RechteWegKaart("v");
 
+                printKaart();
+                while (keuze == 0)
+                {
+                    keuzeKaart = new Gangkaart[1];
+                    try
+                    {
+                        keuze = input.nextInt();
+                        if (!(keuze == 1 || keuze == 2))
+                        {
+                            throw new WrongInputException("verkeerdeKeuze");
+                        } else
+                        {
+                            if (keuze == 1)
+                            {
+                                keuzeKaart[0] = new RechteWegKaart("or");
+                                printKeuzeKaart();
+                            } else
+                            {
+                                if (keuze == 2)
+                                {
+                                    keuzeKaart[0] = new RechteWegKaart( "ol");
+                                    printKeuzeKaart();
+                                }
+
+                            }
+                        }
+                    } catch (WrongInputException e)
+                    {
+                        System.out.println(dc.getTaal().getText("verkeerdeKeuze"));
+                        input.nextLine();
+                        keuze = 0;
+                    } catch (InputMismatchException e)
+                    {
+                        System.out.println(dc.getTaal().getText("verkeerdeKeuze"));
+                        input.nextLine();
+                        keuze = 0;
+                    }
+
+                }
+
+            }
         }
-         
+
     }
+
     public static void printKaart()
     {
         int begin = 0;
         int einde = 11;
         while (begin < 72)
+        {
+            for (int j = 0; j < draaiKaart.length; j++)
             {
-                for (int j = 0; j < draaiKaart.length; j++)
-                {
-                    System.out.printf(draaiKaart[j].toString().substring(begin, einde + 1));
-                    System.out.printf("        ");
-                }
-                begin += 12;
-                einde += 12;
-                System.out.println();
+                System.out.printf(draaiKaart[j].toString().substring(begin, einde + 1));
+                System.out.printf("        ");
             }
+            begin += 12;
+            einde += 12;
+            System.out.println();
+        }
     }
+
+    public static void printKeuzeKaart()
+    {
+        int begin = 0;
+        int einde = 11;
+        while (begin < 72)
+        {
+            for (int i = 0; i < keuzeKaart.length; i++)
+            {
+                System.out.printf(keuzeKaart[i].toString().substring(begin, einde + 1));
+            }
+            begin += 12;
+            einde += 12;
+            System.out.println("");
+        }
+    }
+
 }

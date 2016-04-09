@@ -55,7 +55,7 @@ public class ConsoleApplicatie {
         }
                 
         UC2.geefVolledigSpel(dc);
-        UC4.draaiVrijeGangkaart(dc);
+        UC4.draaiVrijeGangkaart(dc, input);
         UC3.bepaalVolgendeSpeler(dc, input);
        
     }

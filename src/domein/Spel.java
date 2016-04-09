@@ -239,6 +239,17 @@ public class Spel
             }
         }
         return spel;
+        /*aanpassingen Glenn*/
+        /*String[][] spel = new String[8][8];
+        Gangkaart[][] spelbord = sb.geefSpelbord();
+        for (int i = 0; i < 8; i++)
+        {
+            for (int j = 0; j < 8; j++)
+            {
+                spel[i][j]=spelbord[i][j].toString();
+            }
+        }
+        return spel;*/
     }
     
     public Speler geefHuidigeSpeler()
