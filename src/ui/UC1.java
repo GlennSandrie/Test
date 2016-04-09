@@ -40,11 +40,13 @@ public class UC1 {
         dc.kiesSpel(keuze);
         // lijst van spelers ophalen
         List<String> spelersnamen = dc.geefSpelersVanSpel(keuze);
-        // Wij zeggen hier "Dit zijn de spelers van het spel"
+        // Wij zeggen hier "Dit zijn de spelers van het spel"        
         System.out.println(dc.getTaal().getText("spelers"));
         // Een voor een de naam afbeelden op het scherm
+        System.out.printf("%2s%20s%20s%n",dc.getTaal().getText("naam"),dc.getTaal().getText("geboortejaar"),dc.getTaal().getText("kleur"));
+        
         for (String spelersnaam : spelersnamen) {
-            System.out.printf("%s%10d%10s%n",spelersnaam,dc.geefGeboortejaar(spelersnaam),dc.getTaal().getText(dc.geefKleur(spelersnaam).toLowerCase()));
+        System.out.printf("%2s%20s%20s%n",spelersnaam,dc.geefGeboortejaar(spelersnaam),dc.getTaal().getText(dc.geefKleur(spelersnaam).toLowerCase()));
         }
         if(!spelersnamen.isEmpty())
         {

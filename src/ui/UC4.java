@@ -35,30 +35,34 @@ public class UC4
     {
         if (dc.bepaalTypeLosseKaart() instanceof HoekKaart)
         {
+            System.out.printf("%s%20s%20s%20s%n","1.","2.","3.","4.");
+            //System.out.printf("2. ");"
             draaiKaart = new Gangkaart[4];
-
-            draaiKaart[0] = new HoekKaart(null, "or");
-            draaiKaart[1] = new HoekKaart(null, "ol");
-            draaiKaart[2] = new HoekKaart(null, "br");
+            
+            
+            draaiKaart[0] = new HoekKaart(null, "or");            
+            draaiKaart[1] = new HoekKaart(null, "ol");            
+            draaiKaart[2] = new HoekKaart(null, "br");            
             draaiKaart[3] = new HoekKaart(null, "bl");
 
             printKaart();
 
         } else if (dc.bepaalTypeLosseKaart() instanceof Tkaart)
         {
+            System.out.printf("%s%20s%20s%20s%n","1.","2.","3.","4.");
             draaiKaart = new Gangkaart[4];
-
-            draaiKaart[0] = new Tkaart(null, "l");
-            draaiKaart[1] = new Tkaart(null, "r");
-            draaiKaart[2] = new Tkaart(null, "b");
+          
+            draaiKaart[0] = new Tkaart(null, "l");            
+            draaiKaart[1] = new Tkaart(null, "r");            
+            draaiKaart[2] = new Tkaart(null, "b");            
             draaiKaart[3] = new Tkaart(null, "o");
 
             printKaart();
 
         } else
         {
+           System.out.printf("%s%20s%n","1.","2.");
             draaiKaart = new Gangkaart[2];
-
             draaiKaart[0] = new RechteWegKaart("h");
             draaiKaart[1] = new RechteWegKaart("v");
             

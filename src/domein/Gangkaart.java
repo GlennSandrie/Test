@@ -7,6 +7,7 @@ package domein;
 
 import java.util.ArrayList;
 import java.util.List;
+import utils.Coördinaat;
 import utils.Kleur;
 import utils.Schat;
 
@@ -24,15 +25,28 @@ public class Gangkaart
     private Kleur kleur;
     private String richting;
     private List<Speler> spelers;
-
+    private Coördinaat coördinaat;
+    
+    
     /**
      * 
      * @param schat
      * @param speler
      * @param kleur
      * @param richting
+     * @param coördinaat
 
      */
+
+    public Gangkaart( Coördinaat coördinaat)
+    {
+       
+        this.coördinaat = coördinaat;
+    }
+       
+
+    
+    
     public Gangkaart(Schat schat, Kleur kleur, String richting) 
     {
         this.schat = schat;
@@ -231,6 +245,7 @@ public class Gangkaart
                                           "xxx      xxx"+
                                           "xxx      xxx");
                     break;
+                    
             }
         
         }
