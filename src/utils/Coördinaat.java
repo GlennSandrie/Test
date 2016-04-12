@@ -12,8 +12,9 @@ package utils;
 public enum Coördinaat {
 
     XCOORDINAAT1(1, "l"), XCOORDINAAT2(2, "2"), XCOORDINAAT3(3, "3"), XCOORDINAAT4(4, "4"), XCOORDINAAT5(5, "5"), XCOORDINAAT6(6, "6"), XCOORDINAAT7(7, "7"),
-    YCOORDINAAT1(8, "A"), YCOORDINAAT2(9, "B"), YCOORDINAAT3(10, "C"), YCOORDINAAT4(11, "D"), YCOORDINAAT5(12, "E"), YCOORDINAAT6(13, "F"), YCOORDINAAT7(14, "G");
-
+    YCOORDINAAT1(8, "A"), YCOORDINAAT2(9, "B"), YCOORDINAAT3(10, "C"), YCOORDINAAT4(11, "D"), YCOORDINAAT5(12, "E"), YCOORDINAAT6(13, "F"), YCOORDINAAT7(14, "G"),
+    BEGINCOORDINAAT(15," ");
+    
     private final int CoördinaatId;
     private final String Coördinaat;
 

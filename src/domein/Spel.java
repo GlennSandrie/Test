@@ -192,11 +192,11 @@ public class Spel
     public void plaatsLosseKaartenOpSpelbord()
     {
         int index = 0;
-        for(int i = 0; i < 7; i++)
+        for(int i = 1; i < 8; i++)
         {
-            for (int j = 0; j < 7; j++)
+            for (int j = 1; j < 8; j++)
             {
-                if (i%2 != 0 || j%2 != 0)
+                if (!(i%2 == 0 && j%2 == 0))
                 {
                     sb.voegGangKaartToe(i, j, losseKaarten.get(index));
                     index++;
@@ -229,7 +229,7 @@ public class Spel
     
     public String[][] geefSpel()
     {
-        String[][] spel = new String[7][7];
+       /* String[][] spel = new String[7][7];
         Gangkaart[][] spelbord = sb.geefSpelbord();
         for (int i = 0; i < 7; i++)
         {
@@ -238,9 +238,9 @@ public class Spel
                 spel[i][j]=spelbord[i][j].toString();
             }
         }
-        return spel;
+        return spel;*/
         /*aanpassingen Glenn*/
-        /*String[][] spel = new String[8][8];
+        String[][] spel = new String[8][8];
         Gangkaart[][] spelbord = sb.geefSpelbord();
         for (int i = 0; i < 8; i++)
         {
@@ -249,7 +249,7 @@ public class Spel
                 spel[i][j]=spelbord[i][j].toString();
             }
         }
-        return spel;*/
+        return spel;
     }
     
     public Speler geefHuidigeSpeler()
@@ -270,8 +270,6 @@ public class Spel
     
     public String geefLosseKaart()
     {
-        //return losseKaarten.get(33).toString();
-        
         return losseKaarten.get(losseKaarten.size()-1).toString();
     }
     
