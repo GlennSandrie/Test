@@ -196,7 +196,7 @@ public class Spel
         {
             for (int j = 1; j < 8; j++)
             {
-                if (!(i%2 == 0 && j%2 == 0))
+                if (!(i%2 != 0 && j%2 != 0))
                 {
                     sb.voegGangKaartToe(i, j, losseKaarten.get(index));
                     index++;

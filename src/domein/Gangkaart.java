@@ -93,161 +93,164 @@ public class Gangkaart
      public String toString()
      {
         String kaart="";
-        if (schat==null)
-        {
-            switch (richting) {
-                case "or":
-                    kaart = String.format("xxxxxxxxxxxx"+
-                                          "xxxxxxxxxxxx"+
-                                          "xxx         "+
-                                          "xxx         "+
-                                          "xxx      xxx"+
-                                          "xxx      xxx");
-                    break;
-                case "ol":
-                    kaart = String.format("xxxxxxxxxxxx"+
-                                          "xxxxxxxxxxxx"+
-                                          "         xxx"+
-                                          "         xxx"+
-                                          "xxx      xxx"+
-                                          "xxx      xxx");
-                    break;
-                case "bl":
-                    kaart = String.format("xxx      xxx"+
-                                          "xxx      xxx"+
-                                          "         xxx"+
-                                          "         xxx"+
-                                          "xxxxxxxxxxxx"+
-                                          "xxxxxxxxxxxx");
-                    break;
-                case "br":
-                    kaart = String.format("xxx      xxx"+
-                                          "xxx      xxx"+
-                                          "xxx         "+
-                                          "xxx         "+
-                                          "xxxxxxxxxxxx"+
-                                          "xxxxxxxxxxxx");
-                    break;
-                case "o":
-                    kaart = String.format("xxxxxxxxxxxx"+
-                                          "xxxxxxxxxxxx"+
-                                          "            "+
-                                          "            "+
-                                          "xxx      xxx"+
-                                          "xxx      xxx");
-                    break;
-                case "b":
-                    kaart = String.format("xxx      xxx"+
-                                          "xxx      xxx"+
-                                          "            "+
-                                          "            "+
-                                          "xxxxxxxxxxxx"+
-                                          "xxxxxxxxxxxx");
-                    break;
-                case "l":
-                    kaart = String.format("xxx      xxx"+
-                                          "xxx      xxx"+
-                                          "         xxx"+
-                                          "         xxx"+
-                                          "xxx      xxx"+
-                                          "xxx      xxx");
-                    break;
-                case "r":
-                    kaart = String.format("xxx      xxx"+
-                                          "xxx      xxx"+
-                                          "xxx         "+
-                                          "xxx         "+
-                                          "xxx      xxx"+
-                                          "xxx      xxx");
-                    break;
-                case "v":
-                    kaart = String.format("xxx      xxx"+
-                                          "xxx      xxx"+
-                                          "xxx      xxx"+
-                                          "xxx      xxx"+
-                                          "xxx      xxx"+
-                                          "xxx      xxx");
-                    break;
-                case "h":
-                    kaart = String.format("xxxxxxxxxxxx"+
-                                          "xxxxxxxxxxxx"+
-                                          "            "+
-                                          "            "+
-                                          "xxxxxxxxxxxx"+
-                                          "xxxxxxxxxxxx");
-                    break;
-
+        if (richting == null)
+            {
+                kaart = coördinaat.getCoördinaat();
             }
-        }
         else {
-            switch (richting) {
-                case "or":
-                    kaart = String.format("xxxxxxxxxxxx"+
-                                          "xxxxxxxxxxxx"+
-                                          "xxx         "+
-                                          "xxx  S      "+
-                                          "xxx      xxx"+
-                                          "xxx      xxx");
-                    break;
-                case "ol":
-                    kaart = String.format("xxxxxxxxxxxx"+
-                                          "xxxxxxxxxxxx"+
-                                          "         xxx"+
-                                          "       S xxx"+
-                                          "xxx      xxx"+
-                                          "xxx      xxx");
-                    break;
-                case "bl":
-                    kaart = String.format("xxx      xxx"+
-                                          "xxx      xxx"+
-                                          "     S   xxx"+
-                                          "         xxx"+
-                                          "xxxxxxxxxxxx"+
-                                          "xxxxxxxxxxxx");
-                    break;
-                case "br":
-                    kaart = String.format("xxx      xxx"+
-                                          "xxx      xxx"+
-                                          "xxx  S      "+
-                                          "xxx         "+
-                                          "xxxxxxxxxxxx"+
-                                          "xxxxxxxxxxxx");
-                    break;
-                case "o":
-                    kaart = String.format("xxxxxxxxxxxx"+
-                                          "xxxxxxxxxxxx"+
-                                          "            "+
-                                          "     S      "+
-                                          "xxx      xxx"+
-                                          "xxx      xxx");
-                    break;
-                case "b":
-                    kaart = String.format("xxx      xxx"+
-                                          "xxx      xxx"+
-                                          "     S      "+
-                                          "            "+
-                                          "xxxxxxxxxxxx"+
-                                          "xxxxxxxxxxxx");
-                    break;
-                case "l":
-                    kaart = String.format("xxx      xxx"+
-                                          "xxx      xxx"+
-                                          "     S   xxx"+
-                                          "         xxx"+
-                                          "xxx      xxx"+
-                                          "xxx      xxx");
-                    break;
-                case "r":
-                    kaart = String.format("xxx      xxx"+
-                                          "xxx      xxx"+
-                                          "xxx  S      "+
-                                          "xxx         "+
-                                          "xxx      xxx"+
-                                          "xxx      xxx");
-                    break;
-                    
+            if (schat==null)
+            {
+                switch (richting) {
+                    case "or":
+                        kaart = String.format("xxxxxxxxxxxx"+
+                                              "xxxxxxxxxxxx"+
+                                              "xxx         "+
+                                              "xxx         "+
+                                              "xxx      xxx"+
+                                              "xxx      xxx");
+                        break;
+                    case "ol":
+                        kaart = String.format("xxxxxxxxxxxx"+
+                                              "xxxxxxxxxxxx"+
+                                              "         xxx"+
+                                              "         xxx"+
+                                              "xxx      xxx"+
+                                              "xxx      xxx");
+                        break;
+                    case "bl":
+                        kaart = String.format("xxx      xxx"+
+                                              "xxx      xxx"+
+                                              "         xxx"+
+                                              "         xxx"+
+                                              "xxxxxxxxxxxx"+
+                                              "xxxxxxxxxxxx");
+                        break;
+                    case "br":
+                        kaart = String.format("xxx      xxx"+
+                                              "xxx      xxx"+
+                                              "xxx         "+
+                                              "xxx         "+
+                                              "xxxxxxxxxxxx"+
+                                              "xxxxxxxxxxxx");
+                        break;
+                    case "o":
+                        kaart = String.format("xxxxxxxxxxxx"+
+                                              "xxxxxxxxxxxx"+
+                                              "            "+
+                                              "            "+
+                                              "xxx      xxx"+
+                                              "xxx      xxx");
+                        break;
+                    case "b":
+                        kaart = String.format("xxx      xxx"+
+                                              "xxx      xxx"+
+                                              "            "+
+                                              "            "+
+                                              "xxxxxxxxxxxx"+
+                                              "xxxxxxxxxxxx");
+                        break;
+                    case "l":
+                        kaart = String.format("xxx      xxx"+
+                                              "xxx      xxx"+
+                                              "         xxx"+
+                                              "         xxx"+
+                                              "xxx      xxx"+
+                                              "xxx      xxx");
+                        break;
+                    case "r":
+                        kaart = String.format("xxx      xxx"+
+                                              "xxx      xxx"+
+                                              "xxx         "+
+                                              "xxx         "+
+                                              "xxx      xxx"+
+                                              "xxx      xxx");
+                        break;
+                    case "v":
+                        kaart = String.format("xxx      xxx"+
+                                              "xxx      xxx"+
+                                              "xxx      xxx"+
+                                              "xxx      xxx"+
+                                              "xxx      xxx"+
+                                              "xxx      xxx");
+                        break;
+                    case "h":
+                        kaart = String.format("xxxxxxxxxxxx"+
+                                              "xxxxxxxxxxxx"+
+                                              "            "+
+                                              "            "+
+                                              "xxxxxxxxxxxx"+
+                                              "xxxxxxxxxxxx");
+                        break;
+                }
             }
-        
+            else {
+                switch (richting) {
+                    case "or":
+                        kaart = String.format("xxxxxxxxxxxx"+
+                                              "xxxxxxxxxxxx"+
+                                              "xxx         "+
+                                              "xxx  S      "+
+                                              "xxx      xxx"+
+                                              "xxx      xxx");
+                        break;
+                    case "ol":
+                        kaart = String.format("xxxxxxxxxxxx"+
+                                              "xxxxxxxxxxxx"+
+                                              "         xxx"+
+                                              "       S xxx"+
+                                              "xxx      xxx"+
+                                              "xxx      xxx");
+                        break;
+                    case "bl":
+                        kaart = String.format("xxx      xxx"+
+                                              "xxx      xxx"+
+                                              "     S   xxx"+
+                                              "         xxx"+
+                                              "xxxxxxxxxxxx"+
+                                              "xxxxxxxxxxxx");
+                        break;
+                    case "br":
+                        kaart = String.format("xxx      xxx"+
+                                              "xxx      xxx"+
+                                              "xxx  S      "+
+                                              "xxx         "+
+                                              "xxxxxxxxxxxx"+
+                                              "xxxxxxxxxxxx");
+                        break;
+                    case "o":
+                        kaart = String.format("xxxxxxxxxxxx"+
+                                              "xxxxxxxxxxxx"+
+                                              "            "+
+                                              "     S      "+
+                                              "xxx      xxx"+
+                                              "xxx      xxx");
+                        break;
+                    case "b":
+                        kaart = String.format("xxx      xxx"+
+                                              "xxx      xxx"+
+                                              "     S      "+
+                                              "            "+
+                                              "xxxxxxxxxxxx"+
+                                              "xxxxxxxxxxxx");
+                        break;
+                    case "l":
+                        kaart = String.format("xxx      xxx"+
+                                              "xxx      xxx"+
+                                              "     S   xxx"+
+                                              "         xxx"+
+                                              "xxx      xxx"+
+                                              "xxx      xxx");
+                        break;
+                    case "r":
+                        kaart = String.format("xxx      xxx"+
+                                              "xxx      xxx"+
+                                              "xxx  S      "+
+                                              "xxx         "+
+                                              "xxx      xxx"+
+                                              "xxx      xxx");
+                        break;
+                }
+            }
         }
         return kaart;
     }
