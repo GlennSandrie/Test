@@ -119,5 +119,15 @@ public class Speler
             doelkaartenSpeler[i] = doelkaarten.get(i).getSchat().getNaam();
         }
         return doelkaartenSpeler;
+        
+        //attribuut score bijmaken
+        /*
+        int score=0 later bovenaan de klasse declareren
+        String[] doelkaartenSpeler = new String[doelkaarten.size()];
+        for(int i = score; i < doelkaarten.size(); i++)
+        {
+            doelkaartenSpeler[i] = doelkaarten.get(i).getSchat().getNaam();
+        }
+        return doelkaarten[i];*/
     }
 }

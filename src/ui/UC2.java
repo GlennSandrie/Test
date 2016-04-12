@@ -89,7 +89,7 @@ public class UC2
             try{
                 System.out.println(dc.getTaal().getText("spelerNaam"));
                 naam = input.nextLine();
-                if (!naam.matches("^[a-zA-Z].{2,}$"))
+                if (!naam.matches("^[a-zA-Z].{1,50}/[.,\\/#!$%\\^&\\*;:{}=\\-_`~()]$"))
                     throw new InvalidNameException("fouteNaam");
                 else
                     verder=false;

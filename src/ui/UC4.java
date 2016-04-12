@@ -86,6 +86,7 @@ public class UC4
                             }
                         }
                     }
+                    //becestigKeuzeRichting(dc, input, null);
                 } catch (WrongInputException e)
                 {
                     System.out.println(dc.getTaal().getText("verkeerdeKeuze"));
@@ -145,6 +146,7 @@ public class UC4
                             }
                         }
                     }
+                    //bevestigKeuzeRichting(dc, input, null);
                 } catch (WrongInputException e)
                 {
                     System.out.println(dc.getTaal().getText("verkeerdeKeuze"));
@@ -194,6 +196,7 @@ public class UC4
 
                             }
                         }
+                        //bevestigKeuzeRichting(dc, input, null);
                     } catch (WrongInputException e)
                     {
                         System.out.println(dc.getTaal().getText("verkeerdeKeuze"));
@@ -246,4 +249,30 @@ public class UC4
         }
     }
 
+    public static void bevestigKeuzeRiching(DomeinController dc, Scanner input, Gangkaart gk)
+    {
+        String keuze = "";
+
+        try
+        {
+            while (!(keuze.equals(dc.getTaal().getText("ja")) || keuze.equals(dc.getTaal().getText("nee"))))
+            {
+                if (keuze.equals(dc.getTaal().getText("ja")))
+                {
+                    UC5.verplaatsSpeler(gk);
+                } else
+                {
+                    if (keuze.equals(dc.getTaal().getText("nee")))
+                    {
+                        draaienKaart(dc, input);
+                    }
+
+                }
+            }
+        } catch (WrongInputException e)
+        {
+            System.out.println(dc.getTaal().getText("aantalSpelersFout"));
+            input.nextLine();
+        }
+    }
 }
