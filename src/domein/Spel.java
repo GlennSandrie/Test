@@ -5,10 +5,12 @@
  */
 package domein;
 
+import exceptions.InvalidCoordinateException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import ui.UC4;
 import utils.Kleur;
 import utils.Schat;
 
@@ -314,5 +316,24 @@ public class Spel
         }
         huidigeSpeler = spelers.get(volgende);
         return huidigeSpeler;
+    }
+    
+    public void geefPlaatsVrijeGangkaart(int xPositie, int yPositie, DomeinController dc)
+    {
+        try
+        {
+            if(xPositie%2!=0)
+            {
+                throw new InvalidCoordinateException("fouteCoordinaat");
+            }
+            else
+            {
+                UC4.draaiVrijeGangkaart(dc, null);
+            }
+        }
+        catch(InvalidCoordinateException e)
+        {
+            System.out.println(dc.getTaal().getText("fouteCoordinaat"));
+        }
     }
 }

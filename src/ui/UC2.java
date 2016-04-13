@@ -6,6 +6,7 @@
 package ui;
 
 import domein.DomeinController;
+import domein.Speler;
 import exceptions.InvalidBirthdateException;
 import exceptions.InvalidNameException;
 import exceptions.WrongInputException;
@@ -89,18 +90,22 @@ public class UC2
             try{
                 System.out.println(dc.getTaal().getText("spelerNaam"));
                 naam = input.nextLine();
-                if (!naam.matches("^[a-zA-Z].{1,50}/[.,\\/#!$%\\^&\\*;:{}=\\-_`~()]$"))
+                if (!naam.matches("^[a-zA-Z].{1,50}$"))
                     throw new InvalidNameException("fouteNaam");
                 else
                     verder=false;
             }
-            catch(InvalidNameException| InputMismatchException e)
+            catch(InvalidNameException e)
+            {
+                System.out.println(dc.getTaal().getText("fouteNaam"));
+            }
+            catch(InputMismatchException e)
             {
                 System.out.println(dc.getTaal().getText("fouteNaam"));
             }
         }
         while(verder!=false);
-        
+     
         
         int huidigJaar = GregorianCalendar.getInstance().get(Calendar.YEAR);
         

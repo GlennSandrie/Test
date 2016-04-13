@@ -30,13 +30,22 @@ public class UC4
 
     public static void draaiVrijeGangkaart(DomeinController dc, Scanner input)
     {
-        System.out.println(dc.getTaal().getText("inschuivenKaart"));
-        System.out.println(dc.getTaal().getText("draaiKaart"));
+        
+//        System.out.println(dc.getTaal().getText("inschuivenKaart"));
+//        System.out.println(dc.getTaal().getText("draaiKaart"));
         draaienKaart(dc, input);
+    }
+    
+    public static void geefPlaatsVrijeGangkaartIn(int xPositie, int yPositie)
+    {
+        
     }
 
     public static void draaienKaart(DomeinController dc, Scanner input)
     {
+        //overgenomen uit draaiVrijeGangkaart
+        System.out.println(dc.getTaal().getText("inschuivenKaart"));
+        System.out.println(dc.getTaal().getText("draaiKaart"));
         int keuze = 0;
         if (dc.bepaalTypeLosseKaart() instanceof HoekKaart)
         {
@@ -275,4 +284,5 @@ public class UC4
             input.nextLine();
         }
     }
+    
 }

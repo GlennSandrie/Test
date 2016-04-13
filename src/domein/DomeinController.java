@@ -132,4 +132,6 @@ public class DomeinController {
          Speler huidigeSpeler = spel.bepaalVolgendeSpelerAanDeBeurt();
          return huidigeSpeler.getNaam();
     }
+    
+    
 }
