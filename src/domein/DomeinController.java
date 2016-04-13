@@ -133,5 +133,4 @@ public class DomeinController {
          return huidigeSpeler.getNaam();
     }
     
-    
 }
