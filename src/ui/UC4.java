@@ -43,7 +43,12 @@ public class UC4
                 if (!(coord.equalsIgnoreCase("B1") || coord.equalsIgnoreCase("D1") || coord.equalsIgnoreCase("F1")
                         || coord.equalsIgnoreCase("A2") || coord.equalsIgnoreCase("A4") || coord.equalsIgnoreCase("A6")
                         || coord.equalsIgnoreCase("G2") || coord.equalsIgnoreCase("G4") || coord.equalsIgnoreCase("G6")
-                        || coord.equalsIgnoreCase("B7") || coord.equalsIgnoreCase("D7") || coord.equalsIgnoreCase("F1")))
+                        || coord.equalsIgnoreCase("B7") || coord.equalsIgnoreCase("D7") || coord.equalsIgnoreCase("F1")
+                        ||coord.equalsIgnoreCase("1B") || coord.equalsIgnoreCase("1D") || coord.equalsIgnoreCase("1F")
+                        || coord.equalsIgnoreCase("2A") || coord.equalsIgnoreCase("4A") || coord.equalsIgnoreCase("6A")
+                        || coord.equalsIgnoreCase("2G") || coord.equalsIgnoreCase("4G") || coord.equalsIgnoreCase("6G")
+                        || coord.equalsIgnoreCase("7B") || coord.equalsIgnoreCase("7D") || coord.equalsIgnoreCase("1F")
+                        ))
                 {
                     throw new InvalidCoordinateException("fouteCoordinaat");
                 } else
