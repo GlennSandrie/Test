@@ -147,7 +147,7 @@ public class UC2
                 input.nextLine();
             } catch (InputMismatchException e)
             {
-                System.out.println(dc.getTaal().getText("kleurBestaat"));
+                System.out.println(dc.getTaal().getText("fouteNummerKleur"));
                 kleur = null;
                 input.nextLine();
             } catch (NullPointerException e)
