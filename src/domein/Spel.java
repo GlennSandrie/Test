@@ -5,10 +5,14 @@
  */
 package domein;
 
+//import exceptions.InvalidCoordinateException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
+import ui.UC4;
 import utils.Kleur;
 import utils.Richting;
 import utils.Schat;
@@ -17,8 +21,9 @@ import utils.Schat;
  *
  * @author anjana
  */
-public class Spel 
+public class Spel
 {
+
     //attributen
     private final List<Speler> spelers = new ArrayList<>();
     private String naam;
@@ -27,24 +32,24 @@ public class Spel
     private Gangkaart gk;
     private final List<Doelkaart> doelkaarten = new ArrayList<>();
     private Speler huidigeSpeler;
-    
+
     /**
      * constructor
+     *
      * @param naam
      */
-    public Spel(String naam) 
+    public Spel(String naam)
     {
         this.naam = naam;
         sb = new Spelbord();
     }
 
     //controles + getters + setters
-
     /**
      *
      * @return
      */
-    public String getNaam() 
+    public String getNaam()
     {
         return naam;
     }
@@ -53,11 +58,10 @@ public class Spel
     {
         this.naam = naam;
     }
-  
+
     //methodes
-    
     /**
-     * 
+     *
      */
     public void initialiseerVolledigSpel()
     {
@@ -66,9 +70,9 @@ public class Spel
         maakDoelkaartenEnVerdeelOnderSpelers();
         bepaalSpelerAanDeBeurt();
     }
-    
+
     /**
-     * 
+     *
      */
     public void maakGangkaartenEnPlaatsOpSpelbord()
     {
@@ -114,14 +118,14 @@ public class Spel
             rwk = new RechteWegKaart(richtingen);
             losseKaarten.add(rwk);
         }
-        
+
         for (int i = 0; i < 6; i++)
         {
             int random = r.nextInt(4);
             HoekKaart hk;
-            for(Schat schat : Schat.values())
+            for (Schat schat : Schat.values())
             {
-                if(schat.getSchatId()==i+1)
+                if (schat.getSchatId() == i + 1)
                 {
                     richtingen = new Richting[2];
                     switch(random) {
@@ -142,14 +146,14 @@ public class Spel
                 }
             }
         }
-        
+
         for (int i = 0; i < 6; i++)
         {
             int random = r.nextInt(4);
             Tkaart tk;
-            for(Schat schat : Schat.values())
+            for (Schat schat : Schat.values())
             {
-                if(schat.getSchatId()==i+1)
+                if (schat.getSchatId() == i + 1)
                 {
                     richtingen = new Richting[3];
                     switch(random) {
@@ -174,11 +178,11 @@ public class Spel
                 }
             }
         }
-        
+
         schudLosseKaarten();
         plaatsLosseKaartenOpSpelbord();
     }
-    
+
     public void plaatsSpelersOpStartPositie()
     {
         Kleur kleurSpeler;
@@ -188,42 +192,44 @@ public class Spel
             sb.zetSpelerOpHoekKaart(kleurSpeler, spelers.get(i));
         }
     }
-    
+
     public void bepaalSpelerAanDeBeurt()
     {
         int hoogsteGeboortejaar = spelers.get(0).getGeboortejaar();
         String naam = spelers.get(0).getNaam();
         int index = 0;
-        for (int i = 0; i < spelers.size(); i++){
-            if (spelers.get(i).getGeboortejaar() > hoogsteGeboortejaar){
-               hoogsteGeboortejaar = spelers.get(i).getGeboortejaar();
-               naam = spelers.get(i).getNaam();
-               index = i;
+        for (int i = 0; i < spelers.size(); i++)
+        {
+            if (spelers.get(i).getGeboortejaar() > hoogsteGeboortejaar)
+            {
+                hoogsteGeboortejaar = spelers.get(i).getGeboortejaar();
+                naam = spelers.get(i).getNaam();
+                index = i;
             }
-            if (spelers.get(i).getGeboortejaar() == hoogsteGeboortejaar && spelers.get(i).getNaam().toLowerCase().compareTo(naam.toLowerCase()) <0){
-               hoogsteGeboortejaar = spelers.get(i).getGeboortejaar();
-               naam = spelers.get(i).getNaam();
-               index = i;
-            }    
+            if (spelers.get(i).getGeboortejaar() == hoogsteGeboortejaar && spelers.get(i).getNaam().toLowerCase().compareTo(naam.toLowerCase()) < 0)
+            {
+                hoogsteGeboortejaar = spelers.get(i).getGeboortejaar();
+                naam = spelers.get(i).getNaam();
+                index = i;
+            }
         }
         this.huidigeSpeler = spelers.get(index);
     }
-    
+
 //    
-    
     public void schudLosseKaarten()
     {
         Collections.shuffle(losseKaarten);
     }
-    
+
     public void plaatsLosseKaartenOpSpelbord()
     {
         int index = 0;
-        for(int i = 1; i < 8; i++)
+        for (int i = 1; i < 8; i++)
         {
             for (int j = 1; j < 8; j++)
             {
-                if (!(i%2 != 0 && j%2 != 0))
+                if (!(i % 2 != 0 && j % 2 != 0))
                 {
                     sb.voegGangKaartToe(i, j, losseKaarten.get(index));
                     index++;
@@ -231,115 +237,121 @@ public class Spel
             }
         }
     }
-    
+
     public void maakDoelkaartenEnVerdeelOnderSpelers()
     {
-        for(int i = 0; i < 24; i++)
+        for (int i = 0; i < 24; i++)
         {
             doelkaarten.add(new Doelkaart(Schat.values()[i]));
         }
         schudDoelkaarten();
         for (Speler speler : spelers)
         {
-            for(int i = 0; i < (doelkaarten.size()/spelers.size()); i++)
+            for (int i = 0; i < (doelkaarten.size() / spelers.size()); i++)
             {
                 speler.voegDoelkaartToe(doelkaarten.get(i));
                 doelkaarten.remove(i);
             }
         }
     }
-    
+
     public void schudDoelkaarten()
     {
         Collections.shuffle(doelkaarten);
     }
-    
+
     public String[][] geefSpel()
     {
-       /* String[][] spel = new String[7][7];
-        Gangkaart[][] spelbord = sb.geefSpelbord();
-        for (int i = 0; i < 7; i++)
-        {
-            for (int j = 0; j < 7; j++)
-            {
-                spel[i][j]=spelbord[i][j].toString();
-            }
-        }
-        return spel;*/
-        /*aanpassingen Glenn*/
         String[][] spel = new String[8][8];
         Gangkaart[][] spelbord = sb.geefSpelbord();
         for (int i = 0; i < 8; i++)
         {
             for (int j = 0; j < 8; j++)
             {
-                spel[i][j]=spelbord[i][j].toString();
+                spel[i][j] = spelbord[i][j].toString();
             }
         }
         return spel;
     }
-    
+
     public Speler geefHuidigeSpeler()
     {
         return huidigeSpeler;
     }
-    
+
     public String[] geefDoelkaartenVanSpeler(String naam)
     {
         for (Speler s : spelers)
         {
             if (s.getNaam().equals(naam))
-                return s.geefDoelkaartenVanSpeler();    
+            {
+                return s.geefDoelkaartenVanSpeler();
+            }
         }
-        String[] leeg = {"",""};
+        String[] leeg =
+        {
+            "", ""
+        };
         return leeg;
     }
-    
+
     public String geefLosseKaart()
     {
-        return losseKaarten.get(losseKaarten.size()-1).toString();
+        return losseKaarten.get(losseKaarten.size() - 1).toString();
     }
-    
+
     public Gangkaart bepaalTypeLosseKaart()
     {
-        return losseKaarten.get(losseKaarten.size()-1);
+        return losseKaarten.get(losseKaarten.size() - 1);
     }
-    
+
     public void voegSpelerToe(Speler nieuweSpeler)
     {
         controleerKleur(nieuweSpeler.getKleur());
         spelers.add(nieuweSpeler);
     }
-    
+
     private void controleerKleur(Kleur kleur)
     {
-        if(!spelers.isEmpty())
+        if (!spelers.isEmpty())
         {
             for (int i = 0; i < spelers.size(); i++)
             {
-                if(spelers.get(i).getKleur()==kleur)
+                if (spelers.get(i).getKleur() == kleur)
+                {
                     throw new IllegalArgumentException("kleurBestaat");
+                }
             }
         }
     }
-    
+
     public Speler bepaalVolgendeSpelerAanDeBeurt()
     {
-        int volgende = 0, i=0;
+        int volgende = 0, i = 0;
         for (Speler s : spelers)
         {
             bepaalSpelerAanDeBeurt();
-          //  System.out.printf("%s\t%d\t%s%n", spelers.get(i).getNaam(), spelers.get(i).getGeboortejaar(), spelers.get(i).getKleur());
+            //  System.out.printf("%s\t%d\t%s%n", spelers.get(i).getNaam(), spelers.get(i).getGeboortejaar(), spelers.get(i).getKleur());
             if ((huidigeSpeler.getNaam()).equals(s.getNaam()))
             {
                 if (i == spelers.size() - 1)
+                {
                     volgende = 0;
-                else
-                    volgende = i+1;
+                } else
+                {
+                    volgende = i + 1;
+                }
             }
             i++;
         }
         huidigeSpeler = spelers.get(volgende);
         return huidigeSpeler;
     }
+
+    public String geefPlaatsVrijeGangkaartIn()
+    {
+        return null;
+        
+    }
+
 }
