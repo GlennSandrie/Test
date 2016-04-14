@@ -39,6 +39,7 @@ public class UC4
             {
                 System.out.println(dc.getTaal().getText("inschuivenKaart"));
                 coord = input.nextLine();
+                
                 if (!(coord.equalsIgnoreCase("B1") || coord.equalsIgnoreCase("D1") || coord.equalsIgnoreCase("F1")
                         || coord.equalsIgnoreCase("A2") || coord.equalsIgnoreCase("A4") || coord.equalsIgnoreCase("A6")
                         || coord.equalsIgnoreCase("G2") || coord.equalsIgnoreCase("G4") || coord.equalsIgnoreCase("G6")
@@ -199,8 +200,8 @@ public class UC4
 
             } else
             {
-                if (dc.bepaalTypeLosseKaart() instanceof RechteWegKaart)
-                {
+                //if (dc.bepaalTypeLosseKaart() instanceof RechteWegKaart)
+                //{
                     System.out.printf("%s%20s%n", "1.", "2.");
                     draaiKaart = new Gangkaart[2];
 
@@ -221,13 +222,13 @@ public class UC4
                             {
                                 if (keuze == 1)
                                 {
-                                    keuzeKaart[0] = new RechteWegKaart("or");
+                                    keuzeKaart[0] = new RechteWegKaart("h");
                                     printKeuzeKaart();
                                 } else
                                 {
                                     if (keuze == 2)
                                     {
-                                        keuzeKaart[0] = new RechteWegKaart("ol");
+                                        keuzeKaart[0] = new RechteWegKaart("v");
                                         printKeuzeKaart();
                                     }
 
@@ -248,7 +249,7 @@ public class UC4
 
                     }
 
-                }
+                //}
             }
 
         }

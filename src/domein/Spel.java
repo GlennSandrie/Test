@@ -24,7 +24,6 @@ public class Spel
 {
 
     //attributen
-
     private List<Speler> spelers = new ArrayList<>();
     private String naam;
     private Spelbord sb;
@@ -254,17 +253,6 @@ public class Spel
 
     public String[][] geefSpel()
     {
-        /* String[][] spel = new String[7][7];
-         Gangkaart[][] spelbord = sb.geefSpelbord();
-         for (int i = 0; i < 7; i++)
-         {
-         for (int j = 0; j < 7; j++)
-         {
-         spel[i][j]=spelbord[i][j].toString();
-         }
-         }
-         return spel;*/
-        /*aanpassingen Glenn*/
         String[][] spel = new String[8][8];
         Gangkaart[][] spelbord = sb.geefSpelbord();
         for (int i = 0; i < 8; i++)
@@ -351,36 +339,10 @@ public class Spel
         return huidigeSpeler;
     }
 
-    public void geefPlaatsVrijeGangkaartIn(int xPositie, int yPositie, DomeinController dc, Scanner input)
+    public String geefPlaatsVrijeGangkaartIn()
     {
-//        String coord;
-//        boolean verder = true;
-//        while (verder != false)
-//        {
-//            try
-//            {
-//
-//                System.out.println(dc.getTaal().getText("inschuivenKaart"));
-//                coord = input.nextLine();
-//                if (!(coord.equalsIgnoreCase("B1") || coord.equalsIgnoreCase("D1") || coord.equalsIgnoreCase("F1")
-//                        || coord.equalsIgnoreCase("A2") || coord.equalsIgnoreCase("A4") || coord.equalsIgnoreCase("A6")
-//                        || coord.equalsIgnoreCase("G2") || coord.equalsIgnoreCase("G4") || coord.equalsIgnoreCase("G6")
-//                        || coord.equalsIgnoreCase("B7") || coord.equalsIgnoreCase("D7") || coord.equalsIgnoreCase("F1")))
-//                {
-//                    throw new InvalidCoordinateException("fouteCoordinaat");
-//                } else
-//                {
-//                    UC4.draaiVrijeGangkaart(dc, null);
-//                    verder=false;
-//                }
-//            } catch (InvalidCoordinateException e)
-//            {
-//                System.out.println(dc.getTaal().getText("fouteCoordinaat"));
-//            } catch (InputMismatchException e)
-//            {
-//                System.out.println(dc.getTaal().getText("fouteCoordinaat"));
-//            }
-//        }
-
+        return null;
+        
     }
+
 }
