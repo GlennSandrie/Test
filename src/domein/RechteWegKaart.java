@@ -5,6 +5,8 @@
  */
 package domein;
 
+import utils.Richting;
+
 /**
  *
  * @author anjana
@@ -15,7 +17,7 @@ public class RechteWegKaart extends Gangkaart
      * 
      * @param richting 
      */
-    public RechteWegKaart(String richting) 
+    public RechteWegKaart(Richting[] richting) 
     {
         super(richting);
     }

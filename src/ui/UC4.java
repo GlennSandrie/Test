@@ -13,6 +13,8 @@ import domein.Tkaart;
 import exceptions.WrongInputException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import utils.Kleur;
+import utils.Richting;
 
 /**
  *
@@ -26,7 +28,7 @@ public class UC4
      * @param dc
      */
     private static Gangkaart[] draaiKaart;
-    private static Gangkaart[] keuzeKaart;
+    private static Gangkaart keuzeKaart;
 
     public static void draaiVrijeGangkaart(DomeinController dc, Scanner input)
     {
@@ -43,11 +45,14 @@ public class UC4
             System.out.printf("%s%20s%20s%20s%n", "1.", "2.", "3.", "4.");
             //System.out.printf("2. ");"
             draaiKaart = new Gangkaart[4];
-
-            draaiKaart[0] = new HoekKaart(null, "or");
-            draaiKaart[1] = new HoekKaart(null, "ol");
-            draaiKaart[2] = new HoekKaart(null, "br");
-            draaiKaart[3] = new HoekKaart(null, "bl");
+            Richting[] richtingen = {Richting.O,Richting.R};      
+            draaiKaart[0] = new HoekKaart(null, richtingen);
+            Richting[] richtingen2 = {Richting.O,Richting.L};
+            draaiKaart[1] = new HoekKaart(null, richtingen2);
+            Richting[] richtingen3 = {Richting.B,Richting.R};
+            draaiKaart[2] = new HoekKaart(null,richtingen3);
+            Richting[] richtingen4 = {Richting.B,Richting.L};
+            draaiKaart[3] = new HoekKaart(null,richtingen4);
 
             printKaart();
 
@@ -55,7 +60,6 @@ public class UC4
             {
                 try
                 {
-                    keuzeKaart = new Gangkaart[1];
                     keuze = input.nextInt();
                     if (!(keuze == 1 || keuze == 2 || keuze == 3 || keuze == 4))
                     {
@@ -64,23 +68,23 @@ public class UC4
                     {
                         if (keuze == 1)
                         {
-                            keuzeKaart[0] = new HoekKaart(null, "or");
+                            keuzeKaart = new HoekKaart(null, richtingen);
                             printKeuzeKaart();
                         } else
                         {
                             if (keuze == 2)
                             {
-                                keuzeKaart[0] = new HoekKaart(null, "ol");
+                                keuzeKaart = new HoekKaart(null, richtingen2);
                                 printKeuzeKaart();
                             } else
                             {
                                 if (keuze == 3)
                                 {
-                                    keuzeKaart[0] = new HoekKaart(null, "br");
+                                    keuzeKaart = new HoekKaart(null, richtingen3);
                                     printKeuzeKaart();
                                 } else if (keuze == 4)
                                 {
-                                    keuzeKaart[0] = new HoekKaart(null, "bl");
+                                    keuzeKaart = new HoekKaart(null, richtingen4);
                                     printKeuzeKaart();
                                 }
                             }
@@ -103,18 +107,20 @@ public class UC4
         {
             System.out.printf("%s%20s%20s%20s%n", "1.", "2.", "3.", "4.");
             draaiKaart = new Gangkaart[4];
-
-            draaiKaart[0] = new Tkaart(null, "l");
-            draaiKaart[1] = new Tkaart(null, "r");
-            draaiKaart[2] = new Tkaart(null, "b");
-            draaiKaart[3] = new Tkaart(null, "o");
+            Richting[] richtingen = {Richting.O,Richting.L,Richting.R};
+            Richting[] richtingen2 = {Richting.R,Richting.O,Richting.B};
+            Richting[] richtingen3 = {Richting.B,Richting.R,Richting.L};
+            Richting[] richtingen4 = {Richting.L,Richting.B,Richting.O};
+            draaiKaart[0] = new Tkaart(null, richtingen4);
+            draaiKaart[1] = new Tkaart(null, richtingen2);
+            draaiKaart[2] = new Tkaart(null, richtingen3);
+            draaiKaart[3] = new Tkaart(null, richtingen);
 
             printKaart();
             while (keuze == 0)
             {
                 try
                 {
-                    keuzeKaart = new Gangkaart[1];
                     keuze = input.nextInt();
                     if (!(keuze == 1 || keuze == 2 || keuze == 3 || keuze == 4))
                     {
@@ -123,23 +129,23 @@ public class UC4
                     {
                         if (keuze == 1)
                         {
-                            keuzeKaart[0] = new Tkaart(null, "l");
+                            keuzeKaart = new Tkaart(null, richtingen4);
                             printKeuzeKaart();
                         } else
                         {
                             if (keuze == 2)
                             {
-                                keuzeKaart[0] = new Tkaart(null, "r");
+                                keuzeKaart = new Tkaart(null, richtingen2);
                                 printKeuzeKaart();
                             } else
                             {
                                 if (keuze == 3)
                                 {
-                                    draaiKaart[0] = new Tkaart(null, "b");
+                                    draaiKaart[0] = new Tkaart(null, richtingen3);
                                     printKeuzeKaart();
                                 } else if (keuze == 4)
                                 {
-                                    draaiKaart[0] = new Tkaart(null, "o");
+                                    draaiKaart[0] = new Tkaart(null, richtingen);
                                     printKeuzeKaart();
                                 }
                             }
@@ -164,14 +170,14 @@ public class UC4
             {
                 System.out.printf("%s%20s%n", "1.", "2.");
                 draaiKaart = new Gangkaart[2];
-                
-                draaiKaart[0] = new RechteWegKaart("h");
-                draaiKaart[1] = new RechteWegKaart("v");
+                Richting[] richtingen = {Richting.B,Richting.O};
+                Richting[] richtingen2 = {Richting.R,Richting.L};
+                draaiKaart[0] = new RechteWegKaart(richtingen2);
+                draaiKaart[1] = new RechteWegKaart(richtingen);
 
                 printKaart();
                 while (keuze == 0)
                 {
-                    keuzeKaart = new Gangkaart[1];
                     try
                     {
                         keuze = input.nextInt();
@@ -182,13 +188,13 @@ public class UC4
                         {
                             if (keuze == 1)
                             {
-                                keuzeKaart[0] = new RechteWegKaart("or");
+                                keuzeKaart = new RechteWegKaart(richtingen2);
                                 printKeuzeKaart();
                             } else
                             {
                                 if (keuze == 2)
                                 {
-                                    keuzeKaart[0] = new RechteWegKaart( "ol");
+                                    keuzeKaart = new RechteWegKaart(richtingen);
                                     printKeuzeKaart();
                                 }
 
@@ -236,10 +242,7 @@ public class UC4
         int einde = 11;
         while (begin < 72)
         {
-            for (int i = 0; i < keuzeKaart.length; i++)
-            {
-                System.out.printf(keuzeKaart[i].toString().substring(begin, einde + 1));
-            }
+            System.out.printf(keuzeKaart.toString().substring(begin, einde + 1));
             begin += 12;
             einde += 12;
             System.out.println("");

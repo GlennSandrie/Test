@@ -6,6 +6,7 @@
 package domein;
 
 import utils.Kleur;
+import utils.Richting;
 import utils.Schat;
 
 /**
@@ -21,7 +22,7 @@ public class HoekKaart extends Gangkaart
      * @param kleur
      * @param richting 
      */
-    public HoekKaart(Schat schat, Kleur kleur, String richting)
+    public HoekKaart(Schat schat, Kleur kleur, Richting[] richting)
     {
         super(null, kleur, richting);
     }
@@ -31,7 +32,7 @@ public class HoekKaart extends Gangkaart
      * @param schat
      * @param richting 
      */
-    public HoekKaart(Schat schat, String richting)
+    public HoekKaart(Schat schat, Richting[] richting)
     {
         super(schat, richting);
     }
@@ -40,7 +41,7 @@ public class HoekKaart extends Gangkaart
      * 
      * @param richting 
      */
-    public HoekKaart(String richting)
+    public HoekKaart(Richting[] richting)
     {
         super(richting);
     }

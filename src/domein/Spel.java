@@ -10,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import utils.Kleur;
+import utils.Richting;
 import utils.Schat;
 
 /**
@@ -19,13 +20,12 @@ import utils.Schat;
 public class Spel 
 {
     //attributen
-    private List<Speler> spelers = new ArrayList<>();
+    private final List<Speler> spelers = new ArrayList<>();
     private String naam;
-    private Spelbord sb;
-    private List<Gangkaart> losseKaarten = new ArrayList<>();
+    private final Spelbord sb;
+    private final List<Gangkaart> losseKaarten = new ArrayList<>();
     private Gangkaart gk;
-    private List<Doelkaart> doelkaarten = new ArrayList<>();
-    private Kleur kleuren;
+    private final List<Doelkaart> doelkaarten = new ArrayList<>();
     private Speler huidigeSpeler;
     
     /**
@@ -75,32 +75,43 @@ public class Spel
         /**
          * kaarten die niet vast staan op het spelbord
          */
+        
         Random r = new Random();
+        Richting[] richtingen;
         for (int i = 0; i < 10; i++)
         {
             int random = r.nextInt(4);
             HoekKaart hk;
+            richtingen = new Richting[2];
             switch(random) {
-                case 0: hk = new HoekKaart("ol");
+                case 0: richtingen[0] = Richting.O;
+                    richtingen[1] = Richting.L;
                     break;
-                case 1: hk = new HoekKaart("or");
+                case 1: richtingen[0] = Richting.O;
+                    richtingen[1] = Richting.R;
                     break;
-                case 2: hk = new HoekKaart("bl");
+                case 2: richtingen[0] = Richting.B;
+                    richtingen[1] = Richting.L;
                     break;
-                default: hk = new HoekKaart("br");
+                default: richtingen[0] = Richting.B;
+                    richtingen[1] = Richting.R;
             }
+            hk = new HoekKaart(richtingen);
             losseKaarten.add(hk);
         }
         for (int i = 0; i < 12; i++)
         {
             int random = r.nextInt(2);
             RechteWegKaart rwk;
+            richtingen = new Richting[2];
             switch(random) {
-                case 0: rwk = new RechteWegKaart("h");
+                case 0: richtingen[0] = Richting.R;
+                    richtingen[1] = Richting.L;
                     break;
-                default: rwk = new RechteWegKaart("v");
+                default: richtingen[0] = Richting.B;
+                    richtingen[1] = Richting.O;
             }
-             
+            rwk = new RechteWegKaart(richtingen);
             losseKaarten.add(rwk);
         }
         
@@ -112,16 +123,22 @@ public class Spel
             {
                 if(schat.getSchatId()==i+1)
                 {
+                    richtingen = new Richting[2];
                     switch(random) {
-                    case 0: hk = new HoekKaart(schat,"ol");
-                        break;
-                    case 1: hk = new HoekKaart(schat,"or");
-                        break;
-                    case 2: hk = new HoekKaart(schat,"bl");
-                        break;
-                    default: hk = new HoekKaart(schat,"br");
-                }
-                losseKaarten.add(hk);
+                        case 0: richtingen[0] = Richting.O;
+                            richtingen[1] = Richting.L;
+                            break;
+                        case 1: richtingen[0] = Richting.O;
+                            richtingen[1] = Richting.R;
+                            break;
+                        case 2: richtingen[0] = Richting.B;
+                            richtingen[1] = Richting.L;
+                            break;
+                        default: richtingen[0] = Richting.B;
+                            richtingen[1] = Richting.R;
+                    }
+                    hk = new HoekKaart(schat,richtingen);
+                    losseKaarten.add(hk);
                 }
             }
         }
@@ -134,15 +151,25 @@ public class Spel
             {
                 if(schat.getSchatId()==i+1)
                 {
+                    richtingen = new Richting[3];
                     switch(random) {
-                    case 0: tk = new Tkaart(schat,"o");
-                        break;
-                    case 1: tk = new Tkaart(schat,"b");
-                        break;
-                    case 2: tk = new Tkaart(schat,"l");
-                        break;
-                    default: tk = new Tkaart(schat,"r");
-                }
+                        case 0: richtingen[0] = Richting.O;
+                            richtingen[1] = Richting.L;
+                            richtingen[2] = Richting.R;
+                            break;
+                        case 1: richtingen[0] = Richting.R;
+                            richtingen[1] = Richting.O;
+                            richtingen[2] = Richting.B;
+                            break;
+                        case 2: richtingen[0] = Richting.B;
+                            richtingen[1] = Richting.R;
+                            richtingen[2] = Richting.L;
+                            break;
+                        default: richtingen[0] = Richting.L;
+                            richtingen[1] = Richting.B;
+                            richtingen[2] = Richting.O;
+                    }
+                tk = new Tkaart(schat,richtingen);
                 losseKaarten.add(tk);
                 }
             }

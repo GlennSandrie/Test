@@ -5,6 +5,7 @@
  */
 package domein;
 
+import utils.Richting;
 import utils.Schat;
 
 /**
@@ -18,7 +19,7 @@ public class Tkaart extends Gangkaart
      * @param schat
      * @param richting 
      */
-    public Tkaart(Schat schat, String richting) {
+    public Tkaart(Schat schat, Richting[] richting) {
         super(schat, richting);
     }
     
