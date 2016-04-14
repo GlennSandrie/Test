@@ -33,22 +33,21 @@ public class UC4
     {
         String coord;
         boolean verder = true;
-        while (verder =! false)
+        do
         {
             try
             {
                 System.out.println(dc.getTaal().getText("inschuivenKaart"));
                 coord = input.nextLine();
-                if ((coord.equalsIgnoreCase("B1") || coord.equalsIgnoreCase("D1") || coord.equalsIgnoreCase("F1")
+                if (!(coord.equalsIgnoreCase("B1") || coord.equalsIgnoreCase("D1") || coord.equalsIgnoreCase("F1")
                         || coord.equalsIgnoreCase("A2") || coord.equalsIgnoreCase("A4") || coord.equalsIgnoreCase("A6")
                         || coord.equalsIgnoreCase("G2") || coord.equalsIgnoreCase("G4") || coord.equalsIgnoreCase("G6")
                         || coord.equalsIgnoreCase("B7") || coord.equalsIgnoreCase("D7") || coord.equalsIgnoreCase("F1")))
                 {
-                    verder = false;
-                    draaienKaart(dc, input);
+                    throw new InvalidCoordinateException("fouteCoordinaat");
                 } else
                 {
-                    throw new InvalidCoordinateException("fouteCoordinaat");
+                    verder = false;
                 }
 
             } catch (InvalidCoordinateException e)
@@ -60,7 +59,7 @@ public class UC4
                 System.out.println(dc.getTaal().getText("fouteCoordinaat"));
 
             }
-        }
+        } while (verder!=false);
     }
 
     public static void draaiVrijeGangkaart(DomeinController dc, Scanner input)
