@@ -86,28 +86,7 @@ public class Spelbord
     
     public void zetSpelerOpHoekKaart(Kleur kleur, Speler speler)
     {
-        /*if (spelbord[0][0].getKleur().equals(kleur))
-        {
-            spelbord[0][0].addSpeler(speler);
-        } 
-        else if(spelbord[0][6].getKleur().equals(kleur))
-        {
-            spelbord[0][6].addSpeler(speler);
-        } 
-        else if(spelbord[6][0].getKleur().equals(kleur))
-        {
-            spelbord[6][0].addSpeler(speler);
-        }
-        else if (spelbord[6][6].getKleur().equals(kleur))
-        {
-            spelbord[6][6].addSpeler(speler);
-        }
-        else
-        {
-            throw new IllegalArgumentException("De speler moet geel, groen, blauw of rood als kleur hebben");
-        }
-        */
-        /*aanpassing Glenn*/
+        
         if (spelbord[1][1].getKleur().equals(kleur))
         {
             spelbord[1][1].voegSpelerToe(speler);
@@ -255,6 +234,10 @@ public class Spelbord
     
     private boolean controleerMogelijkeVerplaatsRichting(Richting[] richtingenKaart1, Richting[] richtinengKaart2, String plaatsing)
     {
+        if(richtingenKaart1.length == 2)
+        {
+            
+        }
         return true;
     }
     
