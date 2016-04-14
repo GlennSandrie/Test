@@ -10,6 +10,7 @@ import domein.Gangkaart;
 import domein.HoekKaart;
 import domein.RechteWegKaart;
 import domein.Tkaart;
+//import exceptions.InvalidCoordinateException;
 import exceptions.WrongInputException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -30,20 +31,60 @@ public class UC4
     private static Gangkaart[] draaiKaart;
     private static Gangkaart keuzeKaart;
 
+    public static void geefPlaatsVrijeGangkaartIn(DomeinController dc, Scanner input)
+    {
+        String coord;
+        boolean verder = true;
+        do
+        {
+            try
+            {
+                System.out.println(dc.getTaal().getText("inschuivenKaart"));
+                coord = input.nextLine();
+
+                if (!(coord.equalsIgnoreCase("B1") || coord.equalsIgnoreCase("D1") || coord.equalsIgnoreCase("F1")
+                        || coord.equalsIgnoreCase("A2") || coord.equalsIgnoreCase("A4") || coord.equalsIgnoreCase("A6")
+                        || coord.equalsIgnoreCase("G2") || coord.equalsIgnoreCase("G4") || coord.equalsIgnoreCase("G6")
+                        || coord.equalsIgnoreCase("B7") || coord.equalsIgnoreCase("D7") || coord.equalsIgnoreCase("F1")
+                        || coord.equalsIgnoreCase("1B") || coord.equalsIgnoreCase("1D") || coord.equalsIgnoreCase("1F")
+                        || coord.equalsIgnoreCase("2A") || coord.equalsIgnoreCase("4A") || coord.equalsIgnoreCase("6A")
+                        || coord.equalsIgnoreCase("2G") || coord.equalsIgnoreCase("4G") || coord.equalsIgnoreCase("6G")
+                        || coord.equalsIgnoreCase("7B") || coord.equalsIgnoreCase("7D") || coord.equalsIgnoreCase("1F")))
+                {
+//                    throw new InvalidCoordinateException("fouteCoordinaat");
+                } else
+                {
+                    verder = false;
+                }
+
+            } //catch (InvalidCoordinateException e)
+            //{
+            //    System.out.println(dc.getTaal().getText("fouteCoordinaat"));
+
+            //} 
+            catch (InputMismatchException e)
+            {
+                System.out.println(dc.getTaal().getText("fouteCoordinaat"));
+
+            }
+        } while (verder != false);
+    }
+
     public static void draaiVrijeGangkaart(DomeinController dc, Scanner input)
     {
-        System.out.println(dc.getTaal().getText("inschuivenKaart"));
-        System.out.println(dc.getTaal().getText("draaiKaart"));
+
         draaienKaart(dc, input);
     }
 
     public static void draaienKaart(DomeinController dc, Scanner input)
     {
+        geefPlaatsVrijeGangkaartIn(dc, input);
+        System.out.println(dc.getTaal().getText("draaiKaart"));
         int keuze = 0;
         if (dc.bepaalTypeLosseKaart() instanceof HoekKaart)
         {
             System.out.printf("%s%20s%20s%20s%n", "1.", "2.", "3.", "4.");
-            //System.out.printf("2. ");"
+
             draaiKaart = new Gangkaart[4];
             Richting[] richtingen = {Richting.O,Richting.R};      
             draaiKaart[0] = new HoekKaart(null, richtingen);
@@ -151,6 +192,7 @@ public class UC4
                             }
                         }
                     }
+                    bevestigKeuzeRichting(dc, input, null);
                 } catch (WrongInputException e)
                 {
                     System.out.println(dc.getTaal().getText("verkeerdeKeuze"));
@@ -165,9 +207,9 @@ public class UC4
             }
 
         } else
-        {
-            if (dc.bepaalTypeLosseKaart() instanceof RechteWegKaart)
             {
+                //if (dc.bepaalTypeLosseKaart() instanceof RechteWegKaart)
+                //{
                 System.out.printf("%s%20s%n", "1.", "2.");
                 draaiKaart = new Gangkaart[2];
                 Richting[] richtingen = {Richting.B,Richting.O};
@@ -200,24 +242,19 @@ public class UC4
 
                             }
                         }
-                    } catch (WrongInputException e)
-                    {
-                        System.out.println(dc.getTaal().getText("verkeerdeKeuze"));
-                        input.nextLine();
-                        keuze = 0;
-                    } catch (InputMismatchException e)
+                        bevestigKeuzeRichting(dc, input, null);
+                    } catch (WrongInputException | InputMismatchException e)
                     {
                         System.out.println(dc.getTaal().getText("verkeerdeKeuze"));
                         input.nextLine();
                         keuze = 0;
                     }
-
                 }
 
             }
-        }
 
-    }
+        }
+    
 
     public static void printKaart()
     {
@@ -247,6 +284,45 @@ public class UC4
             einde += 12;
             System.out.println("");
         }
+    }
+
+    public static void bevestigKeuzeRichting(DomeinController dc, Scanner input, Gangkaart gk)
+    {
+        String keuze;
+        boolean verder = true;
+        do
+        {
+            try
+            {
+                input.nextLine();
+                System.out.println(dc.getTaal().getText("bevestigDraaiing"));
+                keuze = input.nextLine();
+           // while (!(keuze.equalsIgnoreCase(dc.getTaal().getText("ja")) || keuze.equalsIgnoreCase(dc.getTaal().getText("nee"))))
+                //{
+                if (keuze.equalsIgnoreCase(dc.getTaal().getText("ja")))
+                {
+                //    UC5.verplaatsSpeler(gk);
+                    verder = false;
+                } else
+
+                {
+                    if (keuze.equalsIgnoreCase(dc.getTaal().getText("nee")))
+                    {
+                        draaienKaart(dc, input);
+                    } else
+                    {
+                        throw new WrongInputException("fouteInvoer");
+                    }
+
+                }
+
+            //}
+            } catch (WrongInputException e)
+            {
+                System.out.println(dc.getTaal().getText("fouteInvoer"));
+                input.nextLine();
+            }
+        } while (verder != false);
     }
 
 }
