@@ -353,5 +353,10 @@ public class Spel
         return null;
         
     }
+    
+    public String[] geefVerplaatsRichtingen()
+    {
+        return sb.geefVerplaatsRichtingen(huidigeSpeler);
+    }
 
 }

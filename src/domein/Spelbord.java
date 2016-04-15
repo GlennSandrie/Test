@@ -151,6 +151,7 @@ public class Spelbord
                         richtingen.add("rechts");
                     if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x+1][y].getRichtingen(),"onder"))
                         richtingen.add("onder");
+                    break;
                 }
                 case 7: 
                 {
@@ -158,6 +159,7 @@ public class Spelbord
                         richtingen.add("links");
                     if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x+1][y].getRichtingen(),"onder"))
                         richtingen.add("onder"); 
+                    break;
                 }
                 default:
                 {
@@ -167,6 +169,7 @@ public class Spelbord
                         richtingen.add("links");
                     if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x+1][y].getRichtingen(),"onder"))
                         richtingen.add("onder"); 
+                    break;
                 }
             }
             case 7: switch(y)
@@ -177,6 +180,7 @@ public class Spelbord
                         richtingen.add("rechts");
                     if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x-1][y].getRichtingen(),"boven"))
                         richtingen.add("boven");
+                    break;
                 }
                 case 7: 
                 {
@@ -184,6 +188,7 @@ public class Spelbord
                         richtingen.add("links");
                     if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x-1][y].getRichtingen(),"boven"))
                         richtingen.add("boven"); 
+                    break;
                 }
                 default:
                 {
@@ -192,7 +197,8 @@ public class Spelbord
                     if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x][y-1].getRichtingen(),"links"))
                         richtingen.add("links");
                     if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x-1][y].getRichtingen(),"boven"))
-                        richtingen.add("boven"); 
+                        richtingen.add("boven");
+                    break;
                 }
             }
             default: switch(y)
@@ -205,6 +211,7 @@ public class Spelbord
                         richtingen.add("links");
                     if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x+1][y].getRichtingen(),"onder"))
                         richtingen.add("onder"); 
+                    break;
                 }
                 case 7: 
                 {
@@ -214,6 +221,7 @@ public class Spelbord
                         richtingen.add("links");
                     if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x-1][y].getRichtingen(),"boven"))
                         richtingen.add("boven"); 
+                    break;
                 }
                 default:
                 {
@@ -225,6 +233,7 @@ public class Spelbord
                         richtingen.add("boven");
                     if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x+1][y].getRichtingen(),"onder"))
                         richtingen.add("onder"); 
+                    break;
                 }
             }
         }
@@ -232,13 +241,23 @@ public class Spelbord
         return richtingen.toArray(res);
     }
     
-    private boolean controleerMogelijkeVerplaatsRichting(Richting[] richtingenKaart1, Richting[] richtinengKaart2, String plaatsing)
+    private boolean controleerMogelijkeVerplaatsRichting(Richting[] richtingenKaart1, Richting[] richtingenKaart2, String plaatsing)
     {
-        if(richtingenKaart1.length == 2)
+        for(Richting r : richtingenKaart1)
         {
-            
+            for(Richting r2 : richtingenKaart2)
+            {
+                if(plaatsing.equals("rechts") && r == Richting.L && r2 == Richting.R)
+                    return true;
+                if(plaatsing.equals("links") && r == Richting.R && r2 == Richting.L)
+                    return true;
+                if(plaatsing.equals("onder") && r == Richting.O && r2 == Richting.B)
+                    return true;
+                if(plaatsing.equals("boven") && r == Richting.B && r2 == Richting.O)
+                    return true;
+            }
         }
-        return true;
+        return false;
     }
     
     public void verplaatsSpeler(int xPositie, int yPositie, Speler speler)

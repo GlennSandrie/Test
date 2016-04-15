@@ -133,8 +133,14 @@ public class DomeinController {
          return huidigeSpeler.getNaam();
     }
     
+    
 //    public String geefPlaatsVrijeGangkaartIn()
 //    {
 //        return spel.geefPlaatsVrijeGangkaartIn(this);
 //    }
+    
+    public String[] geefVerplaatsRichtingen()
+    {
+        return spel.geefVerplaatsRichtingen();
+    }
 }
