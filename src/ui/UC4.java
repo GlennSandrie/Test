@@ -43,11 +43,11 @@ public class UC4
                 if (!(coord.equalsIgnoreCase("B1") || coord.equalsIgnoreCase("D1") || coord.equalsIgnoreCase("F1")
                         || coord.equalsIgnoreCase("A2") || coord.equalsIgnoreCase("A4") || coord.equalsIgnoreCase("A6")
                         || coord.equalsIgnoreCase("G2") || coord.equalsIgnoreCase("G4") || coord.equalsIgnoreCase("G6")
-                        || coord.equalsIgnoreCase("B7") || coord.equalsIgnoreCase("D7") || coord.equalsIgnoreCase("F1")
+                        || coord.equalsIgnoreCase("B7") || coord.equalsIgnoreCase("D7") || coord.equalsIgnoreCase("F7")
                         || coord.equalsIgnoreCase("1B") || coord.equalsIgnoreCase("1D") || coord.equalsIgnoreCase("1F")
                         || coord.equalsIgnoreCase("2A") || coord.equalsIgnoreCase("4A") || coord.equalsIgnoreCase("6A")
                         || coord.equalsIgnoreCase("2G") || coord.equalsIgnoreCase("4G") || coord.equalsIgnoreCase("6G")
-                        || coord.equalsIgnoreCase("7B") || coord.equalsIgnoreCase("7D") || coord.equalsIgnoreCase("1F")))
+                        || coord.equalsIgnoreCase("7B") || coord.equalsIgnoreCase("7D") || coord.equalsIgnoreCase("7F")))
                 {
                     throw new InvalidCoordinateException("fouteCoordinaat");
                 } else
@@ -250,6 +250,7 @@ public class UC4
             }
 
         }
+        input.nextLine();
     }
 
     public static void printKaart()
@@ -296,8 +297,7 @@ public class UC4
                 input.nextLine();
                 System.out.println(dc.getTaal().getText("bevestigDraaiing"));
                 keuze = input.nextLine();
-           // while (!(keuze.equalsIgnoreCase(dc.getTaal().getText("ja")) || keuze.equalsIgnoreCase(dc.getTaal().getText("nee"))))
-                //{
+
                 if (keuze.equalsIgnoreCase(dc.getTaal().getText("ja")))
                 {
                     UC5.verplaatsSpeler(gk);
@@ -307,15 +307,13 @@ public class UC4
                 {
                     if (keuze.equalsIgnoreCase(dc.getTaal().getText("nee")))
                     {
-                        draaienKaart(dc, input);
+                        draaiVrijeGangkaart(dc, input);
                     } else
                     {
                         throw new WrongInputException("fouteInvoer");
                     }
 
                 }
-
-            //}
             } catch (WrongInputException e)
             {
                 System.out.println(dc.getTaal().getText("fouteInvoer"));
