@@ -13,7 +13,7 @@ import domein.Gangkaart;
  */
 public class UC5
 {
-    public static void verplaatsSpeler(Gangkaart gk)
+    public static void verplaatsSpeler()
    {
        
    }

@@ -6,8 +6,11 @@
 package domein;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import utils.Coördinaat;
 import utils.Kleur;
+import utils.Richting;
 import utils.Schat;
 
 /**
@@ -26,25 +29,32 @@ public class Spelbord
     public Spelbord()
     {
         Kleur kl;
-      
-        spelbord[1][1] = new HoekKaart(null, Kleur.GE, "or");
-        spelbord[1][7] = new HoekKaart(null, Kleur.B, "ol");
-        spelbord[7][1] = new HoekKaart(null, Kleur.GR, "br");
-        spelbord[7][7] = new HoekKaart(null, Kleur.R, "bl");
+        Richting[] richtingen = {Richting.O,Richting.R};      
+        spelbord[1][1] = new HoekKaart(null, Kleur.GE, richtingen);
+        Richting[] richtingen2 = {Richting.O,Richting.L};
+        spelbord[1][7] = new HoekKaart(null, Kleur.B, richtingen2);
+        Richting[] richtingen3 = {Richting.B,Richting.R};
+        spelbord[7][1] = new HoekKaart(null, Kleur.GR, richtingen3);
+        Richting[] richtingen4 = {Richting.B,Richting.L};
+        spelbord[7][7] = new HoekKaart(null, Kleur.R, richtingen4);
         
-        spelbord[3][1] = new Tkaart(Schat.HAGEDIS, "r");
-        spelbord[5][1] = new Tkaart(Schat.MOT, "r");
-        spelbord[1][3] = new Tkaart(Schat.UIL, "o");
-        spelbord[3][3] = new Tkaart(Schat.RAT, "r");
-        spelbord[5][3] = new Tkaart(Schat.SCARABEE, "b");
-        spelbord[7][3] = new Tkaart(Schat.SLEUTELS, "b");
-        spelbord[1][5] = new Tkaart(Schat.SCHEDEL, "o");
-        spelbord[3][5] = new Tkaart(Schat.TOVENARES, "o");
-        spelbord[5][5] = new Tkaart(Schat.SPIN, "l");
-        spelbord[7][5] = new Tkaart(Schat.ZWAARD, "b");
-        spelbord[3][7] = new Tkaart(Schat.SCHATKIST, "l");
-        spelbord[5][7] = new Tkaart(Schat.SCHATKAART, "l");
-        
+        Richting[] richtingen5 = {Richting.O,Richting.L,Richting.R};
+        Richting[] richtingen6 = {Richting.R,Richting.O,Richting.B};
+        Richting[] richtingen7 = {Richting.B,Richting.R,Richting.L};
+        Richting[] richtingen8 = {Richting.L,Richting.B,Richting.O};
+        spelbord[3][1] = new Tkaart(Schat.HAGEDIS, richtingen6);
+        spelbord[5][1] = new Tkaart(Schat.MOT, richtingen6);
+        spelbord[1][3] = new Tkaart(Schat.UIL, richtingen5);
+        spelbord[3][3] = new Tkaart(Schat.RAT, richtingen6);
+        spelbord[5][3] = new Tkaart(Schat.SCARABEE, richtingen7);
+        spelbord[7][3] = new Tkaart(Schat.SLEUTELS, richtingen7);
+        spelbord[1][5] = new Tkaart(Schat.SCHEDEL, richtingen5);
+        spelbord[3][5] = new Tkaart(Schat.TOVENARES, richtingen5);
+        spelbord[5][5] = new Tkaart(Schat.SPIN, richtingen8);
+        spelbord[7][5] = new Tkaart(Schat.ZWAARD, richtingen7);
+        spelbord[3][7] = new Tkaart(Schat.SCHATKIST, richtingen8);
+        spelbord[5][7] = new Tkaart(Schat.SCHATKAART, richtingen8);
+        /* Coördinaten Doolhof*/
         spelbord[1][0] = new Gangkaart (Coördinaat.XCOORDINAAT1);
         spelbord[2][0] = new Gangkaart (Coördinaat.XCOORDINAAT2);
         spelbord[3][0] = new Gangkaart (Coördinaat.XCOORDINAAT3);
@@ -79,23 +89,23 @@ public class Spelbord
         
         if (spelbord[1][1].getKleur().equals(kleur))
         {
-            spelbord[1][1].addSpeler(speler);
+            spelbord[1][1].voegSpelerToe(speler);
         } 
         else if(spelbord[1][7].getKleur().equals(kleur))
         {
-            spelbord[1][7].addSpeler(speler);
+            spelbord[1][7].voegSpelerToe(speler);
         } 
         else if(spelbord[7][1].getKleur().equals(kleur))
         {
-            spelbord[7][1].addSpeler(speler);
+            spelbord[7][1].voegSpelerToe(speler);
         }
         else if (spelbord[7][7].getKleur().equals(kleur))
         {
-            spelbord[7][7].addSpeler(speler);
+            spelbord[7][7].voegSpelerToe(speler);
         }
         else
         {
-            throw new IllegalArgumentException("De speler moet geel, groen, blauw of rood als kleur hebben");
+            throw new IllegalArgumentException("foutKleur");
         }
         
     }
@@ -103,5 +113,155 @@ public class Spelbord
     public void voegGangKaartToe (int xPositie, int yPositie, Gangkaart gk)
     {
         spelbord[xPositie][yPositie] = gk;
+    }
+    
+    private int[] geefIndexenHuidigeGangkaart(Speler speler)
+    {
+        int[] indexen = new int[2];
+        for(int i = 1; i < 8; i++)
+        {
+            for(int j = 1; j < 8; j++)
+            {
+                for(Speler s : spelbord[i][j].getSpelers())
+                {
+                    if(s == speler)
+                    {
+                        indexen[0]=i;
+                        indexen[1]=j;
+                    }
+                }
+            }
+        }
+        return indexen;
+    }   
+    
+    public String[] geefVerplaatsRichtingen(Speler speler)
+    {
+        int x = geefIndexenHuidigeGangkaart(speler)[0];
+        int y = geefIndexenHuidigeGangkaart(speler)[1];
+        Richting[] richtingHuidigeKaart = spelbord[x][y].getRichtingen();
+        List<String> richtingen = new ArrayList<>();
+        switch(x)
+        {
+            case 1: switch(y)
+            {
+                case 1: 
+                {
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x][y+1].getRichtingen(),"rechts"))
+                        richtingen.add("rechts");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x+1][y].getRichtingen(),"onder"))
+                        richtingen.add("onder");
+                    break;
+                }
+                case 7: 
+                {
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x][y-1].getRichtingen(),"links"))
+                        richtingen.add("links");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x+1][y].getRichtingen(),"onder"))
+                        richtingen.add("onder"); 
+                    break;
+                }
+                default:
+                {
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x][y+1].getRichtingen(),"rechts"))
+                        richtingen.add("rechts");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x][y-1].getRichtingen(),"links"))
+                        richtingen.add("links");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x+1][y].getRichtingen(),"onder"))
+                        richtingen.add("onder"); 
+                    break;
+                }
+            }
+            case 7: switch(y)
+            {
+                case 1: 
+                {
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x][y+1].getRichtingen(),"rechts"))
+                        richtingen.add("rechts");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x-1][y].getRichtingen(),"boven"))
+                        richtingen.add("boven");
+                    break;
+                }
+                case 7: 
+                {
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x][y-1].getRichtingen(),"links"))
+                        richtingen.add("links");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x-1][y].getRichtingen(),"boven"))
+                        richtingen.add("boven"); 
+                    break;
+                }
+                default:
+                {
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x][y+1].getRichtingen(),"rechts"))
+                        richtingen.add("rechts");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x][y-1].getRichtingen(),"links"))
+                        richtingen.add("links");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x-1][y].getRichtingen(),"boven"))
+                        richtingen.add("boven");
+                    break;
+                }
+            }
+            default: switch(y)
+            {
+                case 1: 
+                {
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x][y+1].getRichtingen(),"rechts"))
+                        richtingen.add("rechts");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x][y-1].getRichtingen(),"links"))
+                        richtingen.add("links");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x+1][y].getRichtingen(),"onder"))
+                        richtingen.add("onder"); 
+                    break;
+                }
+                case 7: 
+                {
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x+1][y].getRichtingen(),"onder"))
+                        richtingen.add("onder");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x][y-1].getRichtingen(),"links"))
+                        richtingen.add("links");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x-1][y].getRichtingen(),"boven"))
+                        richtingen.add("boven"); 
+                    break;
+                }
+                default:
+                {
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x][y+1].getRichtingen(),"rechts"))
+                        richtingen.add("rechts");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x][y-1].getRichtingen(),"links"))
+                        richtingen.add("links");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x-1][y].getRichtingen(),"boven"))
+                        richtingen.add("boven");
+                    if(controleerMogelijkeVerplaatsRichting(richtingHuidigeKaart, spelbord[x+1][y].getRichtingen(),"onder"))
+                        richtingen.add("onder"); 
+                    break;
+                }
+            }
+        }
+        String[] res = new String[richtingen.size()];
+        return richtingen.toArray(res);
+    }
+    
+    private boolean controleerMogelijkeVerplaatsRichting(Richting[] richtingenKaart1, Richting[] richtingenKaart2, String plaatsing)
+    {
+        for(Richting r : richtingenKaart1)
+        {
+            for(Richting r2 : richtingenKaart2)
+            {
+                if(plaatsing.equals("rechts") && r == Richting.L && r2 == Richting.R)
+                    return true;
+                if(plaatsing.equals("links") && r == Richting.R && r2 == Richting.L)
+                    return true;
+                if(plaatsing.equals("onder") && r == Richting.O && r2 == Richting.B)
+                    return true;
+                if(plaatsing.equals("boven") && r == Richting.B && r2 == Richting.O)
+                    return true;
+            }
+        }
+        return false;
+    }
+    
+    public void verplaatsSpeler(int xPositie, int yPositie, Speler speler)
+    {
+        spelbord[xPositie][yPositie].voegSpelerToe(speler);
     }
 }
