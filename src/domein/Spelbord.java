@@ -21,7 +21,7 @@ public class Spelbord
 {
     
     
-    private Gangkaart[][] spelbord = new Gangkaart[8][8];
+    private Gangkaart[][] spelbord = new Gangkaart[7][7];
     
     /**
      * 
@@ -30,32 +30,32 @@ public class Spelbord
     {
         Kleur kl;
         Richting[] richtingen = {Richting.O,Richting.R};      
-        spelbord[1][1] = new HoekKaart(null, Kleur.GE, richtingen);
+        spelbord[0][0] = new HoekKaart(null, Kleur.GE, richtingen);
         Richting[] richtingen2 = {Richting.O,Richting.L};
-        spelbord[1][7] = new HoekKaart(null, Kleur.B, richtingen2);
+        spelbord[0][6] = new HoekKaart(null, Kleur.B, richtingen2);
         Richting[] richtingen3 = {Richting.B,Richting.R};
-        spelbord[7][1] = new HoekKaart(null, Kleur.GR, richtingen3);
+        spelbord[6][0] = new HoekKaart(null, Kleur.GR, richtingen3);
         Richting[] richtingen4 = {Richting.B,Richting.L};
-        spelbord[7][7] = new HoekKaart(null, Kleur.R, richtingen4);
+        spelbord[6][6] = new HoekKaart(null, Kleur.R, richtingen4);
         
         Richting[] richtingen5 = {Richting.O,Richting.L,Richting.R};
         Richting[] richtingen6 = {Richting.R,Richting.O,Richting.B};
         Richting[] richtingen7 = {Richting.B,Richting.R,Richting.L};
         Richting[] richtingen8 = {Richting.L,Richting.B,Richting.O};
-        spelbord[3][1] = new Tkaart(Schat.HAGEDIS, richtingen6);
-        spelbord[5][1] = new Tkaart(Schat.MOT, richtingen6);
-        spelbord[1][3] = new Tkaart(Schat.UIL, richtingen5);
-        spelbord[3][3] = new Tkaart(Schat.RAT, richtingen6);
-        spelbord[5][3] = new Tkaart(Schat.SCARABEE, richtingen7);
-        spelbord[7][3] = new Tkaart(Schat.SLEUTELS, richtingen7);
-        spelbord[1][5] = new Tkaart(Schat.SCHEDEL, richtingen5);
-        spelbord[3][5] = new Tkaart(Schat.TOVENARES, richtingen5);
-        spelbord[5][5] = new Tkaart(Schat.SPIN, richtingen8);
-        spelbord[7][5] = new Tkaart(Schat.ZWAARD, richtingen7);
-        spelbord[3][7] = new Tkaart(Schat.SCHATKIST, richtingen8);
-        spelbord[5][7] = new Tkaart(Schat.SCHATKAART, richtingen8);
+        spelbord[2][0] = new Tkaart(Schat.HAGEDIS, richtingen6);
+        spelbord[4][0] = new Tkaart(Schat.MOT, richtingen6);
+        spelbord[0][2] = new Tkaart(Schat.UIL, richtingen5);
+        spelbord[2][2] = new Tkaart(Schat.RAT, richtingen6);
+        spelbord[4][2] = new Tkaart(Schat.SCARABEE, richtingen7);
+        spelbord[6][2] = new Tkaart(Schat.SLEUTELS, richtingen7);
+        spelbord[0][4] = new Tkaart(Schat.SCHEDEL, richtingen5);
+        spelbord[2][4] = new Tkaart(Schat.TOVENARES, richtingen5);
+        spelbord[4][4] = new Tkaart(Schat.SPIN, richtingen8);
+        spelbord[6][4] = new Tkaart(Schat.ZWAARD, richtingen7);
+        spelbord[2][6] = new Tkaart(Schat.SCHATKIST, richtingen8);
+        spelbord[4][6] = new Tkaart(Schat.SCHATKAART, richtingen8);
         /* Coördinaten Doolhof*/
-        spelbord[1][0] = new Gangkaart (Coördinaat.XCOORDINAAT1);
+        /*spelbord[1][0] = new Gangkaart (Coördinaat.XCOORDINAAT1);
         spelbord[2][0] = new Gangkaart (Coördinaat.XCOORDINAAT2);
         spelbord[3][0] = new Gangkaart (Coördinaat.XCOORDINAAT3);
         spelbord[4][0] = new Gangkaart (Coördinaat.XCOORDINAAT4);
@@ -71,7 +71,7 @@ public class Spelbord
         spelbord[0][4] = new Gangkaart(Coördinaat.YCOORDINAAT4);
         spelbord[0][5] = new Gangkaart(Coördinaat.YCOORDINAAT5);
         spelbord[0][6] = new Gangkaart(Coördinaat.YCOORDINAAT6);
-        spelbord[0][7] = new Gangkaart(Coördinaat.YCOORDINAAT7);
+        spelbord[0][7] = new Gangkaart(Coördinaat.YCOORDINAAT7);*/
         
     }
     
@@ -87,21 +87,21 @@ public class Spelbord
     public void zetSpelerOpHoekKaart(Kleur kleur, Speler speler)
     {
         
-        if (spelbord[1][1].getKleur().equals(kleur))
+        if (spelbord[0][0].getKleur().equals(kleur))
         {
-            spelbord[1][1].voegSpelerToe(speler);
+            spelbord[0][0].voegSpelerToe(speler);
         } 
-        else if(spelbord[1][7].getKleur().equals(kleur))
+        else if(spelbord[0][6].getKleur().equals(kleur))
         {
-            spelbord[1][7].voegSpelerToe(speler);
+            spelbord[0][6].voegSpelerToe(speler);
         } 
-        else if(spelbord[7][1].getKleur().equals(kleur))
+        else if(spelbord[6][0].getKleur().equals(kleur))
         {
-            spelbord[7][1].voegSpelerToe(speler);
+            spelbord[6][0].voegSpelerToe(speler);
         }
-        else if (spelbord[7][7].getKleur().equals(kleur))
+        else if (spelbord[6][6].getKleur().equals(kleur))
         {
-            spelbord[7][7].voegSpelerToe(speler);
+            spelbord[6][6].voegSpelerToe(speler);
         }
         else
         {
@@ -118,9 +118,9 @@ public class Spelbord
     private int[] geefIndexenHuidigeGangkaart(Speler speler)
     {
         int[] indexen = new int[2];
-        for(int i = 1; i < 8; i++)
+        for(int i = 0; i < 7; i++)
         {
-            for(int j = 1; j < 8; j++)
+            for(int j = 0; j < 7; j++)
             {
                 for(Speler s : spelbord[i][j].getSpelers())
                 {

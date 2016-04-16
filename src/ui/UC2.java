@@ -166,7 +166,7 @@ public class UC2
         {
             int begin = 0;
             int einde = 11;
-            if (i == 0)
+            /*if (i == 0)
             {
                 System.out.printf("%s", dc.geefSpel()[0][0]);
                 for (int k = 1; k < dc.geefSpel()[i].length; k++)
@@ -176,12 +176,12 @@ public class UC2
                 System.out.println();
             } else
             {
-                boolean coord = false;
+                boolean coord = false;*/
                 while (begin < 72)
                 {
                     for (int j = 0; j < dc.geefSpel()[i].length; j++)
                     {
-                        if (j == 0)
+                        /*if (j == 0)
                         {
                             if (begin % 72 == 0)
                             {
@@ -192,19 +192,19 @@ public class UC2
                             }
                             coord = true;
                         } else
-                        {
+                        {*/
                             System.out.printf(dc.geefSpel()[i][j].substring(begin, einde + 1));
-                            coord = false;
+                            //coord = false;
                         }
-                    }
-                    if (coord == false)
-                    {
+                    //}
+                   // if (coord == false)
+                   // {
                         begin += 12;
                         einde += 12;
-                    }
+                   // }
                     System.out.println();
                 }
-            }
+          //  }
         }
 
         System.out.println();

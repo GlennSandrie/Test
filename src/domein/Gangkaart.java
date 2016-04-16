@@ -26,17 +26,17 @@ public class Gangkaart
     private Kleur kleur;
     private Richting[] richtingen;
     private List<Speler> spelers;
-    private Coördinaat coördinaat;
+   //private Coördinaat coördinaat;
     
     /**
      * 
      * @param coördinaat 
      */
-    public Gangkaart( Coördinaat coördinaat)
+  /*  public Gangkaart( Coördinaat coördinaat)
     {
        
         this.coördinaat = coördinaat;
-    }
+    }*/
     /**
      * 
      * @param schat
@@ -100,12 +100,12 @@ public class Gangkaart
      public String toString()
      {
         String kaart="";
-        if (richtingen == null)
+       /* if (richtingen == null)
         {
             kaart = coördinaat.getCoördinaat();
         }
         else {
-            
+            */
             if (schat==null)
             {
                 if(richtingen.length == 2)
@@ -285,7 +285,7 @@ public class Gangkaart
                     }
                 }
             }
-        }
+        //}
         return kaart;
      }
 }

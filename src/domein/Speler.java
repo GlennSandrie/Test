@@ -88,7 +88,7 @@ public class Speler
   //  aanpassing Glenn
      private boolean controleerNaam(String gebruikersnaam)
     {
-        if (!gebruikersnaam.matches("^[a-zA-Z].{2,}$"))
+        if (!gebruikersnaam.matches("^[a-zA-Z].{1,}$"))
         {
             throw new InvalidNameException("fouteNaam");
         }

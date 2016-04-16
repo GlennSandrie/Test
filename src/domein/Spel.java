@@ -225,11 +225,11 @@ public class Spel
     public void plaatsLosseKaartenOpSpelbord()
     {
         int index = 0;
-        for (int i = 1; i < 8; i++)
+        for (int i = 0; i < 7; i++)
         {
-            for (int j = 1; j < 8; j++)
+            for (int j = 0; j < 7; j++)
             {
-                if (!(i % 2 != 0 && j % 2 != 0))
+                if (i % 2!= 0 || j % 2 != 0)
                 {
                     sb.voegGangKaartToe(i, j, losseKaarten.get(index));
                     index++;
@@ -262,11 +262,11 @@ public class Spel
 
     public String[][] geefSpel()
     {
-        String[][] spel = new String[8][8];
+        String[][] spel = new String[7][7];
         Gangkaart[][] spelbord = sb.geefSpelbord();
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 7; i++)
         {
-            for (int j = 0; j < 8; j++)
+            for (int j = 0; j < 7; j++)
             {
                 spel[i][j] = spelbord[i][j].toString();
             }
