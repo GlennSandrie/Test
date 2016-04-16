@@ -115,12 +115,12 @@ public class DomeinController {
     
     public String geefLosseKaart()
     {
-        return spel.geefLosseKaart();
+        return spel.geefVrijeGangkaart();
     }
     
     public Gangkaart bepaalTypeLosseKaart()
     {
-        return spel.bepaalTypeLosseKaart();
+        return spel.getVrijeGangkaart();
     }
     public String geefHuidigeSpeler()
     {
@@ -142,5 +142,10 @@ public class DomeinController {
     public String[] geefVerplaatsRichtingen()
     {
         return spel.geefVerplaatsRichtingen();
+    }
+    
+    public void verplaatsSpeler(int xPositie, int yPositie)
+    {
+        spel.verplaatsSpeler(xPositie, yPositie);
     }
 }

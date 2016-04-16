@@ -262,6 +262,8 @@ public class Spelbord
     
     public void verplaatsSpeler(int xPositie, int yPositie, Speler speler)
     {
+        Gangkaart huidigeGangkaart = spelbord[geefIndexenHuidigeGangkaart(speler)[0]][geefIndexenHuidigeGangkaart(speler)[1]];
+        huidigeGangkaart.verwijderSpeler(speler);
         spelbord[xPositie][yPositie].voegSpelerToe(speler);
     }
 }

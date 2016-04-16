@@ -87,11 +87,15 @@ public class Gangkaart
         return richtingen;
     }
      
-     public void voegSpelerToe (Speler speler) 
-     {
-        this.spelers.add(speler);
-     }
+    public void voegSpelerToe (Speler speler) 
+    {
+       this.spelers.add(speler);
+    }
     
+    public void verwijderSpeler(Speler speler)
+    {
+        this.spelers.remove(speler);
+    }
      /*
      *
      *Tijdelijke methode om spel af te printen op het scherm

@@ -8,11 +8,8 @@ package domein;
 //import exceptions.InvalidCoordinateException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Random;
-import java.util.Scanner;
-import ui.UC4;
 import utils.Kleur;
 import utils.Richting;
 import utils.Schat;
@@ -29,7 +26,7 @@ public class Spel
     private String naam;
     private final Spelbord sb;
     private final List<Gangkaart> losseKaarten = new ArrayList<>();
-    private Gangkaart gk;
+    private Gangkaart vrijeGangkaart;
     private final List<Doelkaart> doelkaarten = new ArrayList<>();
     private Speler huidigeSpeler;
 
@@ -57,6 +54,11 @@ public class Spel
     public void setNaam(String naam)
     {
         this.naam = naam;
+    }
+    
+    public Gangkaart getVrijeGangkaart()
+    {
+        return vrijeGangkaart;
     }
 
     //methodes
@@ -181,6 +183,7 @@ public class Spel
 
         schudLosseKaarten();
         plaatsLosseKaartenOpSpelbord();
+        vrijeGangkaart = losseKaarten.get(losseKaarten.size() - 1);
     }
 
     public void plaatsSpelersOpStartPositie()
@@ -196,20 +199,20 @@ public class Spel
     public void bepaalSpelerAanDeBeurt()
     {
         int hoogsteGeboortejaar = spelers.get(0).getGeboortejaar();
-        String naam = spelers.get(0).getNaam();
+        String naamSpeler = spelers.get(0).getNaam();
         int index = 0;
         for (int i = 0; i < spelers.size(); i++)
         {
             if (spelers.get(i).getGeboortejaar() > hoogsteGeboortejaar)
             {
                 hoogsteGeboortejaar = spelers.get(i).getGeboortejaar();
-                naam = spelers.get(i).getNaam();
+                naamSpeler = spelers.get(i).getNaam();
                 index = i;
             }
-            if (spelers.get(i).getGeboortejaar() == hoogsteGeboortejaar && spelers.get(i).getNaam().toLowerCase().compareTo(naam.toLowerCase()) < 0)
+            if (spelers.get(i).getGeboortejaar() == hoogsteGeboortejaar && spelers.get(i).getNaam().toLowerCase().compareTo(naamSpeler.toLowerCase()) < 0)
             {
                 hoogsteGeboortejaar = spelers.get(i).getGeboortejaar();
-                naam = spelers.get(i).getNaam();
+                naamSpeler = spelers.get(i).getNaam();
                 index = i;
             }
         }
@@ -229,7 +232,7 @@ public class Spel
         {
             for (int j = 0; j < 7; j++)
             {
-                if (i % 2!= 0 || j % 2 != 0)
+                if (!(i % 2== 0 && j % 2 == 0))
                 {
                     sb.voegGangKaartToe(i, j, losseKaarten.get(index));
                     index++;
@@ -295,14 +298,9 @@ public class Spel
         return leeg;
     }
 
-    public String geefLosseKaart()
+    public String geefVrijeGangkaart()
     {
-        return losseKaarten.get(losseKaarten.size() - 1).toString();
-    }
-
-    public Gangkaart bepaalTypeLosseKaart()
-    {
-        return losseKaarten.get(losseKaarten.size() - 1);
+        return vrijeGangkaart.toString();
     }
 
     public void voegSpelerToe(Speler nieuweSpeler)
@@ -315,10 +313,8 @@ public class Spel
     {
         if (!spelers.isEmpty())
         {
-            for (int i = 0; i < spelers.size(); i++)
-            {
-                if (spelers.get(i).getKleur() == kleur)
-                {
+            for (Speler speler : spelers) {
+                if (speler.getKleur() == kleur) {
                     throw new IllegalArgumentException("kleurBestaat");
                 }
             }
@@ -358,5 +354,9 @@ public class Spel
     {
         return sb.geefVerplaatsRichtingen(huidigeSpeler);
     }
-
+    
+    public void verplaatsSpeler(int xPositie, int yPositie)
+    {
+        sb.verplaatsSpeler(xPositie, yPositie, huidigeSpeler);
+    }
 }

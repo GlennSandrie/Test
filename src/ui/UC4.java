@@ -300,7 +300,7 @@ public class UC4
 
                 if (keuze.equalsIgnoreCase(dc.getTaal().getText("ja")))
                 {
-                //    UC5.verplaatsSpeler(gk);
+                    UC5.verplaatsSpeler(dc, input);
                     verder = false;
                 } else
 
