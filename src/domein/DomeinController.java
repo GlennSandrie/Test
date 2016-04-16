@@ -113,12 +113,12 @@ public class DomeinController {
         return spel.geefDoelkaartenVanSpeler(naam);
     }
     
-    public String geefLosseKaart()
+    public String geefVrijeGangkaart()
     {
         return spel.geefVrijeGangkaart();
     }
     
-    public Gangkaart bepaalTypeLosseKaart()
+    public Gangkaart geefTypeVrijeGangkaart()
     {
         return spel.getVrijeGangkaart();
     }

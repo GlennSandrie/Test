@@ -218,7 +218,7 @@ public class UC2
         int einde = 11;
         while (begin < 72)
         {
-            System.out.printf(dc.geefLosseKaart().substring(begin, einde + 1));
+            System.out.printf(dc.geefVrijeGangkaart().substring(begin, einde + 1));
             begin += 12;
             einde += 12;
             System.out.println();

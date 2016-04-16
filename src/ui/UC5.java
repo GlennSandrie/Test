@@ -29,7 +29,7 @@ public class UC5
        keuze = input.nextInt();
        if(keuze > 0 && keuze <= richtingen.length)
        {
-    //       dc.verplaats(keuze, keuze);
+           
        }
    }
 }

@@ -81,7 +81,7 @@ public class UC4
         geefPlaatsVrijeGangkaartIn(dc, input);
         System.out.println(dc.getTaal().getText("draaiKaart"));
         int keuze = 0;
-        if (dc.bepaalTypeLosseKaart() instanceof HoekKaart)
+        if (dc.geefTypeVrijeGangkaart() instanceof HoekKaart)
         {
             System.out.printf("%s%20s%20s%20s%n", "1.", "2.", "3.", "4.");
 
@@ -144,7 +144,7 @@ public class UC4
                 }
             }
 
-        } else if (dc.bepaalTypeLosseKaart() instanceof Tkaart)
+        } else if (dc.geefTypeVrijeGangkaart() instanceof Tkaart)
         {
             System.out.printf("%s%20s%20s%20s%n", "1.", "2.", "3.", "4.");
             draaiKaart = new Gangkaart[4];
