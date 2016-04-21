@@ -18,8 +18,7 @@ import utils.Schat;
  *
  * @author anjana
  */
-public class Spel
-{
+public class Spel {
 
     //attributen
     private final List<Speler> spelers = new ArrayList<>();
@@ -35,8 +34,7 @@ public class Spel
      *
      * @param naam
      */
-    public Spel(String naam)
-    {
+    public Spel(String naam) {
         this.naam = naam;
         sb = new Spelbord();
     }
@@ -46,27 +44,24 @@ public class Spel
      *
      * @return
      */
-    public String getNaam()
-    {
+    public String getNaam() {
         return naam;
     }
 
-    public void setNaam(String naam)
-    {
+    public void setNaam(String naam) {
         this.naam = naam;
     }
-    
-    public Gangkaart getVrijeGangkaart()
-    {
+
+    public Gangkaart getVrijeGangkaart() {
         return vrijeGangkaart;
     }
 
+    //UC2
     //methodes
     /**
      *
      */
-    public void initialiseerVolledigSpel()
-    {
+    public void initialiseerVolledigSpel() {
         maakGangkaartenEnPlaatsOpSpelbord();
         plaatsSpelersOpStartPositie();
         maakDoelkaartenEnVerdeelOnderSpelers();
@@ -76,107 +71,112 @@ public class Spel
     /**
      *
      */
-    public void maakGangkaartenEnPlaatsOpSpelbord()
-    {
+    public void maakGangkaartenEnPlaatsOpSpelbord() {
         /**
          * kaarten die niet vast staan op het spelbord
          */
-        
+
         Random r = new Random();
         Richting[] richtingen;
-        for (int i = 0; i < 10; i++)
-        {
+        for (int i = 0; i < 10; i++) {
             int random = r.nextInt(4);
             HoekKaart hk;
             richtingen = new Richting[2];
-            switch(random) {
-                case 0: richtingen[0] = Richting.O;
+            switch (random) {
+                case 0:
+                    richtingen[0] = Richting.O;
                     richtingen[1] = Richting.L;
                     break;
-                case 1: richtingen[0] = Richting.O;
+                case 1:
+                    richtingen[0] = Richting.O;
                     richtingen[1] = Richting.R;
                     break;
-                case 2: richtingen[0] = Richting.B;
+                case 2:
+                    richtingen[0] = Richting.B;
                     richtingen[1] = Richting.L;
                     break;
-                default: richtingen[0] = Richting.B;
+                default:
+                    richtingen[0] = Richting.B;
                     richtingen[1] = Richting.R;
             }
             hk = new HoekKaart(richtingen);
             losseKaarten.add(hk);
         }
-        for (int i = 0; i < 12; i++)
-        {
+        for (int i = 0; i < 12; i++) {
             int random = r.nextInt(2);
             RechteWegKaart rwk;
             richtingen = new Richting[2];
-            switch(random) {
-                case 0: richtingen[0] = Richting.R;
+            switch (random) {
+                case 0:
+                    richtingen[0] = Richting.R;
                     richtingen[1] = Richting.L;
                     break;
-                default: richtingen[0] = Richting.B;
+                default:
+                    richtingen[0] = Richting.B;
                     richtingen[1] = Richting.O;
             }
             rwk = new RechteWegKaart(richtingen);
             losseKaarten.add(rwk);
         }
 
-        for (int i = 0; i < 6; i++)
-        {
+        for (int i = 0; i < 6; i++) {
             int random = r.nextInt(4);
             HoekKaart hk;
-            for (Schat schat : Schat.values())
-            {
-                if (schat.getSchatId() == i + 1)
-                {
+            for (Schat schat : Schat.values()) {
+                if (schat.getSchatId() == i + 1) {
                     richtingen = new Richting[2];
-                    switch(random) {
-                        case 0: richtingen[0] = Richting.O;
+                    switch (random) {
+                        case 0:
+                            richtingen[0] = Richting.O;
                             richtingen[1] = Richting.L;
                             break;
-                        case 1: richtingen[0] = Richting.O;
+                        case 1:
+                            richtingen[0] = Richting.O;
                             richtingen[1] = Richting.R;
                             break;
-                        case 2: richtingen[0] = Richting.B;
+                        case 2:
+                            richtingen[0] = Richting.B;
                             richtingen[1] = Richting.L;
                             break;
-                        default: richtingen[0] = Richting.B;
+                        default:
+                            richtingen[0] = Richting.B;
                             richtingen[1] = Richting.R;
                     }
-                    hk = new HoekKaart(schat,richtingen);
+                    hk = new HoekKaart(schat, richtingen);
                     losseKaarten.add(hk);
                 }
             }
         }
 
-        for (int i = 0; i < 6; i++)
-        {
+        for (int i = 0; i < 6; i++) {
             int random = r.nextInt(4);
             Tkaart tk;
-            for (Schat schat : Schat.values())
-            {
-                if (schat.getSchatId() == i + 1)
-                {
+            for (Schat schat : Schat.values()) {
+                if (schat.getSchatId() == i + 1) {
                     richtingen = new Richting[3];
-                    switch(random) {
-                        case 0: richtingen[0] = Richting.O;
+                    switch (random) {
+                        case 0:
+                            richtingen[0] = Richting.O;
                             richtingen[1] = Richting.L;
                             richtingen[2] = Richting.R;
                             break;
-                        case 1: richtingen[0] = Richting.R;
+                        case 1:
+                            richtingen[0] = Richting.R;
                             richtingen[1] = Richting.O;
                             richtingen[2] = Richting.B;
                             break;
-                        case 2: richtingen[0] = Richting.B;
+                        case 2:
+                            richtingen[0] = Richting.B;
                             richtingen[1] = Richting.R;
                             richtingen[2] = Richting.L;
                             break;
-                        default: richtingen[0] = Richting.L;
+                        default:
+                            richtingen[0] = Richting.L;
                             richtingen[1] = Richting.B;
                             richtingen[2] = Richting.O;
                     }
-                tk = new Tkaart(schat,richtingen);
-                losseKaarten.add(tk);
+                    tk = new Tkaart(schat, richtingen);
+                    losseKaarten.add(tk);
                 }
             }
         }
@@ -186,31 +186,25 @@ public class Spel
         vrijeGangkaart = losseKaarten.get(losseKaarten.size() - 1);
     }
 
-    public void plaatsSpelersOpStartPositie()
-    {
+    public void plaatsSpelersOpStartPositie() {
         Kleur kleurSpeler;
-        for (int i = 0; i < spelers.size(); i++)
-        {
+        for (int i = 0; i < spelers.size(); i++) {
             kleurSpeler = spelers.get(i).getKleur();
             sb.zetSpelerOpHoekKaart(kleurSpeler, spelers.get(i));
         }
     }
 
-    public void bepaalSpelerAanDeBeurt()
-    {
+    public void bepaalSpelerAanDeBeurt() {
         int hoogsteGeboortejaar = spelers.get(0).getGeboortejaar();
         String naamSpeler = spelers.get(0).getNaam();
         int index = 0;
-        for (int i = 0; i < spelers.size(); i++)
-        {
-            if (spelers.get(i).getGeboortejaar() > hoogsteGeboortejaar)
-            {
+        for (int i = 0; i < spelers.size(); i++) {
+            if (spelers.get(i).getGeboortejaar() > hoogsteGeboortejaar) {
                 hoogsteGeboortejaar = spelers.get(i).getGeboortejaar();
                 naamSpeler = spelers.get(i).getNaam();
                 index = i;
             }
-            if (spelers.get(i).getGeboortejaar() == hoogsteGeboortejaar && spelers.get(i).getNaam().toLowerCase().compareTo(naamSpeler.toLowerCase()) < 0)
-            {
+            if (spelers.get(i).getGeboortejaar() == hoogsteGeboortejaar && spelers.get(i).getNaam().toLowerCase().compareTo(naamSpeler.toLowerCase()) < 0) {
                 hoogsteGeboortejaar = spelers.get(i).getGeboortejaar();
                 naamSpeler = spelers.get(i).getNaam();
                 index = i;
@@ -220,20 +214,15 @@ public class Spel
     }
 
 //    
-    public void schudLosseKaarten()
-    {
+    public void schudLosseKaarten() {
         Collections.shuffle(losseKaarten);
     }
 
-    public void plaatsLosseKaartenOpSpelbord()
-    {
+    public void plaatsLosseKaartenOpSpelbord() {
         int index = 0;
-        for (int i = 0; i < 7; i++)
-        {
-            for (int j = 0; j < 7; j++)
-            {
-                if (!(i % 2== 0 && j % 2 == 0))
-                {
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (!(i % 2 == 0 && j % 2 == 0)) {
                     sb.voegGangKaartToe(i, j, losseKaarten.get(index));
                     index++;
                 }
@@ -241,78 +230,62 @@ public class Spel
         }
     }
 
-    public void maakDoelkaartenEnVerdeelOnderSpelers()
-    {
-        for (int i = 0; i < 24; i++)
-        {
+    public void maakDoelkaartenEnVerdeelOnderSpelers() {
+        for (int i = 0; i < 24; i++) {
             doelkaarten.add(new Doelkaart(Schat.values()[i]));
         }
         schudDoelkaarten();
-        for (Speler speler : spelers)
-        {
-            for (int i = 0; i < (doelkaarten.size() / spelers.size()); i++)
-            {
+        for (Speler speler : spelers) {
+            for (int i = 0; i < (doelkaarten.size() / spelers.size()); i++) {
                 speler.voegDoelkaartToe(doelkaarten.get(i));
                 doelkaarten.remove(i);
             }
         }
     }
 
-    public void schudDoelkaarten()
-    {
+    public void schudDoelkaarten() {
         Collections.shuffle(doelkaarten);
     }
 
-    public String[][] geefSpel()
-    {
+    public String[][] geefSpel() {
         String[][] spel = new String[7][7];
         Gangkaart[][] spelbord = sb.geefSpelbord();
-        for (int i = 0; i < 7; i++)
-        {
-            for (int j = 0; j < 7; j++)
-            {
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 7; j++) {
                 spel[i][j] = spelbord[i][j].toString();
             }
         }
         return spel;
     }
 
-    public Speler geefHuidigeSpeler()
-    {
+    public Speler geefHuidigeSpeler() {
         return huidigeSpeler;
     }
 
-    public String[] geefDoelkaartenVanSpeler(String naam)
-    {
-        for (Speler s : spelers)
-        {
-            if (s.getNaam().equals(naam))
-            {
+    public String[] geefDoelkaartenVanSpeler(String naam) {
+        for (Speler s : spelers) {
+            if (s.getNaam().equals(naam)) {
                 return s.geefDoelkaartenVanSpeler();
             }
         }
-        String[] leeg =
-        {
-            "", ""
-        };
+        String[] leeg
+                = {
+                    "", ""
+                };
         return leeg;
     }
 
-    public String geefVrijeGangkaart()
-    {
+    public String geefVrijeGangkaart() {
         return vrijeGangkaart.toString();
     }
 
-    public void voegSpelerToe(Speler nieuweSpeler)
-    {
+    public void voegSpelerToe(Speler nieuweSpeler) {
         controleerKleur(nieuweSpeler.getKleur());
         spelers.add(nieuweSpeler);
     }
 
-    private void controleerKleur(Kleur kleur)
-    {
-        if (!spelers.isEmpty())
-        {
+    private void controleerKleur(Kleur kleur) {
+        if (!spelers.isEmpty()) {
             for (Speler speler : spelers) {
                 if (speler.getKleur() == kleur) {
                     throw new IllegalArgumentException("kleurBestaat");
@@ -320,21 +293,37 @@ public class Spel
             }
         }
     }
+    //UC4
 
-    public Speler bepaalVolgendeSpelerAanDeBeurt()
+    public void geefPlaatsVrijeGangkaart(int xPositie, int yPositie) 
     {
+
+    }
+
+    public Gangkaart[] draaienKaart(int keuze) 
+    {
+        return vrijeGangkaart.draaienKaart(keuze);
+    }
+
+      public Gangkaart geefGekozenKaart(int keuze) 
+      {
+          return vrijeGangkaart.geefGekozenKaart(keuze);
+      }
+    public void printKeuzeKaart() 
+    {
+
+    }
+
+    //UC3 --> roept UC4 aan
+    public Speler bepaalVolgendeSpelerAanDeBeurt() {
         int volgende = 0, i = 0;
-        for (Speler s : spelers)
-        {
+        for (Speler s : spelers) {
             bepaalSpelerAanDeBeurt();
             //  System.out.printf("%s\t%d\t%s%n", spelers.get(i).getNaam(), spelers.get(i).getGeboortejaar(), spelers.get(i).getKleur());
-            if ((huidigeSpeler.getNaam()).equals(s.getNaam()))
-            {
-                if (i == spelers.size() - 1)
-                {
+            if ((huidigeSpeler.getNaam()).equals(s.getNaam())) {
+                if (i == spelers.size() - 1) {
                     volgende = 0;
-                } else
-                {
+                } else {
                     volgende = i + 1;
                 }
             }
@@ -344,19 +333,16 @@ public class Spel
         return huidigeSpeler;
     }
 
-    public String geefPlaatsVrijeGangkaartIn()
-    {
+    public String geefPlaatsVrijeGangkaartIn() {
         return null;
-        
+
     }
-    
-    public String[] geefVerplaatsRichtingen()
-    {
+
+    public String[] geefVerplaatsRichtingen() {
         return sb.geefVerplaatsRichtingen(huidigeSpeler);
     }
-    
-    public void verplaatsSpeler(int xPositie, int yPositie)
-    {
+
+    public void verplaatsSpeler(int xPositie, int yPositie) {
         sb.verplaatsSpeler(xPositie, yPositie, huidigeSpeler);
     }
 }

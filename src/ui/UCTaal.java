@@ -12,15 +12,18 @@ import java.util.Scanner;
  *
  * @author svre257
  */
-public class UCTaal {
+public class UCTaal
+{
 
     /**
      *
      * @param dc
      */
-    public static void stelTaalIn(DomeinController dc,Scanner input) {
+    public static void stelTaalIn(DomeinController dc, Scanner input)
+    {
         String keuze = "";
-        while (!keuze.equalsIgnoreCase("nl") && !keuze.equalsIgnoreCase("fr") && !keuze.equalsIgnoreCase("en")) {
+        while (!keuze.equalsIgnoreCase("nl") && !keuze.equalsIgnoreCase("fr") && !keuze.equalsIgnoreCase("en"))
+        {
             System.out.println("Voor Nederlands: typ nl");
             System.out.println("Pour Français: choisissez fr");
             System.out.println("For English: choose en");
@@ -29,5 +32,5 @@ public class UCTaal {
         dc.setTaal(keuze);
         System.out.println(dc.getTaal().getText("welkom"));
     }
-    
+
 }
