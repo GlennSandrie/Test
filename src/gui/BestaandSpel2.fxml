@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="30.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="lblBestaandSpel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Bestaand Spel">
+      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Aantal Spelers">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label fx:id="lblLaadSpel" maxWidth="1.7976931348623157E308" text="Kies hieronder een spel:" />
-      <ListView fx:id="lvSpellen" cache="true" prefHeight="200.0" prefWidth="200.0" />
+      <Label fx:id="lblSpelers" text="De spelers van dit spel:" />
+      <ListView prefHeight="200.0" prefWidth="200.0" />
+      <Label fx:id="lblAantalBestaandeSpelers" text="U mag maximaal nog ... spelers ingeven." />
+      <Label fx:id="lblAantalSpelers" text="Hoeveel spelers wilt u ingeven?" />
+      <ComboBox fx:id="cmbAantalSpelers" prefWidth="150.0" />
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
