@@ -6,6 +6,7 @@
 package ui;
 
 import domein.DomeinController;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -19,7 +20,7 @@ public class UC5
     {
         System.out.println("In welke richting wilt u zich verplaatsen?");
         System.out.println("Mogelijke richtingen:");
-        String[] richtingen = dc.geefVerplaatsRichtingen();
+        List<String> richtingen = dc.geefMogelijkeVerplaatsRichtingen();
         int teller = 1;
         int keuze;
         for (String r : richtingen)
@@ -28,7 +29,7 @@ public class UC5
             teller++;
         }
         keuze = input.nextInt();
-        if (keuze > 0 && keuze <= richtingen.length)
+        if (keuze > 0 && keuze <= richtingen.size())
         {
 
         }
