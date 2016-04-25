@@ -59,13 +59,13 @@ public class HoekKaart extends Gangkaart {
                 break;
             case L:
                 kaart = String.format(
-                        "xxxxxxxxxxxx"
-                        + "xxxxxxxxxxxx"
-                        + "xxx         "
-                        + "xxx         "
+                        "xxx      xxx"
                         + "xxx      xxx"
-                        + "xxx      xxx");
-                break;
+                        + "         xxx"
+                        + "         xxx"
+                        + "xxxxxxxxxxxx"
+                        + "xxxxxxxxxxxx");
+                break;                
             case O:
                 kaart = String.format(
                         "xxxxxxxxxxxx"
@@ -77,17 +77,17 @@ public class HoekKaart extends Gangkaart {
                 break;
             case R:
                 kaart = String.format(
-                        "xxx      xxx"
-                        + "xxx      xxx"
-                        + "         xxx"
-                        + "         xxx"
+                        "xxxxxxxxxxxx"
                         + "xxxxxxxxxxxx"
-                        + "xxxxxxxxxxxx");
-                break;
+                        + "xxx         "
+                        + "xxx         "
+                        + "xxx      xxx"
+                        + "xxx      xxx");
+                break;                
         }
 
         if (schat != null) {
-            kaart = kaart.substring(0, 41) + "S" + kaart.substring(42);
+            kaart = kaart.substring(0, 41) + schat.toString().charAt(0) + kaart.substring(42);
         }
         return kaart;
     }
@@ -97,15 +97,15 @@ public class HoekKaart extends Gangkaart {
         switch (richting) {
             case B:
                 al.add(Richting.B);
-                al.add(Richting.L);
+                al.add(Richting.R);
                 break;
             case L:
                 al.add(Richting.L);
-                al.add(Richting.O);
+                al.add(Richting.B);
                 break;
             case O:
                 al.add(Richting.O);
-                al.add(Richting.R);
+                al.add(Richting.L);
                 break;
             case R:
                 al.add(Richting.R);
