@@ -150,27 +150,14 @@ public class DomeinController
 
     }
 
-    public Gangkaart[] draaienKaart(int keuze)
-    {
-        return spel.draaienKaart(keuze);
-    }
-
-    public Gangkaart geefGekozenKaart(int keuze)
-    {
-        return spel.geefGekozenKaart(keuze);
-    }
-
-    public void printKeuzeKaart()
-    {
-
-    }
 
     //UC5
-    public String[] geefVerplaatsRichtingen()
+    public List<String> geefMogelijkeVerplaatsRichtingen()
     {
-        return spel.geefVerplaatsRichtingen();
+        return spel.geefMogelijkeVerplaatsRichtingen();
     }
 
+    
     public void verplaatsSpeler(int xPositie, int yPositie)
     {
         spel.verplaatsSpeler(xPositie, yPositie);
