@@ -22,13 +22,24 @@ public enum Richting
         this.naam = naam;
     }
     
-    public int getKleurNr()
+    public int getRichtingId()
     {
         return richtingId;
     }
     
-    public String getKleurNaam()
+    public String getRichtingNaam()
     {
         return naam;
+    }
+    
+    public static Richting geefRichting(int nummer)
+    {
+        switch(nummer)
+        {
+            case 1: return B;
+            case 2: return O;
+            case 3: return L;
+            default: return R;
+        }
     }
 }

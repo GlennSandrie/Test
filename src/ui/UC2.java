@@ -6,7 +6,7 @@
 package ui;
 
 import domein.DomeinController;
-import domein.Speler;
+import exceptions.EmptyListException;
 import exceptions.InvalidBirthdateException;
 import exceptions.InvalidNameException;
 import exceptions.WrongInputException;
@@ -209,9 +209,10 @@ public class UC2
 
         System.out.println();
         System.out.println(dc.geefHuidigeSpeler());
-        for (String geefDoelkaartenVanSpeler : dc.geefDoelkaartenVanSpeler(dc.geefHuidigeSpeler()))
-        {
-            System.out.println(geefDoelkaartenVanSpeler);
+        try {
+            System.out.println(dc.geefDoelkaartVanHuidigeSpeler());
+        } catch (EmptyListException ex) {
+            System.out.println(dc.getTaal().getText(ex.getMessage()));
         }
         System.out.println();
         int begin = 0;

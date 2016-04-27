@@ -5,6 +5,8 @@
  */
 package domein;
 
+import java.util.ArrayList;
+import java.util.List;
 import utils.Richting;
 
 /**
@@ -17,37 +19,77 @@ public class RechteWegKaart extends Gangkaart {
      *
      * @param richting
      */
-    public RechteWegKaart(Richting[] richting) {
+    public RechteWegKaart(Richting richting) {
         super(richting);
     }
-    Richting[] richtingen = {Richting.B, Richting.O};
-    Richting[] richtingen2 = {Richting.R, Richting.L};
 
-    public Gangkaart[] draaienKaart(int keuze) {
-        Gangkaart[] draaiKaart= new Gangkaart[2];
-        System.out.printf("%s%20s%n", "1.", "2.");
-        draaiKaart = new Gangkaart[2];
-        draaiKaart[0] = new RechteWegKaart(richtingen2);
-        draaiKaart[1] = new RechteWegKaart(richtingen);
-
-        printKaart();
-        return draaiKaart;
-    }
-
-    public Gangkaart geefGekozenKaart(int keuze) 
-    {
-        Gangkaart gk= super.getKeuzeKaart();
-        if (keuze == 1) {
-           gk = new RechteWegKaart(richtingen2);
-        } else {
-            if (keuze == 2) {
-                gk = new RechteWegKaart(richtingen);
-
-            }
-
+    public String toString() {
+        String kaart = "";
+        switch (getRichting()) {
+            case B:
+                kaart = String.format(
+                        "xxx      xxx"
+                        + "xxx      xxx"
+                        + "xxx      xxx"
+                        + "xxx      xxx"
+                        + "xxx      xxx"
+                        + "xxx      xxx");
+                break;
+            case L:
+                kaart = String.format(
+                        "xxxxxxxxxxxx"
+                        + "xxxxxxxxxxxx"
+                        + "            "
+                        + "            "
+                        + "xxxxxxxxxxxx"
+                        + "xxxxxxxxxxxx");
+                break;
+            case O:
+                kaart = String.format(
+                        "xxx      xxx"
+                        + "xxx      xxx"
+                        + "xxx      xxx"
+                        + "xxx      xxx"
+                        + "xxx      xxx"
+                        + "xxx      xxx");
+                break;
+            case R:
+                kaart = String.format(
+                        "xxxxxxxxxxxx"
+                        + "xxxxxxxxxxxx"
+                        + "            "
+                        + "            "
+                        + "xxxxxxxxxxxx"
+                        + "xxxxxxxxxxxx");
+                break;
         }
-        super.setKeuzeKaart(gk);
-        return gk;
-    }
 
+        if (schat != null) {
+            kaart = kaart.substring(0, 41) + schat.toString().charAt(0) + kaart.substring(42);
+        }
+        return kaart;
+    }
+    
+    public List<Richting> geefVerplaatsRichtingen() {
+        ArrayList<Richting> al = new ArrayList();
+        switch (richting) {
+            case B:
+                al.add(Richting.B);
+                al.add(Richting.O);
+                break;
+            case L:
+                al.add(Richting.L);
+                al.add(Richting.R);
+                break;
+            case O:
+                al.add(Richting.B);
+                al.add(Richting.O);
+                break;
+            case R:
+                al.add(Richting.L);
+                al.add(Richting.R);
+                break;
+        }
+        return al;
+    }    
 }
