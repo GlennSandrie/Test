@@ -45,13 +45,13 @@ public class UC5
                     int[] plaatsHG = dc.geefIndexenHuidigeGangkaart();
                     switch(richtingen.get(keuze-1))
                     {
-                        case "R": dc.verplaatsSpeler(plaatsHG[0]+1, plaatsHG[1]);
+                        case "R": dc.verplaatsSpeler(plaatsHG[0]-1, plaatsHG[1]);
                             break;
-                        case "L": dc.verplaatsSpeler(plaatsHG[0]-1, plaatsHG[1]);
+                        case "L": dc.verplaatsSpeler(plaatsHG[0]+1, plaatsHG[1]);
                             break;
-                        case "B": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]+1);
+                        case "B": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]-1);
                             break;
-                        case "O": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]-1);
+                        case "O": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]+1);
                             break;
                     }
                     if(dc.controleerOvereenkomendeSchat())
@@ -61,6 +61,7 @@ public class UC5
                         System.out.println(dc.geefDoelkaartVanHuidigeSpeler());
                         ConsoleApplicatie.speelSpel(dc, input);
                     }
+                    
                 } catch (EmptyListException e)
                 {
                     System.out.println(dc.getTaal().getText(e.getMessage()));
