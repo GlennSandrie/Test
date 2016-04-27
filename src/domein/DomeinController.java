@@ -1,5 +1,6 @@
 package domein;
 
+import exceptions.EmptyListException;
 import java.time.LocalDate;
 import java.util.List;
 import utils.Kleur;
@@ -117,9 +118,9 @@ public class DomeinController
         return spel.geefSpel();
     }
 
-    public String[] geefDoelkaartenVanHuidigeSpeler()
+    public String geefDoelkaartVanHuidigeSpeler() throws EmptyListException
     {
-        return spel.geefDoelkaartenVanSpeler();
+        return spel.geefDoelkaartVanSpeler();
     }
 
     public String geefVrijeGangkaart()
@@ -166,5 +167,15 @@ public class DomeinController
     public int[] geefIndexenHuidigeGangkaart()
     {
         return spel.geefIndexenHuidigeGangkaart();
+    }
+    
+    public boolean controleerOvereenkomendeSchat() throws EmptyListException
+    {
+        return spel.controleerOvereenkomendeSchat();
+    }
+
+    public void verwijderHuidigeDoelkaart()
+    {
+        spel.verwijderHuidigeDoelkaart();
     }
 }

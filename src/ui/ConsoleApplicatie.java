@@ -53,11 +53,14 @@ public class ConsoleApplicatie {
                 System.out.println(dc.getTaal().getText(we.getMessage()));
             }
         }
-                
+        speelSpel(dc,input);
+    }
+    
+    public static void speelSpel(DomeinController dc, Scanner input)
+    {
         UC2.geefVolledigSpel(dc);
         UC4.geefPlaatsVrijeGangkaartIn(dc, input);
         UC3.bepaalVolgendeSpeler(dc, input);
-       
     }
     
     

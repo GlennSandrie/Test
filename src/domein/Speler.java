@@ -5,6 +5,7 @@
  */
 package domein;
 
+import exceptions.EmptyListException;
 import exceptions.InvalidBirthdateException;
 import exceptions.InvalidNameException;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import utils.Kleur;
+import utils.Schat;
 
 
 
@@ -111,23 +113,15 @@ public class Speler
         doelkaarten.add(doelkaart);
     }
     
-    public String[] geefDoelkaartenVanSpeler()
+    public Schat geefSchatHuidigeDoelkaart() throws EmptyListException
     {
-        String[] doelkaartenSpeler = new String[doelkaarten.size()];
-        for(int i = 0; i < doelkaarten.size(); i++)
-        {
-            doelkaartenSpeler[i] = doelkaarten.get(i).getSchat().getNaam();
-        }
-        return doelkaartenSpeler;
-        
-        //attribuut score bijmaken
-        /*
-        int score=0 later bovenaan de klasse declareren
-        String[] doelkaartenSpeler = new String[doelkaarten.size()];
-        for(int i = score; i < doelkaarten.size(); i++)
-        {
-            doelkaartenSpeler[i] = doelkaarten.get(i).getSchat().getNaam();
-        }
-        return doelkaarten[i];*/
+        if(doelkaarten.isEmpty())
+            throw new EmptyListException("geenDoelkaarten");
+        return doelkaarten.get(0).getSchat();
+    }
+    
+    public void verwijderHuidigeDoelkaart()
+    {
+        doelkaarten.remove(0);
     }
 }

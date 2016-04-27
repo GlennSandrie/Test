@@ -6,6 +6,7 @@
 package ui;
 
 import domein.DomeinController;
+import exceptions.EmptyListException;
 import exceptions.WrongInputException;
 import java.util.List;
 import java.util.Scanner;
@@ -36,14 +37,7 @@ public class UC5
                     System.out.printf("%d. %s%n", teller,dc.getTaal().getText(r));
                     teller++;
                 }
-                String[] doelkaarten = dc.geefDoelkaartenVanHuidigeSpeler();
-                if(doelkaarten.length==0)
-                {
-                    System.out.println(dc.getTaal().getText("geenDoelkaarten"));
-                    UC2.geefVolledigSpel(dc);
-                }
-                else {
-
+                try {
                     System.out.println(dc.getTaal().getText("kiezenRichting"));
                     keuze = input.nextInt();
                     if(keuze<=0 || keuze > richtingen.size())
@@ -51,16 +45,26 @@ public class UC5
                     int[] plaatsHG = dc.geefIndexenHuidigeGangkaart();
                     switch(richtingen.get(keuze))
                     {
-                        case "RECHTS": dc.verplaatsSpeler(plaatsHG[0]+1, plaatsHG[1]);
+                        case "R": dc.verplaatsSpeler(plaatsHG[0]+1, plaatsHG[1]);
                             break;
-                        case "LINKS": dc.verplaatsSpeler(plaatsHG[0]-1, plaatsHG[1]);
+                        case "L": dc.verplaatsSpeler(plaatsHG[0]-1, plaatsHG[1]);
                             break;
-                        case "BOVEN": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]+1);
+                        case "B": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]+1);
                             break;
-                        case "ONDER": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]-1);
+                        case "O": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]-1);
                             break;
                     }
-                    
+                    if(dc.controleerOvereenkomendeSchat())
+                    {
+                        System.out.println("overeenkomendeSchat");
+                        dc.verwijderHuidigeDoelkaart();
+                        System.out.println(dc.geefDoelkaartVanHuidigeSpeler());
+                        ConsoleApplicatie.speelSpel(dc, input);
+                    }
+                } catch (EmptyListException e)
+                {
+                    System.out.println(dc.getTaal().getText(e.getMessage()));
+                    UC2.geefVolledigSpel(dc);
                 }
             }while (keuze<=0 || keuze > richtingen.size() || doorgaan.equals(dc.getTaal().getText("ja")));
         }
@@ -73,5 +77,7 @@ public class UC5
             System.out.println(dc.getTaal().getText(e.getMessage()));
         }
    }
+   
+    
 }
 

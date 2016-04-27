@@ -186,4 +186,10 @@ public class Spelbord {
         spelbord[xPositie][yPositie].voegSpelerToe(speler);
     }
 
+    public Schat geefSchatHuidigeGangkaart(Speler speler)
+    {
+        int[] plaatsHG = geefIndexenHuidigeGangkaart(speler);
+        return spelbord[plaatsHG[0]][plaatsHG[1]].schat;
+    }
+
 }

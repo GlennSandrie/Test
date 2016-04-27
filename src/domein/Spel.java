@@ -6,6 +6,7 @@
 package domein;
 
 //import exceptions.InvalidCoordinateException;
+import exceptions.EmptyListException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -192,8 +193,8 @@ public class Spel {
         return huidigeSpeler;
     }
 
-    public String[] geefDoelkaartenVanSpeler() {
-        return huidigeSpeler.geefDoelkaartenVanSpeler();   
+    public String geefDoelkaartVanSpeler() throws EmptyListException {
+        return huidigeSpeler.geefSchatHuidigeDoelkaart().getNaam();   
     }
 
     public String geefVrijeGangkaart() {
@@ -258,5 +259,15 @@ public class Spel {
     public int[] geefIndexenHuidigeGangkaart()
     {
         return sb.geefIndexenHuidigeGangkaart(huidigeSpeler);
+    }
+
+    public boolean controleerOvereenkomendeSchat() throws EmptyListException
+    {
+        return sb.geefSchatHuidigeGangkaart(huidigeSpeler)==huidigeSpeler.geefSchatHuidigeDoelkaart();
+    }
+
+    public void verwijderHuidigeDoelkaart()
+    {
+        huidigeSpeler.verwijderHuidigeDoelkaart();
     }
 }

@@ -7,6 +7,7 @@ package ui;
 
 import domein.DomeinController;
 import domein.Speler;
+import exceptions.EmptyListException;
 import exceptions.InvalidBirthdateException;
 import exceptions.InvalidNameException;
 import exceptions.WrongInputException;
@@ -14,6 +15,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import utils.Kleur;
 
 /**
@@ -209,7 +212,11 @@ public class UC2
 
         System.out.println();
         System.out.println(dc.geefHuidigeSpeler());
-        System.out.println(dc.geefDoelkaartenVanHuidigeSpeler()[0]);
+        try {
+            System.out.println(dc.geefDoelkaartVanHuidigeSpeler());
+        } catch (EmptyListException ex) {
+            System.out.println(dc.getTaal().getText(ex.getMessage()));
+        }
         System.out.println();
         int begin = 0;
         int einde = 11;
