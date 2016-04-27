@@ -43,7 +43,7 @@ public class UC5
                     if(keuze<=0 || keuze > richtingen.size())
                         throw new WrongInputException("verkeerdeKeuze");
                     int[] plaatsHG = dc.geefIndexenHuidigeGangkaart();
-                    switch(richtingen.get(keuze))
+                    switch(richtingen.get(keuze-1))
                     {
                         case "R": dc.verplaatsSpeler(plaatsHG[0]+1, plaatsHG[1]);
                             break;
