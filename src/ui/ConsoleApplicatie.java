@@ -60,6 +60,7 @@ public class ConsoleApplicatie {
     {
         UC2.geefVolledigSpel(dc);
         UC4.geefPlaatsVrijeGangkaartIn(dc, input);
+        UC5.verplaatsSpeler(dc, input);
         UC3.bepaalVolgendeSpeler(dc, input);
     }
     

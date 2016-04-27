@@ -64,7 +64,7 @@ public class UC5
                 } catch (EmptyListException e)
                 {
                     System.out.println(dc.getTaal().getText(e.getMessage()));
-                    UC2.geefVolledigSpel(dc);
+                    ConsoleApplicatie.speelSpel(dc, input);
                 }
             }while (keuze<=0 || keuze > richtingen.size() || doorgaan.equals(dc.getTaal().getText("ja")));
         }

@@ -50,7 +50,7 @@ public class UC4
 
             }
         } while (verder != false);
-        UC5.verplaatsSpeler(dc, input);
+        
     }
 
 //    public static void draaiVrijeGangkaart(DomeinController dc, Scanner input) {
