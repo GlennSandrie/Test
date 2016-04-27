@@ -22,10 +22,10 @@ public class UC5
    {
        
         try {
-            int keuze=0;
             List<String> richtingen;
             String doorgaan;
             do {
+                int keuze=0;
                 doorgaan = "";
                 richtingen = dc.geefMogelijkeVerplaatsRichtingen();
                 if(richtingen.isEmpty())
