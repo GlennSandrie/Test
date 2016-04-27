@@ -78,7 +78,6 @@ public class Spel {
          */
 
         Random r = new Random();
-        Richting[] richtingen;
         for (int i = 0; i < 10; i++) {
             int random = r.nextInt(4) + 1;
             HoekKaart hk = new HoekKaart(Richting.geefRichting(random));

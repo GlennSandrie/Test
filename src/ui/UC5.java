@@ -45,13 +45,13 @@ public class UC5
                     int[] plaatsHG = dc.geefIndexenHuidigeGangkaart();
                     switch(richtingen.get(keuze-1))
                     {
-                        case "R": dc.verplaatsSpeler(plaatsHG[0]-1, plaatsHG[1]);
+                        case "R": dc.verplaatsSpeler(plaatsHG[0]+1, plaatsHG[1]);
                             break;
-                        case "L": dc.verplaatsSpeler(plaatsHG[0]+1, plaatsHG[1]);
+                        case "L": dc.verplaatsSpeler(plaatsHG[0]-1, plaatsHG[1]);
                             break;
-                        case "B": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]-1);
+                        case "B": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]+1);
                             break;
-                        case "O": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]+1);
+                        case "O": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]-1);
                             break;
                     }
                     if(dc.controleerOvereenkomendeSchat())
@@ -60,6 +60,21 @@ public class UC5
                         dc.verwijderHuidigeDoelkaart();
                         System.out.println(dc.geefDoelkaartVanHuidigeSpeler());
                         ConsoleApplicatie.speelSpel(dc, input);
+                    }
+                    try {
+                        boolean fout = true;
+                        while(fout)
+                        {
+                            System.out.println("doorgaan");
+                            doorgaan = input.nextLine();
+                            if(!doorgaan.equals(dc.getTaal().getText("ja"))&&!doorgaan.equals(dc.getTaal().getText("nee")))
+                                throw new WrongInputException("fouteInvoer");
+                            fout = false;
+                        }
+                    }
+                    catch (WrongInputException e)
+                    {
+                        System.out.println(dc.getTaal().getText(e.getMessage()));
                     }
                     
                 } catch (EmptyListException e)
