@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="30.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="30.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.NieuwSpelController">
    <children>
       <Label fx:id="lblNieuwSpelTitel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Nieuw Spel.">
          <font>
@@ -19,7 +19,7 @@
       <Label fx:id="lblNieuwSpel" maxWidth="1.7976931348623157E308" text="Geef de naam van je spel in." />
       <TextField fx:id="txfNaamNieuwSpel" maxWidth="350.0" />
       <Label fx:id="lblAantalSpelers" maxWidth="1.7976931348623157E308" text="Hoeveel spelers wil je registreren?" />
-      <ComboBox prefWidth="150.0">
+      <ComboBox fx:id="cmbAantal" prefWidth="150.0">
          <VBox.margin>
             <Insets />
          </VBox.margin>
