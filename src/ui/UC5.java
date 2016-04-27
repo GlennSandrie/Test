@@ -8,6 +8,7 @@ package ui;
 import domein.DomeinController;
 import exceptions.EmptyListException;
 import exceptions.WrongInputException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,9 +23,10 @@ public class UC5
        
         try {
             int keuze=0;
-            List<String> richtingen = dc.geefMogelijkeVerplaatsRichtingen();
-            String doorgaan = dc.getTaal().getText("nee");
+            List<String> richtingen;
+            String doorgaan = "";
             do {
+                richtingen = dc.geefMogelijkeVerplaatsRichtingen();
                 if(richtingen.isEmpty())
                 {
                     throw new IllegalArgumentException("geenGeldigeRichting");
@@ -45,13 +47,13 @@ public class UC5
                     int[] plaatsHG = dc.geefIndexenHuidigeGangkaart();
                     switch(richtingen.get(keuze-1))
                     {
-                        case "R": dc.verplaatsSpeler(plaatsHG[0]+1, plaatsHG[1]);
+                        case "R": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]+1);
                             break;
-                        case "L": dc.verplaatsSpeler(plaatsHG[0]-1, plaatsHG[1]);
+                        case "L": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]-1);
                             break;
-                        case "B": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]+1);
+                        case "B": dc.verplaatsSpeler(plaatsHG[0]-1, plaatsHG[1]);
                             break;
-                        case "O": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]-1);
+                        case "O": dc.verplaatsSpeler(plaatsHG[0]+1, plaatsHG[1]);
                             break;
                     }
                     if(dc.controleerOvereenkomendeSchat())
@@ -61,15 +63,13 @@ public class UC5
                         System.out.println(dc.geefDoelkaartVanHuidigeSpeler());
                         ConsoleApplicatie.speelSpel(dc, input);
                     }
+                    input.nextLine();
                     try {
-                        boolean fout = true;
-                        while(fout)
-                        {
+                        while(!doorgaan.equals(dc.getTaal().getText("ja"))&&!doorgaan.equals(dc.getTaal().getText("nee"))) {
                             System.out.println("doorgaan");
                             doorgaan = input.nextLine();
                             if(!doorgaan.equals(dc.getTaal().getText("ja"))&&!doorgaan.equals(dc.getTaal().getText("nee")))
                                 throw new WrongInputException("fouteInvoer");
-                            fout = false;
                         }
                     }
                     catch (WrongInputException e)

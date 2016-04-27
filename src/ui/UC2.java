@@ -6,7 +6,6 @@
 package ui;
 
 import domein.DomeinController;
-import domein.Speler;
 import exceptions.EmptyListException;
 import exceptions.InvalidBirthdateException;
 import exceptions.InvalidNameException;
@@ -15,8 +14,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import utils.Kleur;
 
 /**
