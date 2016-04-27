@@ -117,7 +117,7 @@ public class Spelbord {
 
     }
 
-    private int[] geefIndexenHuidigeGangkaart(Speler speler) {
+    public int[] geefIndexenHuidigeGangkaart(Speler speler) {
         int[] indexen = new int[2];
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {

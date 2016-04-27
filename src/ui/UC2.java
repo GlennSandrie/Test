@@ -209,10 +209,7 @@ public class UC2
 
         System.out.println();
         System.out.println(dc.geefHuidigeSpeler());
-        for (String geefDoelkaartenVanSpeler : dc.geefDoelkaartenVanSpeler(dc.geefHuidigeSpeler()))
-        {
-            System.out.println(geefDoelkaartenVanSpeler);
-        }
+        System.out.println(dc.geefDoelkaartenVanHuidigeSpeler()[0]);
         System.out.println();
         int begin = 0;
         int einde = 11;

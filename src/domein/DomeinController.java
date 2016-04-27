@@ -117,9 +117,9 @@ public class DomeinController
         return spel.geefSpel();
     }
 
-    public String[] geefDoelkaartenVanSpeler(String naam)
+    public String[] geefDoelkaartenVanHuidigeSpeler()
     {
-        return spel.geefDoelkaartenVanSpeler(naam);
+        return spel.geefDoelkaartenVanSpeler();
     }
 
     public String geefVrijeGangkaart()
@@ -161,5 +161,10 @@ public class DomeinController
     public void verplaatsSpeler(int xPositie, int yPositie)
     {
         spel.verplaatsSpeler(xPositie, yPositie);
+    }
+    
+    public int[] geefIndexenHuidigeGangkaart()
+    {
+        return spel.geefIndexenHuidigeGangkaart();
     }
 }

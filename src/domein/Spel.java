@@ -80,12 +80,12 @@ public class Spel {
         Richting[] richtingen;
         for (int i = 0; i < 10; i++) {
             int random = r.nextInt(4) + 1;
-            HoekKaart hk = new HoekKaart(Richting.getRichting(random));
+            HoekKaart hk = new HoekKaart(Richting.geefRichting(random));
             losseKaarten.add(hk);
         }
         for (int i = 0; i < 12; i++) {
             int random = r.nextInt(4) + 1;
-            RechteWegKaart rwk = new RechteWegKaart(Richting.getRichting(random));
+            RechteWegKaart rwk = new RechteWegKaart(Richting.geefRichting(random));
             losseKaarten.add(rwk);
         }
 
@@ -94,7 +94,7 @@ public class Spel {
             HoekKaart hk;
             for (Schat schat : Schat.values()) {
                 if (schat.getSchatId() == i + 1) {
-                    hk = new HoekKaart(schat, Richting.getRichting(random));
+                    hk = new HoekKaart(schat, Richting.geefRichting(random));
                     losseKaarten.add(hk);
                 }
             }
@@ -105,7 +105,7 @@ public class Spel {
             Tkaart tk;
             for (Schat schat : Schat.values()) {
                 if (schat.getSchatId() == i + 1) {
-                    tk = new Tkaart(schat, Richting.getRichting(random));
+                    tk = new Tkaart(schat, Richting.geefRichting(random));
                     losseKaarten.add(tk);
                 }
             }
@@ -115,7 +115,7 @@ public class Spel {
         plaatsLosseKaartenOpSpelbord();
         vrijeGangkaart = losseKaarten.get(losseKaarten.size() - 1);
     }
-
+    
     public void plaatsSpelersOpStartPositie() {
         Kleur kleurSpeler;
         for (int i = 0; i < spelers.size(); i++) {
@@ -192,17 +192,8 @@ public class Spel {
         return huidigeSpeler;
     }
 
-    public String[] geefDoelkaartenVanSpeler(String naam) {
-        for (Speler s : spelers) {
-            if (s.getNaam().equals(naam)) {
-                return s.geefDoelkaartenVanSpeler();
-            }
-        }
-        String[] leeg
-                = {
-                    "", ""
-                };
-        return leeg;
+    public String[] geefDoelkaartenVanSpeler() {
+        return huidigeSpeler.geefDoelkaartenVanSpeler();   
     }
 
     public String geefVrijeGangkaart() {
@@ -262,5 +253,10 @@ public class Spel {
     
     public void verplaatsSpeler(int xPositie, int yPositie) {
         sb.verplaatsSpeler(xPositie, yPositie, huidigeSpeler);
+    }
+    
+    public int[] geefIndexenHuidigeGangkaart()
+    {
+        return sb.geefIndexenHuidigeGangkaart(huidigeSpeler);
     }
 }

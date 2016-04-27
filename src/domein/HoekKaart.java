@@ -45,6 +45,7 @@ public class HoekKaart extends Gangkaart {
         super(richting);
     }
 
+    @Override
     public String toString() {
         String kaart = "";
         switch (richting) {
@@ -92,6 +93,7 @@ public class HoekKaart extends Gangkaart {
         return kaart;
     }
 
+    @Override
     public List<Richting> geefVerplaatsRichtingen() {
         ArrayList<Richting> al = new ArrayList();
         switch (richting) {

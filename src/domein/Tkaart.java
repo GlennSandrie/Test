@@ -25,6 +25,7 @@ public class Tkaart extends Gangkaart {
         super(schat, richting);
     }
 
+    @Override
     public String toString() {
         String kaart = "";
         switch (getRichting()) {
