@@ -158,56 +158,31 @@ public class UC2
         }
         input.nextLine();
     }
-
-    public static void geefVolledigSpel(DomeinController dc)
+    
+    public static void geefSpelbord(DomeinController dc)
     {
-
         for (int i = 0; i < dc.geefSpel().length; i++)
         {
             int begin = 0;
             int einde = 11;
-            /*if (i == 0)
-             {
-             System.out.printf("%s", dc.geefSpel()[0][0]);
-             for (int k = 1; k < dc.geefSpel()[i].length; k++)
-             {
-             System.out.printf("%s%12s", dc.geefSpel()[0][k], "");
-             }
-             System.out.println();
-             } else
-             {
-             boolean coord = false;*/
+            
             while (begin < 72)
             {
                 for (int j = 0; j < dc.geefSpel()[i].length; j++)
                 {
-                    /*if (j == 0)
-                     {
-                     if (begin % 72 == 0)
-                     {
-                     System.out.printf(dc.geefSpel()[i][j]);
-                     } else
-                     {
-                     System.out.printf(" ");
-                     }
-                     coord = true;
-                     } else
-                     {*/
                     System.out.printf(dc.geefSpel()[i][j].substring(begin, einde + 1));
-                    //coord = false;
                 }
-                //}
-                // if (coord == false)
-                // {
                 begin += 12;
                 einde += 12;
-                // }
                 System.out.println();
             }
-            //  }
         }
 
         System.out.println();
+    }
+    public static void geefVolledigSpel(DomeinController dc)
+    {
+        geefSpelbord(dc);
         System.out.println(dc.geefHuidigeSpeler());
         try
         {

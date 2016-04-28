@@ -18,7 +18,7 @@ import java.util.Scanner;
  */
 public class UC5
 {
-    public static void verplaatsSpeler(DomeinController dc, Scanner input)
+    public static void verplaatsSpeler(DomeinController dc, Scanner input) throws EmptyListException
    {
        
         try {
@@ -80,10 +80,6 @@ public class UC5
                             System.out.println(dc.getTaal().getText(e.getMessage()));
                         }
                     }
-                } catch (EmptyListException e)
-                {
-                    System.out.println(dc.getTaal().getText(e.getMessage()));
-                    gaDoorMetSpel(dc, input);
                 }
                 catch (WrongInputException e)
                 {
@@ -101,7 +97,7 @@ public class UC5
    
     public static void gaDoorMetSpel(DomeinController dc, Scanner input)
     {
-        UC3.bepaalVolgendeSpeler(dc, input);
+        UC3.bepaalVolgendeSpeler(dc, input, false);
         ConsoleApplicatie.speelSpel(dc, input);
     }
     

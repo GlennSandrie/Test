@@ -1,11 +1,14 @@
 package ui;
 
 import domein.DomeinController;
+import exceptions.EmptyListException;
 import exceptions.InvalidBirthdateException;
 import exceptions.InvalidNameException;
 import exceptions.WrongInputException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -58,9 +61,15 @@ public class ConsoleApplicatie {
     
     public static void speelSpel(DomeinController dc, Scanner input)
     {
+        
         UC2.geefVolledigSpel(dc);
         UC4.geefPlaatsVrijeGangkaartIn(dc, input);
-        UC5.verplaatsSpeler(dc, input);
+        try {
+            UC5.verplaatsSpeler(dc, input);
+        } catch (EmptyListException ex) {
+            System.out.println(dc.getTaal().getText(ex.getMessage()));
+            UC3.bepaalVolgendeSpeler(dc, input, true);
+        }
     }
     
     
