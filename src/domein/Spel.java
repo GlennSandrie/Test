@@ -85,8 +85,7 @@ public class Spel
          */
 
         Random r = new Random();
-        for (int i = 0; i < 10; i++)
-        {
+        for (int i = 0; i < 10; i++) {
             int random = r.nextInt(4) + 1;
             HoekKaart hk = new HoekKaart(Richting.geefRichting(random));
             losseKaarten.add(hk);
@@ -260,12 +259,13 @@ public class Spel
 
     public void voegVrijeGangkaartToeAanSpelbord(int xPositie, int yPositie)
     {
-        sb.setVrijeGangkaart(xPositie, yPositie, vrijeGangkaart);
+        sb.setVrijeGangkaart(xPositie, yPositie,vrijeGangkaart);
     }
 
     //UC3 --> roept UC4 aan
-    public void bepaalVolgendeSpelerAanDeBeurt()
-    {
+
+   
+    public void bepaalVolgendeSpelerAanDeBeurt() {
 
         int volgende = 0, i = 0;
         for (Speler s : spelers)

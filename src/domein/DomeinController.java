@@ -46,7 +46,7 @@ public class DomeinController
     {
         return taal;
     }
-
+	
     /**
      *
      * @return lijst van de namen van alle bestaande spellen
@@ -142,8 +142,7 @@ public class DomeinController
     //UC3
     public void bepaalVolgendeSpelerAanDeBeurt()
     {
-
-        spel.bepaalSpelerAanDeBeurt();
+         spel.bepaalSpelerAanDeBeurt();
     }
 
     //UC4
@@ -151,12 +150,12 @@ public class DomeinController
     {
 
     }
-
+    
     public Richting draaiVrijeGangkaart(int keuze)
     {
-        return spel.draaiVrijeGangkaart(keuze);
+      return spel.draaiVrijeGangkaart(keuze);
     }
-
+    
     public void voegVrijeGangkaartToeAanSpelbord(int xPositie, int yPositie)
     {
         spel.voegVrijeGangkaartToeAanSpelbord(xPositie, yPositie);
@@ -168,16 +167,17 @@ public class DomeinController
         return spel.geefMogelijkeVerplaatsRichtingen();
     }
 
+    
     public void verplaatsSpeler(int xPositie, int yPositie)
     {
         spel.verplaatsSpeler(xPositie, yPositie);
     }
-
+    
     public int[] geefIndexenHuidigeGangkaart()
     {
         return spel.geefIndexenHuidigeGangkaart();
     }
-
+    
     public boolean controleerOvereenkomendeSchat() throws EmptyListException
     {
         return spel.controleerOvereenkomendeSchat();

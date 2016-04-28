@@ -111,20 +111,20 @@ public class Spelbord
 
         if (xPositie == 0)
         {
-            nieuweVrijeGangkaart = spelbord[spelbord.length][yPositie];
+             nieuweVrijeGangkaart = spelbord[spelbord.length][yPositie];
             for (int i = 6; i >= 0; i--)
             {
-
+                
                 spelbord[i][yPositie] = spelbord[i + 1][yPositie];
             }
-
+           
         }
         if (xPositie == spelbord.length)
         {
-            nieuweVrijeGangkaart = spelbord[0][yPositie];
+              nieuweVrijeGangkaart = spelbord[0][yPositie];
             for (int i = 6; i >= 0; i--)
             {
-
+              
                 spelbord[i][yPositie] = spelbord[i - 1][yPositie];
             }
         }
@@ -133,20 +133,19 @@ public class Spelbord
             nieuweVrijeGangkaart = spelbord[xPositie][spelbord.length];
             for (int i = 6; i >= 0; i--)
             {
-
+                
                 spelbord[xPositie][i] = spelbord[xPositie][i + 1];
             }
         }
         if (yPositie == spelbord.length)
         {
-            nieuweVrijeGangkaart = spelbord[xPositie][0];
             for (int i = 6; i >= 0; i--)
             {
-
+                nieuweVrijeGangkaart = spelbord[xPositie][0];
                 spelbord[xPositie][i] = spelbord[xPositie][i - 1];
             }
         }
-
+        
         return nieuweVrijeGangkaart;
     }
 
