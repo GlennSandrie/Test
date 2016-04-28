@@ -83,7 +83,7 @@ public class UC5
                 } catch (EmptyListException e)
                 {
                     System.out.println(dc.getTaal().getText(e.getMessage()));
-                    gaDoorMetSpel(dc, input);
+                    eindeVanSpel(dc);
                 }
                 catch (WrongInputException e)
                 {
@@ -103,6 +103,11 @@ public class UC5
     {
         UC3.bepaalVolgendeSpeler(dc, input);
         ConsoleApplicatie.speelSpel(dc, input);
+    }
+    
+    public static void eindeVanSpel(DomeinController dc)
+    {
+        UC2.geefSpelbord(dc);
     }
     
 }
