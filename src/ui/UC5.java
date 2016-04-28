@@ -8,6 +8,7 @@ package ui;
 import domein.DomeinController;
 import exceptions.EmptyListException;
 import exceptions.WrongInputException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,10 +22,12 @@ public class UC5
    {
        
         try {
-            int keuze=0;
-            List<String> richtingen = dc.geefMogelijkeVerplaatsRichtingen();
-            String doorgaan = dc.getTaal().getText("nee");
+            List<String> richtingen;
+            String doorgaan;
             do {
+                int keuze=0;
+                doorgaan = "";
+                richtingen = dc.geefMogelijkeVerplaatsRichtingen();
                 if(richtingen.isEmpty())
                 {
                     throw new IllegalArgumentException("geenGeldigeRichting");
@@ -38,39 +41,57 @@ public class UC5
                     teller++;
                 }
                 try {
-                    System.out.println(dc.getTaal().getText("kiezenRichting"));
-                    keuze = input.nextInt();
-                    if(keuze<=0 || keuze > richtingen.size())
-                        throw new WrongInputException("verkeerdeKeuze");
-                    int[] plaatsHG = dc.geefIndexenHuidigeGangkaart();
-                    switch(richtingen.get(keuze-1))
+                    while (keuze<=0 || keuze > richtingen.size())
                     {
-                        case "R": dc.verplaatsSpeler(plaatsHG[0]+1, plaatsHG[1]);
-                            break;
-                        case "L": dc.verplaatsSpeler(plaatsHG[0]-1, plaatsHG[1]);
-                            break;
-                        case "B": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]+1);
-                            break;
-                        case "O": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]-1);
-                            break;
-                    }
-                    if(dc.controleerOvereenkomendeSchat())
-                    {
-                        System.out.println("overeenkomendeSchat");
-                        dc.verwijderHuidigeDoelkaart();
-                        System.out.println(dc.geefDoelkaartVanHuidigeSpeler());
-                        ConsoleApplicatie.speelSpel(dc, input);
+                        System.out.println(dc.getTaal().getText("kiezenRichting"));
+                        keuze = input.nextInt();
+                        if(keuze<=0 || keuze > richtingen.size())
+                            throw new WrongInputException("verkeerdeKeuze");
+                        int[] plaatsHG = dc.geefIndexenHuidigeGangkaart();
+                        switch(richtingen.get(keuze-1))
+                        {
+                            case "R": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]+1);
+                                break;
+                            case "L": dc.verplaatsSpeler(plaatsHG[0], plaatsHG[1]-1);
+                                break;
+                            case "B": dc.verplaatsSpeler(plaatsHG[0]-1, plaatsHG[1]);
+                                break;
+                            case "O": dc.verplaatsSpeler(plaatsHG[0]+1, plaatsHG[1]);
+                                break;
+                        }
+                        if(dc.controleerOvereenkomendeSchat())
+                        {
+                            System.out.println("overeenkomendeSchat");
+                            dc.verwijderHuidigeDoelkaart();
+                            System.out.println(dc.geefDoelkaartVanHuidigeSpeler());
+                            gaDoorMetSpel(dc, input);
+                        }
+                        input.nextLine();
+                        try {
+                            while(!doorgaan.equals(dc.getTaal().getText("ja"))&&!doorgaan.equals(dc.getTaal().getText("nee"))) {
+                                System.out.println(dc.getTaal().getText("doorgaan"));
+                                doorgaan = input.nextLine();
+                                if(!doorgaan.equals(dc.getTaal().getText("ja"))&&!doorgaan.equals(dc.getTaal().getText("nee")))
+                                    throw new WrongInputException("fouteInvoer");
+                            }
+                        }
+                        catch (WrongInputException e)
+                        {
+                            System.out.println(dc.getTaal().getText(e.getMessage()));
+                        }
                     }
                 } catch (EmptyListException e)
                 {
                     System.out.println(dc.getTaal().getText(e.getMessage()));
-                    UC2.geefVolledigSpel(dc);
+                    gaDoorMetSpel(dc, input);
                 }
-            }while (keuze<=0 || keuze > richtingen.size() || doorgaan.equals(dc.getTaal().getText("ja")));
-        }
-        catch (WrongInputException e)
-        {
-            System.out.println(dc.getTaal().getText(e.getMessage()));
+                catch (WrongInputException e)
+                {
+                    System.out.println(dc.getTaal().getText(e.getMessage()));
+                    doorgaan = dc.getTaal().getText("ja");
+                }
+            }while (doorgaan.equals(dc.getTaal().getText("ja")));
+            gaDoorMetSpel(dc, input);
         }
         catch (IllegalArgumentException e)
         {
@@ -78,6 +99,11 @@ public class UC5
         }
    }
    
+    public static void gaDoorMetSpel(DomeinController dc, Scanner input)
+    {
+        UC3.bepaalVolgendeSpeler(dc, input);
+        ConsoleApplicatie.speelSpel(dc, input);
+    }
     
 }
 

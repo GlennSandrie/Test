@@ -140,10 +140,9 @@ public class DomeinController
     }
 
     //UC3
-    public String bepaalVolgendeSpelerAanDeBeurt()
+    public void bepaalVolgendeSpelerAanDeBeurt()
     {
-        Speler huidigeSpeler = spel.bepaalVolgendeSpelerAanDeBeurt();
-        return huidigeSpeler.getNaam();
+        spel.bepaalVolgendeSpelerAanDeBeurt();
     }
 
     //UC4
