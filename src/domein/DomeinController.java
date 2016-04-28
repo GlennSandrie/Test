@@ -4,6 +4,7 @@ import exceptions.EmptyListException;
 import java.time.LocalDate;
 import java.util.List;
 import utils.Kleur;
+import utils.Richting;
 
 /**
  *
@@ -150,7 +151,16 @@ public class DomeinController
     {
 
     }
-
+    
+    public Richting draaiVrijeGangkaart(int keuze)
+    {
+      return spel.draaiVrijeGangkaart(keuze);
+    }
+    
+    public void voegVrijeGangkaartToeAanSpelbord(int xPositie, int yPositie)
+    {
+        spel.voegVrijeGangkaartToeAanSpelbord(xPositie, yPositie);
+    }
 
     //UC5
     public List<String> geefMogelijkeVerplaatsRichtingen()
