@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane hgap="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" vgap="30.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane hgap="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" vgap="30.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.IngevenGegevensSpelerController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="388.0" minWidth="10.0" prefWidth="200.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="530.0" minWidth="10.0" prefWidth="530.0" />
@@ -24,7 +24,7 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Geef gegevens Speler... in:" GridPane.columnSpan="2">
+      <Label fx:id="lblGegevens" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Geef gegevens Speler... in:" GridPane.columnSpan="2">
          <font>
             <Font size="36.0" />
          </font>
@@ -41,11 +41,11 @@
         </rowConstraints>
          <children>
             <Label fx:id="lblNaam" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" text="Naam:" GridPane.valignment="BOTTOM" />
-            <Label maxWidth="1.7976931348623157E308" text="(geen ....)" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+            <Label fx:id="lblNaamExtra" maxWidth="1.7976931348623157E308" text="(geen ....)" GridPane.rowIndex="1" GridPane.valignment="TOP" />
          </children>
       </GridPane>
       <TextField fx:id="txfNaam" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="txfGeboortejaar" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <ComboBox fx:id="cmbKleur" prefHeight="31.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       <HBox alignment="BOTTOM_RIGHT" prefHeight="185.0" prefWidth="200.0" spacing="20.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
          <children>

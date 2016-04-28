@@ -9,15 +9,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="30.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" spacing="30.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.BestaandSpel2Controller">
    <children>
-      <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Aantal Spelers">
+      <Label fx:id="lblAantalSpelersTitel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Aantal Spelers">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
       <Label fx:id="lblSpelers" text="De spelers van dit spel:" />
-      <ListView prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="lvSpelers" prefHeight="200.0" prefWidth="200.0" />
       <Label fx:id="lblAantalBestaandeSpelers" text="U mag maximaal nog ... spelers ingeven." />
       <Label fx:id="lblAantalSpelers" text="Hoeveel spelers wilt u ingeven?" />
       <ComboBox fx:id="cmbAantalSpelers" prefWidth="150.0" />
