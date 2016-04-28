@@ -93,7 +93,7 @@ public class UC5
             System.out.println(dc.getTaal().getText(e.getMessage()));
         }
    }
-   
+    
     public static void gaDoorMetSpel(DomeinController dc, Scanner input)
     {
         ConsoleApplicatie.speelSpel(dc, input);
