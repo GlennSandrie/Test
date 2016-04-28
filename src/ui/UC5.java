@@ -8,7 +8,6 @@ package ui;
 import domein.DomeinController;
 import exceptions.EmptyListException;
 import exceptions.WrongInputException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -64,7 +63,7 @@ public class UC5
                             System.out.println("overeenkomendeSchat");
                             dc.verwijderHuidigeDoelkaart();
                             System.out.println(dc.geefDoelkaartVanHuidigeSpeler());
-                            gaDoorMetSpel(dc, input);
+                            doorgaan = dc.getTaal().getText("nee");
                         }
                         input.nextLine();
                         try {
@@ -97,7 +96,6 @@ public class UC5
    
     public static void gaDoorMetSpel(DomeinController dc, Scanner input)
     {
-        UC3.bepaalVolgendeSpeler(dc, input, false);
         ConsoleApplicatie.speelSpel(dc, input);
     }
     

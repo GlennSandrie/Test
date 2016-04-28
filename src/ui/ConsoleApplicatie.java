@@ -61,11 +61,11 @@ public class ConsoleApplicatie {
     
     public static void speelSpel(DomeinController dc, Scanner input)
     {
-        
         UC2.geefVolledigSpel(dc);
         UC4.geefPlaatsVrijeGangkaartIn(dc, input);
         try {
             UC5.verplaatsSpeler(dc, input);
+            UC3.bepaalVolgendeSpeler(dc, input, false);
         } catch (EmptyListException ex) {
             System.out.println(dc.getTaal().getText(ex.getMessage()));
             UC3.bepaalVolgendeSpeler(dc, input, true);
