@@ -85,7 +85,8 @@ public class Spel
          */
 
         Random r = new Random();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++)
+        {
             int random = r.nextInt(4) + 1;
             HoekKaart hk = new HoekKaart(Richting.geefRichting(random));
             losseKaarten.add(hk);

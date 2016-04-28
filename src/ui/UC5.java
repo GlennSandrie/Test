@@ -8,7 +8,6 @@ package ui;
 import domein.DomeinController;
 import exceptions.EmptyListException;
 import exceptions.WrongInputException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,7 +17,7 @@ import java.util.Scanner;
  */
 public class UC5
 {
-    public static void verplaatsSpeler(DomeinController dc, Scanner input)
+    public static void verplaatsSpeler(DomeinController dc, Scanner input) throws EmptyListException
    {
        
         try {
@@ -64,7 +63,7 @@ public class UC5
                             System.out.println("overeenkomendeSchat");
                             dc.verwijderHuidigeDoelkaart();
                             System.out.println(dc.geefDoelkaartVanHuidigeSpeler());
-                            gaDoorMetSpel(dc, input);
+                            doorgaan = dc.getTaal().getText("nee");
                         }
                         input.nextLine();
                         try {
@@ -80,10 +79,6 @@ public class UC5
                             System.out.println(dc.getTaal().getText(e.getMessage()));
                         }
                     }
-                } catch (EmptyListException e)
-                {
-                    System.out.println(dc.getTaal().getText(e.getMessage()));
-                    eindeVanSpel(dc);
                 }
                 catch (WrongInputException e)
                 {
@@ -98,16 +93,10 @@ public class UC5
             System.out.println(dc.getTaal().getText(e.getMessage()));
         }
    }
-   
+    
     public static void gaDoorMetSpel(DomeinController dc, Scanner input)
     {
-        UC3.bepaalVolgendeSpeler(dc, input);
         ConsoleApplicatie.speelSpel(dc, input);
-    }
-    
-    public static void eindeVanSpel(DomeinController dc)
-    {
-        UC2.geefSpelbord(dc);
     }
     
 }
