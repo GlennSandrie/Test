@@ -27,8 +27,7 @@ public class Gangkaart
     protected Richting richting;
     protected List<Speler> spelers;
 
-
-   //private Coördinaat coördinaat;
+    //private Coördinaat coördinaat;
     /**
      *
      * @param coördinaat
@@ -95,10 +94,30 @@ public class Gangkaart
     {
         this.spelers.remove(speler);
     }
-    
-    public List<Richting> geefVerplaatsRichtingen(){
+
+    public Richting draaiVrijeGangkaart(int keuze)
+    {
+        if (keuze == 1)
+        {
+            richting = Richting.B;
+        } else if (keuze == 2)
+        {
+            richting = Richting.R;
+        } else if (keuze == 3)
+        {
+            richting = Richting.O;
+        } else if (keuze == 4)
+        {
+            richting = Richting.L;
+        }
+        return richting;
+    }
+
+    public List<Richting> geefVerplaatsRichtingen()
+    {
         ArrayList<Richting> al = new ArrayList();
-        for (Richting r : Richting.values()){
+        for (Richting r : Richting.values())
+        {
             al.add(r);
         }
         return al;
@@ -107,6 +126,5 @@ public class Gangkaart
      *
      *Tijdelijke methode om spel af te printen op het scherm
      */
-
 
 }

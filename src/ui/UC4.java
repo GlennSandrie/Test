@@ -36,21 +36,48 @@ public class UC4
         {
             try
             {
-                // dc.draaienKaart(keuze);
-                
+                draaiVrijeGangkaart(dc, input);
+
                 System.out.println(dc.getTaal().getText("inschuivenKaartX"));
                 xPositie = input.nextInt();
                 System.out.println(dc.getTaal().getText("inschuivenKaartY"));
                 yPositie = input.nextInt();
                 dc.geefPlaatsVrijeGangkaart(xPositie, yPositie);
+                dc.geefSpel();
                 verder = false;
+                //    throw new InputMismatchException();
             } catch (InputMismatchException e)
             {
                 System.out.println(dc.getTaal().getText("fouteCoordinaat"));
 
             }
         } while (verder != false);
-        
+
+    }
+
+    public static void draaiVrijeGangkaart(DomeinController dc, Scanner input)
+    {
+        int keuze = 0;
+        try
+        {
+            System.out.println(dc.getTaal().getText("draaiKaart"));
+            System.out.println("1." + dc.getTaal().getText("B"));
+            System.out.println("2." + dc.getTaal().getText("R"));
+            System.out.println("3." + dc.getTaal().getText("O"));
+            System.out.println("4." + dc.getTaal().getText("L"));
+            keuze = input.nextInt();
+            dc.draaiVrijeGangkaart(keuze);
+        } catch (InputMismatchException e)
+        {
+            System.out.println(dc.getTaal().getText(null));
+        }
+
+    }
+
+    public static void voegVrijeGangkaartToeAanSpelbord(DomeinController dc)
+    {
+        int xPositie = 0, yPositie = 0;
+        dc.voegVrijeGangkaartToeAanSpelbord(xPositie, yPositie);
     }
 
 //    public static void draaiVrijeGangkaart(DomeinController dc, Scanner input) {

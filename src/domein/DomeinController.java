@@ -4,6 +4,7 @@ import exceptions.EmptyListException;
 import java.time.LocalDate;
 import java.util.List;
 import utils.Kleur;
+import utils.Richting;
 
 /**
  *
@@ -141,7 +142,8 @@ public class DomeinController
     //UC3
     public void bepaalVolgendeSpelerAanDeBeurt()
     {
-        spel.bepaalVolgendeSpelerAanDeBeurt();
+
+        spel.bepaalSpelerAanDeBeurt();
     }
 
     //UC4
@@ -150,6 +152,15 @@ public class DomeinController
 
     }
 
+    public Richting draaiVrijeGangkaart(int keuze)
+    {
+        return spel.draaiVrijeGangkaart(keuze);
+    }
+
+    public void voegVrijeGangkaartToeAanSpelbord(int xPositie, int yPositie)
+    {
+        spel.voegVrijeGangkaartToeAanSpelbord(xPositie, yPositie);
+    }
 
     //UC5
     public List<String> geefMogelijkeVerplaatsRichtingen()
@@ -157,17 +168,16 @@ public class DomeinController
         return spel.geefMogelijkeVerplaatsRichtingen();
     }
 
-    
     public void verplaatsSpeler(int xPositie, int yPositie)
     {
         spel.verplaatsSpeler(xPositie, yPositie);
     }
-    
+
     public int[] geefIndexenHuidigeGangkaart()
     {
         return spel.geefIndexenHuidigeGangkaart();
     }
-    
+
     public boolean controleerOvereenkomendeSchat() throws EmptyListException
     {
         return spel.controleerOvereenkomendeSchat();
