@@ -223,7 +223,7 @@ public class Spel {
 
 
     //UC3 --> roept UC4 aan
-    public Speler bepaalVolgendeSpelerAanDeBeurt() {
+    public void bepaalVolgendeSpelerAanDeBeurt() {
         int volgende = 0, i = 0;
         for (Speler s : spelers) {
             bepaalSpelerAanDeBeurt();
@@ -238,7 +238,6 @@ public class Spel {
             i++;
         }
         huidigeSpeler = spelers.get(volgende);
-        return huidigeSpeler;
     }
 
     public String geefPlaatsVrijeGangkaartIn() {

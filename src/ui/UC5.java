@@ -64,7 +64,7 @@ public class UC5
                             System.out.println("overeenkomendeSchat");
                             dc.verwijderHuidigeDoelkaart();
                             System.out.println(dc.geefDoelkaartVanHuidigeSpeler());
-                            ConsoleApplicatie.speelSpel(dc, input);
+                            gaDoorMetSpel(dc, input);
                         }
                         input.nextLine();
                         try {
@@ -83,13 +83,15 @@ public class UC5
                 } catch (EmptyListException e)
                 {
                     System.out.println(dc.getTaal().getText(e.getMessage()));
-                    ConsoleApplicatie.speelSpel(dc, input);
+                    gaDoorMetSpel(dc, input);
                 }
                 catch (WrongInputException e)
                 {
                     System.out.println(dc.getTaal().getText(e.getMessage()));
+                    doorgaan = dc.getTaal().getText("ja");
                 }
             }while (doorgaan.equals(dc.getTaal().getText("ja")));
+            gaDoorMetSpel(dc, input);
         }
         catch (IllegalArgumentException e)
         {
@@ -97,6 +99,11 @@ public class UC5
         }
    }
    
+    public static void gaDoorMetSpel(DomeinController dc, Scanner input)
+    {
+        UC3.bepaalVolgendeSpeler(dc, input);
+        ConsoleApplicatie.speelSpel(dc, input);
+    }
     
 }
 

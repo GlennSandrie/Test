@@ -18,7 +18,7 @@ public class UC3
     public static void bepaalVolgendeSpeler(DomeinController dc, Scanner sc)
     {
         dc.bepaalVolgendeSpelerAanDeBeurt();
-        System.out.println(dc.getTaal().getText("volgendeSpeler") + dc.bepaalVolgendeSpelerAanDeBeurt());
+        System.out.println(dc.getTaal().getText("volgendeSpeler") + dc.geefHuidigeSpeler());
 
     }
 }
