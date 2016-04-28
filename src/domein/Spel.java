@@ -261,7 +261,20 @@ public class Spel
     {
         sb.setVrijeGangkaart(xPositie, yPositie,vrijeGangkaart);
     }
+    
+    public void geefPlaatsVrijeGangkaartIn(int xPositie, int yPositie)
+    {
+       sb.geefPlaatsVrijeGangkaart(xPositie, yPositie, vrijeGangkaart);
+       
+    }
 
+    public Richting draaiVrijeGangkaart(int keuze)
+    {
+        vrijeGangkaart.draaiVrijeGangkaart(keuze);
+        return vrijeGangkaart.richting;
+
+    }
+   
     //UC3 --> roept UC4 aan
 
    
@@ -285,19 +298,6 @@ public class Spel
             i++;
         }
         huidigeSpeler = spelers.get(volgende);
-    }
-
-    public String geefPlaatsVrijeGangkaartIn()
-    {
-        return null;
-
-    }
-
-    public Richting draaiVrijeGangkaart(int keuze)
-    {
-        vrijeGangkaart.draaiVrijeGangkaart(keuze);
-        return vrijeGangkaart.richting;
-
     }
 
     public List<String> geefMogelijkeVerplaatsRichtingen()

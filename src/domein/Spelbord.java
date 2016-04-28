@@ -5,11 +5,9 @@
  */
 package domein;
 
-import exceptions.InvalidCoordinateException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
-import utils.Coördinaat;
 import utils.Kleur;
 import utils.Richting;
 import utils.Schat;
@@ -75,7 +73,6 @@ public class Spelbord
         {
             throw new IllegalArgumentException("foutKleur");
         }
-
     }
 
     public void voegGangKaartToe(int xPositie, int yPositie, Gangkaart gk)
@@ -83,66 +80,61 @@ public class Spelbord
         spelbord[xPositie][yPositie] = gk;
     }
 
-    public void geefPlaatsVrijeGangkaart(int xPositie, int yPositie)
+    public void geefPlaatsVrijeGangkaart(int xPositie, int yPositie, Gangkaart vrijeGangkaart)
     {
-        if (!(xPositie == 1 && yPositie == 0)
-                || (xPositie == 3 && yPositie == 0)
-                || (xPositie == 5 && yPositie == 0)
-                || (xPositie == 0 && yPositie == 1)
-                || (xPositie == 0 && yPositie == 3)
-                || (xPositie == 0 && yPositie == 5)
-                || (xPositie == 1 && yPositie == 6)
-                || (xPositie == 3 && yPositie == 6)
-                || (xPositie == 5 && yPositie == 6)
-                || (xPositie == 6 && yPositie == 1)
-                || (xPositie == 6 && yPositie == 3)
-                || (xPositie == 6 && yPositie == 5))
+        
+        if (!(xPositie % 2 == 0 && yPositie % 2 == 0)&&(xPositie == 0 || xPositie == 6 || yPositie == 0 || yPositie == 6))
+        {
+            setVrijeGangkaart(xPositie, yPositie, vrijeGangkaart);
+        }        
+        else
         {
             throw new IllegalArgumentException("fouteCoordinaat");
-        } else
-        {
-            setVrijeGangkaart(xPositie, yPositie, null);
         }
+     
     }
 
-    public Gangkaart setVrijeGangkaart(int xPositie, int yPositie, Gangkaart gk)
+    public Gangkaart setVrijeGangkaart(int xPositie, int yPositie, Gangkaart vrijeGangkaart)
     {
-        Gangkaart nieuweVrijeGangkaart = gk;
-
+        Gangkaart nieuweVrijeGangkaart = vrijeGangkaart;
+        System.out.println(xPositie);
+        System.out.println(yPositie);
         if (xPositie == 0)
         {
-             nieuweVrijeGangkaart = spelbord[spelbord.length][yPositie];
-            for (int i = 6; i >= 0; i--)
+             nieuweVrijeGangkaart = spelbord[spelbord.length-1][yPositie];
+            for (int i = 5; i >= 0; i--)
             {
-                
                 spelbord[i][yPositie] = spelbord[i + 1][yPositie];
+                spelbord[0][yPositie]= vrijeGangkaart;
             }
            
         }
-        if (xPositie == spelbord.length)
+        if (xPositie == spelbord.length-1)
         {
               nieuweVrijeGangkaart = spelbord[0][yPositie];
-            for (int i = 6; i >= 0; i--)
+            for (int i = 0; i <spelbord.length; i++)
             {
-              
                 spelbord[i][yPositie] = spelbord[i - 1][yPositie];
+                spelbord[spelbord.length-1][yPositie]= vrijeGangkaart;
             }
         }
         if (yPositie == 0)
         {
-            nieuweVrijeGangkaart = spelbord[xPositie][spelbord.length];
-            for (int i = 6; i >= 0; i--)
-            {
-                
+            nieuweVrijeGangkaart = spelbord[xPositie][spelbord.length-1];
+            for (int i = 5; i >= 0; i--)
+            { 
                 spelbord[xPositie][i] = spelbord[xPositie][i + 1];
+                spelbord[xPositie][0]=vrijeGangkaart;
             }
         }
-        if (yPositie == spelbord.length)
+        if (yPositie == spelbord.length-1)
         {
-            for (int i = 6; i >= 0; i--)
+            
+            nieuweVrijeGangkaart = spelbord[xPositie][0];
+            for (int i = 0; i<spelbord.length; i++)
             {
-                nieuweVrijeGangkaart = spelbord[xPositie][0];
                 spelbord[xPositie][i] = spelbord[xPositie][i - 1];
+                spelbord[xPositie][spelbord.length-1]=vrijeGangkaart;
             }
         }
         

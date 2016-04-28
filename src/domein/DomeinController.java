@@ -148,7 +148,7 @@ public class DomeinController
     //UC4
     public void geefPlaatsVrijeGangkaart(int xPositie, int yPositie)
     {
-
+        spel.geefPlaatsVrijeGangkaartIn(xPositie, yPositie);
     }
     
     public Richting draaiVrijeGangkaart(int keuze)

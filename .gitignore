@@ -16,3 +16,4 @@ hs_err_pid*
 /vpproject/
 /manifest.mf
 /build/
+/dist/
