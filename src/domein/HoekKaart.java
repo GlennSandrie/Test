@@ -16,7 +16,8 @@ import utils.Schat;
  *
  * @author anjana
  */
-public class HoekKaart extends Gangkaart {
+public class HoekKaart extends Gangkaart
+{
 
     /**
      *
@@ -24,7 +25,8 @@ public class HoekKaart extends Gangkaart {
      * @param kleur
      * @param richting
      */
-    public HoekKaart(Schat schat, Kleur kleur, Richting richting) {
+    public HoekKaart(Schat schat, Kleur kleur, Richting richting)
+    {
         super(null, kleur, richting);
     }
 
@@ -33,7 +35,8 @@ public class HoekKaart extends Gangkaart {
      * @param schat
      * @param richting
      */
-    public HoekKaart(Schat schat, Richting richting) {
+    public HoekKaart(Schat schat, Richting richting)
+    {
         super(schat, richting);
     }
 
@@ -41,14 +44,17 @@ public class HoekKaart extends Gangkaart {
      *
      * @param richting
      */
-    public HoekKaart(Richting richting) {
+    public HoekKaart(Richting richting)
+    {
         super(richting);
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         String kaart = "";
-        switch (richting) {
+        switch (richting)
+        {
             case B:
                 kaart = String.format(
                         "xxx      xxx"
@@ -66,7 +72,7 @@ public class HoekKaart extends Gangkaart {
                         + "         xxx"
                         + "xxxxxxxxxxxx"
                         + "xxxxxxxxxxxx");
-                break;                
+                break;
             case O:
                 kaart = String.format(
                         "xxxxxxxxxxxx"
@@ -84,19 +90,22 @@ public class HoekKaart extends Gangkaart {
                         + "xxx         "
                         + "xxx      xxx"
                         + "xxx      xxx");
-                break;                
+                break;
         }
 
-        if (schat != null) {
+        if (schat != null)
+        {
             kaart = kaart.substring(0, 41) + schat.toString().charAt(0) + kaart.substring(42);
         }
         return kaart;
     }
 
     @Override
-    public List<Richting> geefVerplaatsRichtingen() {
+    public List<Richting> geefVerplaatsRichtingen()
+    {
         ArrayList<Richting> al = new ArrayList();
-        switch (richting) {
+        switch (richting)
+        {
             case B:
                 al.add(Richting.B);
                 al.add(Richting.R);

@@ -14,21 +14,25 @@ import utils.Schat;
  *
  * @author anjana
  */
-public class Tkaart extends Gangkaart {
+public class Tkaart extends Gangkaart
+{
 
     /**
      *
      * @param schat
      * @param richting
      */
-    public Tkaart(Schat schat, Richting richting) {
+    public Tkaart(Schat schat, Richting richting)
+    {
         super(schat, richting);
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         String kaart = "";
-        switch (getRichting()) {
+        switch (getRichting())
+        {
             case B:
                 kaart = String.format(
                         "xxx      xxx"
@@ -67,15 +71,18 @@ public class Tkaart extends Gangkaart {
                 break;
         }
 
-        if (schat != null) {
+        if (schat != null)
+        {
             kaart = kaart.substring(0, 41) + schat.toString().charAt(0) + kaart.substring(42);
         }
         return kaart;
     }
-    
-    public List<Richting> geefVerplaatsRichtingen() {
+
+    public List<Richting> geefVerplaatsRichtingen()
+    {
         ArrayList<Richting> al = new ArrayList();
-        switch (richting) {
+        switch (richting)
+        {
             case B:
                 al.add(Richting.B);
                 al.add(Richting.L);
@@ -98,5 +105,5 @@ public class Tkaart extends Gangkaart {
                 break;
         }
         return al;
-    }    
+    }
 }

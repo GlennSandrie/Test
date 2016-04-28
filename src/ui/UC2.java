@@ -184,9 +184,11 @@ public class UC2
     {
         geefSpelbord(dc);
         System.out.println(dc.geefHuidigeSpeler());
-        try {
+        try
+        {
             System.out.println(dc.geefDoelkaartVanHuidigeSpeler());
-        } catch (EmptyListException ex) {
+        } catch (EmptyListException ex)
+        {
             System.out.println(dc.getTaal().getText(ex.getMessage()));
         }
         System.out.println();
