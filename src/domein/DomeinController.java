@@ -1,7 +1,6 @@
 package domein;
 
 import exceptions.EmptyListException;
-import java.time.LocalDate;
 import java.util.List;
 import utils.Kleur;
 import utils.Richting;
@@ -10,6 +9,7 @@ import utils.Richting;
  *
  * @author anjana
  */
+
 public class DomeinController
 {
 
@@ -30,8 +30,9 @@ public class DomeinController
     }
 
     /**
-     *
-     * @param l
+     * stelt de taal in
+     * 
+     * @param l 
      */
     public void setTaal(String l)
     {
@@ -57,7 +58,8 @@ public class DomeinController
     }
 
     /**
-     *
+     * kies een spel uit de bestaande spellen
+     * 
      * @param naam
      */
     public void kiesSpel(String naam)
@@ -65,6 +67,10 @@ public class DomeinController
         spel = bestaandeSpellen.kiesSpel(naam);
     }
 
+    /**
+     * 
+     * @return naam van het spel
+     */
     public String getSpelnaam()
     {
         return spel.getNaam();
@@ -80,11 +86,21 @@ public class DomeinController
         return geregistreerdeSpelers.geefSpelersVanSpel(spelId);
     }
 
+    /**
+     *
+     * @param speler
+     * @return geboortejaar van de reeds geregistreerde spelers
+     */
     public int geefGeboortejaar(String speler)
     {
         return geregistreerdeSpelers.geefGeboortejaar(speler);
     }
 
+    /**
+     *
+     * @param speler
+     * @return kleur van de geregistreerde spelers
+     */
     public String geefKleur(String speler)
     {
         return geregistreerdeSpelers.geefKleur(speler);
@@ -92,10 +108,11 @@ public class DomeinController
 
     // UC2
     /**
-     *
-     * @param naam
-     * @param geboortejaar
-     * @param kleur
+     * registreert een nieuwe speler met een naam, geboortejaar en een kleur
+     * 
+     * @param naam de naam mag enkel letters bevatten, minimum 2 karakters
+     * @param geboortejaar speler mag tussen de 7 en 90 jaar zijn
+     * @param kleur kleur is blauw, geel, rood of groen
      */
     public void registreer(String naam, int geboortejaar, Kleur kleur)
     {
@@ -104,42 +121,75 @@ public class DomeinController
 
     }
 
+    /**
+     * maakt een nieuw spel aan met een naam
+     * @param naam moet minimum 8 tekens lang zijn, 
+     *      alleen alfanumetieke karakters, exact 2 cijfers
+     */
     public void maakSpel(String naam)
     {
         spel = new Spel(naam);
     }
 
+    /**
+     * vraagt aan spel om het spel volledig te initialiseren
+     */
     public void initialiseerVolledigSpel()
     {
         spel.initialiseerVolledigSpel();
     }
 
+    /**
+     *
+     * @returns spelbord
+     */
     public String[][] geefSpel()
     {
         return spel.geefSpel();
     }
 
+    /**
+     * geeft de overblijvende doelkaarten van de speler
+     * 
+     * @return @throws EmptyListException als de speler geen doelkaarten meer heeft
+     */
     public String geefDoelkaartVanHuidigeSpeler() throws EmptyListException
     {
         return spel.geefDoelkaartVanSpeler();
     }
 
+    /**
+     *  
+     * @return vrijeGangkaart
+     */
     public String geefVrijeGangkaart()
     {
         return spel.geefVrijeGangkaart();
     }
 
+    /**
+     *
+     * @return hoekkaart, rechtewegkaart of tkaart
+     */
     public Gangkaart geefTypeVrijeGangkaart()
     {
         return spel.getVrijeGangkaart();
     }
 
+    /**
+     * vraagt aan spel om de naam van de huidige speler te bepalen
+     * 
+     * @return de naam van de huidige speler
+     */
     public String geefHuidigeSpeler()
     {
         return spel.geefHuidigeSpeler().getNaam();
     }
 
     //UC3
+    /**
+     * vraagt aan spel om de volgende speler te bepalen
+     */
     public void bepaalVolgendeSpelerAanDeBeurt()
     {
 
@@ -147,42 +197,88 @@ public class DomeinController
     }
 
     //UC4
+    /**
+     * vraagt aan spel de coordinaten van de vrije gangkaart
+     * 
+     * @param xPositie x coordinaat op het spelbord (0-6)    
+     * @param yPositie y coordinaat op het spelbord (0-6)
+     */
     public void geefPlaatsVrijeGangkaart(int xPositie, int yPositie)
     {
         spel.geefPlaatsVrijeGangkaartIn(xPositie, yPositie);
     }
 
+    /**
+     * 
+     * @param keuze
+     * @return gekozen richting van de vrijeGangkaart
+     */
     public Richting draaiVrijeGangkaart(int keuze)
     {
         return spel.draaiVrijeGangkaart(keuze);
     }
 
+    /**
+     * vraagt aan spel om de vrijeGangkaart toe te voegen aan het spelbord
+     * op de gekozen x en y coordinaat
+     * 
+     * @param xPositie x coordinaat op het spelbord (0-6)
+     * @param yPositie y coordinaat op het spelbord (0-6)
+     */
     public void voegVrijeGangkaartToeAanSpelbord(int xPositie, int yPositie)
     {
         spel.voegVrijeGangkaartToeAanSpelbord(xPositie, yPositie);
     }
 
     //UC5
+    /**
+     * 
+     * @return de mogelijke richtingen waar de speler zicht kan verplaatsen
+     */
     public List<String> geefMogelijkeVerplaatsRichtingen()
     {
         return spel.geefMogelijkeVerplaatsRichtingen();
     }
 
+    /**
+     * vraagt aan spel op de speler te verplaatsen naar de gewenste
+     * x en y coordinaat
+     * 
+     * @param xPositie x coordinaat op het spelbord (0-6)
+     * @param yPositie y coordinaat op het spelbord (0-6)
+     */
     public void verplaatsSpeler(int xPositie, int yPositie)
     {
         spel.verplaatsSpeler(xPositie, yPositie);
     }
-
+    
+    /**
+     * 
+     * @return indexen van de gangkaart waar de speler zich op dit
+     * moment op bevindt
+     */
     public int[] geefIndexenHuidigeGangkaart()
     {
         return spel.geefIndexenHuidigeGangkaart();
     }
 
+    /**
+     * controleert of de schat die de speler op dat moment zoekt dezelfde is
+     * als die op de gangkaart waar hij zich op bevindt
+     * 
+     * @return true of false afhangende van of de doelkaart overeenkomt
+     * met de schat op de gangkaart
+     * @throws EmptyListException als de doelkaarten van de speler op zijn
+     */
     public boolean controleerOvereenkomendeSchat() throws EmptyListException
     {
         return spel.controleerOvereenkomendeSchat();
     }
 
+    /**
+     * vraagt aan spel om de huidige doelkaart te verwijderen als de schat
+     * gevonden is
+     */
     public void verwijderHuidigeDoelkaart()
     {
         spel.verwijderHuidigeDoelkaart();
