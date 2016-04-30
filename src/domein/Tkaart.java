@@ -18,15 +18,23 @@ public class Tkaart extends Gangkaart
 {
 
     /**
+     * initialiseert de schat en richting van de tkaart a.d.h.v. 
+     * superklasse Gangkaart
      *
-     * @param schat
-     * @param richting
+     * @param schat kan 1 van de 24 schatten zijn
+     * @param richting kan boven, links, onder of rechts zijn
      */
     public Tkaart(Schat schat, Richting richting)
     {
         super(schat, richting);
     }
 
+   
+    /**
+     * maakt van een tkaart, een String
+     * 
+     * @return String van een tkaart
+     */
     @Override
     public String toString()
     {
@@ -78,6 +86,11 @@ public class Tkaart extends Gangkaart
         return kaart;
     }
 
+    /**
+     * 
+     * @return lijst van richtingen waarin je je kan verplaatsen
+     */
+    @Override
     public List<Richting> geefVerplaatsRichtingen()
     {
         ArrayList<Richting> al = new ArrayList();

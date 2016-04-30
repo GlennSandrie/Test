@@ -7,7 +7,6 @@ package domein;
 
 import java.util.ArrayList;
 import java.util.List;
-import utils.Coördinaat;
 import utils.Kleur;
 import utils.Richting;
 import utils.Schat;
@@ -19,30 +18,17 @@ import utils.Schat;
 public class Gangkaart
 {
 
-    /**
-     *
-     */
     protected Schat schat;
     protected Kleur kleur;
     protected Richting richting;
     protected List<Speler> spelers;
 
-
-   //private Coördinaat coördinaat;
     /**
+     * initialiseer de kleur, riching en schat van de gangkaart
      *
-     * @param coördinaat
-     */
-    /*  public Gangkaart( Coördinaat coördinaat)
-     {
-       
-     this.coördinaat = coördinaat;
-     }*/
-    /**
-     *
-     * @param schat
-     * @param kleur
-     * @param richting
+     * @param schat kan 1 van de 24 schatten zijn
+     * @param kleur kan rood, geel, groen of blauw zijn
+     * @param richting kan boven, links, onder, rechts zijn
      */
     public Gangkaart(Schat schat, Kleur kleur, Richting richting)
     {
@@ -53,9 +39,11 @@ public class Gangkaart
     }
 
     /**
+     * initialiseert de schat en richting aan de hand van de volledige
+     * constructor
      *
-     * @param schat
-     * @param richting
+     * @param schat kan 1 van de 24 schatten zijn
+     * @param richting kan boven, links, onder, rechts zijn
      */
     public Gangkaart(Schat schat, Richting richting)
     {
@@ -63,71 +51,98 @@ public class Gangkaart
     }
 
     /**
+     * intitialiseerd de richting aan de hand van de volledige constructor
      *
-     * @param richting
+     * @param richting kan boven, links, onder, rechts zijn
      */
     public Gangkaart(Richting richting)
     {
         this(null, null, richting);
     }
 
+    /**
+     *
+     * @return mogelijke kleur van de gangkaart
+     */
     public Kleur getKleur()
     {
         return kleur;
     }
 
+    /**
+     *
+     * @return lijst van spelers die op de gangkaart staat
+     */
     public List<Speler> getSpelers()
     {
         return spelers;
     }
 
+    /**
+     *
+     * @return richting van de gangkaart
+     */
     public Richting getRichting()
     {
         return richting;
     }
 
+    /**
+     * voegt een speler toe aan een gangkaart
+     *
+     * @param speler
+     */
     public void voegSpelerToe(Speler speler)
     {
         this.spelers.add(speler);
     }
 
+    /**
+     * verwijdert een speler van een gangkaart
+     *
+     * @param speler
+     */
     public void verwijderSpeler(Speler speler)
     {
         this.spelers.remove(speler);
     }
-    
+
+    /**
+     * bepaalt aan de hand van een keuze welke richting je de gangkaart wilt
+     * draaien
+     *
+     * @param keuze
+     * @return richting die je gekozen hebt om de vrijeGangkaart te draaien
+     */
     public Richting draaiVrijeGangkaart(int keuze)
     {
-        if(keuze==1)
+        if (keuze == 1)
         {
-            richting= Richting.B;
+            richting = Richting.B;
+        } else if (keuze == 2)
+        {
+            richting = Richting.R;
+        } else if (keuze == 3)
+        {
+            richting = Richting.O;
+        } else if (keuze == 4)
+        {
+            richting = Richting.L;
         }
-        else if(keuze==2)
-                {
-                    richting= Richting.R;
-                }
-        else if(keuze==3)
-                {
-                    richting= Richting.O;
-                }
-        else if(keuze==4)
-                {
-                    richting= Richting.L;
-                }
         return richting;
     }
-    
-    public List<Richting> geefVerplaatsRichtingen(){
+
+    /**
+     *
+     * @return lijst van richtingen waarin de speler zich kan verplaatsen
+     */
+    public List<Richting> geefVerplaatsRichtingen()
+    {
         ArrayList<Richting> al = new ArrayList();
-        for (Richting r : Richting.values()){
+        for (Richting r : Richting.values())
+        {
             al.add(r);
         }
         return al;
     }
-    /*
-     *
-     *Tijdelijke methode om spel af te printen op het scherm
-     */
-
-
 }

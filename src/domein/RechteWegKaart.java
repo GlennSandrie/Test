@@ -16,13 +16,21 @@ import utils.Richting;
 public class RechteWegKaart extends Gangkaart {
 
     /**
+     * initialiseert de richting van de rechtewegkaart a.d.h.v.
+     * de superklasse Gangkaart
      *
-     * @param richting
+     * @param richting kan boven, links, onder of rechts zijn
      */
     public RechteWegKaart(Richting richting) {
         super(richting);
     }
-
+ 
+    /**
+     * maakt van een rechtewegkaart, een String
+     * 
+     * @return String van een rechtewegkaart
+     */
+    @Override
     public String toString() {
         String kaart = "";
         switch (getRichting()) {
@@ -70,6 +78,11 @@ public class RechteWegKaart extends Gangkaart {
         return kaart;
     }
     
+    /**
+     * 
+     * @return lijst van richtingen waarin je je kan verplaatsen
+     */
+    @Override
     public List<Richting> geefVerplaatsRichtingen() {
         ArrayList<Richting> al = new ArrayList();
         switch (richting) {

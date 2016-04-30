@@ -5,7 +5,6 @@
  */
 package domein;
 
-import exceptions.WrongInputException;
 import java.util.ArrayList;
 import java.util.List;
 import utils.Kleur;
@@ -20,10 +19,12 @@ public class HoekKaart extends Gangkaart
 {
 
     /**
-     *
-     * @param schat
-     * @param kleur
-     * @param richting
+     * initialiseert de schat, kleur en richting van de hoekkaart a.d.h.v.
+     * de superklasse Gangkaart
+     * 
+     * @param schat kan 1 van de 24 schatten zijn
+     * @param kleur kan rood, geel, groen of blauw zijn
+     * @param richting kan boven, links, onder of rechts zijn
      */
     public HoekKaart(Schat schat, Kleur kleur, Richting richting)
     {
@@ -31,9 +32,11 @@ public class HoekKaart extends Gangkaart
     }
 
     /**
+     * initialiseert de schat en richting van de hoekkaart a.d.h.v de 
+     * superklasse Gangkaart
      *
-     * @param schat
-     * @param richting
+     * @param schat kan 1 van de 24 schatten zijn
+     * @param richting kan boven, links, onder of rechts zijn
      */
     public HoekKaart(Schat schat, Richting richting)
     {
@@ -41,14 +44,20 @@ public class HoekKaart extends Gangkaart
     }
 
     /**
-     *
-     * @param richting
+     * initialiseert de richting van de hoekkaart a.d.h.v. de superklasse Gangkaart
+     * 
+     * @param richting kan boven, links, onder of rechts zijn
      */
     public HoekKaart(Richting richting)
     {
         super(richting);
     }
 
+    /**
+     * maakt van een hoekkaart, een String
+     * 
+     * @return String van een hoekkaart
+     */
     @Override
     public String toString()
     {
@@ -100,6 +109,10 @@ public class HoekKaart extends Gangkaart
         return kaart;
     }
 
+    /**
+     * 
+     * @return lijst van richtingen waarin je je kan verplaatsen
+     */
     @Override
     public List<Richting> geefVerplaatsRichtingen()
     {
