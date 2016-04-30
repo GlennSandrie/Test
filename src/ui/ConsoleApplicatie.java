@@ -15,7 +15,7 @@ public class ConsoleApplicatie {
     private DomeinController dc;
 
     /**
-     *
+     * constructor, initialiseert de domeincontroller
      * @param dc
      */
     public ConsoleApplicatie(DomeinController dc) {
@@ -23,7 +23,7 @@ public class ConsoleApplicatie {
     }
 
     /**
-     *
+     * 
      */
     public void start() {
         Scanner input = new Scanner(System.in);

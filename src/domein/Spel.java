@@ -6,6 +6,7 @@
 package domein;
 
 import exceptions.EmptyListException;
+import exceptions.InvalidNameException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -38,6 +39,7 @@ public class Spel
      */
     public Spel(String naam)
     {
+        controleerSpelNaam(naam);
         this.naam = naam;
         sb = new Spelbord();
     }
@@ -59,6 +61,7 @@ public class Spel
      */
     public void setNaam(String naam)
     {
+        controleerSpelNaam(naam);
         this.naam = naam;
     }
 
@@ -72,6 +75,15 @@ public class Spel
     }
 
     //UC2
+    
+    private boolean controleerSpelNaam(String naam)
+    {
+        if(!(naam.matches("^(\\d{2})([a-zA-Z]){8,}")))
+        {
+            throw new InvalidNameException("fouteSpelnaam");
+        }
+        return true;
+    }
     /**
      * initialiseert het volledig spel door de gangkaarten te maken en op het
      * spelbord te plaatesn, de spelers op de startpositie te plaatsen, de

@@ -25,9 +25,27 @@ public class UC2
 
     public static void maakNieuwSpel(DomeinController dc, Scanner input)
     {
-        String naam;
-        System.out.println(dc.getTaal().getText("nieuwSpel"));
-        naam = input.nextLine();
+        String naam = "";
+        boolean vlag2 = true;
+      // do
+      //  {
+      //      try
+      //      {
+                System.out.println(dc.getTaal().getText("nieuwSpel"));
+                naam = input.nextLine();
+      //          if (!(naam.matches("^[a-zA-Z]{8,}$")))
+      //          {
+      //              throw new InvalidNameException("fouteSpelnaam");
+      //          } else
+      //          {
+      //              vlag2 = false;
+      //          }
+      //      } catch (InvalidNameException e)
+      //      {
+      //          System.out.println(dc.getTaal().getText("fouteSpelnaam"));
+      //      }
+      //  } while (vlag2=!false);
+
         dc.maakSpel(naam);
         int aantal = 0;
         boolean vlag = true;
@@ -37,7 +55,6 @@ public class UC2
             {
                 System.out.println(dc.getTaal().getText("aantalSpelers"));
                 aantal = input.nextInt();
-                //input.nextLine();
                 if (!(aantal == 2 || aantal == 3 || aantal == 4))
                 {
                     throw new WrongInputException("aantalSpelersFout");
@@ -79,7 +96,7 @@ public class UC2
             {
                 System.out.println(dc.getTaal().getText("spelerNaam"));
                 naam = input.nextLine();
-               
+
                 if (!(naam.matches("^[a-zA-Z]{2,}$")))
                 {
                     throw new InvalidNameException("fouteNaam");
@@ -87,7 +104,7 @@ public class UC2
                 {
                     verder = false;
                 }
-                
+
             } catch (InvalidNameException e)
             {
                 System.out.println(dc.getTaal().getText("fouteNaam"));
@@ -160,14 +177,14 @@ public class UC2
         }
         input.nextLine();
     }
-    
+
     public static void geefSpelbord(DomeinController dc)
     {
         for (int i = 0; i < dc.geefSpel().length; i++)
         {
             int begin = 0;
             int einde = 11;
-            
+
             while (begin < 72)
             {
                 for (int j = 0; j < dc.geefSpel()[i].length; j++)
@@ -182,6 +199,7 @@ public class UC2
 
         System.out.println();
     }
+
     public static void geefVolledigSpel(DomeinController dc)
     {
         geefSpelbord(dc);
