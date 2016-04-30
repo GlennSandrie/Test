@@ -16,7 +16,7 @@ import utils.Richting;
 public class RechteWegKaart extends Gangkaart {
 
     /**
-     * initialiseert de richting van de rechtewegkaart a.d.h.v.
+     * constructor, initialiseert de richting van de rechtewegkaart a.d.h.v.
      * de superklasse Gangkaart
      *
      * @param richting kan boven, links, onder of rechts zijn

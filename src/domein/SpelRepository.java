@@ -17,7 +17,7 @@ public class SpelRepository
     private final SpelMapper sm;
 
     /**
-     *
+     * constructor, ken de SpelMapper
      */
     public SpelRepository() 
     {
@@ -26,7 +26,7 @@ public class SpelRepository
     
     /**
      *
-     * @return
+     * @return lijst van spelnamen
      */
     public List<String> geefSpelnamen()
     {
@@ -36,7 +36,7 @@ public class SpelRepository
     /**
      *
      * @param naam
-     * @return
+     * @return spel
      */
     public Spel kiesSpel(String naam)
     {

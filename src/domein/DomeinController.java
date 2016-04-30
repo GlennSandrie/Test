@@ -20,7 +20,7 @@ public class DomeinController
     private Speler speler;
 
     /**
-     * constructor van de Domeincontroller Er word een object van de
+     * constructor van de Domeincontroller. Er word een object van de
      * SpelRepository en SpelerRepository geinitialiseerd
      */
     public DomeinController()

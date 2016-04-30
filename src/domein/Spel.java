@@ -5,7 +5,6 @@
  */
 package domein;
 
-//import exceptions.InvalidCoordinateException;
 import exceptions.EmptyListException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +21,6 @@ import utils.Schat;
 public class Spel
 {
 
-    //attributen
     private final List<Speler> spelers = new ArrayList<>();
     private String naam;
     private final Spelbord sb;
@@ -32,9 +30,11 @@ public class Spel
     private Speler huidigeSpeler;
 
     /**
-     * constructor
+     * constructor, initialiseert de naam van het spel en maakt een nieuw
+     * spelbord aan
      *
-     * @param naam
+     * @param naam naam moet minstens 8 alfanummerieke tekens zijn, 
+     * met exact 2 cijfers
      */
     public Spel(String naam)
     {
@@ -42,30 +42,40 @@ public class Spel
         sb = new Spelbord();
     }
 
-    //controles + getters + setters
     /**
-     *
-     * @return
+     * 
+     * @return naam van het spel, moet minstens 8 alfanummerieke tekens zijn, 
+     * met exact 2 cijfers
      */
     public String getNaam()
     {
         return naam;
     }
 
+    /**
+     * stelt de naam van het spel in
+     * 
+     * @param naam naam is minstens 8 alfanummerieke tekens, met exact 2 cijfers
+     */
     public void setNaam(String naam)
     {
         this.naam = naam;
     }
 
+    /**
+     *
+     * @return vrijeGangkaart
+     */
     public Gangkaart getVrijeGangkaart()
     {
         return vrijeGangkaart;
     }
 
     //UC2
-    //methodes
     /**
-     *
+     * initialiseert het volledig spel door de gangkaarten te maken en op het
+     * spelbord te plaatesn, de spelers op de startpositie te plaatsen, de
+     * doelkaarten te maken en te verdelen, de speler aan de beurt te bepalen
      */
     public void initialiseerVolledigSpel()
     {
@@ -76,14 +86,13 @@ public class Spel
     }
 
     /**
-     *
+     * gangkaarten die niet vastliggen op het spelbord, worden geschud en op het
+     * spelbord geplaatst
      */
     public void maakGangkaartenEnPlaatsOpSpelbord()
     {
-        /**
-         * kaarten die niet vast staan op het spelbord
-         */
-
+        //kaarten die niet vast staan op het spelbord
+        
         Random r = new Random();
         for (int i = 0; i < 10; i++)
         {
@@ -131,6 +140,9 @@ public class Spel
         vrijeGangkaart = losseKaarten.get(losseKaarten.size() - 1);
     }
 
+    /**
+     * plaatst de spelers a.d.h.v. hun kleur op hun startpositie
+     */
     public void plaatsSpelersOpStartPositie()
     {
         Kleur kleurSpeler;
@@ -141,6 +153,9 @@ public class Spel
         }
     }
 
+    /**
+     * bepaal de eerste speler aan de beurt
+     */
     public void bepaalSpelerAanDeBeurt()
     {
         int hoogsteGeboortejaar = spelers.get(0).getGeboortejaar();
@@ -164,12 +179,18 @@ public class Spel
         this.huidigeSpeler = spelers.get(index);
     }
 
-//    
+    /**
+     * schrud de losse gangkaarten
+     */
     public void schudLosseKaarten()
     {
         Collections.shuffle(losseKaarten);
     }
 
+    /**
+     * plaatst de losse gangkaarten op het spelbord (wordt aangeroepen door 
+     * maakGangkaartenEnPlaatsOpSpelbord)
+     */
     public void plaatsLosseKaartenOpSpelbord()
     {
         int index = 0;
@@ -186,6 +207,9 @@ public class Spel
         }
     }
 
+    /**
+     * maakt doelkaarten met een schat en verdeelt die onder de spelers
+     */
     public void maakDoelkaartenEnVerdeelOnderSpelers()
     {
         for (int i = 0; i < 24; i++)
@@ -203,11 +227,19 @@ public class Spel
         }
     }
 
+    /**
+     * schud de 24 doelkaarten
+     */
     public void schudDoelkaarten()
     {
         Collections.shuffle(doelkaarten);
     }
 
+    /**
+     * overloopt het spel en maakt er een String van
+     * 
+     * @return spel
+     */
     public String[][] geefSpel()
     {
         String[][] spel = new String[7][7];
@@ -222,27 +254,52 @@ public class Spel
         return spel;
     }
 
+    /**
+     * 
+     * @return huidige speler
+     */
     public Speler geefHuidigeSpeler()
     {
         return huidigeSpeler;
     }
 
+    /**
+     * geeft de huidige doelkaart (te zoeken schat) van de speler aan de beurt
+     * 
+     * @return huidige doelkaart van de huidige speler
+     * @throws EmptyListException als de doelkaarten op zijn
+     */
     public String geefDoelkaartVanSpeler() throws EmptyListException
     {
         return huidigeSpeler.geefSchatHuidigeDoelkaart().getNaam();
     }
 
+    /**
+     * 
+     * @return vrijeGangkaart
+     */
     public String geefVrijeGangkaart()
     {
         return vrijeGangkaart.toString();
     }
 
+    /**
+     * controleert of de kleur al toegekend is aan een andere speler,
+     * ander krijgt de nieuweSpeler de kleur
+     * 
+     * @param nieuweSpeler 
+     */
     public void voegSpelerToe(Speler nieuweSpeler)
     {
         controleerKleur(nieuweSpeler.getKleur());
         spelers.add(nieuweSpeler);
     }
 
+    /**
+     * controleert of de kleur al ingenomen is door een speler
+     * 
+     * @param kleur 
+     */
     private void controleerKleur(Kleur kleur)
     {
         if (!spelers.isEmpty())
@@ -257,29 +314,47 @@ public class Spel
         }
     }
     //UC4
-
+    /**
+     * voegt de vrijeGangkaart toe aan het spelbord op de gekozen x en y positie
+     * 
+     * @param xPositie x coordinaat van de gangkaart (0-6)
+     * @param yPositie y coordinaat van de gangkaart (0-6)
+     */
     public void voegVrijeGangkaartToeAanSpelbord(int xPositie, int yPositie)
     {
-        sb.setVrijeGangkaart(xPositie, yPositie,vrijeGangkaart);
-    }
-    
-    public void geefPlaatsVrijeGangkaartIn(int xPositie, int yPositie)
-    {
-       sb.geefPlaatsVrijeGangkaart(xPositie, yPositie, vrijeGangkaart);
-       
+        sb.setVrijeGangkaart(xPositie, yPositie, vrijeGangkaart);
     }
 
+    /**
+     * kies de plaats waar je de gangkaart wilt inschuiven
+     * 
+     * @param xPositie x coordinaat van de gangkaart (0-6)
+     * @param yPositie y coordinaat van de gangkaart (0-6)
+     */
+    public void geefPlaatsVrijeGangkaartIn(int xPositie, int yPositie)
+    {
+        sb.geefPlaatsVrijeGangkaart(xPositie, yPositie, vrijeGangkaart);
+
+    }
+
+    /**
+     * 
+     * @param keuze
+     * @return gekozen richting van de vrijeGangkaart
+     */
     public Richting draaiVrijeGangkaart(int keuze)
     {
         vrijeGangkaart.draaiVrijeGangkaart(keuze);
         return vrijeGangkaart.richting;
 
     }
-   
-    //UC3 --> roept UC4 aan
 
-   
-    public void bepaalVolgendeSpelerAanDeBeurt() {
+    //UC3 --> roept UC4 aan
+    /**
+     * bepaalt de volgende speler aan de beurt aan de hand van de huidige speler
+     */
+    public void bepaalVolgendeSpelerAanDeBeurt()
+    {
 
         int volgende = 0, i = 0;
         for (Speler s : spelers)
@@ -301,26 +376,48 @@ public class Spel
         huidigeSpeler = spelers.get(volgende);
     }
 
+    /**
+     * 
+     * @return lijst van de mogelijke richtingen waarin de speler zich kan verplaatsen
+     */
     public List<String> geefMogelijkeVerplaatsRichtingen()
     {
         return sb.geefMogelijkeVerplaatsRichtingen(huidigeSpeler);
     }
 
+    /**
+     * 
+     * @param xPositie x coordinaat op het spelbord (0-6)
+     * @param yPositie y coordinaat op het spelbord (0-6)
+     */
     public void verplaatsSpeler(int xPositie, int yPositie)
     {
         sb.verplaatsSpeler(xPositie, yPositie, huidigeSpeler);
     }
 
+    /**
+     * 
+     * @return coordinaten van de huidige gangkaart waar de speler zich op bevindt
+     */
     public int[] geefIndexenHuidigeGangkaart()
     {
         return sb.geefIndexenHuidigeGangkaart(huidigeSpeler);
     }
 
+    /**
+     * 
+     * @return true of false, naargelang de schat van de huidige gangkaart overeen 
+     * komt met de te zoeken schat van de huidige speler
+     * @throws EmptyListException als alle schatten gevonden zijn
+     */
     public boolean controleerOvereenkomendeSchat() throws EmptyListException
     {
         return sb.geefSchatHuidigeGangkaart(huidigeSpeler) == huidigeSpeler.geefSchatHuidigeDoelkaart();
     }
 
+    /**
+     * verwijdert de huidige doelkaart als de schat gevonden is
+     */
     public void verwijderHuidigeDoelkaart()
     {
         huidigeSpeler.verwijderHuidigeDoelkaart();

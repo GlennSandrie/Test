@@ -24,7 +24,7 @@ public class Gangkaart
     protected List<Speler> spelers;
 
     /**
-     * initialiseer de kleur, riching en schat van de gangkaart
+     * constructor, initialiseer de kleur, riching en schat van de gangkaart
      *
      * @param schat kan 1 van de 24 schatten zijn
      * @param kleur kan rood, geel, groen of blauw zijn

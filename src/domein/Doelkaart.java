@@ -17,7 +17,7 @@ public class Doelkaart
     private Schat schat;
 
     /**
-     * initialiseert de schat op de doelkaarten
+     * constructor, initialiseert de schat op de doelkaarten
      * 
      * @param schat 
      */

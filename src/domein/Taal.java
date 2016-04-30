@@ -12,7 +12,8 @@ public class Taal {
 	private final ResourceBundle resourceBundle;
 	
     /**
-     *
+     * constructor, stelt de juiste taal in
+     * 
      * @param l
      */
     public Taal (String l){
@@ -25,7 +26,7 @@ public class Taal {
     /**
      *
      * @param key
-     * @return
+     * @return de juiste tekst in de juiste gekozen taal
      */
     public String getText(String key){
 		return resourceBundle.getString(key);

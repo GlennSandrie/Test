@@ -18,7 +18,7 @@ public class Tkaart extends Gangkaart
 {
 
     /**
-     * initialiseert de schat en richting van de tkaart a.d.h.v. 
+     * constructor, initialiseert de schat en richting van de tkaart a.d.h.v. 
      * superklasse Gangkaart
      *
      * @param schat kan 1 van de 24 schatten zijn

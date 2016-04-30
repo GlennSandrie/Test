@@ -22,7 +22,8 @@ public class Spelbord
     private Gangkaart[][] spelbord = new Gangkaart[7][7];
 
     /**
-     *
+     * constructor, zet de vaste gangkaarten op het spelbord, kleur, richting en
+     * schat ingesteld
      */
     public Spelbord()
     {
@@ -47,13 +48,19 @@ public class Spelbord
 
     /**
      *
-     * @return
+     * @return spelbord
      */
     public Gangkaart[][] geefSpelbord()
     {
         return spelbord;
     }
 
+    /**
+     * zet de speler op een hoekkaart die overeenkomt met zijn kleur
+     *
+     * @param kleur kan rood, geel, groen of blauw zijn
+     * @param speler
+     */
     public void zetSpelerOpHoekKaart(Kleur kleur, Speler speler)
     {
 
@@ -75,11 +82,25 @@ public class Spelbord
         }
     }
 
+    /**
+     * voegt een gangkaart toe op een bepaalde plaats op het spelbord
+     *
+     * @param xPositie x coordinaat van de gangkaart op het spelbord (0-6)
+     * @param yPositie y coordinaat van de gangkaart op het spelbord (0-6)
+     * @param gk gangkaart
+     */
     public void voegGangKaartToe(int xPositie, int yPositie, Gangkaart gk)
     {
         spelbord[xPositie][yPositie] = gk;
     }
 
+    /**
+     * controleert of je op die positie mag inschuiven
+     * 
+     * @param xPositie x coordinaat van de gangkaart op het spelbord (0-6)
+     * @param yPositie y coordinaat van de gangkaart op het spelbord (0-6)
+     * @param vrijeGangkaart
+     */
     public void geefPlaatsVrijeGangkaart(int xPositie, int yPositie, Gangkaart vrijeGangkaart)
     {
 
@@ -93,6 +114,16 @@ public class Spelbord
 
     }
 
+    /**
+     * stelt de nieuwe posities van de gangkaarten in na inschuiven van de losse
+     * gangkaart,
+     * stelt een nieuwe vrije gangkaart in
+     * 
+     * @param xPositie
+     * @param yPositie
+     * @param vrijeGangkaart
+     * @return 
+     */
     public Gangkaart setVrijeGangkaart(int xPositie, int yPositie, Gangkaart vrijeGangkaart)
     {
         Gangkaart nieuweVrijeGangkaart = vrijeGangkaart;
@@ -103,7 +134,7 @@ public class Spelbord
             nieuweVrijeGangkaart = spelbord[spelbord.length - 1][yPositie];
             for (int i = 6; i > 0; i--)
             {
-                spelbord[i][yPositie] = spelbord[i-1][yPositie];
+                spelbord[i][yPositie] = spelbord[i - 1][yPositie];
             }
             spelbord[0][yPositie] = vrijeGangkaart;
 
@@ -116,23 +147,23 @@ public class Spelbord
                 spelbord[i][yPositie] = spelbord[i - 1][yPositie];
             }
             spelbord[spelbord.length - 1][yPositie] = vrijeGangkaart;
-           
+
         }
         if (yPositie == 0)
         {
             nieuweVrijeGangkaart = spelbord[xPositie][spelbord.length - 1];
             for (int i = 6; i > 0; i--)
             {
-                spelbord[xPositie][i-1] = spelbord[xPositie][i];
+                spelbord[xPositie][i - 1] = spelbord[xPositie][i];
             }
             spelbord[xPositie][0] = vrijeGangkaart;
         }
         if (yPositie == spelbord.length - 1)
         {
             nieuweVrijeGangkaart = spelbord[xPositie][0];
-            for (int i = 1; i <=6; i++)
+            for (int i = 1; i <= 6; i++)
             {
-                spelbord[xPositie][i] = spelbord[xPositie][i-1];
+                spelbord[xPositie][i] = spelbord[xPositie][i - 1];
             }
             spelbord[xPositie][spelbord.length - 1] = vrijeGangkaart;
         }
@@ -140,6 +171,11 @@ public class Spelbord
         return nieuweVrijeGangkaart;
     }
 
+    /**
+     * 
+     * @param speler
+     * @return indexen van de huidige gangkaart, waar de speler op staat
+     */
     public int[] geefIndexenHuidigeGangkaart(Speler speler)
     {
         int[] indexen = new int[2];
@@ -160,6 +196,11 @@ public class Spelbord
         return indexen;
     }
 
+    /**
+     * 
+     * @param speler
+     * @return lijst van de mogelijke richtingen waarin de speler zich kan verplaatsen
+     */
     public List<String> geefMogelijkeVerplaatsRichtingen(Speler speler)
     {
         int x = geefIndexenHuidigeGangkaart(speler)[0];
@@ -220,6 +261,12 @@ public class Spelbord
         return resultaat;
     }
 
+    /**
+     * verplaatst de speler naar de opgegeven coordinaten indien mogelijk
+     * @param xPositie x coordinaat van de gangkaart op het spelbord (0-6)
+     * @param yPositie y coordinaat van de gangkaart op het spelbord (0-6)
+     * @param speler 
+     */
     public void verplaatsSpeler(int xPositie, int yPositie, Speler speler)
     {
         Gangkaart huidigeGangkaart = spelbord[geefIndexenHuidigeGangkaart(speler)[0]][geefIndexenHuidigeGangkaart(speler)[1]];
@@ -227,6 +274,12 @@ public class Spelbord
         spelbord[xPositie][yPositie].voegSpelerToe(speler);
     }
 
+    /**
+     * geeft de schat van de kaart waar de speler op staat
+     * 
+     * @param speler
+     * @return schat van de huidige kaart
+     */
     public Schat geefSchatHuidigeGangkaart(Speler speler)
     {
         int[] plaatsHG = geefIndexenHuidigeGangkaart(speler);

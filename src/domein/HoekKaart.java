@@ -19,7 +19,7 @@ public class HoekKaart extends Gangkaart
 {
 
     /**
-     * initialiseert de schat, kleur en richting van de hoekkaart a.d.h.v.
+     * constructor, initialiseert de schat, kleur en richting van de hoekkaart a.d.h.v.
      * de superklasse Gangkaart
      * 
      * @param schat kan 1 van de 24 schatten zijn

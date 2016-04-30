@@ -18,7 +18,7 @@ public class SpelerRepository
     private SpelerMapper sm;
     
     /**
-     *
+     * constructor, kent de SpelerMapper
      */
     public SpelerRepository()
     {
@@ -28,7 +28,7 @@ public class SpelerRepository
     /**
      *
      * @param spelId
-     * @return
+     * @return lijst van de spelId's van de spelers van een spel
      */
     public List<String> geefSpelersVanSpel(String spelId)
     {
@@ -36,7 +36,7 @@ public class SpelerRepository
     }
     
     /**
-     *
+     * registreerd een speler door de SpelerMapper
      * @param speler
      */
     public void registreerSpeler(Speler speler)
@@ -44,11 +44,21 @@ public class SpelerRepository
        sm.registreerSpeler(speler);
     }
     
+    /**
+     * 
+     * @param speler
+     * @return geboortejaar van een speler
+     */
     public int geefGeboortejaar(String speler)
     {
         return sm.geefGeboortejaar(speler);
     }
     
+    /**
+     * 
+     * @param speler
+     * @return kleur van een speler
+     */
     public String geefKleur(String speler)
     {
         return sm.geefKleur(speler);
