@@ -88,7 +88,7 @@ public class Speler
      */
     private boolean controleerNaam(String gebruikersnaam)
     {
-        if (!gebruikersnaam.matches("^[a-zA-Z].{1,}$"))
+        if (!(gebruikersnaam.matches("^[a-zA-Z]{2,}$")))
         {
             throw new InvalidNameException("fouteNaam");
         }

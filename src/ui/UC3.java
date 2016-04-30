@@ -6,7 +6,6 @@
 package ui;
 
 import domein.DomeinController;
-import exceptions.WrongInputException;
 import java.util.Scanner;
 
 /**

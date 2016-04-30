@@ -2,13 +2,9 @@ package ui;
 
 import domein.DomeinController;
 import exceptions.EmptyListException;
-import exceptions.InvalidBirthdateException;
-import exceptions.InvalidNameException;
 import exceptions.WrongInputException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

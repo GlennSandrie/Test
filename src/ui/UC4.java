@@ -1,16 +1,8 @@
 package ui;
 
 import domein.DomeinController;
-import domein.Gangkaart;
-import domein.HoekKaart;
-import domein.RechteWegKaart;
-import domein.Tkaart;
-import exceptions.InvalidCoordinateException;
-import exceptions.WrongInputException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import utils.Kleur;
-import utils.Richting;
 
 /**
  *
