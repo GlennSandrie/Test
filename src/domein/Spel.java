@@ -85,7 +85,7 @@ public class Spel
      */
     private boolean controleerSpelNaam(String naam)
     {
-        if(!(naam.matches("^(\\d{2})([a-zA-Z]){8,}")))
+        if(!(naam.matches("(?=.*\\d.*\\d)[a-zA-Z0-9]{6,}")))
         {
             throw new InvalidNameException("fouteSpelnaam");
         }
