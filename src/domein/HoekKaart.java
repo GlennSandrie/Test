@@ -110,6 +110,8 @@ public class HoekKaart extends Gangkaart
     }
 
     /**
+     * methode die een lijst van de mogelijke richtingen waarin je je kan
+     * verplaatsen teruggeeft
      * 
      * @return lijst van richtingen waarin je je kan verplaatsen
      */

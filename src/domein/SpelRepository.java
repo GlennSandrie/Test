@@ -12,19 +12,21 @@ import persistentie.SpelMapper;
  *
  * @author anjana
  */
-public class SpelRepository 
+public class SpelRepository
 {
+
     private final SpelMapper sm;
 
     /**
      * constructor, ken de SpelMapper
      */
-    public SpelRepository() 
+    public SpelRepository()
     {
         sm = new SpelMapper();
     }
-    
+
     /**
+     * methode die aan de SpelMapper de lijst van de spelnamen vraagt
      *
      * @return lijst van spelnamen
      */
@@ -32,8 +34,9 @@ public class SpelRepository
     {
         return sm.geefSpelnamen();
     }
-    
+
     /**
+     * methode die aan de SpelMapper vraagt om het gekozen spel te geven
      *
      * @param naam
      * @return spel

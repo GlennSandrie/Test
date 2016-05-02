@@ -61,6 +61,7 @@ public class Gangkaart
     }
 
     /**
+     * methode die de kleur teruggeeft
      *
      * @return mogelijke kleur van de gangkaart
      */
@@ -70,6 +71,7 @@ public class Gangkaart
     }
 
     /**
+     * methode die een lijst van spelers teruggeeft
      *
      * @return lijst van spelers die op de gangkaart staat
      */
@@ -79,6 +81,7 @@ public class Gangkaart
     }
 
     /**
+     * methode die de richting teruggeeft
      *
      * @return richting van de gangkaart
      */
@@ -133,6 +136,8 @@ public class Gangkaart
     }
 
     /**
+     * methode die een lijst van de mogelijke richtingen waarin de speler zich
+     * kan verplaatsen teruggeeft
      *
      * @return lijst van richtingen waarin de speler zich kan verplaatsen
      */

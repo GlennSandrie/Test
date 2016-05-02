@@ -22,9 +22,10 @@ public class SpelerMapper
 {
 
     /**
+     * methode die de spelernamen van een bepaald spel uit de databank ophaald
      *
      * @param spel
-     * @return
+     * @return lijst van spelers van het gekozen spel
      */
     public List<String> geefSpelersVanSpel(String spel)
     {
@@ -33,39 +34,57 @@ public class SpelerMapper
         {
             PreparedStatement query = conn.prepareStatement("SELECT spelerId FROM speler WHERE spelId = ?");
             query.setString(1, spel);
-            try (ResultSet rs = query.executeQuery()) {
-                while (rs.next()) {
+            try (ResultSet rs = query.executeQuery())
+            {
+                while (rs.next())
+                {
                     String speler = rs.getString("spelerId");
-                    
+
                     spelerNamen.add(speler);
                 }
             }
-        }catch (SQLException ex) {
+        } catch (SQLException ex)
+        {
             throw new RuntimeException(ex);
         }
-        
+
         return spelerNamen;
     }
-    
+
+    /**
+     * methode die het geboorte jaar van de spelers uit de databank ophaalt
+     *
+     * @param speler
+     * @return geboortejaar van een speler
+     */
     public int geefGeboortejaar(String speler)
     {
-        int geboortejaar=0;
+        int geboortejaar = 0;
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
         {
             PreparedStatement query = conn.prepareStatement("SELECT geboortejaar FROM speler WHERE spelerId = ?");
             query.setString(1, speler);
-            try (ResultSet rs = query.executeQuery()) {
-                while (rs.next()) {
+            try (ResultSet rs = query.executeQuery())
+            {
+                while (rs.next())
+                {
                     geboortejaar = rs.getInt("geboortejaar");
                 }
             }
-        }catch (SQLException ex) {
+        } catch (SQLException ex)
+        {
             throw new RuntimeException(ex);
         }
-        
+
         return geboortejaar;
     }
-    
+
+    /**
+     * methode die de kleur van de spelers uit de databank ophaalt
+     *
+     * @param speler
+     * @return
+     */
     public String geefKleur(String speler)
     {
         String kleur = "";
@@ -73,37 +92,43 @@ public class SpelerMapper
         {
             PreparedStatement query = conn.prepareStatement("SELECT kleur FROM speler WHERE spelerId = ?");
             query.setString(1, speler);
-            try (ResultSet rs = query.executeQuery()) {
-                while (rs.next()) {
+            try (ResultSet rs = query.executeQuery())
+            {
+                while (rs.next())
+                {
                     kleur = rs.getString("kleur");
                 }
             }
-        }catch (SQLException ex) {
+        } catch (SQLException ex)
+        {
             throw new RuntimeException(ex);
         }
-        
+
         return kleur;
     }
-    
+
     /**
+     * methode om een speler te registreren in de databank
      *
      * @param speler
      */
-    public void registreerSpeler(Speler speler) {
+    public void registreerSpeler(Speler speler)
+    {
 
-        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL)) {
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
+        {
             PreparedStatement query = conn.prepareStatement("INSERT INTO speler (spelerId, kleur, geboortejaar)"
                     + "VALUES (?, ?, ?)");
             query.setString(1, speler.getNaam());
             query.setString(2, speler.getKleur().getKleurNaam());
             query.setInt(3, speler.getGeboortejaar());
-            
+
             query.executeUpdate();
 
-        } catch (SQLException ex) {
+        } catch (SQLException ex)
+        {
             throw new RuntimeException(ex);
         }
     }
-    
-    
+
 }

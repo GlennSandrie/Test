@@ -13,27 +13,31 @@ import utils.Richting;
  *
  * @author anjana
  */
-public class RechteWegKaart extends Gangkaart {
+public class RechteWegKaart extends Gangkaart
+{
 
     /**
-     * constructor, initialiseert de richting van de rechtewegkaart a.d.h.v.
-     * de superklasse Gangkaart
+     * constructor, initialiseert de richting van de rechtewegkaart a.d.h.v. de
+     * superklasse Gangkaart
      *
      * @param richting kan boven, links, onder of rechts zijn
      */
-    public RechteWegKaart(Richting richting) {
+    public RechteWegKaart(Richting richting)
+    {
         super(richting);
     }
- 
+
     /**
      * maakt van een rechtewegkaart, een String
-     * 
+     *
      * @return String van een rechtewegkaart
      */
     @Override
-    public String toString() {
+    public String toString()
+    {
         String kaart = "";
-        switch (getRichting()) {
+        switch (getRichting())
+        {
             case B:
                 kaart = String.format(
                         "xxx      xxx"
@@ -72,20 +76,25 @@ public class RechteWegKaart extends Gangkaart {
                 break;
         }
 
-        if (schat != null) {
+        if (schat != null)
+        {
             kaart = kaart.substring(0, 41) + schat.toString().charAt(0) + kaart.substring(42);
         }
         return kaart;
     }
-    
+
     /**
-     * 
+     * methode die een lijst van de mogelijke richingen waarin je je kan
+     * verplaatsen teruggeeft
+     *
      * @return lijst van richtingen waarin je je kan verplaatsen
      */
     @Override
-    public List<Richting> geefVerplaatsRichtingen() {
+    public List<Richting> geefVerplaatsRichtingen()
+    {
         ArrayList<Richting> al = new ArrayList();
-        switch (richting) {
+        switch (richting)
+        {
             case B:
                 al.add(Richting.B);
                 al.add(Richting.O);
@@ -104,5 +113,5 @@ public class RechteWegKaart extends Gangkaart {
                 break;
         }
         return al;
-    }    
+    }
 }

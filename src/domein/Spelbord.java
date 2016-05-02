@@ -47,6 +47,7 @@ public class Spelbord
     }
 
     /**
+     * methode die het spelbord retourneert
      *
      * @return spelbord
      */
@@ -96,7 +97,7 @@ public class Spelbord
 
     /**
      * controleert of je op die positie mag inschuiven
-     * 
+     *
      * @param xPositie x coordinaat van de gangkaart op het spelbord (0-6)
      * @param yPositie y coordinaat van de gangkaart op het spelbord (0-6)
      * @param vrijeGangkaart
@@ -116,13 +117,12 @@ public class Spelbord
 
     /**
      * stelt de nieuwe posities van de gangkaarten in na inschuiven van de losse
-     * gangkaart,
-     * stelt een nieuwe vrije gangkaart in
-     * 
+     * gangkaart, stelt een nieuwe vrije gangkaart in
+     *
      * @param xPositie
      * @param yPositie
      * @param vrijeGangkaart
-     * @return 
+     * @return
      */
     public Gangkaart setVrijeGangkaart(int xPositie, int yPositie, Gangkaart vrijeGangkaart)
     {
@@ -172,7 +172,9 @@ public class Spelbord
     }
 
     /**
-     * 
+     * methode die de indexen van de gangkaart waarop de speler zich bevindt
+     * teruggeeft
+     *
      * @param speler
      * @return indexen van de huidige gangkaart, waar de speler op staat
      */
@@ -197,9 +199,12 @@ public class Spelbord
     }
 
     /**
-     * 
+     * methode die de mogelijke richtingen waarin de speler zich kan verplaatsen
+     * weergeeft
+     *
      * @param speler
-     * @return lijst van de mogelijke richtingen waarin de speler zich kan verplaatsen
+     * @return lijst van de mogelijke richtingen waarin de speler zich kan
+     * verplaatsen
      */
     public List<String> geefMogelijkeVerplaatsRichtingen(Speler speler)
     {
@@ -263,9 +268,10 @@ public class Spelbord
 
     /**
      * verplaatst de speler naar de opgegeven coordinaten indien mogelijk
+     *
      * @param xPositie x coordinaat van de gangkaart op het spelbord (0-6)
      * @param yPositie y coordinaat van de gangkaart op het spelbord (0-6)
-     * @param speler 
+     * @param speler
      */
     public void verplaatsSpeler(int xPositie, int yPositie, Speler speler)
     {
@@ -276,7 +282,7 @@ public class Spelbord
 
     /**
      * geeft de schat van de kaart waar de speler op staat
-     * 
+     *
      * @param speler
      * @return schat van de huidige kaart
      */

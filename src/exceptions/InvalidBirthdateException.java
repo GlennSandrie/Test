@@ -11,21 +11,44 @@ package exceptions;
  */
 public class InvalidBirthdateException extends IllegalArgumentException
 {
+
+    /**
+     * eerste constructor InvalidBirthdateException
+     */
     public InvalidBirthdateException()
     {
         super();
     }
+
+    /**
+     * tweede constructor InvalidBirthdateException
+     *
+     * @param boodschap
+     */
     public InvalidBirthdateException(String boodschap)
     {
         super(boodschap);
     }
+
+    /**
+     * derde constructor InvalidBirthdateException
+     *
+     * @param t
+     */
     public InvalidBirthdateException(Throwable t)
     {
         super(t);
     }
+
+    /**
+     * vierde constructor InvalidBirthdateException
+     *
+     * @param boodschap
+     * @param t
+     */
     public InvalidBirthdateException(String boodschap, Throwable t)
     {
-        super(boodschap,t);
+        super(boodschap, t);
     }
-    
+
 }

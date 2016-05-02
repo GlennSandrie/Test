@@ -27,7 +27,7 @@ public class Doelkaart
     }
 
     /**
-     * 
+     * methode schat geven
      * @return schat
      */
     public Schat getSchat()

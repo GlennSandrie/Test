@@ -14,9 +14,10 @@ import persistentie.SpelerMapper;
  */
 public class SpelerRepository
 {
+
     private Speler spelers;
     private SpelerMapper sm;
-    
+
     /**
      * constructor, kent de SpelerMapper
      */
@@ -24,8 +25,9 @@ public class SpelerRepository
     {
         sm = new SpelerMapper();
     }
-    
+
     /**
+     * methode die een lijst van spelers van een bepaald spel toont
      *
      * @param spelId
      * @return lijst van de spelId's van de spelers van een spel
@@ -34,18 +36,20 @@ public class SpelerRepository
     {
         return sm.geefSpelersVanSpel(spelId);
     }
-    
+
     /**
      * registreerd een speler door de SpelerMapper
+     *
      * @param speler
      */
     public void registreerSpeler(Speler speler)
-    {       
-       sm.registreerSpeler(speler);
+    {
+        sm.registreerSpeler(speler);
     }
-    
+
     /**
-     * 
+     * methode die het geboortejaar van een speler aan de spelerMapper vraagt
+     *
      * @param speler
      * @return geboortejaar van een speler
      */
@@ -53,9 +57,9 @@ public class SpelerRepository
     {
         return sm.geefGeboortejaar(speler);
     }
-    
+
     /**
-     * 
+     *
      * @param speler
      * @return kleur van een speler
      */
@@ -63,17 +67,15 @@ public class SpelerRepository
     {
         return sm.geefKleur(speler);
     }
-    
+
     /*public Speler geefAantalSpelers(int aantalSpelers)
-    {
-        return sm.geefAantalSpelers(aantalSpelers);
-    }
+     {
+     return sm.geefAantalSpelers(aantalSpelers);
+     }
     
-    public void geefGegevensSpelerIn(String naam, LocalDateTime geboortedatum, String kleur)
-    {
-        return sm.geefGegevensSpelerIn(naam,geboortedatum,kleur);
-    }
-    */
-    
-    
+     public void geefGegevensSpelerIn(String naam, LocalDateTime geboortedatum, String kleur)
+     {
+     return sm.geefGegevensSpelerIn(naam,geboortedatum,kleur);
+     }
+     */
 }

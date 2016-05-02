@@ -11,20 +11,43 @@ package exceptions;
  */
 public class InvalidCoordinateException extends Exception
 {
+
+    /**
+     * eerste constructor InvalidCoordinateException
+     */
     public InvalidCoordinateException()
     {
         super();
     }
+
+    /**
+     * tweede constructor InvalidCoordinateException
+     *
+     * @param boodschap
+     */
     public InvalidCoordinateException(String boodschap)
     {
         super(boodschap);
     }
+
+    /**
+     * derde constructor InvalidCoordinateException
+     *
+     * @param t
+     */
     public InvalidCoordinateException(Throwable t)
     {
         super(t);
     }
+
+    /**
+     * vierde constructor InvalidCoordinateException
+     *
+     * @param boodschap
+     * @param t
+     */
     public InvalidCoordinateException(String boodschap, Throwable t)
     {
-        super(boodschap,t);
+        super(boodschap, t);
     }
 }

@@ -45,7 +45,7 @@ public class Spel
     }
 
     /**
-     * 
+     * methode die de naam geeft
      * @return naam van het spel, moet minstens 8 alfanummerieke tekens zijn, 
      * met exact 2 cijfers
      */
@@ -66,7 +66,7 @@ public class Spel
     }
 
     /**
-     *
+     * methode die de vrijegangkaart geeft
      * @return vrijeGangkaart
      */
     public Gangkaart getVrijeGangkaart()
@@ -76,6 +76,13 @@ public class Spel
 
     //UC2
     
+    /**
+     * methode die de spelnaam controleert (minimum 8 karakters waarvan
+     * exact 2 cijfers
+     * 
+     * @param naam
+     * @return true of false, afhankelijk of de reguliere expressie klopt
+     */
     private boolean controleerSpelNaam(String naam)
     {
         if(!(naam.matches("^(\\d{2})([a-zA-Z]){8,}")))
@@ -192,7 +199,7 @@ public class Spel
     }
 
     /**
-     * schrud de losse gangkaarten
+     * schud de losse gangkaarten
      */
     public void schudLosseKaarten()
     {
@@ -267,7 +274,7 @@ public class Spel
     }
 
     /**
-     * 
+     * methode die de huidige speler teruggeeft
      * @return huidige speler
      */
     public Speler geefHuidigeSpeler()
@@ -287,6 +294,7 @@ public class Spel
     }
 
     /**
+     * methode die de vrije gangkaart als een String teruggeeft
      * 
      * @return vrijeGangkaart
      */
@@ -350,7 +358,7 @@ public class Spel
     }
 
     /**
-     * 
+     * methode die de richting van de vrije gangkaart bepaalt
      * @param keuze
      * @return gekozen richting van de vrijeGangkaart
      */
@@ -389,6 +397,8 @@ public class Spel
     }
 
     /**
+     * methode die een lijst van mogelijke richtingen waarin je je kan verplaatsen
+     * vraagt aan Spelbord
      * 
      * @return lijst van de mogelijke richtingen waarin de speler zich kan verplaatsen
      */
@@ -398,6 +408,8 @@ public class Spel
     }
 
     /**
+     * methode die aan Spelbord vraagt om de speler te verplaatsen op een bepaalde
+     * x en y coordinaat
      * 
      * @param xPositie x coordinaat op het spelbord (0-6)
      * @param yPositie y coordinaat op het spelbord (0-6)
@@ -417,6 +429,8 @@ public class Spel
     }
 
     /**
+     * methode die de Schat op de gangkaart vergelijkt met de te zoeken schat
+     * van de huidige speler
      * 
      * @return true of false, naargelang de schat van de huidige gangkaart overeen 
      * komt met de te zoeken schat van de huidige speler

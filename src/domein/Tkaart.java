@@ -18,7 +18,7 @@ public class Tkaart extends Gangkaart
 {
 
     /**
-     * constructor, initialiseert de schat en richting van de tkaart a.d.h.v. 
+     * constructor, initialiseert de schat en richting van de tkaart a.d.h.v.
      * superklasse Gangkaart
      *
      * @param schat kan 1 van de 24 schatten zijn
@@ -29,10 +29,9 @@ public class Tkaart extends Gangkaart
         super(schat, richting);
     }
 
-   
     /**
      * maakt van een tkaart, een String
-     * 
+     *
      * @return String van een tkaart
      */
     @Override
@@ -87,7 +86,9 @@ public class Tkaart extends Gangkaart
     }
 
     /**
-     * 
+     * methode die een lijst van de mogelijke richtingen waarin je je kan
+     * verplaatsen teruggeeft
+     *
      * @return lijst van richtingen waarin je je kan verplaatsen
      */
     @Override

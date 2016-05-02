@@ -9,7 +9,6 @@ import utils.Richting;
  *
  * @author anjana
  */
-
 public class DomeinController
 {
 
@@ -31,8 +30,8 @@ public class DomeinController
 
     /**
      * stelt de taal in
-     * 
-     * @param l 
+     *
+     * @param l
      */
     public void setTaal(String l)
     {
@@ -40,6 +39,7 @@ public class DomeinController
     }
 
     /**
+     * methode voor taal opvragen
      *
      * @return de gekozen taal
      */
@@ -49,6 +49,7 @@ public class DomeinController
     }
 
     /**
+     * methode voor lijst van spellen te geven
      *
      * @return lijst van de namen van alle bestaande spellen
      */
@@ -59,7 +60,7 @@ public class DomeinController
 
     /**
      * kies een spel uit de bestaande spellen
-     * 
+     *
      * @param naam
      */
     public void kiesSpel(String naam)
@@ -68,7 +69,8 @@ public class DomeinController
     }
 
     /**
-     * 
+     * methode om spelnaam te krijgen
+     *
      * @return naam van het spel
      */
     public String getSpelnaam()
@@ -77,6 +79,7 @@ public class DomeinController
     }
 
     /**
+     * methode om lijst van de spelers van een spel te geven
      *
      * @param spelId
      * @return lijst van spelernamen die deelnemen aan het gekozen spel
@@ -97,6 +100,7 @@ public class DomeinController
     }
 
     /**
+     * methode om de kleur van een geregistreerde speler te geven
      *
      * @param speler
      * @return kleur van de geregistreerde spelers
@@ -109,7 +113,7 @@ public class DomeinController
     // UC2
     /**
      * registreert een nieuwe speler met een naam, geboortejaar en een kleur
-     * 
+     *
      * @param naam de naam mag enkel letters bevatten, minimum 2 karakters
      * @param geboortejaar speler mag tussen de 7 en 90 jaar zijn
      * @param kleur kleur is blauw, geel, rood of groen
@@ -123,8 +127,9 @@ public class DomeinController
 
     /**
      * maakt een nieuw spel aan met een naam
-     * @param naam moet minimum 8 tekens lang zijn, 
-     *      alleen alfanumetieke karakters, exact 2 cijfers
+     *
+     * @param naam moet minimum 8 tekens lang zijn, alleen alfanumetieke
+     * karakters, exact 2 cijfers
      */
     public void maakSpel(String naam)
     {
@@ -140,8 +145,9 @@ public class DomeinController
     }
 
     /**
+     * vraagt aan Spel om het spel te geven
      *
-     * @returns spelbord
+     * @return spelbord
      */
     public String[][] geefSpel()
     {
@@ -150,8 +156,9 @@ public class DomeinController
 
     /**
      * geeft de overblijvende doelkaarten van de speler
-     * 
-     * @return @throws EmptyListException als de speler geen doelkaarten meer heeft
+     *
+     * @return @throws EmptyListException als de speler geen doelkaarten meer
+     * heeft
      */
     public String geefDoelkaartVanHuidigeSpeler() throws EmptyListException
     {
@@ -159,7 +166,8 @@ public class DomeinController
     }
 
     /**
-     *  
+     * vraagt aan spel om de vrije gangkaart te geven
+     *
      * @return vrijeGangkaart
      */
     public String geefVrijeGangkaart()
@@ -168,6 +176,7 @@ public class DomeinController
     }
 
     /**
+     * vraagt aan spel om het type van de vrije gangkaart te bepalen
      *
      * @return hoekkaart, rechtewegkaart of tkaart
      */
@@ -178,7 +187,7 @@ public class DomeinController
 
     /**
      * vraagt aan spel om de naam van de huidige speler te bepalen
-     * 
+     *
      * @return de naam van de huidige speler
      */
     public String geefHuidigeSpeler()
@@ -188,7 +197,7 @@ public class DomeinController
 
     //UC3
     /**
-     * vraagt aan spel om de volgende speler te bepalen
+     * vraagt aan Spel om de volgende speler te bepalen
      */
     public void bepaalVolgendeSpelerAanDeBeurt()
     {
@@ -198,9 +207,9 @@ public class DomeinController
 
     //UC4
     /**
-     * vraagt aan spel de coordinaten van de vrije gangkaart
-     * 
-     * @param xPositie x coordinaat op het spelbord (0-6)    
+     * vraagt aan Spel de coordinaten van de vrije gangkaart
+     *
+     * @param xPositie x coordinaat op het spelbord (0-6)
      * @param yPositie y coordinaat op het spelbord (0-6)
      */
     public void geefPlaatsVrijeGangkaart(int xPositie, int yPositie)
@@ -209,7 +218,8 @@ public class DomeinController
     }
 
     /**
-     * 
+     * vraagt aan spel om de vrijegangkaart te draaien
+     *
      * @param keuze
      * @return gekozen richting van de vrijeGangkaart
      */
@@ -219,9 +229,9 @@ public class DomeinController
     }
 
     /**
-     * vraagt aan spel om de vrijeGangkaart toe te voegen aan het spelbord
-     * op de gekozen x en y coordinaat
-     * 
+     * vraagt aan spel om de vrijeGangkaart toe te voegen aan het spelbord op de
+     * gekozen x en y coordinaat
+     *
      * @param xPositie x coordinaat op het spelbord (0-6)
      * @param yPositie y coordinaat op het spelbord (0-6)
      */
@@ -232,7 +242,7 @@ public class DomeinController
 
     //UC5
     /**
-     * 
+     *
      * @return de mogelijke richtingen waar de speler zicht kan verplaatsen
      */
     public List<String> geefMogelijkeVerplaatsRichtingen()
@@ -241,9 +251,9 @@ public class DomeinController
     }
 
     /**
-     * vraagt aan spel op de speler te verplaatsen naar de gewenste
-     * x en y coordinaat
-     * 
+     * vraagt aan spel op de speler te verplaatsen naar de gewenste x en y
+     * coordinaat
+     *
      * @param xPositie x coordinaat op het spelbord (0-6)
      * @param yPositie y coordinaat op het spelbord (0-6)
      */
@@ -251,11 +261,12 @@ public class DomeinController
     {
         spel.verplaatsSpeler(xPositie, yPositie);
     }
-    
+
     /**
-     * 
-     * @return indexen van de gangkaart waar de speler zich op dit
-     * moment op bevindt
+     * vraagt aan spel de indexen van de huidige gangkaart
+     *
+     * @return indexen van de gangkaart waar de speler zich op dit moment op
+     * bevindt
      */
     public int[] geefIndexenHuidigeGangkaart()
     {
@@ -263,11 +274,11 @@ public class DomeinController
     }
 
     /**
-     * controleert of de schat die de speler op dat moment zoekt dezelfde is
-     * als die op de gangkaart waar hij zich op bevindt
-     * 
-     * @return true of false afhangende van of de doelkaart overeenkomt
-     * met de schat op de gangkaart
+     * controleert of de schat die de speler op dat moment zoekt dezelfde is als
+     * die op de gangkaart waar hij zich op bevindt
+     *
+     * @return true of false afhangende van of de doelkaart overeenkomt met de
+     * schat op de gangkaart
      * @throws EmptyListException als de doelkaarten van de speler op zijn
      */
     public boolean controleerOvereenkomendeSchat() throws EmptyListException

@@ -45,6 +45,7 @@ public class Speler
     }
 
     /**
+     * methode die de naam van de speler geeft
      *
      * @return naam
      */
@@ -54,6 +55,7 @@ public class Speler
     }
 
     /**
+     * methode die de kleur van de speler geeft
      *
      * @return kleur
      */
@@ -63,6 +65,7 @@ public class Speler
     }
 
     /**
+     * methode die het geboortejaar van de speler geeft
      *
      * @return geboortejaar
      */
@@ -72,6 +75,7 @@ public class Speler
     }
 
     /**
+     * methode die de lijst van doelkaarten geeft
      *
      * @return lijst van de doelkaarten
      */
@@ -97,7 +101,7 @@ public class Speler
 
     /**
      * controleert of de speler tussen de 7 en 90 jaar oud is
-     * 
+     *
      * @param jaar
      */
     private void controleerGeboortejaar(int jaar)
@@ -111,6 +115,7 @@ public class Speler
 
     /**
      * voegt doelkaarten toe
+     *
      * @param doelkaart bevat 1 van de 24 schatten
      */
     public void voegDoelkaartToe(Doelkaart doelkaart)
@@ -119,7 +124,9 @@ public class Speler
     }
 
     /**
-     * 
+     * methode die de huidige te zoeken schat van een bepaalde speler geeft, als
+     * er geen doelkaart meer zijn, wordt een exception gethrowd
+     *
      * @return schact van de huidige doelkaart
      * @throws EmptyListException als de lijst van doelkaarten leeg is
      */
