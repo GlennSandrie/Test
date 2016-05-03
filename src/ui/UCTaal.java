@@ -16,8 +16,10 @@ public class UCTaal
 {
 
     /**
+     * methode om de speler de gewenste taal te laten instellen
      *
      * @param dc
+     * @param input
      */
     public static void stelTaalIn(DomeinController dc, Scanner input)
     {

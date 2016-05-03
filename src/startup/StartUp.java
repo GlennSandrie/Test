@@ -11,8 +11,10 @@ public class StartUp
 {
 
     /**
-     * 
-     * @param args
+     * main methode om de applicatie uit te voeren in de console, ken t de
+     * DomeinController en de ConsoleApplicatie
+     *
+     * @param args ongebruikt
      */
     public static void main(String[] args)
     {

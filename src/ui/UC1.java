@@ -21,6 +21,9 @@ public class UC1
 {
 
     /**
+     * methode om het gekozen spel te laden en de spelers van het spel te tonen
+     * en de nieuwe spelers bij een bepaald spel in te voeren, roept de
+     * domeincontroller aan op het volledige spel te initialiseren
      *
      * @param dc
      * @param input
@@ -83,7 +86,6 @@ public class UC1
             {
                 System.out.println(dc.getTaal().getText("aantalSpelers"));
                 aantal = input.nextInt();
-                //input.nextLine();
                 if (aantal < 1 || aantal > 4 - aantalSpelers)
                 {
                     throw new WrongInputException("aantalBestaandeSpelers");
