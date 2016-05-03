@@ -45,6 +45,14 @@ public class Spel
         sb = new Spelbord();
         spelRepository = new SpelRepository();
     }
+    
+    public Spel(String naam, String spelbordCode)
+    {
+        controleerSpelNaam(naam);
+        this.naam = naam;
+        sb = new Spelbord(spelbordCode);
+        spelRepository = new SpelRepository();
+    }
 
     /**
      * methode die de naam geeft
@@ -75,7 +83,7 @@ public class Spel
     {
         return vrijeGangkaart;
     }
-
+    
     //UC2
     
     /**
@@ -453,9 +461,11 @@ public class Spel
     
     /**
      *  methode die het spelbord en de vrije gangkaart doorgeeft aan de spelrepository
+     * @return 
      */
-    public void opslaanSpelbord()
+    public String geefCodeSpelbord()
     {
-        spelRepository.opslaanSpelbord(sb.geefCodeSpelbord()+vrijeGangkaart.geefCodeGangkaart());
+        return sb.geefCodeSpelbord()+vrijeGangkaart.geefCodeGangkaart();
     }
+    
 }

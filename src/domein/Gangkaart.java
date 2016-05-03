@@ -69,7 +69,15 @@ public class Gangkaart
     {
         return kleur;
     }
-
+    /**
+     * 
+     * @param kleur 
+     */
+    public void setKleur(Kleur kleur)
+    {
+        this.kleur = kleur;
+    }
+    
     /**
      * methode die een lijst van spelers teruggeeft
      *
@@ -153,7 +161,12 @@ public class Gangkaart
     
     public String geefCodeGangkaart()
     {
-        return String.format("%c%d%d%d",getClass().getSimpleName().charAt(0), richting.getRichtingId(), schat.getSchatId(), kleur.getKleurNr());
+        String res;
+        if(schat == null)
+            res = String.format("%c%d%d",getClass().getSimpleName().charAt(0), richting.getRichtingId(), 0);        
+        else
+            res = String.format("%c%d%d",getClass().getSimpleName().charAt(0), richting.getRichtingId(), schat.getSchatId());
+        return res;
         
     }
 }

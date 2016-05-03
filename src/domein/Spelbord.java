@@ -45,7 +45,51 @@ public class Spelbord
         spelbord[6][2] = new Tkaart(Schat.SLEUTELS, Richting.B);
         spelbord[6][4] = new Tkaart(Schat.ZWAARD, Richting.B);
     }
-
+    
+    public Spelbord(String spelbordCode)
+    {
+        int codeIndex = 0;
+        for(int x = 0; x < 7; x++)
+        {
+            for(int y = 0; y < 7; y++)
+            {
+               if(spelbordCode.charAt(codeIndex+2)==0)
+                {
+                    switch(spelbordCode.charAt(codeIndex))
+                    {
+                        case 'H': spelbord[x][y] = new HoekKaart(null, Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
+                            break;
+                        case 'R': spelbord[x][y] = new RechteWegKaart(Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
+                            break;
+                        case 'T': spelbord[x][y] = new Tkaart(null, Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
+                            break;
+                    }
+                }
+                else
+                {
+                    for(Schat s : Schat.values())
+                    {
+                        if(s.getSchatId()==spelbordCode.charAt(codeIndex+2))
+                        {
+                            switch(spelbordCode.charAt(codeIndex))
+                            {
+                                case 'H': spelbord[x][y] = new HoekKaart(s, Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
+                                    break;
+                                case 'T': spelbord[x][y] = new Tkaart(s, Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
+                                    break;
+                            }
+                        }
+                    }
+                }
+                    
+                codeIndex = codeIndex+3;
+            }
+        }
+        spelbord[0][0].setKleur(Kleur.GE);
+        spelbord[0][6].setKleur(Kleur.B);
+        spelbord[6][0].setKleur(Kleur.GR);
+        spelbord[6][6].setKleur(Kleur.R);
+    }
     /**
      * methode die het spelbord retourneert
      *
@@ -293,7 +337,7 @@ public class Spelbord
     }
     
     /**
-     * geeft de code terug om alle kaarten op het spelbord voor te stellen
+     * geeft de code terug om alle kaarten op het spelbord voor te stellenww
      * @return spebord in code
      */
     public String geefCodeSpelbord()

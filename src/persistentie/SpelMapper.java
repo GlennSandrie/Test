@@ -66,7 +66,8 @@ public class SpelMapper
             {
                 if (rs.next())
                 {
-                    spel = new Spel(naam);
+                    String spelbord = rs.getString("spelbord");
+                    spel = new Spel(naam, spelbord);
                 }
             }
         } catch (SQLException ex)
@@ -94,4 +95,30 @@ public class SpelMapper
         }
     }
     
+    /**
+     * 
+     * @param naam
+     * @return 
+     */
+    public String geefCodeSpelbord(String naam)
+    {
+        String spelbord = "";
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
+        {
+            PreparedStatement query = conn.prepareStatement("SELECT spelbord FROM spel WHERE spelId = ?");
+            query.setString(1, naam);
+            try (ResultSet rs = query.executeQuery())
+            {
+                while (rs.next())
+                {
+                    spelbord = rs.getString("spelbord");
+                }
+            }
+        } catch (SQLException ex)
+        {
+            throw new RuntimeException(ex);
+        }
+
+        return spelbord;
+    }
 }

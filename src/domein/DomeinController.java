@@ -66,6 +66,7 @@ public class DomeinController
     public void kiesSpel(String naam)
     {
         spel = bestaandeSpellen.kiesSpel(naam);
+        
     }
 
     /**
@@ -293,5 +294,13 @@ public class DomeinController
     public void verwijderHuidigeDoelkaart()
     {
         spel.verwijderHuidigeDoelkaart();
+    }
+    
+    /**
+     * 
+     */
+    public void opslaanSpelbord()
+    {
+        bestaandeSpellen.opslaanSpelbord(spel.geefCodeSpelbord());
     }
 }
