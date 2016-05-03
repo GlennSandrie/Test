@@ -52,6 +52,7 @@ public class Spel
         this.naam = naam;
         sb = new Spelbord(spelbordCode);
         spelRepository = new SpelRepository();
+        vrijeGangkaart = zetCodeOmNaarKaart(spelbordCode.substring(148, 150));
     }
 
     /**
@@ -466,6 +467,40 @@ public class Spel
     public String geefCodeSpelbord()
     {
         return sb.geefCodeSpelbord()+vrijeGangkaart.geefCodeGangkaart();
+    }
+
+    private Gangkaart zetCodeOmNaarKaart(String substring)
+    {
+        Gangkaart gk = null;
+        if(substring.charAt(2)==0)
+        {
+            switch(substring.charAt(0))
+            {
+                case 'H': gk = new HoekKaart(null, Richting.geefRichting(substring.charAt(1)));
+                    break;
+                case 'R': gk =  new RechteWegKaart(Richting.geefRichting(substring.charAt(1)));
+                    break;
+                case 'T': gk = new Tkaart(null, Richting.geefRichting(substring.charAt(1)));
+                    break;
+            }
+        }
+        else
+        {
+            for(Schat s : Schat.values())
+            {
+                if(s.getSchatId()==substring.charAt(2))
+                {
+                    switch(substring.charAt(0))
+                    {
+                        case 'H': gk = new HoekKaart(s, Richting.geefRichting(substring.charAt(1)));
+                            break;
+                        case 'T': gk = new Tkaart(s, Richting.geefRichting(substring.charAt(1)));
+                            break;
+                    }
+                }
+            }
+        }
+        return gk;
     }
     
 }
