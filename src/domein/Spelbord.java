@@ -291,5 +291,21 @@ public class Spelbord
         int[] plaatsHG = geefIndexenHuidigeGangkaart(speler);
         return spelbord[plaatsHG[0]][plaatsHG[1]].schat;
     }
-
+    
+    /**
+     * geeft de code terug om alle kaarten op het spelbord voor te stellen
+     * @return spebord in code
+     */
+    public String geefCodeSpelbord()
+    {
+        String sb = "";
+        for (int i = 0; i < 7; i++)
+        {
+            for (int j = 0; j < 7; j++)
+            {
+                sb += spelbord[i][j].geefCodeGangkaart();
+            }
+        }
+        return sb;
+    }
 }

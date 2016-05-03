@@ -45,4 +45,12 @@ public class SpelRepository
     {
         return sm.kiesSpel(naam);
     }
+    /**
+     * methode die het spelbord en de vrije gangkaart doorgeeft aan de spelmapper om weg te schrijven naar de databank
+     * @param spelbord 
+     */
+    public void opslaanSpelbord(String spelbord)
+    {
+        sm.opslaanSpelbord(spelbord);
+    }
 }

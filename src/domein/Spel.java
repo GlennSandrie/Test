@@ -29,10 +29,11 @@ public class Spel
     private Gangkaart vrijeGangkaart;
     private final List<Doelkaart> doelkaarten = new ArrayList<>();
     private Speler huidigeSpeler;
+    private SpelRepository spelRepository;
 
     /**
      * constructor, initialiseert de naam van het spel en maakt een nieuw
-     * spelbord aan
+     * spelbord en een nieuwe spelrepository aan
      *
      * @param naam naam moet minstens 8 alfanummerieke tekens zijn, 
      * met exact 2 cijfers
@@ -42,6 +43,7 @@ public class Spel
         controleerSpelNaam(naam);
         this.naam = naam;
         sb = new Spelbord();
+        spelRepository = new SpelRepository();
     }
 
     /**
@@ -447,5 +449,13 @@ public class Spel
     public void verwijderHuidigeDoelkaart()
     {
         huidigeSpeler.verwijderHuidigeDoelkaart();
+    }
+    
+    /**
+     *  methode die het spelbord en de vrije gangkaart doorgeeft aan de spelrepository
+     */
+    public void opslaanSpelbord()
+    {
+        spelRepository.opslaanSpelbord(sb.geefCodeSpelbord()+vrijeGangkaart.geefCodeGangkaart());
     }
 }
