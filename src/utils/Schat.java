@@ -14,7 +14,7 @@ public enum Schat
 
     GELDBEUGEL(1, "Geldbeugel"), VLEERMUIS(2, "Vleermuis"), BOEK(3, "Boek"), DRAAK(4, "Draak"), GEESTFLES(5, "Geest in een fles"),
     GEESTZWAAI(6, "Geest"), KROON(7, "Kroon"), KANDELAAR(8, "Kandelaar"), RING(9, "Ring"), HELM(10, "Helm"), JUWEEL(11, "Juweel"),
-    VARKEN(12, "Varken"), HAGEDIS(13, "Hagedis"), MOT(14, "Mot"), UIL(15, "Uil"), RAT(16, "Rat"), SCARABEE(17, "Scarabee"),
+    LEEUW(12, "Leeuw"), HAGEDIS(13, "Hagedis"), MOT(14, "Mot"), UIL(15, "Uil"), RAT(16, "Rat"), SCARABEE(17, "Scarabee"),
     SLEUTELS(18, "Sleutels"), SCHEDEL(19, "Schedel"), TOVENARES(20, "Tovenares"), SPIN(21, "Spin"), ZWAARD(22, "Zwaard"),
     SCHATKIST(23, "Schatkist"), SCHATKAART(24, "Shatkaart");
 
