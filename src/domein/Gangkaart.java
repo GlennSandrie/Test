@@ -150,4 +150,10 @@ public class Gangkaart
         }
         return al;
     }
+    
+    public String geefCodeGangkaart()
+    {
+        return String.format("%c%d%d%d",getClass().getSimpleName().charAt(0), richting.getRichtingId(), schat.getSchatId(), kleur.getKleurNr());
+        
+    }
 }

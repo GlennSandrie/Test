@@ -76,4 +76,22 @@ public class SpelMapper
 
         return spel;
     }
+    /**
+     * methode die het spelbord wegschrijft naar de databank
+     * @param spelbord 
+     */
+    public void opslaanSpelbord(String spelbord)
+    {
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
+        {
+            PreparedStatement query = conn.prepareStatement("INSERT INTO spel (spelbord) VALUES (?)");
+            query.setString(1, spelbord);
+            query.executeUpdate();
+
+        } catch (SQLException ex)
+        {
+            throw new RuntimeException(ex);
+        }
+    }
+    
 }
