@@ -14,38 +14,46 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
+ * Start-methode, wordt gebruikt om het juiste beginscherm in te stellen
  *
  * @author anjana
  */
-public class StartUpGui extends Application {
-    
+public class StartUpGui extends Application
+{
+
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage)
+    {
         Button btn = new Button();
         btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
+        btn.setOnAction(new EventHandler<ActionEvent>()
+        {
+
             @Override
-            public void handle(ActionEvent event) {
+            public void handle(ActionEvent event)
+            {
                 System.out.println("Hello World!");
             }
         });
-        
+
         StackPane root = new StackPane();
         root.getChildren().add(btn);
-        
+
         Scene scene = new Scene(root, 300, 250);
-        
+
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     /**
+     * methode om het scherm te tonen
+     *
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         launch(args);
     }
-    
+
 }

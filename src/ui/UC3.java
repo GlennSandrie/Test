@@ -15,12 +15,21 @@ import java.util.Scanner;
 public class UC3
 {
 
+    /**
+     * methode om de volgende speler aan de beurt te bepalen, als het spel ten
+     * einde is wordt er geen volgende speler bepaald
+     *
+     * @param dc
+     * @param sc
+     * @param eindeSpel
+     */
     public static void bepaalVolgendeSpeler(DomeinController dc, Scanner sc, boolean eindeSpel)
     {
         String opslaan = "";
-        if(eindeSpel)
+        if (eindeSpel)
+        {
             eindeVanSpel(dc);
-        else
+        } else
         {
 //        System.out.println("opslaan");
 //        try {
@@ -29,8 +38,8 @@ public class UC3
 //                opslaan = sc.nextLine();
 //                if(opslaan.equals(dc.getTaal().getText("nee")))
 //                {
-                    dc.bepaalVolgendeSpelerAanDeBeurt();
-                    System.out.println(dc.getTaal().getText("volgendeSpeler") + dc.geefHuidigeSpeler());
+            dc.bepaalVolgendeSpelerAanDeBeurt();
+            System.out.println(dc.getTaal().getText("volgendeSpeler") + dc.geefHuidigeSpeler());
 //                }
 //                else if (opslaan.equals(dc.getTaal().getText("ja")))
 //                    UC6.bewaarSpel(dc, sc);
@@ -44,8 +53,14 @@ public class UC3
 //        }
         }
     }
+
+    /**
+     * methode om de winnaar weer te geven
+     *
+     * @param dc
+     */
     public static void eindeVanSpel(DomeinController dc)
     {
-        System.out.println("De winnaar is "+dc.geefHuidigeSpeler());
+        System.out.println("De winnaar is " + dc.geefHuidigeSpeler());
     }
 }

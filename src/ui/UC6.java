@@ -14,8 +14,15 @@ import java.util.Scanner;
  */
 public class UC6
 {
+
+    /**
+     * methode om het spel te bewaren en weg te schrijven naar de databank
+     *
+     * @param dc
+     * @param input
+     */
     public static void bewaarSpel(DomeinController dc, Scanner input)
     {
-        
+
     }
 }

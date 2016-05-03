@@ -23,28 +23,36 @@ import utils.Kleur;
 public class UC2
 {
 
+    /**
+     * methode où een nieuw spel te maken, controleert de naam van het nieuwe
+     * spel, het aantal spelers, roept de domeincontroller aan om het volledig
+     * spel te initialiseren
+     *
+     * @param dc
+     * @param input
+     */
     public static void maakNieuwSpel(DomeinController dc, Scanner input)
     {
         String naam = "";
         boolean vlag2 = true;
-      // do
-      //  {
-      //      try
-      //      {
-                System.out.println(dc.getTaal().getText("nieuwSpel"));
-                naam = input.nextLine();
-      //          if (!(naam.matches("^[a-zA-Z]{8,}$")))
-      //          {
-      //              throw new InvalidNameException("fouteSpelnaam");
-      //          } else
-      //          {
-      //              vlag2 = false;
-      //          }
-      //      } catch (InvalidNameException e)
-      //      {
-      //          System.out.println(dc.getTaal().getText("fouteSpelnaam"));
-      //      }
-      //  } while (vlag2=!false);
+        // do
+        //  {
+        //      try
+        //      {
+        System.out.println(dc.getTaal().getText("nieuwSpel"));
+        naam = input.nextLine();
+        //          if (!(naam.matches("^[a-zA-Z]{8,}$")))
+        //          {
+        //              throw new InvalidNameException("fouteSpelnaam");
+        //          } else
+        //          {
+        //              vlag2 = false;
+        //          }
+        //      } catch (InvalidNameException e)
+        //      {
+        //          System.out.println(dc.getTaal().getText("fouteSpelnaam"));
+        //      }
+        //  } while (vlag2=!false);
 
         dc.maakSpel(naam);
         int aantal = 0;
@@ -83,6 +91,13 @@ public class UC2
         dc.initialiseerVolledigSpel();
     }
 
+    /**
+     * methode om een nieuwe speler te initialiseren, controleert de spelernaam,
+     * het geboortejaar, en de kleur
+     *
+     * @param dc
+     * @param input
+     */
     public static void registreerSpeler(DomeinController dc, Scanner input)
     {
 
@@ -178,6 +193,11 @@ public class UC2
         input.nextLine();
     }
 
+    /**
+     * methode om het spelbord uit te printen
+     *
+     * @param dc
+     */
     public static void geefSpelbord(DomeinController dc)
     {
         for (int i = 0; i < dc.geefSpel().length; i++)
@@ -200,6 +220,12 @@ public class UC2
         System.out.println();
     }
 
+    /**
+     * methode om het volledige spel weer te geven, geeft het spelbord, de
+     * huidige speler, de doelkaar van de huidige speler en de vrije gangkaart
+     *
+     * @param dc
+     */
     public static void geefVolledigSpel(DomeinController dc)
     {
         geefSpelbord(dc);

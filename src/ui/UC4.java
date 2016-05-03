@@ -12,13 +12,13 @@ public class UC4
 {
 
     /**
+     * methode om de coordinaten waar de speler de vrije gangkaart wil
+     * inschuiven, in te voeren. Als de speler een coordinaat van een vaste
+     * gangkaart wilt invoeren wordt er een exception gethrowd
      *
      * @param dc
+     * @param input
      */
-//    private static Gangkaart[] draaiKaart;
-//    private static Gangkaart keuzeKaart;
-//
-//    
     public static void geefPlaatsVrijeGangkaartIn(DomeinController dc, Scanner input)
     {
         int xPositie, yPositie;
@@ -33,13 +33,12 @@ public class UC4
                 System.out.println(dc.getTaal().getText("inschuivenKaartX"));
                 xPositie = input.nextInt();
                 System.out.println(dc.getTaal().getText("inschuivenKaartY"));
-                yPositie = input.nextInt(); 
+                yPositie = input.nextInt();
                 dc.geefPlaatsVrijeGangkaart(xPositie, yPositie);
                 UC2.geefSpelbord(dc);
                 verder = false;
-        //            throw new InputMismatchException();
-            } 
-            catch(IllegalArgumentException | InputMismatchException e)
+                //            throw new InputMismatchException();
+            } catch (IllegalArgumentException | InputMismatchException e)
             {
                 System.out.println(dc.getTaal().getText("fouteCoordinaat"));
             }
@@ -47,6 +46,12 @@ public class UC4
 
     }
 
+    /**
+     * methode om de vrije gangkaart in een richting naar keuze te draaien
+     *
+     * @param dc
+     * @param input
+     */
     public static void draaiVrijeGangkaart(DomeinController dc, Scanner input)
     {
         int keuze = 0;
@@ -67,14 +72,10 @@ public class UC4
     }
 
     /*public static void voegVrijeGangkaartToeAanSpelbord(DomeinController dc)
-    {
-        int xPositie = 0, yPositie = 0;
-        dc.voegVrijeGangkaartToeAanSpelbord(xPositie, yPositie);
-    }*/
-
-    
- 
-
+     {
+     int xPositie = 0, yPositie = 0;
+     dc.voegVrijeGangkaartToeAanSpelbord(xPositie, yPositie);
+     }*/
 //    public static void draaiVrijeGangkaart(DomeinController dc, Scanner input) {
 //
 //        draaienKaart(dc, input);
