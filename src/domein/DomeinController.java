@@ -34,7 +34,7 @@ public class DomeinController
      */
     public void setTaal(String l)
     {
-        taal = new Taal(l);
+        this.taal = new Taal(l);
     }
 
     /**
@@ -133,7 +133,7 @@ public class DomeinController
      */
     public void maakSpel(String naam)
     {
-        spel = new Spel(naam);
+        this.spel = new Spel(naam);
     }
 
     /**
