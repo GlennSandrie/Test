@@ -407,8 +407,6 @@ public class Spel
         int volgende = 0, i = 0;
         for (Speler s : spelers)
         {
-            bepaalSpelerAanDeBeurt();
-            //  System.out.printf("%s\t%d\t%s%n", spelers.get(i).getNaam(), spelers.get(i).getGeboortejaar(), spelers.get(i).getKleur());
             if ((huidigeSpeler.getNaam()).equals(s.getNaam()))
             {
                 if (i == spelers.size() - 1)

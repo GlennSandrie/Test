@@ -201,8 +201,7 @@ public class DomeinController
      */
     public void bepaalVolgendeSpelerAanDeBeurt()
     {
-
-        spel.bepaalSpelerAanDeBeurt();
+        spel.bepaalVolgendeSpelerAanDeBeurt();
     }
 
     //UC4

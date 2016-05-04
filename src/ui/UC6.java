@@ -78,6 +78,7 @@ public class UC6
         
         for(int teller = 0; teller < dc.geefSpelers().size(); teller++)
         {
+            System.out.println(dc.geefHuidigeSpeler());
             naam = dc.geefHuidigeSpeler();
             boolean gevonden = false;
             for(String sDB : spelernamenDB)
@@ -100,6 +101,7 @@ public class UC6
     {
         for(int teller = 0; teller < dc.geefSpelers().size(); teller++)
         {
+            System.out.println(dc.geefHuidigeSpeler());
             dc.opslaanSpeler(teller);
             dc.bepaalVolgendeSpelerAanDeBeurt();
         }
