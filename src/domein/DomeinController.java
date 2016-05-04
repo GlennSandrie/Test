@@ -309,12 +309,12 @@ public class DomeinController
     
     public void opslaanSpeler(int beurt)
     {
-        spelerRepository.opslaanSpeler(spel.getNaam(), spel.geefHuidigeSpeler(), spel.geefIndexenHuidigeGangkaart(), beurt);
+        spelerRepository.opslaanSpeler(spel.getNaam(), spel.geefHuidigeSpeler(), spel.geefIndexenHuidigeGangkaart(), beurt, spel.geefHuidigeSpeler().geefCodeDoelkaarten());
     }
 
     public void updateSpeler(int beurt)
     {
-        spelerRepository.updateSpeler(spel.getNaam(), spel.geefHuidigeSpeler().getNaam(), spel.geefIndexenHuidigeGangkaart(), beurt);
+        spelerRepository.updateSpeler(spel.getNaam(), spel.geefHuidigeSpeler().getNaam(), spel.geefIndexenHuidigeGangkaart(), beurt, spel.geefHuidigeSpeler().geefCodeDoelkaarten());
     }
     
     public List<String> geefSpelers()

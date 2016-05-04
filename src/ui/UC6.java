@@ -30,7 +30,7 @@ public class UC6
             boolean fout = true;
             while(fout)
             {
-                System.out.printf("Het spel wordt opgeslaan onder de naam %s",dc.getSpelnaam());
+                System.out.printf("Het spel wordt opgeslaan onder de naam %s%n",dc.getSpelnaam());
                 if(controleerBestaandSpel(dc))
                 {
                     dc.updateSpelbord();
@@ -78,7 +78,6 @@ public class UC6
         
         for(int teller = 0; teller < dc.geefSpelers().size(); teller++)
         {
-            System.out.println(dc.geefHuidigeSpeler());
             naam = dc.geefHuidigeSpeler();
             boolean gevonden = false;
             for(String sDB : spelernamenDB)
@@ -90,8 +89,9 @@ public class UC6
                 }
             }
             if(!gevonden)
+            {
                 dc.opslaanSpeler(teller);
-            
+            }
             dc.bepaalVolgendeSpelerAanDeBeurt();
         }
         dc.bepaalVolgendeSpelerAanDeBeurt();
@@ -101,7 +101,6 @@ public class UC6
     {
         for(int teller = 0; teller < dc.geefSpelers().size(); teller++)
         {
-            System.out.println(dc.geefHuidigeSpeler());
             dc.opslaanSpeler(teller);
             dc.bepaalVolgendeSpelerAanDeBeurt();
         }

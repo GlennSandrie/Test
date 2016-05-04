@@ -107,11 +107,11 @@ public class SpelerMapper
         return kleur;
     }
 
-    public void opslaanSpeler(String spelNaam, Speler speler, int x, int y, int beurt)
+    public void opslaanSpeler(String spelNaam, Speler speler, int x, int y, int beurt, String doelkaarten)
     {
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
         {
-            PreparedStatement query = conn.prepareStatement("INSERT INTO speler (spelerId, spelId, kleur, geboortejaar, xPositie, yPositie, volgorde) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement query = conn.prepareStatement("INSERT INTO speler (spelerId, spelId, kleur, geboortejaar, xPositie, yPositie, volgorde, doelkaarten) VALUES (?, ?, ?, ?, ?, ?, ?)");
             query.setString(1, speler.getNaam());
             query.setString(2, spelNaam);
             query.setString(3, speler.getKleur().getKleurNaam());
@@ -119,6 +119,7 @@ public class SpelerMapper
             query.setInt(5, x);
             query.setInt(6, y);
             query.setInt(7, beurt);
+            query.setString(8, doelkaarten);
             query.executeUpdate();
 
         } catch (SQLException ex)
@@ -127,16 +128,17 @@ public class SpelerMapper
         }
     }
     
-    public void updateSpeler(String spelNaam, String naam, int x, int y, int beurt)
+    public void updateSpeler(String spelNaam, String naam, int x, int y, int beurt, String doelkaarten)
     {
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
         {
-            PreparedStatement query = conn.prepareStatement("UPDATE speler SET xPositie = ?, yPositie = ?, volgorde = ? WHERE spelerId = ? AND spelId = ?");
+            PreparedStatement query = conn.prepareStatement("UPDATE speler SET xPositie = ?, yPositie = ?, volgorde = ?, doelkaarten = ? WHERE spelerId = ? AND spelId = ?");
             query.setInt(1, x);
             query.setInt(2, y);
             query.setInt(3, beurt);
-            query.setString(4,naam);
-            query.setString(5, spelNaam);
+            query.setString(4,doelkaarten);
+            query.setString(5,naam);
+            query.setString(6, spelNaam);
             query.executeUpdate();
 
         } catch (SQLException ex)

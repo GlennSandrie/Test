@@ -146,4 +146,14 @@ public class Speler
     {
         doelkaarten.remove(0);
     }
+    
+    public String geefCodeDoelkaarten()
+    {
+        String res = "";
+        for(Doelkaart d : doelkaarten)
+        {
+            res += d.geefCodeDoelkaart();
+        }
+        return res;
+    }
 }

@@ -44,5 +44,10 @@ public class Doelkaart
     {
         this.schat = schat;
     }
-
+    
+    public String geefCodeDoelkaart()
+    {
+        return String.format("%d_",schat.getSchatId());
+        
+    }
 }

@@ -69,13 +69,13 @@ public class SpelerRepository
      }
      */
 
-    void opslaanSpeler(String spelNaam, Speler speler, int[] indexenPlaatsSpelbord, int beurt)
+    void opslaanSpeler(String spelNaam, Speler speler, int[] indexenPlaatsSpelbord, int beurt, String doelkaarten)
     {
-        sm.opslaanSpeler(spelNaam, speler, indexenPlaatsSpelbord[0], indexenPlaatsSpelbord[1], beurt);
+        sm.opslaanSpeler(spelNaam, speler, indexenPlaatsSpelbord[0], indexenPlaatsSpelbord[1], beurt, doelkaarten);
     }
     
-    public void updateSpeler(String spelNaam, String naam, int[] indexenPlaatsSpelbord, int beurt)
+    public void updateSpeler(String spelNaam, String naam, int[] indexenPlaatsSpelbord, int beurt, String doelkaarten)
     {
-        sm.updateSpeler(spelNaam, naam, indexenPlaatsSpelbord[0], indexenPlaatsSpelbord[1], beurt);
+        sm.updateSpeler(spelNaam, naam, indexenPlaatsSpelbord[0], indexenPlaatsSpelbord[1], beurt, doelkaarten);
     }
 }
