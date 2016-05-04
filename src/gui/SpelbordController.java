@@ -6,23 +6,26 @@
 package gui;
 
 import domein.DomeinController;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 
 /**
  * FXML Controller class
  *
  * @author anjana
  */
-public class SpelbordController implements Initializable {
+public class SpelbordController extends GridPane {
 
-    DomeinController dc = new DomeinController();
-    
     @FXML
     private ImageView imgKaart00;
     @FXML
@@ -53,8 +56,6 @@ public class SpelbordController implements Initializable {
     private ImageView imgKaart16;
     @FXML
     private ImageView imgKaart20;
-    @FXML
-    private ImageView imgKaart21;
     @FXML
     private ImageView imgKaart22;
     @FXML
@@ -121,10 +122,7 @@ public class SpelbordController implements Initializable {
     private ImageView imgKaart65;
     @FXML
     private ImageView imgKaart66;
-    @FXML
     private Label lblSpeler;
-    @FXML
-    private ImageView imgDoelkaart;
     @FXML
     private Label lblScore;
     @FXML
@@ -133,24 +131,94 @@ public class SpelbordController implements Initializable {
     private ImageView imgVrijeGangkaart;
     @FXML
     private Label lblSpeelSpel;
-    @FXML
     private Button btnTerug;
     @FXML
-    private Button btnVerder;
+    private Button btnOpslaan;
+    @FXML
+    private Button btnOpslaanEnSluiten;
+    @FXML
+    private Label lblDraaien;
+    
+    private DomeinController dc;
+    
+    @FXML
+    private Button btnLinks;
+    @FXML
+    private Button btnRechts;
+    @FXML
+    private ImageView imgPijlOmlaag1;
+    @FXML
+    private ImageView imgPijlOmlaag2;
+    @FXML
+    private ImageView imgPijlOmlaag3;
+    @FXML
+    private ImageView imgPijlOmhoog1;
+    @FXML
+    private ImageView imgPijlOmhoog2;
+    @FXML
+    private ImageView imgPijlOmhoog3;
+    @FXML
+    private ImageView imgPijlRechts1;
+    @FXML
+    private ImageView imgPijlRechts2;
+    @FXML
+    private ImageView imgPijlRechts3;
+    @FXML
+    private ImageView imgPijlLinks1;
+    @FXML
+    private Label lblSpeler1;
+    @FXML
+    private ImageView imgDoelkaart1;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public SpelbordController(DomeinController dc) 
+    {
+        this.dc = dc;
         lblSpeelSpel.setText(dc.getTaal().getText("spel"));
         lblSpeler.setText(dc.getTaal().getText("speler..."));
         lblScore.setText(dc.getTaal().getText("score"));
         lblVrijGangkaart.setText(dc.getTaal().getText("vrijeGangkaart"));
-        
+        lblDraaien.setText(dc.getTaal().getText("draai"));
+        btnLinks.setText(dc.getTaal().getText("L"));
+        btnRechts.setText(dc.getTaal().getText("R"));
+
         btnTerug.setText(dc.getTaal().getText("terug"));
-        btnVerder.setText(dc.getTaal().getText("verder"));
-    }    
+        btnOpslaan.setText(dc.getTaal().getText("Opslaan"));
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Spelregels.fxml"));
+        loader.setRoot(this);
+        loader.setController(this);
+        try
+        {
+            loader.load();
+        }
+        catch (IOException e)
+        {
+            System.out.println(dc.getTaal().getText("IOException"));
+            System.out.println(e.getMessage());
+            Platform.exit();
+        }
+        
+        
+        
+        
+    }   
+
+    @FXML
+    private void btnOpslaanOnAction(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void btnOpslaanEnSluitenOnAction(ActionEvent event) {
+        
+    }
+
+    @FXML
+    private void btnLinksOnAction(ActionEvent event) {
+    }
+
+    @FXML
+    private void btnRechtsOnAction(ActionEvent event) {
+    }
     
 }
