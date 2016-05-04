@@ -12,11 +12,10 @@ import utils.Richting;
 public class DomeinController
 {
 
-    private SpelRepository bestaandeSpellen;
-    private SpelerRepository geregistreerdeSpelers;
+    private final SpelRepository spelRepository;
+    private final SpelerRepository spelerRepository;
     private Taal taal;
     private Spel spel;
-    private Speler speler;
 
     /**
      * constructor van de Domeincontroller. Er word een object van de
@@ -24,8 +23,8 @@ public class DomeinController
      */
     public DomeinController()
     {
-        this.bestaandeSpellen = new SpelRepository();
-        this.geregistreerdeSpelers = new SpelerRepository();
+        this.spelRepository = new SpelRepository();
+        this.spelerRepository = new SpelerRepository();
     }
 
     /**
@@ -35,7 +34,7 @@ public class DomeinController
      */
     public void setTaal(String l)
     {
-        taal = new Taal(l);
+        this.taal = new Taal(l);
     }
 
     /**
@@ -55,7 +54,7 @@ public class DomeinController
      */
     public List<String> geefSpelnamen()
     {
-        return bestaandeSpellen.geefSpelnamen();
+        return spelRepository.geefSpelnamen();
     }
 
     /**
@@ -65,7 +64,7 @@ public class DomeinController
      */
     public void kiesSpel(String naam)
     {
-        spel = bestaandeSpellen.kiesSpel(naam);
+        this.spel = spelRepository.kiesSpel(naam);
         
     }
 
@@ -87,7 +86,7 @@ public class DomeinController
      */
     public List<String> geefSpelersVanSpel(String spelId)
     {
-        return geregistreerdeSpelers.geefSpelersVanSpel(spelId);
+        return spelerRepository.geefSpelersVanSpel(spelId);
     }
 
     /**
@@ -97,7 +96,7 @@ public class DomeinController
      */
     public int geefGeboortejaar(String speler)
     {
-        return geregistreerdeSpelers.geefGeboortejaar(speler);
+        return spelerRepository.geefGeboortejaar(speler);
     }
 
     /**
@@ -108,7 +107,7 @@ public class DomeinController
      */
     public String geefKleur(String speler)
     {
-        return geregistreerdeSpelers.geefKleur(speler);
+        return spelerRepository.geefKleur(speler);
     }
 
     // UC2
@@ -134,7 +133,7 @@ public class DomeinController
      */
     public void maakSpel(String naam)
     {
-        spel = new Spel(naam);
+        this.spel = new Spel(naam);
     }
 
     /**
@@ -301,6 +300,6 @@ public class DomeinController
      */
     public void opslaanSpelbord()
     {
-        bestaandeSpellen.opslaanSpelbord(spel.getNaam(), spel.geefCodeSpelbord());
+        spelRepository.opslaanSpelbord(spel.getNaam(), spel.geefCodeSpelbord());
     }
 }
