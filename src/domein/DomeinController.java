@@ -301,6 +301,6 @@ public class DomeinController
      */
     public void opslaanSpelbord()
     {
-        bestaandeSpellen.opslaanSpelbord(spel.geefCodeSpelbord());
+        bestaandeSpellen.opslaanSpelbord(spel.getNaam(), spel.geefCodeSpelbord());
     }
 }

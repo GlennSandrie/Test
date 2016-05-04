@@ -29,35 +29,33 @@ public class Spel
     private Gangkaart vrijeGangkaart;
     private final List<Doelkaart> doelkaarten = new ArrayList<>();
     private Speler huidigeSpeler;
-    private SpelRepository spelRepository;
 
     /**
      * constructor, initialiseert de naam van het spel en maakt een nieuw
      * spelbord en een nieuwe spelrepository aan
      *
-     * @param naam naam moet minstens 8 alfanummerieke tekens zijn, 
-     * met exact 2 cijfers
+     * @param naam naam moet minstens 8 alfanummerieke tekens zijn, met exact 2
+     * cijfers
      */
     public Spel(String naam)
     {
         controleerSpelNaam(naam);
         this.naam = naam;
         sb = new Spelbord();
-        spelRepository = new SpelRepository();
     }
-    
+
     public Spel(String naam, String spelbordCode)
     {
         controleerSpelNaam(naam);
         this.naam = naam;
         sb = new Spelbord(spelbordCode);
-        spelRepository = new SpelRepository();
         vrijeGangkaart = zetCodeOmNaarKaart(spelbordCode.substring(148, 150));
     }
 
     /**
      * methode die de naam geeft
-     * @return naam van het spel, moet minstens 8 alfanummerieke tekens zijn, 
+     *
+     * @return naam van het spel, moet minstens 8 alfanummerieke tekens zijn,
      * met exact 2 cijfers
      */
     public String getNaam()
@@ -67,7 +65,7 @@ public class Spel
 
     /**
      * stelt de naam van het spel in
-     * 
+     *
      * @param naam naam is minstens 8 alfanummerieke tekens, met exact 2 cijfers
      */
     public void setNaam(String naam)
@@ -78,30 +76,41 @@ public class Spel
 
     /**
      * methode die de vrijegangkaart geeft
+     *
      * @return vrijeGangkaart
      */
     public Gangkaart getVrijeGangkaart()
     {
         return vrijeGangkaart;
     }
-    
-    //UC2
-    
+
     /**
-     * methode die de spelnaam controleert (minimum 8 karakters waarvan
-     * exact 2 cijfers
-     * 
+     * methode om de vrijeGangkaart in te stellen
+     *
+     * @param vrijeGangkaart
+     */
+    public void setVrijeGangkaart(Gangkaart vrijeGangkaart)
+    {
+        this.vrijeGangkaart = vrijeGangkaart;
+    }
+
+    //UC2
+    /**
+     * methode die de spelnaam controleert (minimum 8 karakters waarvan exact 2
+     * cijfers
+     *
      * @param naam
      * @return true of false, afhankelijk of de reguliere expressie klopt
      */
     private boolean controleerSpelNaam(String naam)
     {
-        if(!(naam.matches("(?=.*\\d.*\\d)[a-zA-Z0-9]{6,}")))
+        if (!(naam.matches("(?=.*\\d.*\\d)[a-zA-Z0-9]{6,}")))
         {
             throw new InvalidNameException("fouteSpelnaam");
         }
         return true;
     }
+
     /**
      * initialiseert het volledig spel door de gangkaarten te maken en op het
      * spelbord te plaatesn, de spelers op de startpositie te plaatsen, de
@@ -122,7 +131,7 @@ public class Spel
     public void maakGangkaartenEnPlaatsOpSpelbord()
     {
         //kaarten die niet vast staan op het spelbord
-        
+
         Random r = new Random();
         for (int i = 0; i < 10; i++)
         {
@@ -218,7 +227,7 @@ public class Spel
     }
 
     /**
-     * plaatst de losse gangkaarten op het spelbord (wordt aangeroepen door 
+     * plaatst de losse gangkaarten op het spelbord (wordt aangeroepen door
      * maakGangkaartenEnPlaatsOpSpelbord)
      */
     public void plaatsLosseKaartenOpSpelbord()
@@ -267,7 +276,7 @@ public class Spel
 
     /**
      * overloopt het spel en maakt er een String van
-     * 
+     *
      * @return spel
      */
     public String[][] geefSpel()
@@ -286,6 +295,7 @@ public class Spel
 
     /**
      * methode die de huidige speler teruggeeft
+     *
      * @return huidige speler
      */
     public Speler geefHuidigeSpeler()
@@ -295,7 +305,7 @@ public class Spel
 
     /**
      * geeft de huidige doelkaart (te zoeken schat) van de speler aan de beurt
-     * 
+     *
      * @return huidige doelkaart van de huidige speler
      * @throws EmptyListException als de doelkaarten op zijn
      */
@@ -306,7 +316,7 @@ public class Spel
 
     /**
      * methode die de vrije gangkaart als een String teruggeeft
-     * 
+     *
      * @return vrijeGangkaart
      */
     public String geefVrijeGangkaart()
@@ -315,10 +325,10 @@ public class Spel
     }
 
     /**
-     * controleert of de kleur al toegekend is aan een andere speler,
-     * ander krijgt de nieuweSpeler de kleur
-     * 
-     * @param nieuweSpeler 
+     * controleert of de kleur al toegekend is aan een andere speler, ander
+     * krijgt de nieuweSpeler de kleur
+     *
+     * @param nieuweSpeler
      */
     public void voegSpelerToe(Speler nieuweSpeler)
     {
@@ -328,8 +338,8 @@ public class Spel
 
     /**
      * controleert of de kleur al ingenomen is door een speler
-     * 
-     * @param kleur 
+     *
+     * @param kleur
      */
     private void controleerKleur(Kleur kleur)
     {
@@ -344,10 +354,12 @@ public class Spel
             }
         }
     }
+
     //UC4
+
     /**
      * voegt de vrijeGangkaart toe aan het spelbord op de gekozen x en y positie
-     * 
+     *
      * @param xPositie x coordinaat van de gangkaart (0-6)
      * @param yPositie y coordinaat van de gangkaart (0-6)
      */
@@ -358,7 +370,7 @@ public class Spel
 
     /**
      * kies de plaats waar je de gangkaart wilt inschuiven
-     * 
+     *
      * @param xPositie x coordinaat van de gangkaart (0-6)
      * @param yPositie y coordinaat van de gangkaart (0-6)
      */
@@ -370,6 +382,7 @@ public class Spel
 
     /**
      * methode die de richting van de vrije gangkaart bepaalt
+     *
      * @param keuze
      * @return gekozen richting van de vrijeGangkaart
      */
@@ -408,10 +421,11 @@ public class Spel
     }
 
     /**
-     * methode die een lijst van mogelijke richtingen waarin je je kan verplaatsen
-     * vraagt aan Spelbord
-     * 
-     * @return lijst van de mogelijke richtingen waarin de speler zich kan verplaatsen
+     * methode die een lijst van mogelijke richtingen waarin je je kan
+     * verplaatsen vraagt aan Spelbord
+     *
+     * @return lijst van de mogelijke richtingen waarin de speler zich kan
+     * verplaatsen
      */
     public List<String> geefMogelijkeVerplaatsRichtingen()
     {
@@ -419,9 +433,9 @@ public class Spel
     }
 
     /**
-     * methode die aan Spelbord vraagt om de speler te verplaatsen op een bepaalde
-     * x en y coordinaat
-     * 
+     * methode die aan Spelbord vraagt om de speler te verplaatsen op een
+     * bepaalde x en y coordinaat
+     *
      * @param xPositie x coordinaat op het spelbord (0-6)
      * @param yPositie y coordinaat op het spelbord (0-6)
      */
@@ -431,8 +445,9 @@ public class Spel
     }
 
     /**
-     * 
-     * @return coordinaten van de huidige gangkaart waar de speler zich op bevindt
+     *
+     * @return coordinaten van de huidige gangkaart waar de speler zich op
+     * bevindt
      */
     public int[] geefIndexenHuidigeGangkaart()
     {
@@ -442,9 +457,9 @@ public class Spel
     /**
      * methode die de Schat op de gangkaart vergelijkt met de te zoeken schat
      * van de huidige speler
-     * 
-     * @return true of false, naargelang de schat van de huidige gangkaart overeen 
-     * komt met de te zoeken schat van de huidige speler
+     *
+     * @return true of false, naargelang de schat van de huidige gangkaart
+     * overeen komt met de te zoeken schat van de huidige speler
      * @throws EmptyListException als alle schatten gevonden zijn
      */
     public boolean controleerOvereenkomendeSchat() throws EmptyListException
@@ -459,42 +474,48 @@ public class Spel
     {
         huidigeSpeler.verwijderHuidigeDoelkaart();
     }
-    
+
     /**
-     *  methode die het spelbord en de vrije gangkaart doorgeeft aan de spelrepository
-     * @return 
+     * methode die het spelbord en de vrije gangkaart doorgeeft aan de
+     * spelrepository
+     *
+     * @return
      */
     public String geefCodeSpelbord()
     {
-        return sb.geefCodeSpelbord()+vrijeGangkaart.geefCodeGangkaart();
+        return sb.geefCodeSpelbord() + vrijeGangkaart.geefCodeGangkaart();
     }
 
     private Gangkaart zetCodeOmNaarKaart(String substring)
     {
         Gangkaart gk = null;
-        if(substring.charAt(2)==0)
+        if (substring.charAt(2) == 0)
         {
-            switch(substring.charAt(0))
+            switch (substring.charAt(0))
             {
-                case 'H': gk = new HoekKaart(null, Richting.geefRichting(substring.charAt(1)));
+                case 'H':
+                    gk = new HoekKaart(null, Richting.geefRichting(substring.charAt(1)));
                     break;
-                case 'R': gk =  new RechteWegKaart(Richting.geefRichting(substring.charAt(1)));
+                case 'R':
+                    gk = new RechteWegKaart(Richting.geefRichting(substring.charAt(1)));
                     break;
-                case 'T': gk = new Tkaart(null, Richting.geefRichting(substring.charAt(1)));
+                case 'T':
+                    gk = new Tkaart(null, Richting.geefRichting(substring.charAt(1)));
                     break;
             }
-        }
-        else
+        } else
         {
-            for(Schat s : Schat.values())
+            for (Schat s : Schat.values())
             {
-                if(s.getSchatId()==substring.charAt(2))
+                if (s.getSchatId() == substring.charAt(2))
                 {
-                    switch(substring.charAt(0))
+                    switch (substring.charAt(0))
                     {
-                        case 'H': gk = new HoekKaart(s, Richting.geefRichting(substring.charAt(1)));
+                        case 'H':
+                            gk = new HoekKaart(s, Richting.geefRichting(substring.charAt(1)));
                             break;
-                        case 'T': gk = new Tkaart(s, Richting.geefRichting(substring.charAt(1)));
+                        case 'T':
+                            gk = new Tkaart(s, Richting.geefRichting(substring.charAt(1)));
                             break;
                     }
                 }
@@ -502,5 +523,5 @@ public class Spel
         }
         return gk;
     }
-    
+
 }

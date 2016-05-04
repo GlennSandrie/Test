@@ -211,7 +211,6 @@ public class Spelbord
             }
             spelbord[xPositie][spelbord.length - 1] = vrijeGangkaart;
         }
-
         return nieuweVrijeGangkaart;
     }
 

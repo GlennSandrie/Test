@@ -66,8 +66,8 @@ public class SpelMapper
             {
                 if (rs.next())
                 {
-                    String spelbord = rs.getString("spelbord");
-                    spel = new Spel(naam, spelbord);
+                    //String spelbord = rs.getString("spelbord");
+                    spel = new Spel(naam);
                 }
             }
         } catch (SQLException ex)
@@ -81,12 +81,13 @@ public class SpelMapper
      * methode die het spelbord wegschrijft naar de databank
      * @param spelbord 
      */
-    public void opslaanSpelbord(String spelbord)
+    public void opslaanSpelbord(String spelnaam, String spelbord)
     {
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
         {
-            PreparedStatement query = conn.prepareStatement("INSERT INTO spel (spelbord) VALUES (?)");
-            query.setString(1, spelbord);
+            PreparedStatement query = conn.prepareStatement("INSERT INTO spel (spelnaam, spelbord) VALUES (?, ?)");
+            query.setString(1, spelnaam);
+            query.setString(2, spelbord);
             query.executeUpdate();
 
         } catch (SQLException ex)
