@@ -111,8 +111,7 @@ public class SpelerMapper
     {
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
         {
-            PreparedStatement query = conn.prepareStatement("INSERT INTO speler (spelerId, spelId, kleur, geboortejaar, xPositie, yPositie, volgorde)"
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement query = conn.prepareStatement("INSERT INTO speler (spelerId, spelId, kleur, geboortejaar, xPositie, yPositie, volgorde) VALUES (?, ?, ?, ?, ?, ?, ?)");
             query.setString(1, speler.getNaam());
             query.setString(2, spelNaam);
             query.setString(3, speler.getKleur().getKleurNaam());

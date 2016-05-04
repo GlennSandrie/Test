@@ -75,12 +75,19 @@ public class ConsoleApplicatie
         try
         {
             UC5.verplaatsSpeler(dc, input);
-            UC3.bepaalVolgendeSpeler(dc, input, false);
         } catch (EmptyListException ex)
         {
             System.out.println(dc.getTaal().getText(ex.getMessage()));
             UC3.bepaalVolgendeSpeler(dc, input, true);
         }
     }
-
+    
+    public static void gaDoorMetSpel(DomeinController dc, Scanner input)
+    {
+        UC3.bepaalVolgendeSpeler(dc, input, false);
+        if(!UC3.spelOpgeslaan)
+        {
+            speelSpel(dc, input);
+        }
+    }
 }

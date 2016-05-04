@@ -6,6 +6,7 @@
 package ui;
 
 import domein.DomeinController;
+import exceptions.WrongInputException;
 import java.util.Scanner;
 
 /**
@@ -14,6 +15,8 @@ import java.util.Scanner;
  */
 public class UC3
 {
+    
+    public static boolean spelOpgeslaan;
 
     /**
      * methode om de volgende speler aan de beurt te bepalen, als het spel ten
@@ -22,7 +25,7 @@ public class UC3
      * @param dc
      * @param sc
      * @param eindeSpel
-     */
+     */            
     public static void bepaalVolgendeSpeler(DomeinController dc, Scanner sc, boolean eindeSpel)
     {
         String opslaan = "";
@@ -31,26 +34,29 @@ public class UC3
             eindeVanSpel(dc);
         } else
         {
-//        System.out.println("opslaan");
-//        try {
-//            while(!opslaan.equals(dc.getTaal().getText("ja"))&&!opslaan.equals(dc.getTaal().getText("nee"))) {
-//                System.out.println(dc.getTaal().getText("opslaan"));
-//                opslaan = sc.nextLine();
-//                if(opslaan.equals(dc.getTaal().getText("nee")))
-//                {
-            dc.bepaalVolgendeSpelerAanDeBeurt();
-            System.out.println(dc.getTaal().getText("volgendeSpeler") + dc.geefHuidigeSpeler());
-//                }
-//                else if (opslaan.equals(dc.getTaal().getText("ja")))
-//                    UC6.bewaarSpel(dc, sc);
-//                else
-//                    throw new WrongInputException("fouteInvoer");
-//            }
-//        }
-//        catch (WrongInputException e)
-//        {
-//            System.out.println(dc.getTaal().getText(e.getMessage()));
-//        }
+            try {
+                while(!opslaan.equalsIgnoreCase(dc.getTaal().getText("ja"))&&!opslaan.equalsIgnoreCase(dc.getTaal().getText("nee"))) {
+                    System.out.println("Opslaan?");
+                    opslaan = sc.nextLine();
+                    if(opslaan.equals(dc.getTaal().getText("nee")))
+                    {
+                        dc.bepaalVolgendeSpelerAanDeBeurt();
+                        System.out.println(dc.getTaal().getText("volgendeSpeler") + dc.geefHuidigeSpeler());
+                        spelOpgeslaan = false;
+                    }
+                    else if (opslaan.equals(dc.getTaal().getText("ja")))
+                    {
+                        UC6.bewaarSpel(dc, sc);
+                        spelOpgeslaan = true;
+                    }
+                    else
+                        throw new WrongInputException("fouteInvoer");
+                }
+            }
+            catch (WrongInputException e)
+            {
+                System.out.println(dc.getTaal().getText(e.getMessage()));
+            }
         }
     }
 

@@ -35,26 +35,20 @@ public class UC2
     {
         String naam = "";
         boolean vlag2 = true;
-        // do
-        //  {
-        //      try
-        //      {
-        System.out.println(dc.getTaal().getText("nieuwSpel"));
-        naam = input.nextLine();
-        //          if (!(naam.matches("^[a-zA-Z]{8,}$")))
-        //          {
-        //              throw new InvalidNameException("fouteSpelnaam");
-        //          } else
-        //          {
-        //              vlag2 = false;
-        //          }
-        //      } catch (InvalidNameException e)
-        //      {
-        //          System.out.println(dc.getTaal().getText("fouteSpelnaam"));
-        //      }
-        //  } while (vlag2=!false);
-
-        dc.maakSpel(naam);
+        try
+        {
+            while(vlag2)
+            {
+                System.out.println(dc.getTaal().getText("nieuwSpel"));
+                naam = input.nextLine();
+                dc.maakSpel(naam);
+                vlag2 = false;
+            }
+        } catch (InvalidNameException e)
+        {
+            System.out.println(dc.getTaal().getText("fouteSpelnaam"));
+        }
+        
         int aantal = 0;
         boolean vlag = true;
         do

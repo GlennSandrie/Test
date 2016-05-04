@@ -86,7 +86,7 @@ public class SpelMapper
     {
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
         {
-            PreparedStatement query = conn.prepareStatement("INSERT INTO spel (spelnaam, spelbord) VALUES (?, ?)");
+            PreparedStatement query = conn.prepareStatement("INSERT INTO spel (spelId, spelbord) VALUES (?, ?)");
             query.setString(1, spelnaam);
             query.setString(2, spelbord);
             query.executeUpdate();

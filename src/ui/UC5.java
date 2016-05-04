@@ -8,6 +8,7 @@ package ui;
 import domein.DomeinController;
 import exceptions.EmptyListException;
 import exceptions.WrongInputException;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -54,8 +55,20 @@ public class UC5
                 {
                     while (keuze <= 0 || keuze > richtingen.size())
                     {
-                        System.out.println(dc.getTaal().getText("kiezenRichting"));
-                        keuze = input.nextInt();
+                        try {
+                        boolean fout = true;
+                            while(fout)
+                            {
+                                System.out.println(dc.getTaal().getText("kiezenRichting"));
+                                keuze = input.nextInt();
+                                fout = false;
+                            }
+                        }
+                        catch(InputMismatchException e)
+                        {
+                            System.out.println(dc.getTaal().getText("fouteNummerKleur"));
+                            input.nextLine();
+                        }
                         if (keuze <= 0 || keuze > richtingen.size())
                         {
                             throw new WrongInputException("verkeerdeKeuze");
@@ -78,7 +91,7 @@ public class UC5
                         }
                         if (dc.controleerOvereenkomendeSchat())
                         {
-                            System.out.println("overeenkomendeSchat");
+                            System.out.println(dc.getTaal().getText("overeenkomendeSchat"));
                             dc.verwijderHuidigeDoelkaart();
                             System.out.println(dc.geefDoelkaartVanHuidigeSpeler());
                             doorgaan = dc.getTaal().getText("nee");
@@ -106,22 +119,12 @@ public class UC5
                     doorgaan = dc.getTaal().getText("ja");
                 }
             } while (doorgaan.equals(dc.getTaal().getText("ja")));
-            gaDoorMetSpel(dc, input);
+            ConsoleApplicatie.gaDoorMetSpel(dc, input);
         } catch (IllegalArgumentException e)
         {
             System.out.println(dc.getTaal().getText(e.getMessage()));
+            ConsoleApplicatie.gaDoorMetSpel(dc, input);
         }
-    }
-
-    /**
-     * methode om verder te gaan met het spel
-     *
-     * @param dc
-     * @param input
-     */
-    public static void gaDoorMetSpel(DomeinController dc, Scanner input)
-    {
-        ConsoleApplicatie.speelSpel(dc, input);
     }
 
 }

@@ -29,7 +29,11 @@ public class Spel
     private Gangkaart vrijeGangkaart;
     private final List<Doelkaart> doelkaarten = new ArrayList<>();
     private Speler huidigeSpeler;
-
+    
+    public Spel()
+    {
+        sb = new Spelbord();
+    }
     /**
      * constructor, initialiseert de naam van het spel en maakt een nieuw
      * spelbord en een nieuwe spelrepository aan

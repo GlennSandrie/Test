@@ -25,10 +25,12 @@ public class UC6
      */
     public static void bewaarSpel(DomeinController dc, Scanner input)
     {
+        
         try{
             boolean fout = true;
             while(fout)
             {
+                System.out.printf("Het spel wordt opgeslaan onder de naam %s",dc.getSpelnaam());
                 if(controleerBestaandSpel(dc))
                 {
                     dc.updateSpelbord();
@@ -39,6 +41,7 @@ public class UC6
                     dc.opslaanSpelbord();
                     opslaanSpelers(dc);
                 }
+                System.out.println("Het spel is opgeslagen");
                 fout = false;
             }
         }
@@ -50,7 +53,7 @@ public class UC6
                 while(fout)
                 {
                     String naam;
-                    System.out.println(dc.getTaal().getText("nieuweNaam"));
+                    System.out.println(dc.getTaal().getText("nieuwSpel"));
                     naam = input.nextLine();
                     dc.setNaamSpel(naam);
                     fout = false;
@@ -61,16 +64,46 @@ public class UC6
                 System.out.println(dc.getTaal().getText(ex.getMessage()));
             }
         }
+        catch(RuntimeException e)
+        {
+            System.out.println("Er is een fout gebeurt bij het opslaan van het spel. Het programma werd afgesloten.");
+            System.exit(1);
+        }
     }
 
     private static void updateSpelers(DomeinController dc)
     {
+        List<String> spelernamenDB = dc.geefSpelersVanSpel(dc.getSpelnaam());        
+        String naam;
         
+        for(int teller = 0; teller < dc.geefSpelers().size(); teller++)
+        {
+            naam = dc.geefHuidigeSpeler();
+            boolean gevonden = false;
+            for(String sDB : spelernamenDB)
+            {
+                if(naam.equals(sDB))
+                {
+                    dc.updateSpeler(teller);
+                    gevonden = true;
+                }
+            }
+            if(!gevonden)
+                dc.opslaanSpeler(teller);
+            
+            dc.bepaalVolgendeSpelerAanDeBeurt();
+        }
+        dc.bepaalVolgendeSpelerAanDeBeurt();
     }
 
     private static void opslaanSpelers(DomeinController dc)
     {
-        
+        for(int teller = 0; teller < dc.geefSpelers().size(); teller++)
+        {
+            dc.opslaanSpeler(teller);
+            dc.bepaalVolgendeSpelerAanDeBeurt();
+        }
+        dc.bepaalVolgendeSpelerAanDeBeurt();
     }
 
     private static boolean controleerBestaandSpel(DomeinController dc)
@@ -85,26 +118,23 @@ public class UC6
             {
                 spelernamenDB = dc.geefSpelersVanSpel(naam);
                 spelernamen = dc.geefSpelers();
-                if(spelernamenDB.size()==spelernamen.size())
+                int aantalGelijk = 0;
+                for(String sDB : spelernamenDB)
                 {
-                    int aantalGelijk = 0;
-                    for(String sDB : spelernamenDB)
+                    for(String s : spelernamen)
                     {
-                        for(String s : spelernamen)
+                        if(s.equals(sDB))
                         {
-                            if(s.equals(sDB))
-                            {
-                                aantalGelijk++;
-                            }
+                            aantalGelijk++;
                         }
                     }
-                    if(aantalGelijk==spelernamenDB.size())
-                    {
-                        return true;
-                    }
-                    else
-                        throw new InvalidNameException("spelBestaat");
                 }
+                if(aantalGelijk==spelernamenDB.size())
+                {
+                    return true;
+                }
+                else
+                    throw new InvalidNameException("spelBestaat");
             }
         }
         return false;
