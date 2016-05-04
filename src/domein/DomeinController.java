@@ -310,9 +310,14 @@ public class DomeinController
     
     public void opslaanSpeler(int beurt)
     {
-        spelerRepository.opslaanSpeler(spel.getNaam(), spel.geefHuidigeSpeler().getNaam(), spel.geefIndexenHuidigeGangkaart(), beurt);
+        spelerRepository.opslaanSpeler(spel.getNaam(), spel.geefHuidigeSpeler(), spel.geefIndexenHuidigeGangkaart(), beurt);
     }
 
+    public void updateSpeler(int beurt)
+    {
+        spelerRepository.updateSpeler(spel.getNaam(), spel.geefHuidigeSpeler().getNaam(), spel.geefIndexenHuidigeGangkaart(), beurt);
+    }
+    
     public List<String> geefSpelers()
     {
         return spel.getSpelernamen();

@@ -107,21 +107,19 @@ public class SpelerMapper
         return kleur;
     }
 
-    /**
-     * methode om een speler te registreren in de databank
-     *
-     * @param speler
-     */
-    public void registreerSpeler(Speler speler)
+    public void opslaanSpeler(String spelNaam, Speler speler, int x, int y, int beurt)
     {
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
         {
-            PreparedStatement query = conn.prepareStatement("INSERT INTO speler (spelerId, kleur, geboortejaar)"
-                    + "VALUES (?, ?, ?)");
+            PreparedStatement query = conn.prepareStatement("INSERT INTO speler (spelerId, spelId, kleur, geboortejaar, xPositie, yPositie, volgorde)"
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?)");
             query.setString(1, speler.getNaam());
-            query.setString(2, speler.getKleur().getKleurNaam());
-            query.setInt(3, speler.getGeboortejaar());
-
+            query.setString(2, spelNaam);
+            query.setString(3, speler.getKleur().getKleurNaam());
+            query.setInt(4, speler.getGeboortejaar());
+            query.setInt(5, x);
+            query.setInt(6, y);
+            query.setInt(7, beurt);
             query.executeUpdate();
 
         } catch (SQLException ex)
@@ -129,8 +127,8 @@ public class SpelerMapper
             throw new RuntimeException(ex);
         }
     }
-
-    public void opslaanSpeler(String spelNaam, String naam, int x, int y, int beurt)
+    
+    public void updateSpeler(String spelNaam, String naam, int x, int y, int beurt)
     {
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
         {
@@ -147,5 +145,4 @@ public class SpelerMapper
             throw new RuntimeException(ex);
         }
     }
-
 }

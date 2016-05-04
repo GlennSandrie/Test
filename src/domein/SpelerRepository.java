@@ -38,16 +38,6 @@ public class SpelerRepository
     }
 
     /**
-     * registreerd een speler door de SpelerMapper
-     *
-     * @param speler
-     */
-    public void registreerSpeler(Speler speler)
-    {
-        sm.registreerSpeler(speler);
-    }
-
-    /**
      * methode die het geboortejaar van een speler aan de spelerMapper vraagt
      *
      * @param speler
@@ -79,8 +69,13 @@ public class SpelerRepository
      }
      */
 
-    public void opslaanSpeler(String spelNaam, String naam, int[] indexenPlaatsSpelbord, int beurt)
+    void opslaanSpeler(String spelNaam, Speler speler, int[] indexenPlaatsSpelbord, int beurt)
     {
-        sm.opslaanSpeler(spelNaam, naam, indexenPlaatsSpelbord[0], indexenPlaatsSpelbord[1], beurt);
+        sm.opslaanSpeler(spelNaam, speler, indexenPlaatsSpelbord[0], indexenPlaatsSpelbord[1], beurt);
+    }
+    
+    public void updateSpeler(String spelNaam, String naam, int[] indexenPlaatsSpelbord, int beurt)
+    {
+        sm.updateSpeler(spelNaam, naam, indexenPlaatsSpelbord[0], indexenPlaatsSpelbord[1], beurt);
     }
 }
