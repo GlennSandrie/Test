@@ -114,7 +114,6 @@ public class SpelerMapper
      */
     public void registreerSpeler(Speler speler)
     {
-
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
         {
             PreparedStatement query = conn.prepareStatement("INSERT INTO speler (spelerId, kleur, geboortejaar)"
@@ -123,6 +122,24 @@ public class SpelerMapper
             query.setString(2, speler.getKleur().getKleurNaam());
             query.setInt(3, speler.getGeboortejaar());
 
+            query.executeUpdate();
+
+        } catch (SQLException ex)
+        {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    public void opslaanSpeler(String spelNaam, String naam, int x, int y, int beurt)
+    {
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
+        {
+            PreparedStatement query = conn.prepareStatement("UPDATE speler SET xPositie = ?, yPositie = ?, volgorde = ? WHERE spelerId = ? AND spelId = ?");
+            query.setInt(1, x);
+            query.setInt(2, y);
+            query.setInt(3, beurt);
+            query.setString(4,naam);
+            query.setString(5, spelNaam);
             query.executeUpdate();
 
         } catch (SQLException ex)

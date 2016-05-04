@@ -78,4 +78,9 @@ public class SpelerRepository
      return sm.geefGegevensSpelerIn(naam,geboortedatum,kleur);
      }
      */
+
+    public void opslaanSpeler(String spelNaam, String naam, int[] indexenPlaatsSpelbord, int beurt)
+    {
+        sm.opslaanSpeler(spelNaam, naam, indexenPlaatsSpelbord[0], indexenPlaatsSpelbord[1], beurt);
+    }
 }

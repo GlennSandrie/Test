@@ -53,35 +53,15 @@ public class Spelbord
         {
             for(int y = 0; y < 7; y++)
             {
-               if(spelbordCode.charAt(codeIndex+2)==0)
+                switch(spelbordCode.charAt(codeIndex))
                 {
-                    switch(spelbordCode.charAt(codeIndex))
-                    {
-                        case 'H': spelbord[x][y] = new HoekKaart(null, Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
-                            break;
-                        case 'R': spelbord[x][y] = new RechteWegKaart(Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
-                            break;
-                        case 'T': spelbord[x][y] = new Tkaart(null, Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
-                            break;
-                    }
-                }
-                else
-                {
-                    for(Schat s : Schat.values())
-                    {
-                        if(s.getSchatId()==spelbordCode.charAt(codeIndex+2))
-                        {
-                            switch(spelbordCode.charAt(codeIndex))
-                            {
-                                case 'H': spelbord[x][y] = new HoekKaart(s, Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
-                                    break;
-                                case 'T': spelbord[x][y] = new Tkaart(s, Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
-                                    break;
-                            }
-                        }
-                    }
-                }
-                    
+                    case 'H': spelbord[x][y] = new HoekKaart(Schat.geefSchat(spelbordCode.charAt(codeIndex+2)), Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
+                        break;
+                    case 'R': spelbord[x][y] = new RechteWegKaart(Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
+                        break;
+                    case 'T': spelbord[x][y] = new Tkaart(Schat.geefSchat(spelbordCode.charAt(codeIndex+2)), Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
+                        break;
+                } 
                 codeIndex = codeIndex+3;
             }
         }

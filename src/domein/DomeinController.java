@@ -302,4 +302,24 @@ public class DomeinController
     {
         spelRepository.opslaanSpelbord(spel.getNaam(), spel.geefCodeSpelbord());
     }
+    
+    public void updateSpelbord()
+    {
+         spelRepository.updateSpelbord(spel.getNaam(), spel.geefCodeSpelbord());
+    }
+    
+    public void opslaanSpeler(int beurt)
+    {
+        spelerRepository.opslaanSpeler(spel.getNaam(), spel.geefHuidigeSpeler().getNaam(), spel.geefIndexenHuidigeGangkaart(), beurt);
+    }
+
+    public List<String> geefSpelers()
+    {
+        return spel.getSpelernamen();
+    }
+
+    public void setNaamSpel(String naam)
+    {
+        spel.setNaam(naam);
+    }
 }

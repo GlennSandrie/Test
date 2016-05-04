@@ -53,4 +53,9 @@ public class SpelRepository
     {
         sm.opslaanSpelbord(spelnaam, spelbord);
     }
+    
+    public void updateSpelbord(String spelnaam, String spelbord)
+    {
+        sm.updateSpelbord(spelnaam, spelbord);
+    }
 }

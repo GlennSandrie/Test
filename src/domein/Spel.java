@@ -93,7 +93,7 @@ public class Spel
     {
         this.vrijeGangkaart = vrijeGangkaart;
     }
-
+    
     //UC2
     /**
      * methode die de spelnaam controleert (minimum 8 karakters waarvan exact 2
@@ -489,39 +489,26 @@ public class Spel
     private Gangkaart zetCodeOmNaarKaart(String substring)
     {
         Gangkaart gk = null;
-        if (substring.charAt(2) == 0)
-        {
-            switch (substring.charAt(0))
+        switch(substring.charAt(0))
             {
-                case 'H':
-                    gk = new HoekKaart(null, Richting.geefRichting(substring.charAt(1)));
+                case 'H': gk = new HoekKaart(Schat.geefSchat(substring.charAt(2)), Richting.geefRichting(substring.charAt(1)));
                     break;
-                case 'R':
-                    gk = new RechteWegKaart(Richting.geefRichting(substring.charAt(1)));
+                case 'R': gk = new RechteWegKaart(Richting.geefRichting(substring.charAt(1)));
                     break;
-                case 'T':
-                    gk = new Tkaart(null, Richting.geefRichting(substring.charAt(1)));
+                case 'T': gk = new Tkaart(Schat.geefSchat(substring.charAt(2)), Richting.geefRichting(substring.charAt(1)));
                     break;
-            }
-        } else
-        {
-            for (Schat s : Schat.values())
-            {
-                if (s.getSchatId() == substring.charAt(2))
-                {
-                    switch (substring.charAt(0))
-                    {
-                        case 'H':
-                            gk = new HoekKaart(s, Richting.geefRichting(substring.charAt(1)));
-                            break;
-                        case 'T':
-                            gk = new Tkaart(s, Richting.geefRichting(substring.charAt(1)));
-                            break;
-                    }
-                }
-            }
-        }
+            } 
         return gk;
+    }
+    
+    public List<String> getSpelernamen()
+    {
+        List<String> spelernamen = new ArrayList<>();
+        for(Speler s : spelers)
+        {
+            spelernamen.add(s.getNaam());
+        }
+        return spelernamen;
     }
 
 }

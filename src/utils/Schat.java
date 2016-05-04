@@ -52,4 +52,14 @@ public enum Schat
     {
         return naam;
     }
+    
+    public static Schat geefSchat(int nummer)
+    {
+        for(Schat s : values())
+        {
+            if(s.getSchatId()==nummer)
+                return s;
+        }
+        return null;
+    }
 }
