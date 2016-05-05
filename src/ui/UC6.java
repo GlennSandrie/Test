@@ -135,7 +135,7 @@ public class UC6
                     return true;
                 }
                 else
-                    throw new InvalidNameException("spelBestaat");
+                    throw new InvalidNameException("naamBestaat");
             }
         }
         return false;

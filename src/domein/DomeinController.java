@@ -122,7 +122,7 @@ public class DomeinController
     {
         Speler nieuweSpeler = new Speler(naam, geboortejaar, kleur);
         spel.voegSpelerToe(nieuweSpeler);
-
+        
     }
 
     /**

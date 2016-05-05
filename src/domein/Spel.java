@@ -170,7 +170,7 @@ public class Spel
             Tkaart tk;
             for (Schat schat : Schat.values())
             {
-                if (schat.getSchatId() == i + 1)
+                if (schat.getSchatId() == i + 7)
                 {
                     tk = new Tkaart(schat, Richting.geefRichting(random));
                     losseKaarten.add(tk);
@@ -262,10 +262,10 @@ public class Spel
         schudDoelkaarten();
         for (Speler speler : spelers)
         {
-            for (int i = 0; i < (doelkaarten.size() / spelers.size()); i++)
+            for (int i = 0; i < (24 / spelers.size()); i++)
             {
-                speler.voegDoelkaartToe(doelkaarten.get(i));
-                doelkaarten.remove(i);
+                speler.voegDoelkaartToe(doelkaarten.get(doelkaarten.size()-1));
+                doelkaarten.remove(doelkaarten.size()-1);
             }
         }
     }
@@ -358,7 +358,7 @@ public class Spel
             }
         }
     }
-
+    
     //UC4
 
     /**

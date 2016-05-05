@@ -84,6 +84,7 @@ public class ConsoleApplicatie
     
     public static void gaDoorMetSpel(DomeinController dc, Scanner input)
     {
+        System.out.println("Start UC3");
         UC3.bepaalVolgendeSpeler(dc, input, false);
         if(!UC3.spelOpgeslaan)
         {

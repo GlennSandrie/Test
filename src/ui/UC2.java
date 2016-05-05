@@ -13,6 +13,7 @@ import exceptions.WrongInputException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 import utils.Kleur;
 
@@ -94,7 +95,7 @@ public class UC2
      */
     public static void registreerSpeler(DomeinController dc, Scanner input)
     {
-
+        List<String> spelnamen = dc.geefSpelnamen();
         String naam = null;
         int geboortejaar = 0, nrKleur;
         Kleur kleur = null;
@@ -105,54 +106,24 @@ public class UC2
             {
                 System.out.println(dc.getTaal().getText("spelerNaam"));
                 naam = input.nextLine();
-
-                if (!(naam.matches("^[a-zA-Z]{2,}$")))
+                for(String spelnaam : spelnamen)
                 {
-                    throw new InvalidNameException("fouteNaam");
-                } else
-                {
-                    verder = false;
+                    for(String s : dc.geefSpelersVanSpel(spelnaam))
+                    {
+                        if(s.equals(naam))
+                            throw new InvalidNameException("naamBestaat");
+                    }
                 }
-
-            } catch (InvalidNameException e)
-            {
-                System.out.println(dc.getTaal().getText("fouteNaam"));
-            } catch (InputMismatchException e)
-            {
-                System.out.println(dc.getTaal().getText("fouteNaam"));
-            }
-        } while (verder != false);
-
-        int huidigJaar = GregorianCalendar.getInstance().get(Calendar.YEAR);
-
-        while (geboortejaar < huidigJaar - 90 || geboortejaar > huidigJaar - 7)
-        {
-            try
-            {
+                for(String s : dc.geefSpelers())
+                {
+                    if(s.equals(naam))
+                        throw new InvalidNameException("naamBestaat");
+                }
+                
                 System.out.println(dc.getTaal().getText("spelerGebdatum"));
                 geboortejaar = input.nextInt();
-
-                if (geboortejaar < huidigJaar - 90 || geboortejaar > huidigJaar - 7)
-                {
-                    throw new InvalidBirthdateException("foutGeboortejaar");
-                }
-            } catch (InvalidBirthdateException e)
-            {
-                System.out.println(dc.getTaal().getText(e.getMessage()));
                 input.nextLine();
-            } catch (InputMismatchException e)
-            {
-                System.out.println(dc.getTaal().getText("foutGeboortejaar"));
-                input.nextLine();
-            }
-        }
-        input.nextLine();
-
-        while (kleur == null)
-        {
-            try
-            {
-
+                
                 System.out.println(dc.getTaal().getText("spelerKleur"));
                 System.out.println("1. " + dc.getTaal().getText("geel"));
                 System.out.println("2. " + dc.getTaal().getText("blauw"));
@@ -168,9 +139,17 @@ public class UC2
                     }
                 }
                 dc.registreer(naam, geboortejaar, kleur);
+                verder = false;
+            } catch (InvalidNameException e)
+            {
+                System.out.println(dc.getTaal().getText(e.getMessage()));
+            } catch (InvalidBirthdateException e)
+            {
+                System.out.println(dc.getTaal().getText(e.getMessage()));
+                input.nextLine();
             } catch (IllegalArgumentException e)
             {
-                System.out.println(dc.getTaal().getText("kleurBestaat"));
+                System.out.println(dc.getTaal().getText(e.getMessage()));
                 kleur = null;
                 input.nextLine();
             } catch (InputMismatchException e)
@@ -183,7 +162,7 @@ public class UC2
                 System.out.println(dc.getTaal().getText("fouteNummerKleur"));
                 input.nextLine();
             }
-        }
+        } while (verder);
         input.nextLine();
     }
 
