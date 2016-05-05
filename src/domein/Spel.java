@@ -53,7 +53,10 @@ public class Spel
         controleerSpelNaam(naam);
         this.naam = naam;
         sb = new Spelbord(spelbordCode);
-        vrijeGangkaart = zetCodeOmNaarKaart(spelbordCode.substring(148, 150));
+        if(spelbordCode.charAt(spelbordCode.length()-3)=='H'||spelbordCode.charAt(spelbordCode.length()-3)=='R'||spelbordCode.charAt(spelbordCode.length()-3)=='T')
+            vrijeGangkaart = zetCodeOmNaarKaart(spelbordCode.substring(spelbordCode.length()-3,spelbordCode.length()));
+        else
+            vrijeGangkaart = zetCodeOmNaarKaart(spelbordCode.substring(spelbordCode.length()-4,spelbordCode.length()));
     }
 
     /**
@@ -339,7 +342,11 @@ public class Spel
         controleerKleur(nieuweSpeler.getKleur());
         spelers.add(nieuweSpeler);
     }
-
+    
+    public void voegBestaandeSpelerToe(Speler nieweSpeler, int xPositie, int yPositie, int beurt)
+    {
+        
+    }
     /**
      * controleert of de kleur al ingenomen is door een speler
      *
@@ -488,20 +495,6 @@ public class Spel
         return sb.geefCodeSpelbord() + vrijeGangkaart.geefCodeGangkaart();
     }
 
-    private Gangkaart zetCodeOmNaarKaart(String substring)
-    {
-        Gangkaart gk = null;
-        switch(substring.charAt(0))
-            {
-                case 'H': gk = new HoekKaart(Schat.geefSchat(substring.charAt(2)), Richting.geefRichting(substring.charAt(1)));
-                    break;
-                case 'R': gk = new RechteWegKaart(Richting.geefRichting(substring.charAt(1)));
-                    break;
-                case 'T': gk = new Tkaart(Schat.geefSchat(substring.charAt(2)), Richting.geefRichting(substring.charAt(1)));
-                    break;
-            } 
-        return gk;
-    }
     
     public List<String> getSpelernamen()
     {
@@ -512,5 +505,56 @@ public class Spel
         }
         return spelernamen;
     }
+    //UC7
+    
+    private Gangkaart zetCodeOmNaarKaart(String substring)
+    {
+        System.out.println(substring);
+        Gangkaart gk = null;
+        if(substring.length()==3)
+        {
+            switch(substring.charAt(0))
+            {
+                case 'H': gk = new HoekKaart(Schat.geefSchat(substring.charAt(2)), Richting.geefRichting(substring.charAt(1)));
+                    break;
+                case 'R': gk = new RechteWegKaart(Richting.geefRichting(substring.charAt(1)));
+                    break;
+                case 'T': gk = new Tkaart(Schat.geefSchat(substring.charAt(2)), Richting.geefRichting(substring.charAt(1)));
+                    break;
+            } 
+        }
+        else
+        {
+            switch(substring.charAt(0))
+            {
+                case 'H': gk = new HoekKaart(Schat.geefSchat(Integer.parseInt(substring.substring(2,3))), Richting.geefRichting(substring.charAt(1)));
+                    break;
+                case 'R': gk = new RechteWegKaart(Richting.geefRichting(substring.charAt(1)));
+                    break;
+                case 'T': gk = new Tkaart(Schat.geefSchat(Integer.parseInt(substring.substring(2,3))), Richting.geefRichting(substring.charAt(1)));
+                    break;
+            }
+        }
+        return gk;
+    }
 
+    public void initialiseerVolledigBestaandSpel(String[][] gegSpelers)
+    {
+        for(String[] speler : gegSpelers)
+        {
+            for(Speler s : spelers)
+            {
+                if(s.getNaam().equals(speler[0]))
+                {
+                    sb.zetSpelerOpPositie(Integer.parseInt(speler[1]), Integer.parseInt(speler[2]), s);
+                    if(speler[3].equals("0"))
+                    {
+                        huidigeSpeler = s;
+                    }
+                    s.zetCodeOmNaarDoelkaarten(speler[4]);
+                }
+            }
+        }
+    }
+    
 }

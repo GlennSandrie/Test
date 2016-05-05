@@ -146,4 +146,31 @@ public class SpelerMapper
             throw new RuntimeException(ex);
         }
     }
+    
+    public String[][] geefGegevensSpelers(int aantal, String spel)
+    {
+        String[][] gegevens = new String[aantal][5];
+        try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
+        {
+            PreparedStatement query = conn.prepareStatement("SELECT spelerId, xPositie, yPositie, volgorde, doelkaarten FROM speler WHERE spelId = ?");
+            query.setString(1, spel);
+            try (ResultSet rs = query.executeQuery())
+            {
+                int teller = 0;
+                while (rs.next())
+                {
+                    gegevens[teller][0] = rs.getString("spelerId");
+                    gegevens[teller][1] = String.format("%d",rs.getInt("xPositie"));
+                    gegevens[teller][2] = String.format("%d",rs.getInt("yPositie"));
+                    gegevens[teller][3] = String.format("%d",rs.getInt("volgorde"));
+                    gegevens[teller][4] = rs.getString("doelkaarten");
+                }
+            }
+        } catch (SQLException ex)
+        {
+            throw new RuntimeException(ex);
+        }
+
+        return gegevens;
+    }
 }

@@ -124,6 +124,7 @@ public class DomeinController
         spel.voegSpelerToe(nieuweSpeler);
         
     }
+    
 
     /**
      * maakt een nieuw spel aan met een naam
@@ -325,5 +326,11 @@ public class DomeinController
     public void setNaamSpel(String naam)
     {
         spel.setNaam(naam);
+    }
+
+    public void initialiseerVolledigBestaandSpel()
+    {
+        String[][] gegSpelers = spelerRepository.geefGegevensSpelers(spel.getNaam());
+        spel.initialiseerVolledigBestaandSpel(gegSpelers);
     }
 }

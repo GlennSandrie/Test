@@ -53,16 +53,33 @@ public class Spelbord
         {
             for(int y = 0; y < 7; y++)
             {
-                switch(spelbordCode.charAt(codeIndex))
+                if(spelbordCode.charAt(codeIndex+3)=='H'||spelbordCode.charAt(codeIndex+3)=='R'||spelbordCode.charAt(codeIndex+3)=='T')
                 {
-                    case 'H': spelbord[x][y] = new HoekKaart(Schat.geefSchat(spelbordCode.charAt(codeIndex+2)), Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
-                        break;
-                    case 'R': spelbord[x][y] = new RechteWegKaart(Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
-                        break;
-                    case 'T': spelbord[x][y] = new Tkaart(Schat.geefSchat(spelbordCode.charAt(codeIndex+2)), Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
-                        break;
-                } 
-                codeIndex = codeIndex+3;
+                    switch(spelbordCode.charAt(codeIndex))
+                    {
+                        case 'H': spelbord[x][y] = new HoekKaart(Schat.geefSchat(Character.getNumericValue(spelbordCode.charAt(codeIndex+2))), Richting.geefRichting(Character.getNumericValue(spelbordCode.charAt(codeIndex+1))));
+                            break;
+                        case 'R': spelbord[x][y] = new RechteWegKaart(Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
+                            break;
+                        case 'T': spelbord[x][y] = new Tkaart(Schat.geefSchat(Character.getNumericValue(spelbordCode.charAt(codeIndex+2))), Richting.geefRichting(Character.getNumericValue(spelbordCode.charAt(codeIndex+1))));
+                            break;
+                    }
+                    codeIndex = codeIndex+3;
+                }
+                else
+                {
+                    switch(spelbordCode.charAt(codeIndex))
+                    {
+                        case 'H': spelbord[x][y] = new HoekKaart(Schat.geefSchat(Integer.parseInt(spelbordCode.substring(codeIndex+2,codeIndex+4))), Richting.geefRichting(Character.getNumericValue(spelbordCode.charAt(codeIndex+1))));
+                            break;
+                        case 'R': spelbord[x][y] = new RechteWegKaart(Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
+                            break;
+                        case 'T': spelbord[x][y] = new Tkaart(Schat.geefSchat(Integer.parseInt(spelbordCode.substring(codeIndex+2,codeIndex+4))), Richting.geefRichting(Character.getNumericValue(spelbordCode.charAt(codeIndex+1))));
+                            break;
+                    }
+                    codeIndex = codeIndex+4;
+                }
+                
             }
         }
         spelbord[0][0].setKleur(Kleur.GE);
@@ -330,5 +347,10 @@ public class Spelbord
             }
         }
         return sb;
+    }
+    
+    public void zetSpelerOpPositie(int xPositie, int yPositie, Speler speler)
+    {
+        spelbord[xPositie][yPositie].voegSpelerToe(speler);
     }
 }

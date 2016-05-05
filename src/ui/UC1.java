@@ -100,7 +100,7 @@ public class UC1
 
             } catch (InputMismatchException e)
             {
-                System.out.println(dc.getTaal().getText("aantalSpelersFout"));
+                System.out.println(String.format(dc.getTaal().getText("aantalBestaandeSpelers"), aantalSpelers, 4 - aantalSpelers));
                 input.nextLine();
             }
         } while (vlag);
@@ -124,6 +124,6 @@ public class UC1
                 System.out.println(dc.getTaal().getText(e.getMessage()));
             }
         }
-        dc.initialiseerVolledigSpel();
+        dc.initialiseerVolledigBestaandSpel();
     }
 }

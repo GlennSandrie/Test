@@ -78,14 +78,13 @@ public class ConsoleApplicatie
         } catch (EmptyListException ex)
         {
             System.out.println(dc.getTaal().getText(ex.getMessage()));
-            UC3.bepaalVolgendeSpeler(dc, input, true);
+            UC3.eindeVanSpel(dc);
         }
     }
     
     public static void gaDoorMetSpel(DomeinController dc, Scanner input)
     {
-        System.out.println("Start UC3");
-        UC3.bepaalVolgendeSpeler(dc, input, false);
+        UC3.bepaalVolgendeSpeler(dc, input);
         if(!UC3.spelOpgeslaan)
         {
             speelSpel(dc, input);

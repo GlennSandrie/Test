@@ -43,7 +43,7 @@ public class Speler
         controleerNaam(naam);
         controleerGeboortejaar(geboortejaar);
     }
-
+    
     /**
      * methode die de naam van de speler geeft
      *
@@ -155,5 +155,21 @@ public class Speler
             res += d.geefCodeDoelkaart();
         }
         return res;
+    }
+    
+    public void zetCodeOmNaarDoelkaarten(String doelkaarten)
+    {
+        String[] kaarten = doelkaarten.split("_");
+        for(String s : kaarten)
+        {
+            for(Schat schat : Schat.values())
+            {
+                if(schat.getSchatId()==Integer.parseInt(s))
+                {
+                    Doelkaart kaart = new Doelkaart(schat);
+                    voegDoelkaartToe(kaart);
+                }
+            }
+        }
     }
 }
