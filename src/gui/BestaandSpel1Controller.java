@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
@@ -41,11 +44,9 @@ public class BestaandSpel1Controller extends VBox {
     private Button btnTerug;
     @FXML
     private Button btnVerder;
+     @FXML
+    private ComboBox<String> cmbSpel;
     
-    @FXML
-    private TextArea txaKeuzes;
-    @FXML
-    private TextField txfGekozenSpel;
     
     private DomeinController dc;
 
@@ -80,7 +81,7 @@ public class BestaandSpel1Controller extends VBox {
             uitvoer += String.format("%s%n", spel);
         }
         
-        dc.kiesSpel(txfGekozenSpel.getText());
+        //dc.kiesSpel(txfGekozenSpel.getText());
     }
         
     @FXML
@@ -109,7 +110,19 @@ public class BestaandSpel1Controller extends VBox {
         popup.setContentText(foutBoodschap);
         popup.setTitle("Invoerfout!");
         popup.showAndWait();
-        txfGekozenSpel.requestFocus();
+    //  txfGekozenSpel.requestFocus();
     }
 
+    ObservableList<String> list = FXCollections.observableArrayList
+        (dc.geefSpelnamen());
+    
+            /**
+     * Initializes the controller class.
+     * @param url
+     * @param rb
+     */
+    public void initialize(URL url, ResourceBundle rb)
+    {
+        cmbSpel.setItems(list);
+    }
 }
