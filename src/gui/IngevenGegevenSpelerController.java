@@ -67,7 +67,7 @@ public class IngevenGegevenSpelerController extends GridPane {
         btnTerug.setText(dc.getTaal().getText("terug"));
         btnVerder.setText(dc.getTaal().getText("verder"));
 //        cmbKleur.setText(list);
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("IngevenGegevensSpeler.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("IngevenGegevenSpeler.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         try
@@ -87,7 +87,7 @@ public class IngevenGegevenSpelerController extends GridPane {
     @FXML
     private void btnTerugOnAction(ActionEvent event) 
     {
-        NieuwSpelController ns = new NieuwSpelController(dc);
+        NieuweSpelController ns = new NieuweSpelController(dc);
         Stage stage = (Stage) (this.getScene().getWindow());
         Scene scene = new Scene(ns);
         

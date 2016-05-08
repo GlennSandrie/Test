@@ -67,13 +67,14 @@ public class WelkomSchermController extends GridPane {
     }
  
     @FXML
-    private void btnNieuwOnAction(ActionEvent event) {
-//        NieuwSpelController ns = new NieuwSpelController(dc);
-//        Stage stage = (Stage) (this.getScene().getWindow());
-//        Scene scene = new Scene(ns);
-//        
-//        stage.setScene(scene);
-//        stage.show();
+    private void btnNieuwOnAction(ActionEvent event) 
+    {
+        NieuweSpelController ns = new NieuweSpelController(dc);
+        Stage stage = (Stage) (this.getScene().getWindow());
+        Scene scene = new Scene(ns);
+        
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML

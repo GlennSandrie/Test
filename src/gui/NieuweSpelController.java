@@ -29,7 +29,7 @@ import javafx.stage.Stage;
  *
  * @author anjana
  */
-public class NieuwSpelController extends VBox 
+public class NieuweSpelController extends VBox   
 {
 
     @FXML
@@ -41,15 +41,15 @@ public class NieuwSpelController extends VBox
     @FXML
     private Label lblAantalSpelers;
     @FXML
+    private ComboBox<String> cmbAantal;
+    @FXML
     private Button btnTerug;
     @FXML
     private Button btnVerder;
-    @FXML
-    private ComboBox<String> cmbAantal;
-
-    private DomeinController dc;
     
-    public NieuwSpelController(DomeinController dc) 
+    private DomeinController dc;
+
+    public NieuweSpelController(DomeinController dc) 
     {
         this.dc = dc;
         lblNieuwSpelTitel.setText(dc.getTaal().getText("nieuwSpelTitel"));
@@ -59,7 +59,7 @@ public class NieuwSpelController extends VBox
         btnTerug.setText(dc.getTaal().getText("terug"));
         btnVerder.setText(dc.getTaal().getText("verder"));
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("NieuwSpel.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("NieuweSpel.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         try
@@ -73,7 +73,7 @@ public class NieuwSpelController extends VBox
         }
         
         dc.maakSpel(txfNaamNieuwSpel.getText());
-    }
+    }  
 
     @FXML
     private void btnTerugOnAction(ActionEvent event) 
@@ -89,12 +89,12 @@ public class NieuwSpelController extends VBox
     @FXML
     private void btnVerderOnAction(ActionEvent event) 
     {
-//        IngevenGegevenSpelerController is = new IngevenGegevenSpelerController(dc);
-//        Stage stage = (Stage) (this.getScene().getWindow());
-//        Scene scene = new Scene(is);
-//        
-//        stage.setScene(scene);
-//        stage.show();
+        IngevenGegevenSpelerController is = new IngevenGegevenSpelerController(dc);
+        Stage stage = (Stage) (this.getScene().getWindow());
+        Scene scene = new Scene(is);
+        
+        stage.setScene(scene);
+        stage.show();
     }
     
     ObservableList<String> list = FXCollections.observableArrayList("2","3","4");
@@ -108,5 +108,4 @@ public class NieuwSpelController extends VBox
      {
         cmbAantal.setItems(list);
      }
-    
 }
