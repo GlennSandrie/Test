@@ -29,7 +29,7 @@ import javafx.stage.Stage;
  *
  * @author anjana
  */
-public class NieuwSpelController extends VBox
+public class NieuwSpelController extends VBox 
 {
 
     @FXML
@@ -44,22 +44,20 @@ public class NieuwSpelController extends VBox
     private Button btnTerug;
     @FXML
     private Button btnVerder;
-
-    private DomeinController dc;
-
-    @FXML
     private ComboBox<String> cmbAantal;
 
-    public NieuwSpelController(DomeinController dc)
+    private DomeinController dc;
+    
+    public NieuwSpelController(DomeinController dc) 
     {
         this.dc = dc;
         lblNieuwSpelTitel.setText(dc.getTaal().getText("nieuwSpelTitel"));
         lblNieuwSpel.setText(dc.getTaal().getText("nieuwSpel"));
         lblAantalSpelers.setText(dc.getTaal().getText("aantalSpelers"));
-
+        
         btnTerug.setText(dc.getTaal().getText("terug"));
         btnVerder.setText(dc.getTaal().getText("verder"));
-
+        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("NieuwSpel.fxml"));
         loader.setRoot(this);
         loader.setController(this);
@@ -72,39 +70,42 @@ public class NieuwSpelController extends VBox
             System.out.println(e.getMessage());
             Platform.exit();
         }
-
+        
         dc.maakSpel(txfNaamNieuwSpel.getText());
-
     }
 
-    private void btnTerugOnAction(ActionEvent event)
+    @FXML
+    private void btnTerugOnAction(ActionEvent event) 
     {
         WelkomSchermController ws = new WelkomSchermController(dc);
         Stage stage = (Stage) (this.getScene().getWindow());
         Scene scene = new Scene(ws);
-
+        
         stage.setScene(scene);
         stage.show();
     }
 
-    private void btnVerderOnAction(ActionEvent event)
+    @FXML
+    private void btnVerderOnAction(ActionEvent event) 
     {
         IngevenGegevensSpelerController is = new IngevenGegevensSpelerController(dc);
         Stage stage = (Stage) (this.getScene().getWindow());
         Scene scene = new Scene(is);
-
+        
         stage.setScene(scene);
         stage.show();
     }
-    ObservableList<String> list = FXCollections.observableArrayList("1","2","3","4");
-
-        /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
-    public void initialize(URL url, ResourceBundle rb)
-    {
+    
+    ObservableList<String> list = FXCollections.observableArrayList("2","3","4");
+ 
+    /**
+      * Initializes the controller class.
+      * @param url
+      * @param rb
+      */
+     public void initialize(URL url, ResourceBundle rb)
+     {
         cmbAantal.setItems(list);
-    }
+     }
+    
 }

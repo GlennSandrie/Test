@@ -116,7 +116,7 @@ public class BestaandSpel1Controller extends VBox {
     ObservableList<String> list = FXCollections.observableArrayList
         (dc.geefSpelnamen());
     
-            /**
+     /**
      * Initializes the controller class.
      * @param url
      * @param rb
