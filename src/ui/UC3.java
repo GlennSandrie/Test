@@ -24,7 +24,6 @@ public class UC3
      *
      * @param dc
      * @param sc
-     * @param eindeSpel
      */            
     public static void bepaalVolgendeSpeler(DomeinController dc, Scanner sc)
     {

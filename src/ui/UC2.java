@@ -25,7 +25,7 @@ public class UC2
 {
 
     /**
-     * methode où een nieuw spel te maken, controleert de naam van het nieuwe
+     * methode om een nieuw spel te maken, controleert de naam van het nieuwe
      * spel, het aantal spelers, roept de domeincontroller aan om het volledig
      * spel te initialiseren
      *
@@ -36,20 +36,28 @@ public class UC2
     {
         String naam = "";
         boolean vlag2 = true;
-        try
+        do
         {
-            while(vlag2)
+            try
             {
+
                 System.out.println(dc.getTaal().getText("nieuwSpel"));
                 naam = input.nextLine();
-                dc.maakSpel(naam);
-                vlag2 = false;
+                if (!(naam.matches("(?=.*\\d.*\\d)[a-zA-Z0-9]{8,}")))
+                {
+                    throw new InvalidNameException(dc.getTaal().getText("fouteSpelnaam"));
+
+                } else
+                {
+                    dc.maakSpel(naam);
+                    vlag2 = false;
+                }
+            } catch (InvalidNameException e)
+            {
+                System.out.println(dc.getTaal().getText("fouteSpelnaam"));
             }
-        } catch (InvalidNameException e)
-        {
-            System.out.println(dc.getTaal().getText("fouteSpelnaam"));
-        }
-        
+        } while (vlag2);
+
         int aantal = 0;
         boolean vlag = true;
         do
@@ -96,7 +104,7 @@ public class UC2
     public static void registreerSpeler(DomeinController dc, Scanner input)
     {
         List<String> spelnamen = dc.geefSpelnamen();
-        String naam;
+        String naam = "";
         int geboortejaar = 0, nrKleur;
         Kleur kleur = null;
         boolean verder = true;
@@ -106,85 +114,103 @@ public class UC2
             {
                 System.out.println(dc.getTaal().getText("spelerNaam"));
                 naam = input.nextLine();
-                for(String spelnaam : spelnamen)
+                for (String spelnaam : spelnamen)
                 {
-                    for(String s : dc.geefSpelersVanSpel(spelnaam))
+                    for (String s : dc.geefSpelersVanSpel(spelnaam))
                     {
-                        if(s.equals(naam))
-                            throw new InvalidNameException("naamBestaat");
-                    }
-                }
-                for(String s : dc.geefSpelers())
-                {
-                    if(s.equals(naam))
-                        throw new InvalidNameException("naamBestaat");
-                }
-                boolean fout = true;
-                while(fout)
-                {
-                    try {
-                    
-                        System.out.println(dc.getTaal().getText("spelerGebdatum"));
-                        geboortejaar = input.nextInt();
-                        
-                        fout=false;
-                    
-                    }catch(InputMismatchException e)
-                    {
-                        System.out.println(dc.getTaal().getText("foutGeboortejaar"));
-                        input.nextLine();
-                    }
-                }
-                
-                boolean fout2 = true;
-                while(fout2)
-                {    
-                    try {
-                    
-                        System.out.println(dc.getTaal().getText("spelerKleur"));
-                        System.out.println("1. " + dc.getTaal().getText("geel"));
-                        System.out.println("2. " + dc.getTaal().getText("blauw"));
-                        System.out.println("3. " + dc.getTaal().getText("rood"));
-                        System.out.println("4. " + dc.getTaal().getText("groen"));
-
-                        nrKleur = input.nextInt();
-                        fout2 = false;
-                        for (Kleur k : Kleur.values())
+                        if (!(naam.matches("^[a-zA-Z]{2,}$")))
                         {
-                            if (k.getKleurNr() == nrKleur)
-                            {
-                                kleur = k;
-                            }
+                            throw new InvalidNameException("fouteNaam");
+                        } else
+                        {
+                            verder = false;
                         }
-                    } catch (InputMismatchException e)
-                    {
-                        System.out.println(dc.getTaal().getText("fouteNummerKleur"));
-                        kleur = null;
-                        input.nextLine();
+                        if (s.equals(naam))
+                        {
+                            throw new InvalidNameException("naamBestaat");
+                        }
                     }
                 }
-                dc.registreer(naam, geboortejaar, kleur);
-                verder = false;
-                input.nextLine();
+                for (String s : dc.geefSpelers())
+                {
+                    if (s.equals(naam))
+                    {
+                        throw new InvalidNameException("naamBestaat");
+                    }
+                }
+
             } catch (InvalidNameException e)
             {
                 System.out.println(dc.getTaal().getText(e.getMessage()));
+            }
+        } while (verder);
+        boolean fout = true;
+        do
+        {
+            try
+            {
+
+                System.out.println(dc.getTaal().getText("spelerGebdatum"));
+                geboortejaar = input.nextInt();
+                int huidigJaar = GregorianCalendar.getInstance().get(Calendar.YEAR);
+                if (geboortejaar < huidigJaar - 90 || geboortejaar > huidigJaar - 7)
+                {
+                    throw new InvalidBirthdateException("foutGeboortejaar");
+                } else
+                {
+                    fout = false;
+                }
+            } catch (InputMismatchException e)
+            {
+                System.out.println(dc.getTaal().getText("foutGeboortejaar"));
+                input.nextLine();
             } catch (InvalidBirthdateException e)
             {
                 System.out.println(dc.getTaal().getText(e.getMessage()));
                 input.nextLine();
-            } catch (IllegalArgumentException e)
+            }
+        } while (fout);
+
+        boolean fout2 = true;
+        do
+        {
+            try
             {
-                System.out.println(dc.getTaal().getText(e.getMessage()));
-                kleur = null;
-                input.nextLine();
-            }  catch (NullPointerException e)
+                System.out.println(dc.getTaal().getText("spelerKleur"));
+                System.out.println("1. " + dc.getTaal().getText("geel"));
+                System.out.println("2. " + dc.getTaal().getText("blauw"));
+                System.out.println("3. " + dc.getTaal().getText("rood"));
+                System.out.println("4. " + dc.getTaal().getText("groen"));
+
+                nrKleur = input.nextInt();
+                if (nrKleur == 1 || nrKleur == 2 || nrKleur == 3 || nrKleur == 4)
+                {
+                    fout2 = false;
+                } else
+                {
+                    throw new InputMismatchException(dc.getTaal().getText("fouteNummerKleur"));
+                }
+                for (Kleur k : Kleur.values())
+                {
+                    if (k.getKleurNr() == nrKleur)
+                    {
+                        kleur = k;
+                    }
+                }
+            } catch (InputMismatchException e)
             {
                 System.out.println(dc.getTaal().getText("fouteNummerKleur"));
+                kleur = null;
+                input.nextLine();
+            } catch (IllegalArgumentException e)
+            {
+                System.out.println(dc.getTaal().getText("kleurBestaat"));
+                kleur = null;
                 input.nextLine();
             }
-        } while (verder);
-        
+        } while (fout2);
+        dc.registreer(naam, geboortejaar, kleur);
+        input.nextLine();
     }
 
     /**
