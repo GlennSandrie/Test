@@ -29,27 +29,10 @@ public class StartUpGui extends Application
     @Override
     public void start(Stage primaryStage)
     {
-//        Button btn = new Button();
-//        btn.setText("Say 'Hello World'");
-//        btn.setOnAction(new EventHandler<ActionEvent>()
-//        {
-//
-//            @Override
-//            public void handle(ActionEvent event)
-//            {
-//                System.out.println("Hello World!");
-//            }
-//        });
-//
-//        StackPane root = new StackPane();
-//        root.getChildren().add(btn);
-//        Scene scene = new Scene(root, 300, 250);
-//        primaryStage.setTitle("Hello World!");
-IngevenGegevensSpelerController root = new IngevenGegevensSpelerController(new DomeinController());
-        Scene scene = new Scene(root);
-//         BeginSchermController root = new BeginSchermController(null);
-//        Scene scene = new Scene(root,500,300);
-         primaryStage.setTitle("Combobox test");
+        IngevenGegevensSpelerController ig = new IngevenGegevensSpelerController(new DomeinController());
+        Scene scene = new Scene(ig);
+        
+        primaryStage.setTitle("Combobox test");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

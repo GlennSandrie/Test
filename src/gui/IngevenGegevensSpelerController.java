@@ -69,7 +69,7 @@ public class IngevenGegevensSpelerController extends GridPane
         btnVerder.setText(dc.getTaal().getText("verder"));
       //  cmbKleur.setText(list);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("IngevenGegevensSpeler.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ingevenGegevensSpeler.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         try
