@@ -7,6 +7,7 @@ package domein;
 
 import exceptions.EmptyListException;
 import exceptions.InvalidNameException;
+import exceptions.WrongInputException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -356,7 +357,7 @@ public class Spel
             {
                 if (speler.getKleur() == kleur)
                 {
-                    throw new IllegalArgumentException("kleurBestaat");
+                    throw new WrongInputException("kleurBestaat");
                 }
             }
         }
@@ -372,7 +373,7 @@ public class Spel
      */
     public void voegVrijeGangkaartToeAanSpelbord(int xPositie, int yPositie)
     {
-        sb.setVrijeGangkaart(xPositie, yPositie, vrijeGangkaart);
+        sb.setVrijeGangkaart(xPositie, yPositie, vrijeGangkaart, huidigeSpeler);
     }
 
     /**

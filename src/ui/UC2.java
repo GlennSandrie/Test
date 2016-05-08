@@ -123,11 +123,7 @@ public class UC2
                             throw new InvalidNameException("fouteNaam");
                         } else
                         {
-                            verder = false;
-                        }
-                        if (s.equals(naam))
-                        {
-                            throw new InvalidNameException("naamBestaat");
+                            break;
                         }
                     }
                 }
@@ -136,14 +132,19 @@ public class UC2
                     if (s.equals(naam))
                     {
                         throw new InvalidNameException("naamBestaat");
+                    } else
+                    {
+                        break;
                     }
                 }
+                verder = false;
 
             } catch (InvalidNameException e)
             {
                 System.out.println(dc.getTaal().getText(e.getMessage()));
+
             }
-        } while (verder);
+        } while (verder != false);
         boolean fout = true;
         do
         {
@@ -183,26 +184,32 @@ public class UC2
                 System.out.println("4. " + dc.getTaal().getText("groen"));
 
                 nrKleur = input.nextInt();
-                if (nrKleur == 1 || nrKleur == 2 || nrKleur == 3 || nrKleur == 4)
-                {
-                    fout2 = false;
-                } else
+                if (!(nrKleur == 1 || nrKleur == 2 || nrKleur == 3 || nrKleur == 4))
                 {
                     throw new InputMismatchException(dc.getTaal().getText("fouteNummerKleur"));
                 }
-                for (Kleur k : Kleur.values())
-                {
-                    if (k.getKleurNr() == nrKleur)
-                    {
-                        kleur = k;
-                    }
+                else{
+                    fout2 = false;
                 }
+                    for (Kleur k : Kleur.values())
+                    {
+                        if (k.getKleurNr() == nrKleur)
+                        {
+                            kleur = k;
+                            break;
+                        }
+                    }
             } catch (InputMismatchException e)
             {
                 System.out.println(dc.getTaal().getText("fouteNummerKleur"));
                 kleur = null;
                 input.nextLine();
-            } catch (IllegalArgumentException e)
+            } catch (WrongInputException e)
+            {
+                System.out.println(dc.getTaal().getText(e.getMessage()));
+                kleur = null;
+                input.nextLine();
+            } catch (NullPointerException e)
             {
                 System.out.println(dc.getTaal().getText("kleurBestaat"));
                 kleur = null;
