@@ -30,8 +30,7 @@ import utils.Kleur;
  *
  * @author anjana
  */
-public class IngevenGegevensSpelerController extends GridPane 
-{
+public class IngevenGegevenSpelerController extends GridPane {
 
     @FXML
     private Label lblGegevens;
@@ -56,7 +55,7 @@ public class IngevenGegevensSpelerController extends GridPane
     
     private DomeinController dc;
 
-    public IngevenGegevensSpelerController(DomeinController dc) 
+    public IngevenGegevenSpelerController(DomeinController dc) 
     {
         this.dc = dc;
         lblGegevens.setText(dc.getTaal().getText("gegevens"));
@@ -83,8 +82,7 @@ public class IngevenGegevensSpelerController extends GridPane
         
         int gd = Integer.parseInt(txfGeboortejaar.getText());
         dc.registreer(txfNaam.getText(), gd, Kleur.GE);
-        
-    }  
+    }   
 
     @FXML
     private void btnTerugOnAction(ActionEvent event) 
@@ -115,8 +113,8 @@ public class IngevenGegevensSpelerController extends GridPane
         dc.getTaal().getText("rood"),
         dc.getTaal().getText("rood")
     );
- 
-    /**
+    
+     /**
     * Initializes the controller class.
     * @param url
     * @param rb

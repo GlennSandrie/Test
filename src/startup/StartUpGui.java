@@ -16,7 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import gui.IngevenGegevensSpelerController;
+import gui.IngevenGegevenSpelerController;
 
 /**
  * Start-methode, wordt gebruikt om het juiste beginscherm in te stellen
@@ -29,8 +29,8 @@ public class StartUpGui extends Application
     @Override
     public void start(Stage primaryStage)
     {
-        BeginSchermController ig = new BeginSchermController(new DomeinController());
-        Scene scene = new Scene(ig);
+        BeginSchermController bs = new BeginSchermController(new DomeinController());
+        Scene scene = new Scene(bs);
         
         primaryStage.setTitle("Combobox test");
         primaryStage.setScene(scene);

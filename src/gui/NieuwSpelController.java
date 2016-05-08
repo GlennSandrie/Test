@@ -44,6 +44,7 @@ public class NieuwSpelController extends VBox
     private Button btnTerug;
     @FXML
     private Button btnVerder;
+    @FXML
     private ComboBox<String> cmbAantal;
 
     private DomeinController dc;
@@ -88,12 +89,12 @@ public class NieuwSpelController extends VBox
     @FXML
     private void btnVerderOnAction(ActionEvent event) 
     {
-        IngevenGegevensSpelerController is = new IngevenGegevensSpelerController(dc);
-        Stage stage = (Stage) (this.getScene().getWindow());
-        Scene scene = new Scene(is);
-        
-        stage.setScene(scene);
-        stage.show();
+//        IngevenGegevenSpelerController is = new IngevenGegevenSpelerController(dc);
+//        Stage stage = (Stage) (this.getScene().getWindow());
+//        Scene scene = new Scene(is);
+//        
+//        stage.setScene(scene);
+//        stage.show();
     }
     
     ObservableList<String> list = FXCollections.observableArrayList("2","3","4");
