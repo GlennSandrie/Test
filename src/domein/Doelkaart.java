@@ -18,8 +18,8 @@ public class Doelkaart
 
     /**
      * constructor, initialiseert de schat op de doelkaarten
-     * 
-     * @param schat 
+     *
+     * @param schat
      */
     public Doelkaart(Schat schat)
     {
@@ -28,6 +28,7 @@ public class Doelkaart
 
     /**
      * methode schat geven
+     *
      * @return schat
      */
     public Schat getSchat()
@@ -37,17 +38,17 @@ public class Doelkaart
 
     /**
      * initialiseert de schat
-     * 
-     * @param schat 
+     *
+     * @param schat
      */
     public void setSchat(Schat schat)
     {
         this.schat = schat;
     }
-    
+
     public String geefCodeDoelkaart()
     {
-        return String.format("%d_",schat.getSchatId());
-        
+        return String.format("%d_", schat.getSchatId());
+
     }
 }

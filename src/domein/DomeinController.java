@@ -235,10 +235,10 @@ public class DomeinController
      * @param xPositie x coordinaat op het spelbord (0-6)
      * @param yPositie y coordinaat op het spelbord (0-6)
      */
-    public void voegVrijeGangkaartToeAanSpelbord(int xPositie, int yPositie)
-    {
-        spel.voegVrijeGangkaartToeAanSpelbord(xPositie, yPositie);
-    }
+//    public void voegVrijeGangkaartToeAanSpelbord(int xPositie, int yPositie)
+//    {
+//        spel.voegVrijeGangkaartToeAanSpelbord(xPositie, yPositie);
+//    }
 
     //UC5
     /**

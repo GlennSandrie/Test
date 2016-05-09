@@ -149,12 +149,12 @@ public class Spelbord
      * @param yPositie y coordinaat van de gangkaart op het spelbord (0-6)
      * @param vrijeGangkaart
      */
-    public void geefPlaatsVrijeGangkaart(int xPositie, int yPositie, Gangkaart vrijeGangkaart)
+    public Gangkaart geefPlaatsVrijeGangkaartIn(int xPositie, int yPositie, Gangkaart vrijeGangkaart)
     {
 
         if (!(xPositie % 2 == 0 && yPositie % 2 == 0) && (xPositie == 0 || xPositie == 6 || yPositie == 0 || yPositie == 6))
         {
-            setVrijeGangkaart(xPositie, yPositie, vrijeGangkaart, null);
+            return schuifGangkaartIn(xPositie, yPositie, vrijeGangkaart, null);
         } else
         {
             throw new IllegalArgumentException("fouteCoordinaat");
@@ -172,51 +172,43 @@ public class Spelbord
      * @param speler
      * @return
      */
-    public Gangkaart setVrijeGangkaart(int xPositie, int yPositie, Gangkaart vrijeGangkaart, Speler speler)
+    public Gangkaart schuifGangkaartIn(int xPositie, int yPositie, Gangkaart vrijeGangkaart, Speler speler)
     {
         Gangkaart nieuweVrijeGangkaart = vrijeGangkaart;
         if (xPositie == 6)
         {
             nieuweVrijeGangkaart = spelbord[0][yPositie];
-            spelbord[0][yPositie] = spelbord[1][yPositie];
-            spelbord[1][yPositie] = spelbord[2][yPositie];
-            spelbord[2][yPositie] = spelbord[3][yPositie];
-            spelbord[3][yPositie] = spelbord[4][yPositie];
-            spelbord[4][yPositie] = spelbord[5][yPositie];
-            spelbord[5][yPositie] = spelbord[6][yPositie];
+            for(int i=0; i<6;i++)
+            {
+                spelbord[i][yPositie]= spelbord[i+1][yPositie];
+            }
             spelbord[6][yPositie] = vrijeGangkaart;
 
         } else if (yPositie == 6)
         {
             nieuweVrijeGangkaart = spelbord[xPositie][0];
-            spelbord[xPositie][0] = spelbord[xPositie][1];
-            spelbord[xPositie][1] = spelbord[xPositie][2];
-            spelbord[xPositie][2] = spelbord[xPositie][3];
-            spelbord[xPositie][3] = spelbord[xPositie][4];
-            spelbord[xPositie][4] = spelbord[xPositie][5];
-            spelbord[xPositie][5] = spelbord[xPositie][6];
+            for(int i=0; i<6; i++)
+            {
+                spelbord[xPositie][i]=spelbord[xPositie][i+1];
+            }
             spelbord[xPositie][6] = vrijeGangkaart;
 
         } else if (xPositie == 0)
         {
             nieuweVrijeGangkaart = spelbord[6][yPositie];
-            spelbord[6][yPositie] = spelbord[5][yPositie];
-            spelbord[5][yPositie] = spelbord[4][yPositie];
-            spelbord[4][yPositie] = spelbord[3][yPositie];
-            spelbord[3][yPositie] = spelbord[2][yPositie];
-            spelbord[2][yPositie] = spelbord[1][yPositie];
-            spelbord[1][yPositie] = spelbord[0][yPositie];
+            for(int i=6; i>0; i--)
+            {
+                spelbord[i][yPositie]=spelbord[i-1][yPositie];
+            }
             spelbord[0][yPositie] = vrijeGangkaart;
 
         } else if (yPositie == 0)
         {
             nieuweVrijeGangkaart = spelbord[xPositie][6];
-            spelbord[xPositie][6] = spelbord[xPositie][5];
-            spelbord[xPositie][5] = spelbord[xPositie][4];
-            spelbord[xPositie][4] = spelbord[xPositie][3];
-            spelbord[xPositie][3] = spelbord[xPositie][2];
-            spelbord[xPositie][2] = spelbord[xPositie][1];
-            spelbord[xPositie][1] = spelbord[xPositie][0];
+            for(int i=6; i>0; i--)
+            {
+                spelbord[xPositie][i]= spelbord[xPositie][i-1];
+            }
             spelbord[xPositie][0] = vrijeGangkaart;
         }
         if (!(nieuweVrijeGangkaart.getSpelers().isEmpty()))
