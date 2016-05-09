@@ -29,7 +29,7 @@ public class StartUpGui extends Application
     @Override
     public void start(Stage primaryStage)
     {
-        IngevenGegevenSpelerController bs = new IngevenGegevenSpelerController(new DomeinController());
+        BeginSchermController bs = new BeginSchermController(new DomeinController());
         Scene scene = new Scene(bs);
         
         primaryStage.setTitle("Combobox test");
