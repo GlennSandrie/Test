@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
+import javafx.beans.property.ReadOnlyStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,7 +35,7 @@ import javafx.stage.Stage;
  *
  * @author anjana
  */
-public class BestaandSpel1Controller extends VBox {
+public class BestaandSpel1Controller extends VBox implements Initializable {
 
     @FXML
     private Label lblBestaandSpel;
@@ -74,28 +75,24 @@ public class BestaandSpel1Controller extends VBox {
             Platform.exit();
         }
         
-        String uitvoer = "";
-        List<String> spelNamen = dc.geefSpelnamen();
-        for (String spel : spelNamen)
-        {
-            uitvoer += String.format("%s%n", spel);
-        }
-        
-        //dc.kiesSpel(txfGekozenSpel.getText());
     }
         
-    @FXML
-    private void btnTerugOnAction(ActionEvent event) {
-        BestaandSpel2Controller bs = new BestaandSpel2Controller(dc, this);
-        Stage stage = (Stage) (this.getScene().getWindow());
-        Scene scene = new Scene(bs);
-        
-        stage.setScene(scene);
-        stage.show();
+    ObservableList<String> list = FXCollections.observableArrayList(dc.geefSpelnamen());
+    
+     /**
+     * Initializes the controller class.
+     * @param url
+     * @param rb
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb)
+    {
+        cmbSpel.setItems(list);
     }
-
+    
     @FXML
-    private void btnVerderOnAction(ActionEvent event) {
+    private void btnTerugOnAction(ActionEvent event) 
+    {
         WelkomSchermController ws = new WelkomSchermController(dc);
         Stage stage = (Stage) (this.getScene().getWindow());
         Scene scene = new Scene(ws);
@@ -103,26 +100,20 @@ public class BestaandSpel1Controller extends VBox {
         stage.setScene(scene);
         stage.show();
     }
-    
-    private void geefPopup(String foutBoodschap)
+
+    @FXML
+    private void btnVerderOnAction(ActionEvent event) 
     {
-        Alert popup = new Alert(Alert.AlertType.ERROR);
-        popup.setContentText(foutBoodschap);
-        popup.setTitle("Invoerfout!");
-        popup.showAndWait();
-    //  txfGekozenSpel.requestFocus();
+        String spel = "";
+        spel += cmbSpel.getSelectionModel().selectedIndexProperty();
+        dc.kiesSpel(spel);
+        
+        BestaandSpel2Controller bs = new BestaandSpel2Controller(dc);
+        Stage stage = (Stage) (this.getScene().getWindow());
+        Scene scene = new Scene(bs);
+        
+        stage.setScene(scene);
+        stage.show();
     }
 
-    ObservableList<String> list = FXCollections.observableArrayList
-        (dc.geefSpelnamen());
-    
-     /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
-    public void initialize(URL url, ResourceBundle rb)
-    {
-        cmbSpel.setItems(list);
-    }
 }

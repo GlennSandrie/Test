@@ -78,7 +78,8 @@ public class WelkomSchermController extends GridPane {
     }
 
     @FXML
-    private void btnBestaandOnAction(ActionEvent event) {
+    private void btnBestaandOnAction(ActionEvent event) 
+    {
         BestaandSpel1Controller bs = new BestaandSpel1Controller(dc);
         Stage stage = (Stage) (this.getScene().getWindow());
         Scene scene = new Scene(bs);
@@ -88,7 +89,8 @@ public class WelkomSchermController extends GridPane {
     }
 
     @FXML
-    private void btnTerugOnAction(ActionEvent event) {
+    private void btnTerugOnAction(ActionEvent event) 
+    {
         BeginSchermController bsc = new BeginSchermController(dc);
         Stage stage = (Stage) (this.getScene().getWindow());
         Scene scene = new Scene(bsc);
