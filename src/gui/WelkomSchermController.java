@@ -43,26 +43,30 @@ public class WelkomSchermController extends GridPane {
 
     public WelkomSchermController(DomeinController dc) 
     {
-        this.dc = dc;
-        lblWelkom.setText(dc.getTaal().getText("welkom"));
-        lblBestaandSpel.setText(dc.getTaal().getText("bestaandSpel"));
-        btnBestaand.setText(dc.getTaal().getText("BestaandSpel"));
-        btnNieuw.setText(dc.getTaal().getText("nieuwSpelTitel"));
-        
-        btnTerug.setText(dc.getTaal().getText("terug"));
-        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("WelkomScherm.fxml"));
-        loader.setRoot(this);
-        loader.setController(this);
+        this.dc = dc;        
         try
         {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("WelkomScherm.fxml"));
+            loader.setRoot(this);
+            loader.setController(this);
             loader.load();
+            //nu pas beginnen vullen
+            //test change text
+            lblWelkom.setText("Change text");
+            
+            //geven nullpointers
+            lblBestaandSpel.setText(dc.getTaal().getText("bestaandSpel"));
+            btnBestaand.setText(dc.getTaal().getText("BestaandSpel"));
+            btnNieuw.setText(dc.getTaal().getText("nieuwSpelTitel"));
         }
         catch (IOException e)
         {
             System.out.println(dc.getTaal().getText("IOException"));
             System.out.println(e.getMessage());
             Platform.exit();
+        }
+        catch (NullPointerException npe){
+            System.out.println(npe.getMessage());
         }
     }
  

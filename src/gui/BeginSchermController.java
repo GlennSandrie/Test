@@ -79,9 +79,10 @@ public class BeginSchermController extends GridPane {
     private void btnVerderOnAction(ActionEvent event) {
         WelkomSchermController ws = new WelkomSchermController(dc);
         Stage stage = (Stage) (this.getScene().getWindow());
-        Scene scene = new Scene(ws);
+        stage.close();
         
-        stage.setScene(scene);
+        Stage welkomScherm = new Stage();
+        stage.setScene(new Scene(ws));
         stage.show();
     }
 
