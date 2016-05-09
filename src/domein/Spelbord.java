@@ -18,7 +18,7 @@ import utils.Schat;
  */
 public class Spelbord
 {
-
+    private Spel spel;
     private Gangkaart[][] spelbord = new Gangkaart[7][7];
 
     /**
@@ -45,41 +45,46 @@ public class Spelbord
         spelbord[6][2] = new Tkaart(Schat.SLEUTELS, Richting.B);
         spelbord[6][4] = new Tkaart(Schat.ZWAARD, Richting.B);
     }
-    
+
     public Spelbord(String spelbordCode)
     {
         int codeIndex = 0;
-        for(int x = 0; x < 7; x++)
+        for (int x = 0; x < 7; x++)
         {
-            for(int y = 0; y < 7; y++)
+            for (int y = 0; y < 7; y++)
             {
-                if(spelbordCode.charAt(codeIndex+3)=='H'||spelbordCode.charAt(codeIndex+3)=='R'||spelbordCode.charAt(codeIndex+3)=='T')
+                if (spelbordCode.charAt(codeIndex + 3) == 'H' || spelbordCode.charAt(codeIndex + 3) == 'R' || spelbordCode.charAt(codeIndex + 3) == 'T')
                 {
-                    switch(spelbordCode.charAt(codeIndex))
+                    switch (spelbordCode.charAt(codeIndex))
                     {
-                        case 'H': spelbord[x][y] = new HoekKaart(Schat.geefSchat(Character.getNumericValue(spelbordCode.charAt(codeIndex+2))), Richting.geefRichting(Character.getNumericValue(spelbordCode.charAt(codeIndex+1))));
+                        case 'H':
+                            spelbord[x][y] = new HoekKaart(Schat.geefSchat(Character.getNumericValue(spelbordCode.charAt(codeIndex + 2))), Richting.geefRichting(Character.getNumericValue(spelbordCode.charAt(codeIndex + 1))));
                             break;
-                        case 'R': spelbord[x][y] = new RechteWegKaart(Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
+                        case 'R':
+                            spelbord[x][y] = new RechteWegKaart(Richting.geefRichting(spelbordCode.charAt(codeIndex + 1)));
                             break;
-                        case 'T': spelbord[x][y] = new Tkaart(Schat.geefSchat(Character.getNumericValue(spelbordCode.charAt(codeIndex+2))), Richting.geefRichting(Character.getNumericValue(spelbordCode.charAt(codeIndex+1))));
+                        case 'T':
+                            spelbord[x][y] = new Tkaart(Schat.geefSchat(Character.getNumericValue(spelbordCode.charAt(codeIndex + 2))), Richting.geefRichting(Character.getNumericValue(spelbordCode.charAt(codeIndex + 1))));
                             break;
                     }
-                    codeIndex = codeIndex+3;
-                }
-                else
+                    codeIndex = codeIndex + 3;
+                } else
                 {
-                    switch(spelbordCode.charAt(codeIndex))
+                    switch (spelbordCode.charAt(codeIndex))
                     {
-                        case 'H': spelbord[x][y] = new HoekKaart(Schat.geefSchat(Integer.parseInt(spelbordCode.substring(codeIndex+2,codeIndex+4))), Richting.geefRichting(Character.getNumericValue(spelbordCode.charAt(codeIndex+1))));
+                        case 'H':
+                            spelbord[x][y] = new HoekKaart(Schat.geefSchat(Integer.parseInt(spelbordCode.substring(codeIndex + 2, codeIndex + 4))), Richting.geefRichting(Character.getNumericValue(spelbordCode.charAt(codeIndex + 1))));
                             break;
-                        case 'R': spelbord[x][y] = new RechteWegKaart(Richting.geefRichting(spelbordCode.charAt(codeIndex+1)));
+                        case 'R':
+                            spelbord[x][y] = new RechteWegKaart(Richting.geefRichting(spelbordCode.charAt(codeIndex + 1)));
                             break;
-                        case 'T': spelbord[x][y] = new Tkaart(Schat.geefSchat(Integer.parseInt(spelbordCode.substring(codeIndex+2,codeIndex+4))), Richting.geefRichting(Character.getNumericValue(spelbordCode.charAt(codeIndex+1))));
+                        case 'T':
+                            spelbord[x][y] = new Tkaart(Schat.geefSchat(Integer.parseInt(spelbordCode.substring(codeIndex + 2, codeIndex + 4))), Richting.geefRichting(Character.getNumericValue(spelbordCode.charAt(codeIndex + 1))));
                             break;
                     }
-                    codeIndex = codeIndex+4;
+                    codeIndex = codeIndex + 4;
                 }
-                
+
             }
         }
         spelbord[0][0].setKleur(Kleur.GE);
@@ -87,6 +92,7 @@ public class Spelbord
         spelbord[6][0].setKleur(Kleur.GR);
         spelbord[6][6].setKleur(Kleur.R);
     }
+
     /**
      * methode die het spelbord retourneert
      *
@@ -148,7 +154,7 @@ public class Spelbord
 
         if (!(xPositie % 2 == 0 && yPositie % 2 == 0) && (xPositie == 0 || xPositie == 6 || yPositie == 0 || yPositie == 6))
         {
-            setVrijeGangkaart(xPositie, yPositie, vrijeGangkaart);
+            setVrijeGangkaart(xPositie, yPositie, vrijeGangkaart, null);
         } else
         {
             throw new IllegalArgumentException("fouteCoordinaat");
@@ -163,52 +169,63 @@ public class Spelbord
      * @param xPositie
      * @param yPositie
      * @param vrijeGangkaart
+     * @param speler
      * @return
      */
-    public Gangkaart setVrijeGangkaart(int xPositie, int yPositie, Gangkaart vrijeGangkaart)
+    public Gangkaart setVrijeGangkaart(int xPositie, int yPositie, Gangkaart vrijeGangkaart, Speler speler)
     {
         Gangkaart nieuweVrijeGangkaart = vrijeGangkaart;
-        System.out.println(xPositie);
-        System.out.println(yPositie);
-        if (xPositie == 0)
-        {
-            nieuweVrijeGangkaart = spelbord[spelbord.length - 1][yPositie];
-            for (int i = 6; i > 0; i--)
-            {
-                spelbord[i][yPositie] = spelbord[i - 1][yPositie];
-            }
-            spelbord[0][yPositie] = vrijeGangkaart;
-
-        }
-        if (xPositie == spelbord.length - 1)
+        if (xPositie == 6)
         {
             nieuweVrijeGangkaart = spelbord[0][yPositie];
-            for (int i = 1; i <= 6; i++)
-            {
-                spelbord[i][yPositie] = spelbord[i - 1][yPositie];
-            }
-            spelbord[spelbord.length - 1][yPositie] = vrijeGangkaart;
+            spelbord[0][yPositie] = spelbord[1][yPositie];
+            spelbord[1][yPositie] = spelbord[2][yPositie];
+            spelbord[2][yPositie] = spelbord[3][yPositie];
+            spelbord[3][yPositie] = spelbord[4][yPositie];
+            spelbord[4][yPositie] = spelbord[5][yPositie];
+            spelbord[5][yPositie] = spelbord[6][yPositie];
+            spelbord[6][yPositie] = vrijeGangkaart;
 
-        }
-        if (yPositie == 0)
-        {
-            nieuweVrijeGangkaart = spelbord[xPositie][spelbord.length - 1];
-            for (int i = 6; i > 0; i--)
-            {
-                spelbord[xPositie][i - 1] = spelbord[xPositie][i];
-            }
-            spelbord[xPositie][0] = vrijeGangkaart;
-        }
-        if (yPositie == spelbord.length - 1)
+        } else if (yPositie == 6)
         {
             nieuweVrijeGangkaart = spelbord[xPositie][0];
-            for (int i = 1; i <= 6; i++)
-            {
-                spelbord[xPositie][i] = spelbord[xPositie][i - 1];
-            }
-            spelbord[xPositie][spelbord.length - 1] = vrijeGangkaart;
+            spelbord[xPositie][0] = spelbord[xPositie][1];
+            spelbord[xPositie][1] = spelbord[xPositie][2];
+            spelbord[xPositie][2] = spelbord[xPositie][3];
+            spelbord[xPositie][3] = spelbord[xPositie][4];
+            spelbord[xPositie][4] = spelbord[xPositie][5];
+            spelbord[xPositie][5] = spelbord[xPositie][6];
+            spelbord[xPositie][6] = vrijeGangkaart;
+
+        } else if (xPositie == 0)
+        {
+            nieuweVrijeGangkaart = spelbord[6][yPositie];
+            spelbord[6][yPositie] = spelbord[5][yPositie];
+            spelbord[5][yPositie] = spelbord[4][yPositie];
+            spelbord[4][yPositie] = spelbord[3][yPositie];
+            spelbord[3][yPositie] = spelbord[2][yPositie];
+            spelbord[2][yPositie] = spelbord[1][yPositie];
+            spelbord[1][yPositie] = spelbord[0][yPositie];
+            spelbord[0][yPositie] = vrijeGangkaart;
+
+        } else if (yPositie == 0)
+        {
+            nieuweVrijeGangkaart = spelbord[xPositie][6];
+            spelbord[xPositie][6] = spelbord[xPositie][5];
+            spelbord[xPositie][5] = spelbord[xPositie][4];
+            spelbord[xPositie][4] = spelbord[xPositie][3];
+            spelbord[xPositie][3] = spelbord[xPositie][2];
+            spelbord[xPositie][2] = spelbord[xPositie][1];
+            spelbord[xPositie][1] = spelbord[xPositie][0];
+            spelbord[xPositie][0] = vrijeGangkaart;
         }
-        return nieuweVrijeGangkaart;
+        if (!(nieuweVrijeGangkaart.getSpelers().isEmpty()))
+        {
+            vrijeGangkaart.spelers.add(speler);
+        }
+       vrijeGangkaart=nieuweVrijeGangkaart;
+
+        return vrijeGangkaart;
     }
 
     /**
@@ -331,9 +348,10 @@ public class Spelbord
         int[] plaatsHG = geefIndexenHuidigeGangkaart(speler);
         return spelbord[plaatsHG[0]][plaatsHG[1]].schat;
     }
-    
+
     /**
      * geeft de code terug om alle kaarten op het spelbord voor te stellenww
+     *
      * @return spebord in code
      */
     public String geefCodeSpelbord()
@@ -348,7 +366,7 @@ public class Spelbord
         }
         return sb;
     }
-    
+
     public void zetSpelerOpPositie(int xPositie, int yPositie, Speler speler)
     {
         spelbord[xPositie][yPositie].voegSpelerToe(speler);

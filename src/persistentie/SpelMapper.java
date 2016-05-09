@@ -67,7 +67,7 @@ public class SpelMapper
                 if (rs.next())
                 {
                     String spelbord = rs.getNString(2);
-                    spel = new Spel(naam,spelbord);
+                    spel = new Spel(naam, spelbord);
                 }
             }
         } catch (SQLException ex)
@@ -77,10 +77,12 @@ public class SpelMapper
 
         return spel;
     }
+
     /**
      * methode die het spelbord wegschrijft naar de databank
+     *
      * @param spelnaam
-     * @param spelbord 
+     * @param spelbord
      */
     public void opslaanSpelbord(String spelnaam, String spelbord)
     {
@@ -96,7 +98,7 @@ public class SpelMapper
             throw new RuntimeException(ex);
         }
     }
-    
+
     public void updateSpelbord(String spelnaam, String spelbord)
     {
         try (Connection conn = DriverManager.getConnection(Connectie.JDBC_URL))
@@ -111,5 +113,5 @@ public class SpelMapper
             throw new RuntimeException(ex);
         }
     }
-    
+
 }

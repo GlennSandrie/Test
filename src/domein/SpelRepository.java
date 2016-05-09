@@ -47,6 +47,7 @@ public class SpelRepository
     }
     /**
      * methode die het spelbord en de vrije gangkaart doorgeeft aan de spelmapper om weg te schrijven naar de databank
+     * @param spelnaam
      * @param spelbord 
      */
     public void opslaanSpelbord(String spelnaam, String spelbord)

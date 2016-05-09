@@ -7,6 +7,7 @@ package domein;
 
 import exceptions.EmptyListException;
 import exceptions.InvalidNameException;
+import exceptions.WrongInputException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -50,8 +51,8 @@ public class Spel
 
     public Spel(String naam, String spelbordCode)
     {
-        controleerSpelNaam(naam);
         this.naam = naam;
+        controleerSpelNaam(naam);
         sb = new Spelbord(spelbordCode);
         if(spelbordCode.charAt(spelbordCode.length()-3)=='H'||spelbordCode.charAt(spelbordCode.length()-3)=='R'||spelbordCode.charAt(spelbordCode.length()-3)=='T')
             vrijeGangkaart = zetCodeOmNaarKaart(spelbordCode.substring(spelbordCode.length()-3,spelbordCode.length()));
@@ -343,10 +344,6 @@ public class Spel
         spelers.add(nieuweSpeler);
     }
     
-    public void voegBestaandeSpelerToe(Speler nieweSpeler, int xPositie, int yPositie, int beurt)
-    {
-        
-    }
     /**
      * controleert of de kleur al ingenomen is door een speler
      *
@@ -360,7 +357,7 @@ public class Spel
             {
                 if (speler.getKleur() == kleur)
                 {
-                    throw new IllegalArgumentException("kleurBestaat");
+                    throw new WrongInputException("kleurBestaat");
                 }
             }
         }
@@ -376,7 +373,7 @@ public class Spel
      */
     public void voegVrijeGangkaartToeAanSpelbord(int xPositie, int yPositie)
     {
-        sb.setVrijeGangkaart(xPositie, yPositie, vrijeGangkaart);
+        sb.setVrijeGangkaart(xPositie, yPositie, vrijeGangkaart, huidigeSpeler);
     }
 
     /**

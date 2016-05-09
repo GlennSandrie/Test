@@ -25,7 +25,7 @@ public class UC2
 {
 
     /**
-     * methode où een nieuw spel te maken, controleert de naam van het nieuwe
+     * methode om een nieuw spel te maken, controleert de naam van het nieuwe
      * spel, het aantal spelers, roept de domeincontroller aan om het volledig
      * spel te initialiseren
      *
@@ -36,20 +36,28 @@ public class UC2
     {
         String naam = "";
         boolean vlag2 = true;
-        try
+        do
         {
-            while(vlag2)
+            try
             {
+
                 System.out.println(dc.getTaal().getText("nieuwSpel"));
                 naam = input.nextLine();
-                dc.maakSpel(naam);
-                vlag2 = false;
+                if (!(naam.matches("(?=.*\\d.*\\d)[a-zA-Z0-9]{8,}")))
+                {
+                    throw new InvalidNameException(dc.getTaal().getText("fouteSpelnaam"));
+
+                } else
+                {
+                    dc.maakSpel(naam);
+                    vlag2 = false;
+                }
+            } catch (InvalidNameException e)
+            {
+                System.out.println(dc.getTaal().getText("fouteSpelnaam"));
             }
-        } catch (InvalidNameException e)
-        {
-            System.out.println(dc.getTaal().getText("fouteSpelnaam"));
-        }
-        
+        } while (vlag2);
+
         int aantal = 0;
         boolean vlag = true;
         do
@@ -186,7 +194,6 @@ public class UC2
         } while (verder);
         
     }
-
     /**
      * methode om het spelbord uit te printen
      *

@@ -111,11 +111,13 @@ public class UC1
         {
             try
             {
+
                 for (int i = 0; i < aantal; i++)
                 {
                     UC2.registreerSpeler(dc, input);
                     fout = false;
                 }
+
             } catch (InvalidNameException | InvalidBirthdateException e)
             {
                 System.out.println(dc.getTaal().getText(e.getMessage()));

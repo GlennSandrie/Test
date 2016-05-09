@@ -42,7 +42,8 @@ public class BeginSchermController extends GridPane {
     {
         this.dc = dc;
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("BeginScherm.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("..//gui/BeginScherm.fxml"));
+        
         loader.setRoot(this);
         loader.setController(this);
         try
@@ -55,6 +56,7 @@ public class BeginSchermController extends GridPane {
             System.out.println(e.getMessage());
             Platform.exit();
         }
+        
     }
 
     @FXML
