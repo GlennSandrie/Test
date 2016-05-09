@@ -104,7 +104,7 @@ public class UC2
     public static void registreerSpeler(DomeinController dc, Scanner input)
     {
         List<String> spelnamen = dc.geefSpelnamen();
-        String naam = "";
+        String naam;
         int geboortejaar = 0, nrKleur;
         Kleur kleur = null;
         boolean verder = true;
@@ -114,112 +114,86 @@ public class UC2
             {
                 System.out.println(dc.getTaal().getText("spelerNaam"));
                 naam = input.nextLine();
-                for (String spelnaam : spelnamen)
+                for(String spelnaam : spelnamen)
                 {
-                    for (String s : dc.geefSpelersVanSpel(spelnaam))
+                    for(String s : dc.geefSpelersVanSpel(spelnaam))
                     {
-                        if (!(naam.matches("^[a-zA-Z]{2,}$")))
-                        {
-                            throw new InvalidNameException("fouteNaam");
-                        } else
-                        {
-                            break;
-                        }
+                        if(s.equals(naam))
+                            throw new InvalidNameException("naamBestaat");
                     }
                 }
-                for (String s : dc.geefSpelers())
+                for(String s : dc.geefSpelers())
                 {
-                    if (s.equals(naam))
-                    {
+                    if(s.equals(naam))
                         throw new InvalidNameException("naamBestaat");
-                    } else
+                }
+                boolean fout = true;
+                while(fout)
+                {
+                    try {
+                    
+                        System.out.println(dc.getTaal().getText("spelerGebdatum"));
+                        geboortejaar = input.nextInt();
+                        
+                        fout=false;
+                    
+                    }catch(InputMismatchException e)
                     {
-                        break;
+                        System.out.println(dc.getTaal().getText("foutGeboortejaar"));
+                        input.nextLine();
                     }
                 }
-                verder = false;
+                
+                boolean fout2 = true;
+                while(fout2)
+                {    
+                    try {
+                    
+                        System.out.println(dc.getTaal().getText("spelerKleur"));
+                        System.out.println("1. " + dc.getTaal().getText("geel"));
+                        System.out.println("2. " + dc.getTaal().getText("blauw"));
+                        System.out.println("3. " + dc.getTaal().getText("rood"));
+                        System.out.println("4. " + dc.getTaal().getText("groen"));
 
+                        nrKleur = input.nextInt();
+                        fout2 = false;
+                        for (Kleur k : Kleur.values())
+                        {
+                            if (k.getKleurNr() == nrKleur)
+                            {
+                                kleur = k;
+                            }
+                        }
+                    } catch (InputMismatchException e)
+                    {
+                        System.out.println(dc.getTaal().getText("fouteNummerKleur"));
+                        kleur = null;
+                        input.nextLine();
+                    }
+                }
+                dc.registreer(naam, geboortejaar, kleur);
+                verder = false;
+                input.nextLine();
             } catch (InvalidNameException e)
             {
                 System.out.println(dc.getTaal().getText(e.getMessage()));
-
-            }
-        } while (verder != false);
-        boolean fout = true;
-        do
-        {
-            try
-            {
-
-                System.out.println(dc.getTaal().getText("spelerGebdatum"));
-                geboortejaar = input.nextInt();
-                int huidigJaar = GregorianCalendar.getInstance().get(Calendar.YEAR);
-                if (geboortejaar < huidigJaar - 90 || geboortejaar > huidigJaar - 7)
-                {
-                    throw new InvalidBirthdateException("foutGeboortejaar");
-                } else
-                {
-                    fout = false;
-                }
-            } catch (InputMismatchException e)
-            {
-                System.out.println(dc.getTaal().getText("foutGeboortejaar"));
-                input.nextLine();
             } catch (InvalidBirthdateException e)
             {
                 System.out.println(dc.getTaal().getText(e.getMessage()));
                 input.nextLine();
-            }
-        } while (fout);
-
-        boolean fout2 = true;
-        do
-        {
-            try
-            {
-                System.out.println(dc.getTaal().getText("spelerKleur"));
-                System.out.println("1. " + dc.getTaal().getText("geel"));
-                System.out.println("2. " + dc.getTaal().getText("blauw"));
-                System.out.println("3. " + dc.getTaal().getText("rood"));
-                System.out.println("4. " + dc.getTaal().getText("groen"));
-
-                nrKleur = input.nextInt();
-                if (!(nrKleur == 1 || nrKleur == 2 || nrKleur == 3 || nrKleur == 4))
-                {
-                    throw new InputMismatchException(dc.getTaal().getText("fouteNummerKleur"));
-                }
-                else{
-                    fout2 = false;
-                }
-                    for (Kleur k : Kleur.values())
-                    {
-                        if (k.getKleurNr() == nrKleur)
-                        {
-                            kleur = k;
-                            break;
-                        }
-                    }
-            } catch (InputMismatchException e)
-            {
-                System.out.println(dc.getTaal().getText("fouteNummerKleur"));
-                kleur = null;
-                input.nextLine();
-            } catch (WrongInputException e)
+            } catch (IllegalArgumentException e)
             {
                 System.out.println(dc.getTaal().getText(e.getMessage()));
                 kleur = null;
                 input.nextLine();
-            } catch (NullPointerException e)
+            }  catch (NullPointerException e)
             {
-                System.out.println(dc.getTaal().getText("kleurBestaat"));
-                kleur = null;
+                System.out.println(dc.getTaal().getText("fouteNummerKleur"));
                 input.nextLine();
             }
-        } while (fout2);
-        dc.registreer(naam, geboortejaar, kleur);
-        input.nextLine();
+        } while (verder);
+        
     }
-
     /**
      * methode om het spelbord uit te printen
      *
