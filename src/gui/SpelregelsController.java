@@ -32,8 +32,7 @@ public class SpelregelsController extends VBox {
     private Label lblSpelregels;
     @FXML
     private TextArea txaSpelregels;
-    @FXML
-    private Button btnTerug;
+
     @FXML
     private Button btnVerder;
 
@@ -49,7 +48,6 @@ public class SpelregelsController extends VBox {
         uitkomst += String.format("%s%n%s%n%n", dc.getTaal().getText("eind"), dc.getTaal().getText("eindSpelregels"));
         txaSpelregels.setText(uitkomst);
 
-        btnTerug.setText(dc.getTaal().getText("terug"));
         btnVerder.setText(dc.getTaal().getText("verder"));
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Spelregels.fxml"));
@@ -67,10 +65,6 @@ public class SpelregelsController extends VBox {
         }
     }
     
-    @FXML
-    private void btnTerugOnAction(ActionEvent event) {
-        
-    }
 
     @FXML
     private void btnVerderOnAction(ActionEvent event) {

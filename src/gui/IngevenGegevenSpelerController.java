@@ -6,6 +6,8 @@
 package gui;
 
 import domein.DomeinController;
+import exceptions.InvalidBirthdateException;
+import exceptions.InvalidNameException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -53,7 +56,7 @@ public class IngevenGegevenSpelerController extends GridPane {
     private Button btnVerder;
     
     private DomeinController dc;
-
+    
     public IngevenGegevenSpelerController(DomeinController dc, int aantal) 
     {
         this.dc = dc;
@@ -72,15 +75,24 @@ public class IngevenGegevenSpelerController extends GridPane {
         try
         {
             loader.load();
-        } catch (IOException e)
+            int gd = Integer.parseInt(txfGeboortejaar.getText());
+            dc.registreer(txfNaam.getText(), gd, Kleur.GE);
+        } 
+        catch (IOException e)
         {
             System.out.println(dc.getTaal().getText("IOException"));
             System.out.println(e.getMessage());
             Platform.exit();
         }
+        catch (InvalidNameException e)
+        {
+            geefPopup(dc.getTaal().getText(e.getMessage()));
+        } 
+        catch (InvalidBirthdateException e)
+        {
+            geefPopup(dc.getTaal().getText((e.getMessage())));
+        }
         
-        int gd = Integer.parseInt(txfGeboortejaar.getText());
-        dc.registreer(txfNaam.getText(), gd, Kleur.GE);
     }   
 
     @FXML
@@ -110,5 +122,14 @@ public class IngevenGegevenSpelerController extends GridPane {
     public void initialize(URL url, ResourceBundle rb)
     {
         cmbKleur.setItems(list);
+    }
+    
+    private void geefPopup(String foutBoodschap)
+    {
+        Alert popup = new Alert(Alert.AlertType.ERROR);
+        popup.setContentText(foutBoodschap);
+        popup.setTitle("Invoerfout!");
+        popup.showAndWait();
+        txfNaam.requestFocus();
     }
 }

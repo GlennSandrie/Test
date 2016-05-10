@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -36,7 +37,7 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -96,18 +97,41 @@
             <ImageView fx:id="imgKaart64" fitHeight="85.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="5" />
             <ImageView fx:id="imgKaart65" fitHeight="85.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="6" />
             <ImageView fx:id="imgKaart66" fitHeight="85.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="7" />
-            <ImageView fx:id="imgPijlOmlaag1" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" />
-            <ImageView fx:id="imgPijlOmlaag2" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" />
-            <ImageView fx:id="imgPijlOmlaag3" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" />
-            <ImageView fx:id="imgPijlOmhoog1" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-            <ImageView fx:id="imgPijlOmhoog2" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="8" />
-            <ImageView fx:id="imgPijlOmhoog3" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="8" />
-            <ImageView fx:id="imgPijlRechts1" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2" />
-            <ImageView fx:id="imgPijlRechts2" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4" />
-            <ImageView fx:id="imgPijlRechts3" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6" />
-            <ImageView fx:id="imgPijlLinks1" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="2" />
-            <ImageView fx:id="imgPijlRechts2" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="4" />
-            <ImageView fx:id="imgPijlRechts3" fitHeight="40.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="1" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="1" GridPane.columnIndex="2" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="2" GridPane.columnIndex="3" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="3" GridPane.columnIndex="4" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="4" GridPane.columnIndex="5" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="5" GridPane.columnIndex="6" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="6" GridPane.columnIndex="7" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="0" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="1" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="1" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="1" GridPane.rowIndex="2" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="2" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="2" GridPane.columnIndex="8" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="2" GridPane.rowIndex="3" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="3" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="3" GridPane.columnIndex="8" GridPane.rowIndex="4" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="3" GridPane.rowIndex="4" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="4" GridPane.columnIndex="8" GridPane.rowIndex="5" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="4" GridPane.columnIndex="5" GridPane.rowIndex="8" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="4" GridPane.rowIndex="5" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="5" GridPane.columnIndex="8" GridPane.rowIndex="6" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="5" GridPane.columnIndex="6" GridPane.rowIndex="8" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="5" GridPane.rowIndex="6" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="6" GridPane.columnIndex="8" GridPane.rowIndex="7" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="6" GridPane.columnIndex="7" GridPane.rowIndex="8" />
+            <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="6" GridPane.rowIndex="7" />
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+               <children>
+                  <Label alignment="BOTTOM_CENTER" maxWidth="1.7976931348623157E308" text="y" />
+                  <Separator maxWidth="1.7976931348623157E308" prefWidth="200.0" />
+                  <Label alignment="TOP_CENTER" maxWidth="1.7976931348623157E308" text="x" />
+               </children>
+            </VBox>
          </children>
          <opaqueInsets>
             <Insets />
@@ -115,7 +139,6 @@
       </GridPane>
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Label fx:id="lblScore" maxWidth="1.7976931348623157E308" text="Score: " />
             <Label fx:id="lblVrijGangkaart" text="Vrije gangkaart: " />
             <ImageView fx:id="imgVrijeGangkaart" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="lblDraaien" text="Gangkaart draaien?" />
@@ -144,7 +167,7 @@
          <GridPane.margin>
             <Insets left="20.0" />
          </GridPane.margin></Label>
-      <HBox alignment="BOTTOM_RIGHT" prefHeight="185.0" prefWidth="200.0" spacing="20.0" GridPane.columnSpan="2" GridPane.rowIndex="2">
+      <HBox alignment="BOTTOM_RIGHT" prefHeight="185.0" prefWidth="200.0" spacing="20.0" GridPane.columnSpan="3" GridPane.rowIndex="2">
          <children>
             <Button fx:id="btnOpslaan" mnemonicParsing="false" onAction="#btnOpslaanOnAction" prefWidth="200.0" text="Opslaan" />
             <Button fx:id="btnOpslaanEnSluiten" mnemonicParsing="false" onAction="#btnOpslaanEnSluitenOnAction" prefHeight="31.0" prefWidth="200.0" text="Opslaan en sluiten" />

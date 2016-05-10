@@ -47,7 +47,7 @@
       <TextField fx:id="txfNaam" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       <TextField fx:id="txfGeboortejaar" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <ComboBox fx:id="cmbKleur" prefHeight="31.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <HBox alignment="BOTTOM_RIGHT" prefHeight="185.0" prefWidth="200.0" spacing="20.0" GridPane.columnSpan="2" GridPane.rowIndex="4">
+      <HBox alignment="BOTTOM_RIGHT" prefHeight="185.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <children>
             <Button fx:id="btnVerder" mnemonicParsing="false" onAction="#btnVerderOnAction" prefWidth="150.0" text="Verder" />
          </children>
