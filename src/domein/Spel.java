@@ -365,23 +365,13 @@ public class Spel
     }
     
     //UC4
-//
-//    /**
-//     * voegt de vrijeGangkaart toe aan het spelbord op de gekozen x en y positie
-//     *
-//     * @param xPositie x coordinaat van de gangkaart (0-6)
-//     * @param yPositie y coordinaat van de gangkaart (0-6)
-//     */
-//    public void voegVrijeGangkaartToeAanSpelbord(int xPositie, int yPositie)
-//    {
-//        sb.schuifGangkaartIn(xPositie, yPositie, vrijeGangkaart, huidigeSpeler);
-//    }
 
     /**
      * kies de plaats waar je de gangkaart wilt inschuiven
      *
      * @param xPositie x coordinaat van de gangkaart (0-6)
      * @param yPositie y coordinaat van de gangkaart (0-6)
+     * @throws exceptions.InvalidCoordinateException
      */
     public void geefPlaatsVrijeGangkaartIn(int xPositie, int yPositie) throws InvalidCoordinateException
     {
