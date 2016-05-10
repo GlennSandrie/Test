@@ -48,17 +48,16 @@ public class IngevenGegevenSpelerController extends GridPane {
     private TextField txfGeboortejaar;
     @FXML
     private ComboBox<String> cmbKleur;
-    @FXML
     private Button btnTerug;
     @FXML
     private Button btnVerder;
     
     private DomeinController dc;
 
-    public IngevenGegevenSpelerController(DomeinController dc) 
+    public IngevenGegevenSpelerController(DomeinController dc, int aantal) 
     {
         this.dc = dc;
-        lblGegevens.setText(dc.getTaal().getText("gegevens"));
+        lblGegevens.setText(String.format(dc.getTaal().getText("gegevens"), aantal));
         lblNaam.setText(dc.getTaal().getText("naam"));
         lblNaamExtra.setText(dc.getTaal().getText("spelerNaam"));
         lblGeboortejaar.setText(dc.getTaal().getText("geboortejaar"));
@@ -66,7 +65,7 @@ public class IngevenGegevenSpelerController extends GridPane {
         
         btnTerug.setText(dc.getTaal().getText("terug"));
         btnVerder.setText(dc.getTaal().getText("verder"));
-//        cmbKleur.setText(list);
+        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("IngevenGegevenSpeler.fxml"));
         loader.setRoot(this);
         loader.setController(this);
@@ -83,17 +82,6 @@ public class IngevenGegevenSpelerController extends GridPane {
         int gd = Integer.parseInt(txfGeboortejaar.getText());
         dc.registreer(txfNaam.getText(), gd, Kleur.GE);
     }   
-
-    @FXML
-    private void btnTerugOnAction(ActionEvent event) 
-    {
-        NieuweSpelController ns = new NieuweSpelController(dc);
-        Stage stage = (Stage) (this.getScene().getWindow());
-        Scene scene = new Scene(ns);
-        
-        stage.setScene(scene);
-        stage.show();
-    }
 
     @FXML
     private void btnVerderOnAction(ActionEvent event) 

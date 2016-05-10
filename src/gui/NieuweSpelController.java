@@ -6,6 +6,7 @@
 package gui;
 
 import domein.DomeinController;
+import exceptions.InvalidNameException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -48,6 +50,7 @@ public class NieuweSpelController extends VBox
     private Button btnVerder;
     
     private DomeinController dc;
+    private int aantal = 0;
 
     public NieuweSpelController(DomeinController dc) 
     {
@@ -65,16 +68,35 @@ public class NieuweSpelController extends VBox
         try
         {
             loader.load();
+            dc.maakSpel(txfNaamNieuwSpel.getText());
         } catch (IOException e)
         {
             System.out.println(dc.getTaal().getText("IOException"));
             System.out.println(e.getMessage());
             Platform.exit();
         }
+        catch (InvalidNameException e) {
+            geefPopup(dc.getTaal().getText(("fouteSpelnaam")));
+        }
         
-        dc.maakSpel(txfNaamNieuwSpel.getText());
+        
     }  
 
+    ObservableList<String> list = FXCollections.observableArrayList("2","3","4");
+ 
+    /**
+      * Initializes the controller class.
+      * @param url
+      * @param rb
+      */
+     public void Initialize(URL url, ResourceBundle rb)
+     {
+        cmbAantal.setItems(list);
+        String a = "";
+        a += cmbAantal.getSelectionModel().selectedItemProperty();
+        aantal =  Integer.parseInt(a);
+     }
+    
     @FXML
     private void btnTerugOnAction(ActionEvent event) 
     {
@@ -89,23 +111,24 @@ public class NieuweSpelController extends VBox
     @FXML
     private void btnVerderOnAction(ActionEvent event) 
     {
-        IngevenGegevenSpelerController is = new IngevenGegevenSpelerController(dc);
-        Stage stage = (Stage) (this.getScene().getWindow());
-        Scene scene = new Scene(is);
+        for (int i = 0; i < aantal; i++)
+        {
+            IngevenGegevenSpelerController is = new IngevenGegevenSpelerController(dc, i);
+            Stage stage = (Stage) (this.getScene().getWindow());
+            Scene scene = new Scene(is);
         
-        stage.setScene(scene);
-        stage.show();
+            stage.setScene(scene);
+            stage.show();
+        }
+        
     }
     
-    ObservableList<String> list = FXCollections.observableArrayList("2","3","4");
- 
-    /**
-      * Initializes the controller class.
-      * @param url
-      * @param rb
-      */
-     public void initialize(URL url, ResourceBundle rb)
-     {
-        cmbAantal.setItems(list);
-     }
+    private void geefPopup(String foutBoodschap)
+    {
+        Alert popup = new Alert(Alert.AlertType.ERROR);
+        popup.setContentText(foutBoodschap);
+        popup.setTitle("Invoerfout!");
+        popup.showAndWait();
+        txfNaamNieuwSpel.requestFocus();
+    }
 }

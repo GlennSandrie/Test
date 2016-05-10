@@ -44,11 +44,9 @@ public class BestaandSpel2Controller extends VBox {
     private TextArea txaSpelers;
 
     private DomeinController dc;
-    private BestaandSpel1Controller bs;
 
-    public BestaandSpel2Controller(DomeinController dc, BestaandSpel1Controller  bs) {
+    public BestaandSpel2Controller(DomeinController dc) {
         this.dc = dc;
-        this.bs = bs;
         lblAantalSpelersTitel.setText(dc.getTaal().getText("Speler"));
         lblSpelers.setText(dc.getTaal().getText("spelers"));
         lblAantalSpelers.setText(dc.getTaal().getText("aantalSpelers"));
@@ -79,7 +77,8 @@ public class BestaandSpel2Controller extends VBox {
     }
     
     @FXML
-    private void btnTerugOnAction(ActionEvent event) {
+    private void btnTerugOnAction(ActionEvent event) 
+    {
         BestaandSpel1Controller bs = new BestaandSpel1Controller(dc);
         Stage stage = (Stage) (this.getScene().getWindow());
         Scene scene = new Scene(bs);
@@ -89,7 +88,8 @@ public class BestaandSpel2Controller extends VBox {
     }
 
     @FXML
-    private void btnVerderOnAction(ActionEvent event) {
+    private void btnVerderOnAction(ActionEvent event) 
+    {
         SpelregelsController sr = new SpelregelsController(dc);
         Stage stage = (Stage) (this.getScene().getWindow());
         Scene scene = new Scene(sr);

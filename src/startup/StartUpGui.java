@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import gui.IngevenGegevenSpelerController;
+import gui.WelkomSchermController;
 
 /**
  * Start-methode, wordt gebruikt om het juiste beginscherm in te stellen
