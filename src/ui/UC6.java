@@ -25,11 +25,11 @@ public class UC6
      */
     public static void bewaarSpel(DomeinController dc, Scanner input)
     {
-        
-        try{
-            boolean fout = true;
-            while(fout)
-            {
+        boolean fout = true;
+        while(fout)
+        {
+            try{
+            
                 System.out.printf("Het spel wordt opgeslaan onder de naam %s%n",dc.getSpelnaam());
                 if(controleerBestaandSpel(dc))
                 {
@@ -44,30 +44,30 @@ public class UC6
                 System.out.println("Het spel is opgeslagen");
                 fout = false;
             }
-        }
-        catch(InvalidNameException e)
-        {
-            System.out.println(dc.getTaal().getText(e.getMessage()));
-            try {
-                boolean fout = true;
-                while(fout)
+            catch(InvalidNameException e)
+            {
+                System.out.println(dc.getTaal().getText(e.getMessage()));
+                try {
+                    boolean fout2 = true;
+                    while(fout2)
+                    {
+                        String naam;
+                        System.out.println(dc.getTaal().getText("nieuwSpel"));
+                        naam = input.nextLine();
+                        dc.setNaamSpel(naam);
+                        fout2 = false;
+                    }
+                }
+                catch(InvalidNameException ex)
                 {
-                    String naam;
-                    System.out.println(dc.getTaal().getText("nieuwSpel"));
-                    naam = input.nextLine();
-                    dc.setNaamSpel(naam);
-                    fout = false;
+                    System.out.println(dc.getTaal().getText(ex.getMessage()));
                 }
             }
-            catch(InvalidNameException ex)
+            catch(RuntimeException e)
             {
-                System.out.println(dc.getTaal().getText(ex.getMessage()));
+                System.out.println("Er is een fout gebeurt bij het opslaan van het spel. Het programma werd afgesloten.");
+                System.exit(1);
             }
-        }
-        catch(RuntimeException e)
-        {
-            System.out.println("Er is een fout gebeurt bij het opslaan van het spel. Het programma werd afgesloten.");
-            System.exit(1);
         }
     }
 
