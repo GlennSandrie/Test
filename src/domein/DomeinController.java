@@ -1,6 +1,7 @@
 package domein;
 
 import exceptions.EmptyListException;
+import exceptions.InvalidCoordinateException;
 import java.util.List;
 import utils.Kleur;
 import utils.Richting;
@@ -211,8 +212,9 @@ public class DomeinController
      *
      * @param xPositie x coordinaat op het spelbord (0-6)
      * @param yPositie y coordinaat op het spelbord (0-6)
+     * @throws exceptions.InvalidCoordinateException
      */
-    public void geefPlaatsVrijeGangkaart(int xPositie, int yPositie)
+    public void geefPlaatsVrijeGangkaartIn(int xPositie, int yPositie) throws InvalidCoordinateException
     {
         spel.geefPlaatsVrijeGangkaartIn(xPositie, yPositie);
     }
@@ -227,18 +229,6 @@ public class DomeinController
     {
         return spel.draaiVrijeGangkaart(keuze);
     }
-
-    /**
-     * vraagt aan spel om de vrijeGangkaart toe te voegen aan het spelbord op de
-     * gekozen x en y coordinaat
-     *
-     * @param xPositie x coordinaat op het spelbord (0-6)
-     * @param yPositie y coordinaat op het spelbord (0-6)
-     */
-//    public void voegVrijeGangkaartToeAanSpelbord(int xPositie, int yPositie)
-//    {
-//        spel.voegVrijeGangkaartToeAanSpelbord(xPositie, yPositie);
-//    }
 
     //UC5
     /**

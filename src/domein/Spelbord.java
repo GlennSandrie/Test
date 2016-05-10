@@ -5,6 +5,7 @@
  */
 package domein;
 
+import exceptions.InvalidCoordinateException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -18,6 +19,8 @@ import utils.Schat;
  */
 public class Spelbord
 {
+
+    private int posX, posY;
     private Spel spel;
     private Gangkaart[][] spelbord = new Gangkaart[7][7];
 
@@ -148,8 +151,10 @@ public class Spelbord
      * @param xPositie x coordinaat van de gangkaart op het spelbord (0-6)
      * @param yPositie y coordinaat van de gangkaart op het spelbord (0-6)
      * @param vrijeGangkaart
+     * @return
+     * @throws exceptions.InvalidCoordinateException
      */
-    public Gangkaart geefPlaatsVrijeGangkaartIn(int xPositie, int yPositie, Gangkaart vrijeGangkaart)
+    public Gangkaart geefPlaatsVrijeGangkaartIn(int xPositie, int yPositie, Gangkaart vrijeGangkaart) throws InvalidCoordinateException
     {
 
         if (!(xPositie % 2 == 0 && yPositie % 2 == 0) && (xPositie == 0 || xPositie == 6 || yPositie == 0 || yPositie == 6))
@@ -171,62 +176,78 @@ public class Spelbord
      * @param vrijeGangkaart
      * @param speler
      * @return
+     * @throws exceptions.InvalidCoordinateException
      */
-    public Gangkaart schuifGangkaartIn(int xPositie, int yPositie, Gangkaart vrijeGangkaart, Speler speler)
+    public Gangkaart schuifGangkaartIn(int xPositie, int yPositie, Gangkaart vrijeGangkaart, Speler speler) throws InvalidCoordinateException
     {
         Gangkaart nieuweVrijeGangkaart = vrijeGangkaart;
+        if (xPositie == posX && yPositie == posY)
+        {
+            throw new InvalidCoordinateException();
+        } else{
+        
         if (xPositie == 6)
         {
             nieuweVrijeGangkaart = spelbord[0][yPositie];
-            for(int i=0; i<6;i++)
+            for (int i = 0; i < 6; i++)
             {
-                spelbord[i][yPositie]= spelbord[i+1][yPositie];
+                spelbord[i][yPositie] = spelbord[i + 1][yPositie];
             }
+            posX=0;
+            posY=yPositie;
             spelbord[6][yPositie] = vrijeGangkaart;
 
         } else if (yPositie == 6)
         {
             nieuweVrijeGangkaart = spelbord[xPositie][0];
-            for(int i=0; i<6; i++)
+            for (int i = 0; i < 6; i++)
             {
-                spelbord[xPositie][i]=spelbord[xPositie][i+1];
+                spelbord[xPositie][i] = spelbord[xPositie][i + 1];
             }
+            posX=xPositie;
+            posY=0;
             spelbord[xPositie][6] = vrijeGangkaart;
 
         } else if (xPositie == 0)
         {
             nieuweVrijeGangkaart = spelbord[6][yPositie];
-            for(int i=6; i>0; i--)
+            for (int i = 6; i > 0; i--)
             {
-                spelbord[i][yPositie]=spelbord[i-1][yPositie];
+                spelbord[i][yPositie] = spelbord[i - 1][yPositie];
             }
+            posX=6;
+            posY=yPositie;
             spelbord[0][yPositie] = vrijeGangkaart;
 
         } else if (yPositie == 0)
         {
             nieuweVrijeGangkaart = spelbord[xPositie][6];
-            for(int i=6; i>0; i--)
+            for (int i = 6; i > 0; i--)
             {
-                spelbord[xPositie][i]= spelbord[xPositie][i-1];
+                spelbord[xPositie][i] = spelbord[xPositie][i - 1];
             }
+            posX=xPositie;
+            posY=6;
             spelbord[xPositie][0] = vrijeGangkaart;
         }
         if (!(nieuweVrijeGangkaart.getSpelers().isEmpty()))
         {
-            vrijeGangkaart.spelers.add(speler);
+            for (int i = nieuweVrijeGangkaart.spelers.size(); i > 0; i--)
+            {
+                vrijeGangkaart.spelers.add(speler);
+                nieuweVrijeGangkaart.spelers.remove(speler);
+            }
         }
-       vrijeGangkaart=nieuweVrijeGangkaart;
-
-        return vrijeGangkaart;
-    }
-
-    /**
-     * methode die de indexen van de gangkaart waarop de speler zich bevindt
-     * teruggeeft
-     *
-     * @param speler
-     * @return indexen van de huidige gangkaart, waar de speler op staat
-     */
+        }
+            return nieuweVrijeGangkaart;
+        }
+        /**
+         * methode die de indexen van de gangkaart waarop de speler zich bevindt
+         * teruggeeft
+         *
+         * @param speler
+         * @return indexen van de huidige gangkaart, waar de speler op staat
+         */
     public int[] geefIndexenHuidigeGangkaart(Speler speler)
     {
         int[] indexen = new int[2];

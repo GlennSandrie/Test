@@ -1,6 +1,7 @@
 package ui;
 
 import domein.DomeinController;
+import exceptions.InvalidCoordinateException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -34,13 +35,16 @@ public class UC4
                 xPositie = input.nextInt();
                 System.out.println(dc.getTaal().getText("inschuivenKaartY"));
                 yPositie = input.nextInt();
-                dc.geefPlaatsVrijeGangkaart(xPositie, yPositie);
+                dc.geefPlaatsVrijeGangkaartIn(xPositie, yPositie);
                 UC2.geefSpelbord(dc);
                 verder = false;
                 //            throw new InputMismatchException();
             } catch (IllegalArgumentException | InputMismatchException e)
             {
                 System.out.println(dc.getTaal().getText("fouteCoordinaat"));
+            }catch(InvalidCoordinateException e)
+            {
+                System.out.println(dc.getTaal().getText("ongeldigeBeurt"));
             }
         } while (verder != false);
 

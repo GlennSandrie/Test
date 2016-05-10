@@ -7,7 +7,6 @@ package domein;
 
 import java.util.List;
 import persistentie.SpelerMapper;
-import utils.Kleur;
 
 /**
  *
@@ -59,18 +58,7 @@ public class SpelerRepository
        return sm.geefKleur(speler);
     }
 
-    /*public Speler geefAantalSpelers(int aantalSpelers)
-     {
-     return sm.geefAantalSpelers(aantalSpelers);
-     }
-    
-     public void geefGegevensSpelerIn(String naam, LocalDateTime geboortedatum, String kleur)
-     {
-     return sm.geefGegevensSpelerIn(naam,geboortedatum,kleur);
-     }
-     */
-
-    void opslaanSpeler(String spelNaam, Speler speler, int[] indexenPlaatsSpelbord, int beurt, String doelkaarten)
+    public void opslaanSpeler(String spelNaam, Speler speler, int[] indexenPlaatsSpelbord, int beurt, String doelkaarten)
     {
         sm.opslaanSpeler(spelNaam, speler, indexenPlaatsSpelbord[0], indexenPlaatsSpelbord[1], beurt, doelkaarten);
     }

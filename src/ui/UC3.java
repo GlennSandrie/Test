@@ -25,13 +25,13 @@ public class UC3
      * @param dc
      * @param sc
      */            
-    public static void bepaalVolgendeSpeler(DomeinController dc, Scanner sc)
+    public static void bepaalVolgendeSpeler(DomeinController dc, Scanner input)
     {
         String opslaan = "";
         System.out.println("Bepaal volgende speler");
         while(!opslaan.equalsIgnoreCase(dc.getTaal().getText("ja"))&&!opslaan.equalsIgnoreCase(dc.getTaal().getText("nee"))) {
             System.out.println("Opslaan?");
-            opslaan = sc.nextLine();
+            opslaan = input.nextLine();
             if(opslaan.equals(dc.getTaal().getText("nee")))
             {
                 dc.bepaalVolgendeSpelerAanDeBeurt();
@@ -40,7 +40,7 @@ public class UC3
             }
             else if (opslaan.equals(dc.getTaal().getText("ja")))
             {
-                UC6.bewaarSpel(dc, sc);
+                UC6.bewaarSpel(dc, input);
                 spelOpgeslaan = true;
             }
             else
