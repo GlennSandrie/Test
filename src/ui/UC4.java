@@ -1,6 +1,7 @@
 package ui;
 
 import domein.DomeinController;
+import exceptions.InvalidCoordinateException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -41,6 +42,9 @@ public class UC4
             } catch (IllegalArgumentException | InputMismatchException e)
             {
                 System.out.println(dc.getTaal().getText("fouteCoordinaat"));
+            }catch(InvalidCoordinateException e)
+            {
+                System.out.println(dc.getTaal().getText("ongeldigeBeurt"));
             }
         } while (verder != false);
 

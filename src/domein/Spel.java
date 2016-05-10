@@ -6,6 +6,7 @@
 package domein;
 
 import exceptions.EmptyListException;
+import exceptions.InvalidCoordinateException;
 import exceptions.InvalidNameException;
 import exceptions.WrongInputException;
 import java.util.ArrayList;
@@ -382,7 +383,7 @@ public class Spel
      * @param xPositie x coordinaat van de gangkaart (0-6)
      * @param yPositie y coordinaat van de gangkaart (0-6)
      */
-    public void geefPlaatsVrijeGangkaartIn(int xPositie, int yPositie)
+    public void geefPlaatsVrijeGangkaartIn(int xPositie, int yPositie) throws InvalidCoordinateException
     {
         vrijeGangkaart = sb.geefPlaatsVrijeGangkaartIn(xPositie, yPositie, vrijeGangkaart);
 

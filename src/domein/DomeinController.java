@@ -1,6 +1,7 @@
 package domein;
 
 import exceptions.EmptyListException;
+import exceptions.InvalidCoordinateException;
 import java.util.List;
 import utils.Kleur;
 import utils.Richting;
@@ -212,7 +213,7 @@ public class DomeinController
      * @param xPositie x coordinaat op het spelbord (0-6)
      * @param yPositie y coordinaat op het spelbord (0-6)
      */
-    public void geefPlaatsVrijeGangkaart(int xPositie, int yPositie)
+    public void geefPlaatsVrijeGangkaart(int xPositie, int yPositie) throws InvalidCoordinateException
     {
         spel.geefPlaatsVrijeGangkaartIn(xPositie, yPositie);
     }

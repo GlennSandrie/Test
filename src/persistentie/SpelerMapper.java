@@ -164,6 +164,7 @@ public class SpelerMapper
                     gegevens[teller][2] = String.format("%d",rs.getInt("yPositie"));
                     gegevens[teller][3] = String.format("%d",rs.getInt("volgorde"));
                     gegevens[teller][4] = rs.getString("doelkaarten");
+                    teller++;
                 }
             }
         } catch (SQLException ex)
