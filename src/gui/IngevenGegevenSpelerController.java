@@ -56,10 +56,14 @@ public class IngevenGegevenSpelerController extends GridPane {
     private Button btnVerder;
     
     private DomeinController dc;
+    private int aantal;
+    private int huidig;
     
-    public IngevenGegevenSpelerController(DomeinController dc, int aantal) 
+    public IngevenGegevenSpelerController(DomeinController dc, int aantal, int huidig) 
     {
         this.dc = dc;
+        this.aantal = aantal;
+        this.huidig = huidig;
         lblGegevens.setText(String.format(dc.getTaal().getText("gegevens"), aantal));
         lblNaam.setText(dc.getTaal().getText("naam"));
         lblNaamExtra.setText(dc.getTaal().getText("spelerNaam"));
@@ -98,12 +102,24 @@ public class IngevenGegevenSpelerController extends GridPane {
     @FXML
     private void btnVerderOnAction(ActionEvent event) 
     {
-        SpelregelsController sr = new SpelregelsController(dc);
-        Stage stage = (Stage) (this.getScene().getWindow());
-        Scene scene = new Scene(sr);
-        
-        stage.setScene(scene);
-        stage.show();
+        if (huidig == aantal)
+        {
+            IngevenGegevenSpelerController is = new IngevenGegevenSpelerController(dc, aantal, 1);
+            Stage stage = (Stage) (this.getScene().getWindow());
+            Scene scene = new Scene(is);
+
+            stage.setScene(scene);
+            stage.show(); 
+        }
+        else
+        {
+            SpelregelsController sr = new SpelregelsController(dc);
+            Stage stage = (Stage) (this.getScene().getWindow());
+            Scene scene = new Scene(sr);
+
+            stage.setScene(scene);
+            stage.show();
+        }
     }
     
     ObservableList<String> list = FXCollections.observableArrayList
