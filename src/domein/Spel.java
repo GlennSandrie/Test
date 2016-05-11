@@ -497,7 +497,6 @@ public class Spel
     
     private Gangkaart zetCodeOmNaarKaart(String substring)
     {
-        System.out.println(substring);
         Gangkaart gk = null;
         if(substring.length()==3)
         {

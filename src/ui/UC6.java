@@ -65,7 +65,7 @@ public class UC6
             }
             catch(RuntimeException e)
             {
-                System.out.println("Er is een fout gebeurt bij het opslaan van het spel. Het programma werd afgesloten.");
+                System.out.println(dc.getTaal().getText("opslaanFout"));
                 System.exit(1);
             }
         }

@@ -177,6 +177,7 @@ public class UC2
             } catch (InvalidNameException e)
             {
                 System.out.println(dc.getTaal().getText(e.getMessage()));
+                input.nextLine();
             } catch (InvalidBirthdateException e)
             {
                 System.out.println(dc.getTaal().getText(e.getMessage()));

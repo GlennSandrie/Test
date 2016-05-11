@@ -44,11 +44,13 @@ public class ConsoleApplicatie
                 if (keuze.equalsIgnoreCase("ja") || keuze.equalsIgnoreCase("yes") || keuze.equalsIgnoreCase("oui"))
                 {
                     UC1.laadSpel(dc, input);
+                    speelSpel(dc, input);
                 } else
                 {
                     if (keuze.equalsIgnoreCase("nee") || keuze.equalsIgnoreCase("no") || keuze.equalsIgnoreCase("non"))
                     {
                         UC2.maakNieuwSpel(dc, input);
+                        speelSpel(dc, input);
                     } else
                     {
                         throw new WrongInputException("fouteInvoer");
@@ -58,8 +60,12 @@ public class ConsoleApplicatie
             {
                 System.out.println(dc.getTaal().getText(we.getMessage()));
             }
+            catch (RuntimeException ex)
+            {
+                System.out.println(dc.getTaal().getText("connectieFout"));
+            }
         }
-        speelSpel(dc, input);
+        
     }
 
     /**
@@ -70,15 +76,21 @@ public class ConsoleApplicatie
      */
     public static void speelSpel(DomeinController dc, Scanner input)
     {
-        UC2.geefVolledigSpel(dc);
-        UC4.geefPlaatsVrijeGangkaartIn(dc, input);
-        try
+        try {
+            UC2.geefVolledigSpel(dc);
+            UC4.geefPlaatsVrijeGangkaartIn(dc, input);
+            try
+            {
+                UC5.verplaatsSpeler(dc, input);            
+            } catch (EmptyListException ex)
+            {
+                System.out.println(dc.getTaal().getText(ex.getMessage()));
+                UC3.eindeVanSpel(dc);
+            }
+        }
+        catch (RuntimeException ex)
         {
-            UC5.verplaatsSpeler(dc, input);
-        } catch (EmptyListException ex)
-        {
-            System.out.println(dc.getTaal().getText(ex.getMessage()));
-            UC3.eindeVanSpel(dc);
+            System.out.println(dc.getTaal().getText("connectieFout"));
         }
     }
     

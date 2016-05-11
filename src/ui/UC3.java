@@ -28,9 +28,8 @@ public class UC3
     public static void bepaalVolgendeSpeler(DomeinController dc, Scanner input)
     {
         String opslaan = "";
-        System.out.println("Bepaal volgende speler");
         while(!opslaan.equalsIgnoreCase(dc.getTaal().getText("ja"))&&!opslaan.equalsIgnoreCase(dc.getTaal().getText("nee"))) {
-            System.out.println("Opslaan?");
+            System.out.println(dc.getTaal().getText("Opslaan")+"?");
             opslaan = input.nextLine();
             if(opslaan.equals(dc.getTaal().getText("nee")))
             {
@@ -55,6 +54,6 @@ public class UC3
      */
     public static void eindeVanSpel(DomeinController dc)
     {
-        System.out.println("De winnaar is " + dc.geefHuidigeSpeler());
+        System.out.println(dc.getTaal().getText("winnaar") + dc.geefHuidigeSpeler());
     }
 }
