@@ -111,16 +111,12 @@ public class NieuweSpelController extends VBox
     @FXML
     private void btnVerderOnAction(ActionEvent event) 
     {
-        //for (int i = 0; i < aantal; i++)
-        //{
-            IngevenGegevenSpelerController is = new IngevenGegevenSpelerController(dc, aantal);
-            Stage stage = (Stage) (this.getScene().getWindow());
-            Scene scene = new Scene(is);
-        
-            stage.setScene(scene);
-            stage.show();
-        //}
-        
+        IngevenGegevenSpelerController is = new IngevenGegevenSpelerController(dc, aantal, 1);
+        Stage stage = (Stage) (this.getScene().getWindow());
+        Scene scene = new Scene(is);
+
+        stage.setScene(scene);
+        stage.show();        
     }
     
     private void geefPopup(String foutBoodschap)
