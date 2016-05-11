@@ -25,7 +25,7 @@ public class StartUpGui extends Application
         BeginSchermController bs = new BeginSchermController(new DomeinController());
         Scene scene = new Scene(bs);
         
-        primaryStage.setTitle("Combobox test");
+        primaryStage.setTitle("Betoverd doolhof");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
