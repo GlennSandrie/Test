@@ -70,9 +70,10 @@ public class WelkomSchermController extends GridPane {
     {
         NieuweSpelController ns = new NieuweSpelController(dc);
         Stage stage = (Stage) (this.getScene().getWindow());
-        Scene scene = new Scene(ns);
+        stage.close();
         
-        stage.setScene(scene);
+        Stage nieuwSpel = new Stage();
+        stage.setScene(new Scene(ns));
         stage.show();
     }
 
@@ -81,9 +82,10 @@ public class WelkomSchermController extends GridPane {
     {
         BestaandSpel1Controller bs = new BestaandSpel1Controller(dc);
         Stage stage = (Stage) (this.getScene().getWindow());
-        Scene scene = new Scene(bs);
+        stage.close();
         
-        stage.setScene(scene);
+        Stage bestaandSpel = new Stage();
+        stage.setScene(new Scene(bs));
         stage.show();
     }
 
@@ -92,9 +94,10 @@ public class WelkomSchermController extends GridPane {
     {
         BeginSchermController bsc = new BeginSchermController(dc);
         Stage stage = (Stage) (this.getScene().getWindow());
-        Scene scene = new Scene(bsc);
+        stage.close();
         
-        stage.setScene(scene);
+        Stage begisScherm = new Stage();
+        stage.setScene(new Scene(bsc));
         stage.show();
     }
     
