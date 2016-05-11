@@ -151,9 +151,9 @@ public class DomeinController
      *
      * @return spelbord
      */
-    public String[][] geefSpel()
+    public String[][] geefSpelbord()
     {
-        return spel.geefSpel();
+        return spel.geefSpelbord();
     }
 
     /**
