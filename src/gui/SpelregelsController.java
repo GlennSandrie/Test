@@ -41,27 +41,31 @@ public class SpelregelsController extends VBox {
     public SpelregelsController(DomeinController dc) 
     {
         this.dc = dc;
-        String uitkomst = "";
-        uitkomst += String.format("%s%n%s%n%n", dc.getTaal().getText("intro"), dc.getTaal().getText("introSpelregels"));
-        uitkomst += String.format("%s%n%s%n%n", dc.getTaal().getText("begin"), dc.getTaal().getText("beginSpelregels"));
-        uitkomst += String.format("%s%n%s%n%n", dc.getTaal().getText("verloop"), dc.getTaal().getText("verloopSpelregels"));
-        uitkomst += String.format("%s%n%s%n%n", dc.getTaal().getText("eind"), dc.getTaal().getText("eindSpelregels"));
-        txaSpelregels.setText(uitkomst);
-
-        btnVerder.setText(dc.getTaal().getText("verder"));
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Spelregels.fxml"));
-        loader.setRoot(this);
-        loader.setController(this);
         try
         {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Spelregels.fxml"));
+            loader.setRoot(this);
+            loader.setController(this);
             loader.load();
+            
+            String uitkomst = "";
+            uitkomst += String.format("%s%n%s%n%n", dc.getTaal().getText("intro"), dc.getTaal().getText("introSpelregels"));
+            uitkomst += String.format("%s%n%s%n%n", dc.getTaal().getText("begin"), dc.getTaal().getText("beginSpelregels"));
+            uitkomst += String.format("%s%n%s%n%n", dc.getTaal().getText("verloop"), dc.getTaal().getText("verloopSpelregels"));
+            uitkomst += String.format("%s%n%s%n%n", dc.getTaal().getText("eind"), dc.getTaal().getText("eindSpelregels"));
+            txaSpelregels.setText(uitkomst);
+            btnVerder.setText(dc.getTaal().getText("verder"));
         }
         catch (IOException e)
         {
             System.out.println(dc.getTaal().getText("IOException"));
             System.out.println(e.getMessage());
             Platform.exit();
+        }
+        catch (NullPointerException e)
+        {
+            System.out.println(e.getMessage());
         }
     }
     

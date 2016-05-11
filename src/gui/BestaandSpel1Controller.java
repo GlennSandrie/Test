@@ -50,19 +50,18 @@ public class BestaandSpel1Controller extends VBox implements Initializable {
     public BestaandSpel1Controller(DomeinController dc) 
     {
         this.dc = dc;
-        lblBestaandSpel.setText(dc.getTaal().getText("BestaandSpel"));
-        lblLaadSpel.setText(dc.getTaal().getText("laadSpel"));
         
-        btnTerug.setText(dc.getTaal().getText("terug"));
-        btnVerder.setText(dc.getTaal().getText("verder"));
-        
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("BestaandSpel1.fxml"));
-        loader.setRoot(this);
-        loader.setController(this);
         try
         {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("BestaandSpel1.fxml"));
+            loader.setRoot(this);
+            loader.setController(this);
             loader.load();
             
+            lblBestaandSpel.setText(dc.getTaal().getText("BestaandSpelTitel"));
+            lblLaadSpel.setText(dc.getTaal().getText("laadSpel"));
+            btnTerug.setText(dc.getTaal().getText("terug"));
+            btnVerder.setText(dc.getTaal().getText("verder"));
         }
         catch (IOException e)
         {
@@ -70,7 +69,10 @@ public class BestaandSpel1Controller extends VBox implements Initializable {
             System.out.println(e.getMessage());
             Platform.exit();
         }
-        
+        catch (NullPointerException e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
         
     ObservableList<String> list = FXCollections.observableArrayList(dc.geefSpelnamen());

@@ -30,10 +30,10 @@ public class Spelbord
      */
     public Spelbord()
     {
-        spelbord[0][0] = new HoekKaart(null, Kleur.GE, Richting.R);
-        spelbord[0][6] = new HoekKaart(null, Kleur.B, Richting.O);
-        spelbord[6][0] = new HoekKaart(null, Kleur.GR, Richting.B);
-        spelbord[6][6] = new HoekKaart(null, Kleur.R, Richting.L);
+        spelbord[0][0] = new HoekKaart(null, Kleur.GE, Richting.R); //links boven
+        spelbord[0][6] = new HoekKaart(null, Kleur.B, Richting.O); //rechts boven
+        spelbord[6][0] = new HoekKaart(null, Kleur.GR, Richting.B); //links vanonder
+        spelbord[6][6] = new HoekKaart(null, Kleur.R, Richting.L); //rechts vanonder
 
         spelbord[0][2] = new Tkaart(Schat.UIL, Richting.O);
         spelbord[0][4] = new Tkaart(Schat.SCHEDEL, Richting.O);

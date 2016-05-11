@@ -55,19 +55,22 @@ public class NieuweSpelController extends VBox
     public NieuweSpelController(DomeinController dc) 
     {
         this.dc = dc;
-        lblNieuwSpelTitel.setText(dc.getTaal().getText("nieuwSpelTitel"));
-        lblNieuwSpel.setText(dc.getTaal().getText("nieuwSpel"));
-        lblAantalSpelers.setText(dc.getTaal().getText("aantalSpelers"));
         
-        btnTerug.setText(dc.getTaal().getText("terug"));
-        btnVerder.setText(dc.getTaal().getText("verder"));
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("NieuweSpel.fxml"));
-        loader.setRoot(this);
-        loader.setController(this);
+        
         try
         {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("NieuweSpel.fxml"));
+            loader.setRoot(this);
+            loader.setController(this);
             loader.load();
+            
+            lblNieuwSpelTitel.setText(dc.getTaal().getText("nieuwSpelTitel"));
+            lblNieuwSpel.setText(dc.getTaal().getText("nieuwSpel"));
+            lblAantalSpelers.setText(dc.getTaal().getText("aantalSpelers"));
+            btnTerug.setText(dc.getTaal().getText("terug"));
+            btnVerder.setText(dc.getTaal().getText("verder"));  
+            
             dc.maakSpel(txfNaamNieuwSpel.getText());
         } catch (IOException e)
         {
@@ -77,6 +80,10 @@ public class NieuweSpelController extends VBox
         }
         catch (InvalidNameException e) {
             geefPopup(dc.getTaal().getText(("fouteSpelnaam")));
+        }
+        catch (NullPointerException e)
+        {
+            System.out.println(e.getMessage());
         }
         
         

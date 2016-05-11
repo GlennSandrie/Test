@@ -47,13 +47,10 @@ public class WelkomSchermController extends GridPane {
             loader.setRoot(this);
             loader.setController(this);
             loader.load();
-            //nu pas beginnen vullen
-            //test change text
-            lblWelkom.setText("Change text");
             
-            //geven nullpointers
-            lblBestaandSpel.setText(dc.getTaal().getText("bestaandSpel"));
-            btnBestaand.setText(dc.getTaal().getText("BestaandSpel"));
+            lblWelkom.setText(dc.getTaal().getText("welkom"));
+            lblBestaandSpel.setText(dc.getTaal().getText("BestaandSpel"));
+            btnBestaand.setText(dc.getTaal().getText("BestaandSpelTitel"));
             btnNieuw.setText(dc.getTaal().getText("nieuwSpelTitel"));
         }
         catch (IOException e)
@@ -62,8 +59,9 @@ public class WelkomSchermController extends GridPane {
             System.out.println(e.getMessage());
             Platform.exit();
         }
-        catch (NullPointerException npe){
-            System.out.println(npe.getMessage());
+        catch (NullPointerException e)
+        {
+            System.out.println(e.getMessage());
         }
     }
  

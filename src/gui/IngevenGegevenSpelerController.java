@@ -64,21 +64,24 @@ public class IngevenGegevenSpelerController extends GridPane {
         this.dc = dc;
         this.aantal = aantal;
         this.huidig = huidig;
-        lblGegevens.setText(String.format(dc.getTaal().getText("gegevens"), aantal));
-        lblNaam.setText(dc.getTaal().getText("naam"));
-        lblNaamExtra.setText(dc.getTaal().getText("spelerNaam"));
-        lblGeboortejaar.setText(dc.getTaal().getText("geboortejaar"));
-        lblKleur.setText(dc.getTaal().getText("kleur"));
         
-        btnTerug.setText(dc.getTaal().getText("terug"));
-        btnVerder.setText(dc.getTaal().getText("verder"));
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("IngevenGegevenSpeler.fxml"));
-        loader.setRoot(this);
-        loader.setController(this);
+        
         try
         {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("IngevenGegevenSpeler.fxml"));
+            loader.setRoot(this);
+            loader.setController(this);
             loader.load();
+            
+            lblGegevens.setText(String.format(dc.getTaal().getText("gegevens"), huidig));
+            lblNaam.setText(dc.getTaal().getText("naam"));
+            lblNaamExtra.setText(dc.getTaal().getText("spelerNaam"));
+            lblGeboortejaar.setText(dc.getTaal().getText("geboortejaar"));
+            lblKleur.setText(dc.getTaal().getText("kleur"));
+            btnTerug.setText(dc.getTaal().getText("terug"));
+            btnVerder.setText(dc.getTaal().getText("verder"));
+            
             int gd = Integer.parseInt(txfGeboortejaar.getText());
             dc.registreer(txfNaam.getText(), gd, Kleur.GE);
         } 
@@ -96,6 +99,10 @@ public class IngevenGegevenSpelerController extends GridPane {
         {
             geefPopup(dc.getTaal().getText((e.getMessage())));
         }
+        catch (NullPointerException e)
+        {
+            System.out.println(e.getMessage());
+        }
         
     }   
 
@@ -104,7 +111,7 @@ public class IngevenGegevenSpelerController extends GridPane {
     {
         if (huidig == aantal)
         {
-            IngevenGegevenSpelerController is = new IngevenGegevenSpelerController(dc, aantal, 1);
+            IngevenGegevenSpelerController is = new IngevenGegevenSpelerController(dc, aantal, huidig++);
             Stage stage = (Stage) (this.getScene().getWindow());
             Scene scene = new Scene(is);
 

@@ -31,7 +31,6 @@ public class BestaandSpel2Controller extends VBox {
     
     @FXML
     private Label lblSpelers;
-    private Label lblAantalSpelers;
     @FXML
     private Button btnTerug;
     @FXML
@@ -45,19 +44,27 @@ public class BestaandSpel2Controller extends VBox {
 
     public BestaandSpel2Controller(DomeinController dc) {
         this.dc = dc;
-        lblAantalSpelersTitel.setText(dc.getTaal().getText("Speler"));
-        lblSpelers.setText(dc.getTaal().getText("spelers"));
-        lblAantalSpelers.setText(dc.getTaal().getText("aantalSpelers"));
+
         
-        btnTerug.setText(dc.getTaal().getText("terug"));
-        btnVerder.setText(dc.getTaal().getText("verder"));
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("BestaandSpel2.fxml"));
-        loader.setRoot(this);
-        loader.setController(this);
         try
         {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("BestaandSpel2.fxml"));
+            loader.setRoot(this);
+            loader.setController(this);
             loader.load();
+            
+            lblAantalSpelersTitel.setText(dc.getTaal().getText("Speler"));
+            lblSpelers.setText(dc.getTaal().getText("spelers"));
+            btnTerug.setText(dc.getTaal().getText("terug"));
+            btnVerder.setText(dc.getTaal().getText("verder"));            
+            
+            String uitvoer = "";
+            List<String> spelers = dc.geefSpelersVanSpel(dc.getSpelnaam());
+            for (String speler : spelers) 
+            {
+                uitvoer += String.format("%s%n", speler);
+            }    
         }
         catch (IOException e)
         {
@@ -65,13 +72,11 @@ public class BestaandSpel2Controller extends VBox {
             System.out.println(e.getMessage());
             Platform.exit();
         }
-        
-        String uitvoer = "";
-        List<String> spelers = dc.geefSpelersVanSpel(dc.getSpelnaam());
-        for (String speler : spelers) 
+        catch (NullPointerException e)
         {
-            uitvoer += String.format("%s%n", speler);
+            System.out.println(e.getMessage());
         }
+        
     }
     
     @FXML

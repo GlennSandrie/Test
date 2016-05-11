@@ -128,7 +128,6 @@ public class SpelbordController extends GridPane {
     private ImageView imgVrijeGangkaart;
     @FXML
     private Label lblSpeelSpel;
-    private Button btnTerug;
     @FXML
     private Button btnOpslaan;
     @FXML
@@ -150,23 +149,23 @@ public class SpelbordController extends GridPane {
     public SpelbordController(DomeinController dc) 
     {
         this.dc = dc;
-        lblSpeelSpel.setText(dc.getTaal().getText("spel"));
-        lblVrijGangkaart.setText(dc.getTaal().getText("vrijeGangkaart"));
-        lblDraaien.setText(dc.getTaal().getText("draai"));
-        btnLinks.setText(dc.getTaal().getText("L"));
-        btnRechts.setText(dc.getTaal().getText("R"));
-
-        btnTerug.setText(dc.getTaal().getText("terug"));
-        btnOpslaan.setText(dc.getTaal().getText("Opslaan"));
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Spelregels.fxml"));
-        loader.setRoot(this);
-        loader.setController(this);
+        
+        
         try
         {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Spelregels.fxml"));
+            loader.setRoot(this);
+            loader.setController(this);
             loader.load();
             
-            
+            lblSpeelSpel.setText(dc.getTaal().getText("spel"));
+            lblVrijGangkaart.setText(dc.getTaal().getText("vrijeGangkaart"));
+            lblDraaien.setText(dc.getTaal().getText("draaiKaart"));
+            btnLinks.setText(dc.getTaal().getText("L"));
+            btnRechts.setText(dc.getTaal().getText("R"));
+            btnOpslaan.setText(dc.getTaal().getText("Opslaan"));
+            btnOpslaanEnSluiten.setText(dc.getTaal().getText("OpslaanEnSluiten"));
         }
         catch (IOException e)
         {
@@ -174,7 +173,10 @@ public class SpelbordController extends GridPane {
             System.out.println(e.getMessage());
             Platform.exit();
         }
-        
+        catch (NullPointerException e)
+        {
+            System.out.println(e.getMessage());
+        }
         
         
         
