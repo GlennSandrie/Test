@@ -288,10 +288,10 @@ public class Spel
      *
      * @return spel
      */
-    public String[][] geefSpel()
+    public String[][] geefSpelbord()
     {
         String[][] spel = new String[7][7];
-        Gangkaart[][] spelbord = sb.geefSpelbord();
+        Gangkaart[][] spelbord = sb.getSpelbord();
         for (int i = 0; i < 7; i++)
         {
             for (int j = 0; j < 7; j++)
