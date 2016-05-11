@@ -101,7 +101,7 @@ public class Spelbord
      *
      * @return spelbord
      */
-    public Gangkaart[][] geefSpelbord()
+    public Gangkaart[][] getSpelbord()
     {
         return spelbord;
     }

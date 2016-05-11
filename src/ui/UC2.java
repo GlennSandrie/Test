@@ -201,16 +201,16 @@ public class UC2
      */
     public static void geefSpelbord(DomeinController dc)
     {
-        for (int i = 0; i < dc.geefSpel().length; i++)
+        for (int i = 0; i < dc.geefSpelbord().length; i++)
         {
             int begin = 0;
             int einde = 11;
 
             while (begin < 72)
             {
-                for (int j = 0; j < dc.geefSpel()[i].length; j++)
+                for (int j = 0; j < dc.geefSpelbord()[i].length; j++)
                 {
-                    System.out.printf(dc.geefSpel()[i][j].substring(begin, einde + 1));
+                    System.out.printf(dc.geefSpelbord()[i][j].substring(begin, einde + 1));
                 }
                 begin += 12;
                 einde += 12;
