@@ -122,9 +122,6 @@ public class SpelbordController extends GridPane {
     private ImageView imgKaart65;
     @FXML
     private ImageView imgKaart66;
-    private Label lblSpeler;
-    @FXML
-    private Label lblScore;
     @FXML
     private Label lblVrijGangkaart;
     @FXML
@@ -146,26 +143,6 @@ public class SpelbordController extends GridPane {
     @FXML
     private Button btnRechts;
     @FXML
-    private ImageView imgPijlOmlaag1;
-    @FXML
-    private ImageView imgPijlOmlaag2;
-    @FXML
-    private ImageView imgPijlOmlaag3;
-    @FXML
-    private ImageView imgPijlOmhoog1;
-    @FXML
-    private ImageView imgPijlOmhoog2;
-    @FXML
-    private ImageView imgPijlOmhoog3;
-    @FXML
-    private ImageView imgPijlRechts1;
-    @FXML
-    private ImageView imgPijlRechts2;
-    @FXML
-    private ImageView imgPijlRechts3;
-    @FXML
-    private ImageView imgPijlLinks1;
-    @FXML
     private Label lblSpeler1;
     @FXML
     private ImageView imgDoelkaart1;
@@ -174,8 +151,6 @@ public class SpelbordController extends GridPane {
     {
         this.dc = dc;
         lblSpeelSpel.setText(dc.getTaal().getText("spel"));
-        lblSpeler.setText(dc.getTaal().getText("speler..."));
-        lblScore.setText(dc.getTaal().getText("score"));
         lblVrijGangkaart.setText(dc.getTaal().getText("vrijeGangkaart"));
         lblDraaien.setText(dc.getTaal().getText("draai"));
         btnLinks.setText(dc.getTaal().getText("L"));
@@ -190,6 +165,8 @@ public class SpelbordController extends GridPane {
         try
         {
             loader.load();
+            
+            
         }
         catch (IOException e)
         {

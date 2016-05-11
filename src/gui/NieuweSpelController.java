@@ -111,15 +111,15 @@ public class NieuweSpelController extends VBox
     @FXML
     private void btnVerderOnAction(ActionEvent event) 
     {
-        for (int i = 0; i < aantal; i++)
-        {
-            IngevenGegevenSpelerController is = new IngevenGegevenSpelerController(dc, i);
+        //for (int i = 0; i < aantal; i++)
+        //{
+            IngevenGegevenSpelerController is = new IngevenGegevenSpelerController(dc, aantal);
             Stage stage = (Stage) (this.getScene().getWindow());
             Scene scene = new Scene(is);
         
             stage.setScene(scene);
             stage.show();
-        }
+        //}
         
     }
     

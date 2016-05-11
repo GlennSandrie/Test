@@ -119,7 +119,6 @@ public class UC5
                     doorgaan = dc.getTaal().getText("ja");
                 }
             } while (doorgaan.equals(dc.getTaal().getText("ja")));
-            System.out.println("Ga door met spel");
             ConsoleApplicatie.gaDoorMetSpel(dc, input);
         } catch (IllegalArgumentException e)
         {
