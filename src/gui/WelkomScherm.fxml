@@ -19,6 +19,7 @@
     <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
       <Label fx:id="lblWelkom" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Welkom" GridPane.columnSpan="2">
@@ -27,13 +28,10 @@
          </font>
       </Label>
       <Label fx:id="lblBestaandSpel" alignment="CENTER" maxWidth="1.7976931348623157E308" text="Wilt u deelnemen aan een bestaand spel of een nieuw spel?" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-      <Button fx:id="btnNieuw" maxWidth="150.0" mnemonicParsing="false" onAction="#btnNieuwOnAction" text="Nieuw" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-      <Button fx:id="btnBestaand" maxWidth="150.0" mnemonicParsing="false" onAction="#btnBestaandOnAction" text="Bestaand" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-      <HBox alignment="BOTTOM_RIGHT" prefHeight="185.0" prefWidth="200.0" spacing="20.0" GridPane.columnSpan="2" GridPane.rowIndex="3">
-         <children>
-            <Button fx:id="btnTerug" mnemonicParsing="false" onAction="#btnTerugOnAction" prefWidth="150.0" text="Terug" />
-         </children>
-      </HBox>
+      <Button fx:id="btnNieuw" maxHeight="37.0" maxWidth="150.0" mnemonicParsing="false" onAction="#btnNieuwOnAction" text="Nieuw" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Button fx:id="btnBestaand" maxHeight="37.0" maxWidth="150.0" mnemonicParsing="false" onAction="#btnBestaandOnAction" text="Bestaand" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <HBox alignment="BOTTOM_RIGHT" prefHeight="185.0" prefWidth="200.0" spacing="20.0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+      <Button fx:id="btnTerug" maxHeight="37.0" mnemonicParsing="false" onAction="#btnTerugOnAction" prefWidth="150.0" text="Terug" GridPane.rowIndex="4" />
    </children>
    <padding>
       <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />

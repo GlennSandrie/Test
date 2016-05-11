@@ -7,7 +7,6 @@ package gui;
 
 import domein.DomeinController;
 import java.io.IOException;
-import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,6 +54,7 @@ public class WelkomSchermController extends GridPane {
             lblBestaandSpel.setText(dc.getTaal().getText("bestaandSpel"));
             btnBestaand.setText(dc.getTaal().getText("BestaandSpel"));
             btnNieuw.setText(dc.getTaal().getText("nieuwSpelTitel"));
+            btnTerug.setText(dc.getTaal().getText("terug"));
         }
         catch (IOException e)
         {
